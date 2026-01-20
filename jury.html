@@ -4,6 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>The Grand Jury | Hungama AI Film Festival</title>
+  <link href="css/grain-disable.css" rel="stylesheet">
+  <link href="css/jury-hero-fix.css" rel="stylesheet">
   <link href="css/path-fallback.css" rel="stylesheet">
   <link href="css/output.css" rel="stylesheet">
   <link href="css/design-tokens.css" rel="stylesheet">
@@ -51,20 +53,12 @@
       );
     }
 
-    /* PASS 2: FILM GRAIN TEXTURE */
+    /* PASS 2: FILM GRAIN TEXTURE - DISABLED FOR CRITICAL FIX */
     .grain {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: 999;
-      opacity: 0.03;
-      background-image: url('images/grain.png');
-      background-repeat: repeat;
-      background-size: 100px 100px;
-      mix-blend-mode: overlay;
+      display: none !important;
+      visibility: hidden !important;
+      opacity: 0 !important;
+      pointer-events: none !important;
     }
 
     /* PASS 3: SECTION TRANSITION BLENDING */
@@ -220,7 +214,6 @@
 
   <!-- PASS 1 & 2: VIGNETTE AND GRAIN OVERLAYS -->
   <div class="vignette"></div>
-  <div class="grain"></div>
 
   <!-- NAVIGATION -->
   <nav class="fixed top-0 w-full z-50 backdrop-blur-lg py-4 px-8 transition-transform duration-300">
