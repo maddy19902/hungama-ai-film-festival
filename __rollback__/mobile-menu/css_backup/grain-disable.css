@@ -1,0 +1,51 @@
+/**
+ * CRITICAL FIX: GRAIN LAYER COMPLETE DISABLE
+ * 
+ * Purpose: Remove film grain texture overlay that was blocking all content
+ * Priority: MAXIMUM - must override all previous grain definitions
+ * Status: Production-critical fix applied
+ */
+
+/* === NUCLEAR GRAIN DISABLE === */
+/* Using !important with maximum specificity to ensure override */
+
+.grain {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  position: static !important;
+  top: auto !important;
+  left: auto !important;
+  right: auto !important;
+  bottom: auto !important;
+  width: 0 !important;
+  height: 0 !important;
+  z-index: -9999 !important;
+  pointer-events: none !important;
+  background: transparent !important;
+  background-image: none !important;
+  mix-blend-mode: normal !important;
+}
+
+/* Catch any grain variations */
+[class*="grain"],
+[class*="noise"],
+[class*="texture"],
+.film-grain,
+.noise-overlay,
+.texture-layer {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+}
+
+/* Remove grain pseudo-elements if any */
+*::before[class*="grain"],
+*::after[class*="grain"] {
+  display: none !important;
+}
+
+/* Override any inline styles */
+[style*="grain"] {
+  display: none !important;
+}

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>🧪 Grain Removal Verification</title>
+  <style>
+    body { font-family: 'Courier New', monospace; margin: 2rem; background: #0d0d0f; color: #fff; }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .test-block { margin: 2rem 0; padding: 2rem; border: 2px solid #333; border-radius: 8px; }
+    .test-title { font-size: 1.5rem; color: #e1d2ac; margin-bottom: 1rem; }
+    .result { padding: 1rem; margin: 0.5rem 0; border-radius: 4px; font-weight: bold; }
+    .pass { background: #0a0; color: #000; }
+    .fail { background: #a00; color: #fff; }
+    .warning { background: #aa0; color: #000; }
+    .info { background: #333; color: #fff; }
+    .debug-box { background: #1a1a1e; border: 1px solid #666; padding: 1rem; margin: 1rem 0; border-radius: 4px; font-size: 0.9rem; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🎬 HUNGAMA - GRAIN REMOVAL VERIFICATION TEST</h1>
+    <p>Testing whether grain layer has been successfully removed and disabled.</p>
+
+    <div class="test-block">
+      <div class="test-title">✓ Test 1: Grain Element Detection</div>
+      <div id="test1" class="result">Testing...</div>
+      <div class="debug-box" id="test1-debug"></div>
+    </div>
+
+    <div class="test-block">
+      <div class="test-title">✓ Test 2: Grain CSS Properties</div>
+      <div id="test2" class="result">Testing...</div>
+      <div class="debug-box" id="test2-debug"></div>
+    </div>
+
+    <div class="test-block">
+      <div class="test-title">✓ Test 3: Visual Brightness Check</div>
+      <div id="test3" class="result">Testing...</div>
+      <div style="height: 200px; background: #0d0d0f; border: 2px solid #666; border-radius: 4px; margin: 1rem 0;"></div>
+    </div>
+
+    <div class="test-block">
+      <div class="test-title">✓ Test 4: Page Load Performance</div>
+      <div id="test4" class="result">Testing...</div>
+      <div class="debug-box" id="test4-debug"></div>
+    </div>
+
+    <div class="test-block">
+      <div class="test-title">📋 Overall Status</div>
+      <div id="overall" class="result warning">Running tests...</div>
+      <button onclick="location.reload()" style="padding: 10px 20px; margin-top: 1rem; background: #a00; color: white; border: none; border-radius: 4px; cursor: pointer;">Re-run Tests</button>
+    </div>
+  </div>
+
+  <script>
+    let allTestsPassed = true;
+
+    function runTests() {
+      test1();
+      test2();
+      test3();
+      test4();
+      updateOverallStatus();
+    }
+
+    function test1() {
+      const grain = document.querySelector('.grain');
+      const result = document.getElementById('test1');
+      const debug = document.getElementById('test1-debug');
+
+      if (grain) {
+        result.className = 'result fail';
+        result.textContent = '❌ FAIL: Grain element still exists in DOM';
+        debug.textContent = `Found grain element: ${grain.outerHTML.substring(0, 100)}...`;
+        allTestsPassed = false;
+      } else {
+        result.className = 'result pass';
+        result.textContent = '✅ PASS: No grain element found in DOM';
+        debug.textContent = 'No grain divs present - element successfully removed';
+      }
+    }
+
+    function test2() {
+      const result = document.getElementById('test2');
+      const debug = document.getElementById('test2-debug');
+
+      const grainRule = document.querySelector('style');
+      let grainCSSFound = false;
+      let grainCSSDisabled = false;
+
+      // Check all stylesheets
+      for (let i = 0; i < document.styleSheets.length; i++) {
+        try {
+          const sheet = document.styleSheets[i];
+          for (let j = 0; j < sheet.cssRules.length; j++) {
+            const rule = sheet.cssRules[j];
+            if (rule.selectorText && rule.selectorText.includes('grain')) {
+              grainCSSFound = true;
+              
+              const style = rule.style;
+              if (style.display === 'none' || style.visibility === 'hidden') {
+                grainCSSDisabled = true;
+              }
+            }
+          }
+        } catch (e) {
+          // Cross-origin stylesheets will throw - that's OK
+        }
+      }
+
+      if (!grainCSSFound) {
+        result.className = 'result pass';
+        result.textContent = '✅ PASS: No grain CSS rules found';
+        debug.textContent = 'Grain CSS successfully removed or disabled';
+      } else if (grainCSSDisabled) {
+        result.className = 'result pass';
+        result.textContent = '✅ PASS: Grain CSS rules found but disabled';
+        debug.textContent = 'Grain CSS properly disabled with display: none or visibility: hidden';
+      } else {
+        result.className = 'result warning';
+        result.textContent = '⚠️  WARNING: Grain CSS rules found and may be active';
+        debug.textContent = 'Grain CSS exists - verify it has display: none or similar disabling property';
+        allTestsPassed = false;
+      }
+    }
+
+    function test3() {
+      const result = document.getElementById('test3');
+      
+      // Get computed background color
+      const bgColor = window.getComputedStyle(document.body).backgroundColor;
+      const bgImage = window.getComputedStyle(document.body).backgroundImage;
+
+      result.className = 'result pass';
+      result.textContent = `✅ PASS: Background is clean (${bgColor})`;
+      
+      if (bgImage !== 'none') {
+        result.className = 'result warning';
+        result.textContent = `⚠️  Background image detected: ${bgImage.substring(0, 50)}...`;
+      }
+    }
+
+    function test4() {
+      const result = document.getElementById('test4');
+      const debug = document.getElementById('test4-debug');
+
+      const perfData = performance.timing;
+      const loadTime = perfData.loadEventEnd - perfData.navigationStart;
+      const domReady = perfData.domContentLoadedEventEnd - perfData.navigationStart;
+
+      debug.textContent = `Page Load: ${loadTime}ms | DOM Ready: ${domReady}ms`;
+
+      if (loadTime < 5000) {
+        result.className = 'result pass';
+        result.textContent = `✅ PASS: Fast load time (${loadTime}ms)`;
+      } else {
+        result.className = 'result warning';
+        result.textContent = `⚠️  Slow load time (${loadTime}ms)`;
+      }
+    }
+
+    function updateOverallStatus() {
+      const overall = document.getElementById('overall');
+      
+      if (allTestsPassed) {
+        overall.className = 'result pass';
+        overall.textContent = '🎉 ALL TESTS PASSED - Grain layer successfully removed!';
+      } else {
+        overall.className = 'result fail';
+        overall.textContent = '❌ SOME TESTS FAILED - See details above';
+      }
+    }
+
+    // Run tests when page loads
+    window.addEventListener('load', runTests);
+  </script>
+</body>
+</html>

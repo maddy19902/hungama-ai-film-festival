@@ -1,0 +1,269 @@
+/* ========================================
+   PASS 2: CEREMONY PAGE VISUAL POLISH
+   Button styling, timeline alignment, modal stub
+   ======================================== */
+
+/* ========================================
+   1. BUTTON STYLING & LINKS
+   ======================================== */
+
+.ceremony-cta {
+  display: inline-block;
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  cursor: pointer;
+}
+
+/* Enter Submissions button */
+.ceremony-cta.primary {
+  background: #8B0000;
+  color: white;
+  border: 1px solid #8B0000;
+}
+
+.ceremony-cta.primary:hover {
+  background: transparent;
+  color: #8B0000;
+  box-shadow: 0 0 20px rgba(139, 0, 0, 0.3);
+}
+
+/* Reserve Invitation button (Coming Soon modal) */
+.ceremony-cta.secondary {
+  border: 1px solid #8B0000;
+  color: #8B0000;
+  background: transparent;
+}
+
+.ceremony-cta.secondary:hover {
+  background: #8B0000;
+  color: white;
+}
+
+/* ========================================
+   2. TIMELINE STYLING
+   ======================================== */
+
+.ceremony-timeline {
+  position: relative;
+  padding: 4rem 2rem;
+}
+
+.timeline-step {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 3rem;
+  align-items: center;
+}
+
+.timeline-date {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #8B0000;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  min-width: 120px;
+}
+
+.timeline-content-box {
+  flex: 1;
+  padding: 1.5rem;
+  background: rgba(31, 31, 36, 0.5);
+  border-left: 3px solid #8B0000;
+  border-radius: 4px;
+}
+
+.timeline-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #f5f5f5;
+  margin-bottom: 0.5rem;
+}
+
+.timeline-description {
+  color: #d4d4d8;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* ========================================
+   3. TIMELINE CENTER LINE (Optional visual)
+   ======================================== */
+
+.timeline-items {
+  position: relative;
+}
+
+.timeline-items::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(
+    to bottom,
+    #8B0000,
+    rgba(139, 0, 0, 0.2),
+    #8B0000
+  );
+  transform: translateX(-50%);
+}
+
+/* ========================================
+   4. COMING SOON MODAL
+   ======================================== */
+
+.coming-soon-modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.95);
+  backdrop-filter: blur(5px);
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.coming-soon-modal.active {
+  display: flex;
+  opacity: 1;
+}
+
+.coming-soon-content {
+  background: linear-gradient(135deg, rgba(31, 31, 36, 0.95), rgba(25, 25, 30, 0.95));
+  border: 1px solid rgba(139, 0, 0, 0.25);
+  border-radius: 8px;
+  padding: 3rem;
+  max-width: 400px;
+  text-align: center;
+  position: relative;
+  animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.coming-soon-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #f5f5f5;
+  margin-bottom: 1rem;
+}
+
+.coming-soon-text {
+  font-size: 1rem;
+  color: #d4d4d8;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+.coming-soon-close {
+  background: #8B0000;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 50px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.coming-soon-close:hover {
+  background: #a61616;
+  transform: scale(1.05);
+}
+
+/* ========================================
+   5. CEREMONY HERO SECTION
+   ======================================== */
+
+.ceremony-hero {
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(
+    135deg,
+    rgba(13, 13, 15, 0.95),
+    rgba(20, 5, 5, 0.9)
+  );
+  position: relative;
+}
+
+.ceremony-hero-content {
+  text-align: center;
+  max-width: 800px;
+}
+
+.ceremony-hero h1 {
+  font-size: clamp(2rem, 8vw, 3.5rem);
+  font-weight: 800;
+  color: #f5f5f5;
+  margin-bottom: 1rem;
+}
+
+.ceremony-hero p {
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  color: #d4d4d8;
+}
+
+/* ========================================
+   6. MOBILE RESPONSIVENESS
+   ======================================== */
+
+@media (max-width: 768px) {
+  .ceremony-cta {
+    padding: 0.75rem 1.5rem;
+    font-size: 0.875rem;
+  }
+
+  .timeline-step {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .timeline-date {
+    min-width: auto;
+  }
+
+  .coming-soon-content {
+    padding: 2rem;
+    max-width: 90%;
+  }
+
+  .coming-soon-title {
+    font-size: 1.5rem;
+  }
+}
+
+/* ========================================
+   7. ACCESSIBILITY
+   ======================================== */
+
+.ceremony-cta:focus-visible {
+  outline: 2px solid #8B0000;
+  outline-offset: 2px;
+}
+
+.coming-soon-close:focus-visible {
+  outline: 2px solid white;
+  outline-offset: 2px;
+}

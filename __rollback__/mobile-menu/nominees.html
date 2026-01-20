@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nominees | Hungama AI Film Festival</title>
+  <link href="css/grain-disable.css" rel="stylesheet">
+  <link href="css/path-fallback.css" rel="stylesheet">
+  <link href="css/output.css" rel="stylesheet">
+  <link href="css/design-tokens.css" rel="stylesheet">
+  <link href="css/premium-interactions.css" rel="stylesheet">
+  <link href="css/scroll-transitions.css" rel="stylesheet">
+  <link href="css/animations.css" rel="stylesheet">
+  <link href="css/micro-details.css" rel="stylesheet">
+  <link href="css/global-hover-system.css" rel="stylesheet">
+  <link href="css/final-polish.css" rel="stylesheet">
+  <link href="css/cta-system.css" rel="stylesheet">
+  <link href="css/typography-hierarchy.css" rel="stylesheet">
+  <link href="css/parallax-system.css" rel="stylesheet">
+  <link href="css/scroll-physics.css" rel="stylesheet">
+  <link href="css/elastic-elimination.css" rel="stylesheet">
+  <link href="css/components/navbar.css" rel="stylesheet">
+  <link href="css/polish.css" rel="stylesheet">
+  <link href="css/responsiveness.css" rel="stylesheet">
+  <link href="css/nominees-improvements.css" rel="stylesheet">
+  <link href="css/modal-system.css" rel="stylesheet">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="css/pass2-global-brightening.css" rel="stylesheet">
+  <style>
+    * {
+      font-family: 'Poppins', sans-serif;
+    }
+
+    /* PASS 1: GLOBAL CINEMATIC VIGNETTE */
+    .vignette {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1000;
+      background: radial-gradient(
+        ellipse 150% 150% at center,
+        transparent 0%,
+        rgba(0, 0, 0, 0.25) 40%,
+        rgba(0, 0, 0, 0.65) 100%
+      );
+    }
+
+    /* PASS 2: FILM GRAIN TEXTURE */
+    .grain {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 999;
+      opacity: 0.03;
+      background-image: url('images/grain.png');
+      background-repeat: repeat;
+      background-size: 100px 100px;
+      mix-blend-mode: overlay;
+    }
+
+    /* PASS 3: SECTION TRANSITION BLENDING */
+    section::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 80px;
+      background: linear-gradient(
+        to bottom,
+        transparent 0%,
+        rgba(10, 10, 10, 0.3) 100%
+      );
+      pointer-events: none;
+      z-index: 10;
+    }
+
+    /* PASS 4: TYPOGRAPHIC CALM & INSTITUTIONAL FEEL */
+    h1, h2, h3, h4, h5, h6 {
+      letter-spacing: 0.08em;
+    }
+
+    body {
+      line-height: 1.65;
+      letter-spacing: 0.01em;
+    }
+
+    p, .text-lg, .text-sm {
+      letter-spacing: 0.015em;
+    }
+
+    .text-gray-300 {
+      opacity: 0.94;
+    }
+
+    .text-gray-400 {
+      opacity: 0.88;
+    }
+
+    .text-gray-500 {
+      opacity: 0.82;
+    }
+
+    button {
+      letter-spacing: 0.1em;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+
+    button:hover {
+      letter-spacing: 0.12em;
+    }
+
+    /* Ensure section positioning for ::after overlay */
+    section {
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* NOMINEES PAGE SPECIFIC */
+    .nominees-hero {
+      min-h-[85vh] bg-cover bg-center bg-gradient-to-br from-brandDark via-black to-black flex items-center pt-32 relative;
+      background-image: url('images/nominees-bg.png');
+    }
+    
+    .nominees-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(192, 0, 0, 0.3), rgba(0, 0, 0, 0.6));
+      pointer-events: none;
+    }
+    
+    .nominees-hero > * {
+      position: relative;
+      z-index: 10;
+    }
+
+    .nominee-card {
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: linear-gradient(135deg, rgba(30, 30, 30, 0.5), rgba(10, 10, 10, 0.5));
+      border-radius: 0.5rem;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .nominee-card:hover {
+      border-color: rgba(225, 29, 46, 0.3);
+      background: linear-gradient(135deg, rgba(40, 40, 40, 0.6), rgba(20, 20, 20, 0.6));
+    }
+
+    .nominee-thumbnail {
+      aspect-ratio: 2/3;
+      background: linear-gradient(135deg, #333, #111);
+      overflow: hidden;
+    }
+
+    .nominee-thumbnail img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  </style>
+  <script src="js/elastic-free-parallax.js"></script>
+  <script src="js/nominees-system.js"></script>
+</head>
+
+<body class="bg-black text-white">
+
+  <!-- PASS 1 & 2: VIGNETTE AND GRAIN OVERLAYS -->
+  <div class="vignette"></div>
+
+  <!-- NAVIGATION -->
+  <nav class="fixed top-0 w-full z-50 backdrop-blur-lg py-4 px-8 transition-transform duration-300">
+    <div class="max-w-7xl mx-auto flex justify-between items-center">
+      <a href="index.html" class="text-xl font-bold tracking-wider">HUNGAMA</a>
+      
+      <div class="hidden md:flex gap-8 items-center text-sm">
+        <a href="index.html" class="transition">Home</a>
+        <a href="vision.html" class="transition">Vision</a>
+        <a href="honors.html" class="transition">Honors</a>
+        <a href="nominees.html" class="transition">Nominees</a>
+        <a href="jury.html" class="transition">Jury</a>
+        <a href="ceremony.html" class="transition">Ceremony</a>
+        <a href="winners.html" class="transition">Winners</a>
+        <a href="press.html" class="transition">Press</a>
+        <a href="sponsors.html" class="">Partners</a>
+        <a href="submit.html" class="border border-red-600 text-red-600 hover:bg-red-600 hover:text-white transition px-4 py-2 rounded-full text-xs font-semibold">Submit</a>
+      </div>
+
+      <div class="md:hidden">
+        <button data-mobile-menu-toggle class="border border-gray-600 px-4 py-2 rounded text-sm" aria-label="Open menu">Menu</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- NOMINEES HERO SECTION -->
+  <section class="nominees-hero px-8" data-parallax-layer="background" data-parallax-speed="0.1">
+    <div class="max-w-7xl mx-auto">
+      <h1 class="text-6xl xl:text-7xl font-bold mb-4 tracking-tight" data-parallax-layer="text">Nominees</h1>
+      <p class="text-lg text-gray-300 max-w-2xl font-light">
+        Celebrating the groundbreaking works that define the future of AI cinema.
+      </p>
+    </div>
+  </section>
+
+  <!-- AI SHORT FILM CATEGORY -->
+  <section class="py-20 px-8 bg-gradient-to-b from-black via-brandDark to-black" data-parallax-layer="midground">
+    <div class="max-w-7xl mx-auto">
+      <h2 class="text-4xl font-bold mb-12 tracking-tight">
+        AI Short Film
+      </h2>
+      
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-8">
+        <div class="nominee-card">
+          <div class="nominee-thumbnail bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center" style="height: 300px;">
+            <span class="text-gray-600 text-sm">Thumbnail</span>
+          </div>
+          <div class="p-4">
+            <h4 class="font-semibold text-sm mb-1">Film Title</h4>
+            <p class="text-xs text-gray-400">Director Name</p>
+          </div>
+        </div>
+        
+        <div class="nominee-card">
+          <div class="nominee-thumbnail bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center" style="height: 300px;">
+            <span class="text-gray-600 text-sm">Thumbnail</span>
+          </div>
+          <div class="p-4">
+            <h4 class="font-semibold text-sm mb-1">Film Title</h4>
+            <p class="text-xs text-gray-400">Director Name</p>
+          </div>
+        </div>
+
+        <div class="nominee-card">
+          <div class="nominee-thumbnail bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center" style="height: 300px;">
+            <span class="text-gray-600 text-sm">Thumbnail</span>
+          </div>
+          <div class="p-4">
+            <h4 class="font-semibold text-sm mb-1">Film Title</h4>
+            <p class="text-xs text-gray-400">Director Name</p>
+          </div>
+        </div>
+
+        <div class="nominee-card">
+          <div class="nominee-thumbnail bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center" style="height: 300px;">
+            <span class="text-gray-600 text-sm">Thumbnail</span>
+          </div>
+          <div class="p-4">
+            <h4 class="font-semibold text-sm mb-1">Film Title</h4>
+            <p class="text-xs text-gray-400">Director Name</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AI MICRO DRAMA CATEGORY -->
+  <section class="py-20 px-8 bg-gradient-to-b from-black via-black to-brandDark" data-parallax-layer="foreground">
+    <div class="max-w-7xl mx-auto">
+      <h2 class="text-4xl font-bold mb-12 tracking-tight">
+        AI Micro Drama
+      </h2>
+      
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-8">
+        <div class="nominee-card">
+          <div class="nominee-thumbnail bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center" style="height: 300px;">
+            <span class="text-gray-600 text-sm">Thumbnail</span>
+          </div>
+          <div class="p-4">
+            <h4 class="font-semibold text-sm mb-1">Film Title</h4>
+            <p class="text-xs text-gray-400">Director Name</p>
+          </div>
+        </div>
+        
+        <div class="nominee-card">
+          <div class="nominee-thumbnail bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center" style="height: 300px;">
+            <span class="text-gray-600 text-sm">Thumbnail</span>
+          </div>
+          <div class="p-4">
+            <h4 class="font-semibold text-sm mb-1">Film Title</h4>
+            <p class="text-xs text-gray-400">Director Name</p>
+          </div>
+        </div>
+
+        <div class="nominee-card">
+          <div class="nominee-thumbnail bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center" style="height: 300px;">
+            <span class="text-gray-600 text-sm">Thumbnail</span>
+          </div>
+          <div class="p-4">
+            <h4 class="font-semibold text-sm mb-1">Film Title</h4>
+            <p class="text-xs text-gray-400">Director Name</p>
+          </div>
+        </div>
+
+        <div class="nominee-card">
+          <div class="nominee-thumbnail bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center" style="height: 300px;">
+            <span class="text-gray-600 text-sm">Thumbnail</span>
+          </div>
+          <div class="p-4">
+            <h4 class="font-semibold text-sm mb-1">Film Title</h4>
+            <p class="text-xs text-gray-400">Director Name</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AI COMMERCIAL FILM CATEGORY -->
+  <section class="py-20 px-8 bg-gradient-to-b from-black via-brandDark to-black" data-parallax-layer="midground">
+    <div class="max-w-7xl mx-auto">
+      <h2 class="text-4xl font-bold mb-12 tracking-tight">
+        AI Commercial Film
+      </h2>
+      
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-8">
+        <div class="nominee-card">
+          <div class="nominee-thumbnail bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center" style="height: 300px;">
+            <span class="text-gray-600 text-sm">Thumbnail</span>
+          </div>
+          <div class="p-4">
+            <h4 class="font-semibold text-sm mb-1">Film Title</h4>
+            <p class="text-xs text-gray-400">Director Name</p>
+          </div>
+        </div>
+        
+        <div class="nominee-card">
+          <div class="nominee-thumbnail bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center" style="height: 300px;">
+            <span class="text-gray-600 text-sm">Thumbnail</span>
+          </div>
+          <div class="p-4">
+            <h4 class="font-semibold text-sm mb-1">Film Title</h4>
+            <p class="text-xs text-gray-400">Director Name</p>
+          </div>
+        </div>
+
+        <div class="nominee-card">
+          <div class="nominee-thumbnail bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center" style="height: 300px;">
+            <span class="text-gray-600 text-sm">Thumbnail</span>
+          </div>
+          <div class="p-4">
+            <h4 class="font-semibold text-sm mb-1">Film Title</h4>
+            <p class="text-xs text-gray-400">Director Name</p>
+          </div>
+        </div>
+
+        <div class="nominee-card">
+          <div class="nominee-thumbnail bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center" style="height: 300px;">
+            <span class="text-gray-600 text-sm">Thumbnail</span>
+          </div>
+          <div class="p-4">
+            <h4 class="font-semibold text-sm mb-1">Film Title</h4>
+            <p class="text-xs text-gray-400">Director Name</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIMENTAL / ART FILM CATEGORY -->
+  <section class="py-20 px-8 bg-gradient-to-b from-black via-black to-brandDark" data-parallax-layer="foreground">
+    <div class="max-w-7xl mx-auto">
+      <h2 class="text-4xl font-bold mb-12 tracking-tight">
+        Experimental / Art Film
+      </h2>
+      
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-8">
+        <div class="nominee-card">
+          <div class="nominee-thumbnail bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center" style="height: 300px;">
+            <span class="text-gray-600 text-sm">Thumbnail</span>
+          </div>
+          <div class="p-4">
+            <h4 class="font-semibold text-sm mb-1">Film Title</h4>
+            <p class="text-xs text-gray-400">Director Name</p>
+          </div>
+        </div>
+        
+        <div class="nominee-card">
+          <div class="nominee-thumbnail bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center" style="height: 300px;">
+            <span class="text-gray-600 text-sm">Thumbnail</span>
+          </div>
+          <div class="p-4">
+            <h4 class="font-semibold text-sm mb-1">Film Title</h4>
+            <p class="text-xs text-gray-400">Director Name</p>
+          </div>
+        </div>
+
+        <div class="nominee-card">
+          <div class="nominee-thumbnail bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center" style="height: 300px;">
+            <span class="text-gray-600 text-sm">Thumbnail</span>
+          </div>
+          <div class="p-4">
+            <h4 class="font-semibold text-sm mb-1">Film Title</h4>
+            <p class="text-xs text-gray-400">Director Name</p>
+          </div>
+        </div>
+
+        <div class="nominee-card">
+          <div class="nominee-thumbnail bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center" style="height: 300px;">
+            <span class="text-gray-600 text-sm">Thumbnail</span>
+          </div>
+          <div class="p-4">
+            <h4 class="font-semibold text-sm mb-1">Film Title</h4>
+            <p class="text-xs text-gray-400">Director Name</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="py-12 px-8 bg-black border-t border-gray-900/50">
+    <div class="max-w-7xl mx-auto flex justify-between items-center">
+      <div>
+        <p class="text-sm font-semibold tracking-wide">HUNGAMA AI FILM FESTIVAL</p>
+        <p class="text-xs text-gray-500 mt-1">Celebrating Future Cinema</p>
+      </div>
+      
+      <div class="flex gap-8 text-xs text-gray-400">
+        <a href="privacy.html" class="hover:text-white transition">Privacy Policy</a>
+        <a href="terms.html" class="hover:text-white transition">Terms & Conditions</a>
+        <a href="contact.html" class="hover:text-white transition">Contact</a>
+      </div>
+    </div>
+  </footer>
+  <!-- Production Scroll System -->
+  <script src="js/production-scroll.js"></script>
+  
+  <!-- Production Parallax Engine -->
+  <script src="js/production-parallax.js"></script>
+
+  <!-- Main Entry Point -->
+  <script src="js/main.js"></script>
+
+  <!-- Feature Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/email-capture.js"></script>
+  <script src="js/cta-wiring.js"></script>
+  <script src="js/emergency-override.js" defer></script>
+
+  <!-- Navbar Scroll Behavior -->
+  <script src="/js/navbar-scroll.js"></script>
+</body>
+</html>
+

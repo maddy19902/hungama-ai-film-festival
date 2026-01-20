@@ -1,0 +1,330 @@
+/* ========================================
+   PASS 2: VISION PAGE VISUAL POLISH
+   Timeline refinement, heading styling, spacing
+   ======================================== */
+
+/* ========================================
+   1. VISION HERO REFINEMENT
+   ======================================== */
+
+.vision-hero {
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  padding: 6rem 2rem;
+  background: linear-gradient(
+    135deg,
+    rgba(13, 13, 15, 0.95) 0%,
+    rgba(20, 5, 5, 0.9) 50%,
+    rgba(13, 13, 15, 0.95) 100%
+  );
+}
+
+.vision-hero-content {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.vision-title {
+  font-size: clamp(2.5rem, 8vw, 4rem);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+  background: linear-gradient(135deg, #d4af37 0%, #8B0000 50%, #d4af37 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.vision-subtitle {
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  color: #d4d4d8;
+  font-weight: 300;
+  line-height: 1.8;
+  margin-bottom: 2rem;
+}
+
+.vision-cta {
+  display: inline-block;
+  padding: 1rem 2.5rem;
+  background: #8B0000;
+  border: 1px solid #8B0000;
+  color: white;
+  border-radius: 50px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-size: 0.875rem;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.vision-cta:hover {
+  background: transparent;
+  color: #8B0000;
+  box-shadow: 0 0 20px rgba(139, 0, 0, 0.3);
+  transform: translateY(-2px);
+}
+
+/* ========================================
+   2. VISION TIMELINE SECTION
+   ======================================== */
+
+.vision-timeline {
+  position: relative;
+  padding: 4rem 2rem;
+  background: linear-gradient(
+    to bottom,
+    rgba(13, 13, 15, 0.95),
+    rgba(13, 13, 15, 0.9)
+  );
+}
+
+.vision-timeline h2 {
+  text-align: center;
+  font-size: clamp(2rem, 8vw, 3rem);
+  font-weight: 800;
+  color: #f5f5f5;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 3rem;
+}
+
+/* ========================================
+   3. HORIZONTAL TIMELINE STYLING
+   ======================================== */
+
+.vision-timeline-horizontal {
+  position: relative;
+  padding: 3rem 2rem;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.timeline-horizontal-line {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(
+    to right,
+    #8B0000,
+    rgba(139, 0, 0, 0.2),
+    #8B0000
+  );
+  transform: translateY(-50%);
+  z-index: 0;
+}
+
+.timeline-steps {
+  display: flex;
+  flex-direction: row;
+  gap: 3rem;
+  position: relative;
+  z-index: 1;
+  padding: 2rem 0;
+  min-width: max-content;
+  justify-content: center;
+}
+
+.timeline-step {
+  flex: 0 0 auto;
+  width: 280px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  opacity: 0;
+  animation: fadeInUp 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+.timeline-step:nth-child(1) { animation-delay: 0.1s; }
+.timeline-step:nth-child(2) { animation-delay: 0.2s; }
+.timeline-step:nth-child(3) { animation-delay: 0.3s; }
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.timeline-dot {
+  position: relative;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #8B0000;
+  border: 3px solid rgba(212, 175, 55, 0.3);
+  margin-bottom: 2rem;
+  transition: all 0.3s ease;
+  z-index: 2;
+}
+
+.timeline-step:hover .timeline-dot {
+  background: #d4af37;
+  border-color: #8B0000;
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+  transform: scale(1.3);
+}
+
+.timeline-step-content {
+  padding: 1.5rem;
+  background: rgba(31, 31, 36, 0.5);
+  border: 1px solid rgba(139, 0, 0, 0.15);
+  border-radius: 8px;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+.timeline-step:hover .timeline-step-content {
+  background: rgba(31, 31, 36, 0.8);
+  border-color: rgba(139, 0, 0, 0.3);
+  transform: translateY(-4px);
+}
+
+.timeline-step h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #f5f5f5;
+  margin-bottom: 0.75rem;
+}
+
+.timeline-step p {
+  font-size: 0.9rem;
+  color: #d4d4d8;
+  line-height: 1.6;
+}
+
+/* ========================================
+   4. VERTICAL TIMELINE (MOBILE)
+   ======================================== */
+
+@media (max-width: 768px) {
+  .vision-timeline-horizontal {
+    padding: 2rem 1rem;
+  }
+
+  .timeline-horizontal-line {
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    height: auto;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .timeline-steps {
+    flex-direction: column;
+    gap: 2rem;
+    min-width: auto;
+    justify-content: flex-start;
+  }
+
+  .timeline-step {
+    width: 100%;
+    padding-left: 40px;
+    padding-right: 40px;
+    text-align: left;
+    align-items: flex-start;
+  }
+
+  .timeline-dot {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+    margin-bottom: 0;
+  }
+
+  .timeline-step-content {
+    margin-left: 60px;
+  }
+}
+
+/* ========================================
+   5. SECTION SPACING & TRANSITIONS
+   ======================================== */
+
+.vision-section {
+  position: relative;
+}
+
+.vision-section::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(139, 0, 0, 0.2),
+    transparent
+  );
+}
+
+/* ========================================
+   6. RESPONSIVE ADJUSTMENTS
+   ======================================== */
+
+@media (max-width: 1024px) {
+  .vision-timeline-horizontal {
+    padding: 2.5rem 1rem;
+  }
+
+  .timeline-steps {
+    gap: 2rem;
+  }
+
+  .timeline-step {
+    width: 240px;
+  }
+}
+
+@media (max-width: 640px) {
+  .vision-hero {
+    min-height: 50vh;
+    padding: 4rem 1rem;
+  }
+
+  .vision-title {
+    margin-bottom: 1rem;
+  }
+
+  .vision-subtitle {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .vision-cta {
+    padding: 0.75rem 1.5rem;
+    font-size: 0.8rem;
+  }
+}
+
+/* ========================================
+   7. ACCESSIBILITY
+   ======================================== */
+
+.vision-cta:focus-visible {
+  outline: 2px solid #8B0000;
+  outline-offset: 2px;
+}
+
+.timeline-step-content:focus-visible {
+  outline: 2px solid #8B0000;
+  outline-offset: -2px;
+}

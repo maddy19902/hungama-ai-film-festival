@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>🧪 Jury Hero Background Verification</title>
+  <style>
+    body { font-family: 'Courier New', monospace; margin: 2rem; background: #0d0d0f; color: #fff; }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .test-block { margin: 2rem 0; padding: 2rem; border: 2px solid #333; border-radius: 8px; }
+    .test-title { font-size: 1.5rem; color: #e1d2ac; margin-bottom: 1rem; }
+    .result { padding: 1rem; margin: 0.5rem 0; border-radius: 4px; font-weight: bold; }
+    .pass { background: #0a0; color: #000; }
+    .fail { background: #a00; color: #fff; }
+    .warning { background: #aa0; color: #000; }
+    .debug-box { background: #1a1a1e; border: 1px solid #666; padding: 1rem; margin: 1rem 0; border-radius: 4px; font-size: 0.9rem; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🎬 JURY HERO BACKGROUND VERIFICATION TEST</h1>
+    <p>Testing jury.html hero section background visibility and configuration.</p>
+
+    <div class="test-block">
+      <div class="test-title">✓ Test 1: Jury Hero Element Detection</div>
+      <div id="test1" class="result">Testing...</div>
+      <div class="debug-box" id="test1-debug"></div>
+    </div>
+
+    <div class="test-block">
+      <div class="test-title">✓ Test 2: Background Image URL</div>
+      <div id="test2" class="result">Testing...</div>
+      <div class="debug-box" id="test2-debug"></div>
+    </div>
+
+    <div class="test-block">
+      <div class="test-title">✓ Test 3: Container Dimensions</div>
+      <div id="test3" class="result">Testing...</div>
+      <div class="debug-box" id="test3-debug"></div>
+    </div>
+
+    <div class="test-block">
+      <div class="test-title">✓ Test 4: Overlay Interference Check</div>
+      <div id="test4" class="result">Testing...</div>
+      <div class="debug-box" id="test4-debug"></div>
+    </div>
+
+    <div class="test-block">
+      <div class="test-title">✓ Test 5: Load jury.html and Inspect</div>
+      <div id="test5" class="result">Testing...</div>
+      <div class="debug-box" id="test5-debug"></div>
+      <iframe id="juryFrame" style="width: 100%; height: 400px; border: 1px solid #666; margin-top: 1rem; border-radius: 4px;"></iframe>
+    </div>
+
+    <div class="test-block">
+      <div class="test-title">📋 Overall Status</div>
+      <div id="overall" class="result warning">Running tests...</div>
+      <button onclick="testJuryPage()" style="padding: 10px 20px; margin: 1rem 0.5rem 0 0; background: #8B0000; color: white; border: none; border-radius: 4px; cursor: pointer;">Load Jury Page</button>
+      <button onclick="location.reload()" style="padding: 10px 20px; margin-top: 1rem; background: #a00; color: white; border: none; border-radius: 4px; cursor: pointer;">Re-run Tests</button>
+    </div>
+  </div>
+
+  <script>
+    let allTestsPassed = true;
+
+    function runTests() {
+      test1();
+      test2();
+      test3();
+      test4();
+      updateOverallStatus();
+    }
+
+    function test1() {
+      const result = document.getElementById('test1');
+      const debug = document.getElementById('test1-debug');
+
+      const heroSelectors = ['.jury-hero', 'section.jury-hero', '[class*="jury-hero"]'];
+      let heroFound = null;
+
+      for (let selector of heroSelectors) {
+        const elem = document.querySelector(selector);
+        if (elem) {
+          heroFound = elem;
+          break;
+        }
+      }
+
+      if (heroFound) {
+        result.className = 'result pass';
+        result.textContent = '✅ PASS: Jury hero element found';
+        debug.textContent = `Found element: ${heroFound.className} | Height: ${heroFound.offsetHeight}px`;
+      } else {
+        result.className = 'result fail';
+        result.textContent = '❌ FAIL: Jury hero element not found on this page';
+        debug.textContent = 'Jury hero may only be visible on jury.html - use "Load Jury Page" button';
+        allTestsPassed = false;
+      }
+    }
+
+    function test2() {
+      const result = document.getElementById('test2');
+      const debug = document.getElementById('test2-debug');
+
+      // Check if grand-jury-bg.png is accessible
+      fetch('/images/grand-jury-bg.png', { method: 'HEAD' })
+        .then(response => {
+          if (response.ok) {
+            result.className = 'result pass';
+            result.textContent = '✅ PASS: Background image file exists and is accessible';
+            debug.textContent = 'File: /images/grand-jury-bg.png | Status: 200 OK';
+          } else {
+            result.className = 'result fail';
+            result.textContent = `❌ FAIL: Background image returned ${response.status}`;
+            debug.textContent = `File: /images/grand-jury-bg.png | Status: ${response.status}`;
+            allTestsPassed = false;
+          }
+        })
+        .catch(error => {
+          result.className = 'result fail';
+          result.textContent = '❌ FAIL: Cannot access background image';
+          debug.textContent = `Error: ${error.message}`;
+          allTestsPassed = false;
+        });
+    }
+
+    function test3() {
+      const result = document.getElementById('test3');
+      const debug = document.getElementById('test3-debug');
+
+      const heroSelectors = ['.jury-hero', 'section.jury-hero', '[class*="jury-hero"]'];
+      let heroFound = null;
+
+      for (let selector of heroSelectors) {
+        const elem = document.querySelector(selector);
+        if (elem) {
+          heroFound = elem;
+          break;
+        }
+      }
+
+      if (heroFound) {
+        const minHeight = window.getComputedStyle(heroFound).minHeight;
+        const height = heroFound.offsetHeight;
+
+        if (height > 400) {
+          result.className = 'result pass';
+          result.textContent = `✅ PASS: Hero has sufficient height (${height}px)`;
+          debug.textContent = `min-height: ${minHeight} | actual height: ${height}px`;
+        } else {
+          result.className = 'result warning';
+          result.textContent = `⚠️  Hero height may be too small (${height}px)`;
+          debug.textContent = `min-height: ${minHeight} | actual height: ${height}px`;
+          allTestsPassed = false;
+        }
+      } else {
+        result.className = 'result warning';
+        result.textContent = '⚠️  Cannot test dimensions on this page';
+        debug.textContent = 'Load jury.html to test full hero section';
+      }
+    }
+
+    function test4() {
+      const result = document.getElementById('test4');
+      const debug = document.getElementById('test4-debug');
+
+      const overlays = document.querySelectorAll('.grain, .overlay, [class*="overlay"], .vignette');
+      const grain = document.querySelector('.grain');
+      
+      if (grain) {
+        const style = window.getComputedStyle(grain);
+        if (style.display === 'none' || style.visibility === 'hidden') {
+          result.className = 'result pass';
+          result.textContent = '✅ PASS: Grain is disabled';
+          debug.textContent = `Grain status: display=${style.display}, visibility=${style.visibility}`;
+        } else {
+          result.className = 'result fail';
+          result.textContent = '❌ FAIL: Grain layer is still visible';
+          debug.textContent = `Grain status: display=${style.display}, visibility=${style.visibility}, opacity=${style.opacity}`;
+          allTestsPassed = false;
+        }
+      } else {
+        result.className = 'result pass';
+        result.textContent = '✅ PASS: No grain layer interference';
+        debug.textContent = 'No grain elements detected';
+      }
+    }
+
+    function test5() {
+      const result = document.getElementById('test5');
+      result.textContent = 'Loading jury.html... (click button below to load)';
+    }
+
+    function testJuryPage() {
+      const frame = document.getElementById('juryFrame');
+      const result = document.getElementById('test5');
+      const debug = document.getElementById('test5-debug');
+
+      result.textContent = 'Loading...';
+
+      fetch('jury.html')
+        .then(response => response.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const doc = parser.parseFromString(html, 'text/html');
+
+          // Check for hero element in loaded HTML
+          const hero = doc.querySelector('.jury-hero');
+          
+          if (hero) {
+            const bgStyle = hero.getAttribute('style') || '';
+            const hasBackground = bgStyle.includes('background') || html.includes('grand-jury-bg');
+
+            result.className = 'result pass';
+            result.textContent = '✅ PASS: jury.html hero element found and loaded';
+            debug.textContent = `Background in HTML: ${hasBackground ? 'Yes' : 'No'} | Has style attribute: ${bgStyle.length > 0 ? 'Yes' : 'No'}`;
+          } else {
+            result.className = 'result fail';
+            result.textContent = '❌ FAIL: Hero not found in jury.html';
+            debug.textContent = 'Check that jury.html has .jury-hero element';
+            allTestsPassed = false;
+          }
+
+          // Display page in iframe
+          frame.srcdoc = html;
+        })
+        .catch(error => {
+          result.className = 'result fail';
+          result.textContent = `❌ FAIL: Error loading jury.html (${error.message})`;
+          debug.textContent = `Error: ${error.message}`;
+          allTestsPassed = false;
+        });
+    }
+
+    function updateOverallStatus() {
+      const overall = document.getElementById('overall');
+
+      if (allTestsPassed) {
+        overall.className = 'result pass';
+        overall.textContent = '🎉 TESTS PASSED - Jury hero should be visible!';
+      } else {
+        overall.className = 'result warning';
+        overall.textContent = '⚠️  REVIEW RESULTS ABOVE - Some tests may need attention';
+      }
+    }
+
+    // Run tests when page loads
+    window.addEventListener('load', runTests);
+  </script>
+</body>
+</html>

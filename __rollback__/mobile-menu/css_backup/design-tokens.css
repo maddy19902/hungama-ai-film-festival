@@ -1,0 +1,264 @@
+/**
+ * HUNGAMA FESTIVAL - PREMIUM DESIGN TOKEN SYSTEM
+ * 
+ * Apple × Linear × Stripe-grade experience
+ * Global color, motion, and interaction system
+ * 
+ * All pages reference this system for consistency
+ */
+
+:root {
+  /* ============================================================
+     BRIGHTNESS LIFT - Warm, Premium Dark Mode
+     ============================================================ */
+  --bg-main: #0b0b0c;
+  --bg-surface: #121214;
+  --bg-elevated: #18181b;
+  --text-primary: #f5f5f5;
+  --text-secondary: #cfcfcf;
+
+  /* ============================================================
+     COLOR SYSTEM - Global Tokens
+     ============================================================ */
+  
+  /* Primary Palette */
+  --color-black: #000000;           /* True black, not #111 or #1a1a1a */
+  --color-white: #ffffff;           /* True white */
+  --color-gray-50: #f9fafb;
+  --color-gray-100: #f3f4f6;
+  --color-gray-200: #e5e7eb;
+  --color-gray-300: #d1d5db;
+  --color-gray-400: #9ca3af;
+  --color-gray-500: #6b7280;
+  --color-gray-600: #4b5563;
+  --color-gray-700: #374151;
+  --color-gray-800: #1f2937;
+  --color-gray-900: #111827;
+
+  /* Accent Colors - Premium tier */
+  --color-accent-gold: #d4af37;     /* Warm, premium gold */
+  --color-accent-gold-light: #e5c158;
+  --color-accent-gold-dark: #aa8c2a;
+  
+  --color-accent-maroon: #8b2e2e;   /* Cinematic maroon, not brown */
+  --color-accent-maroon-light: #a63f3f;
+  --color-accent-maroon-dark: #6b1f1f;
+  
+  --color-accent-amber: #d97706;    /* Secondary accent */
+  
+  /* Brand Red (from existing design) */
+  --color-brand-red: #dc2626;
+  --color-brand-red-light: #ef4444;
+  --color-brand-red-dark: #b91c1c;
+
+  /* Semantic Colors */
+  --color-success: #10b981;
+  --color-warning: #f59e0b;
+  --color-error: #ef4444;
+  --color-info: #3b82f6;
+
+  /* Surfaces & Backgrounds */
+  --color-surface-primary: #000000;
+  --color-surface-secondary: #0a0a0a;
+  --color-surface-tertiary: #1a1a1a;
+  --color-surface-overlay: rgba(0, 0, 0, 0.6);
+  
+  /* Glass & Transparency */
+  --color-glass-1: rgba(255, 255, 255, 0.05);
+  --color-glass-2: rgba(255, 255, 255, 0.08);
+  --color-glass-3: rgba(255, 255, 255, 0.12);
+
+  /* ============================================================
+     MOTION & EASING - Precise curves
+     ============================================================ */
+  
+  /* Easing functions (Apple-style) */
+  --ease-out-smooth: cubic-bezier(0.4, 0.0, 0.2, 1);    /* Smooth exit */
+  --ease-in-out-smooth: cubic-bezier(0.4, 0.0, 0.6, 1); /* Balanced */
+  --ease-in-quad: cubic-bezier(0.5, 0, 1, 1);           /* Snappy in */
+  --ease-out-quad: cubic-bezier(0, 0, 0.25, 1);         /* Snappy out */
+  
+  /* Motion Timing */
+  --motion-duration-instant: 0ms;
+  --motion-duration-fast: 150ms;
+  --motion-duration-base: 250ms;
+  --motion-duration-slow: 350ms;
+  --motion-duration-slower: 500ms;
+  --motion-duration-animation: 800ms;
+
+  /* ============================================================
+     DEPTH & SHADOWS - Liquid glass effect
+     ============================================================ */
+  
+  /* Elevation shadows */
+  --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+  --shadow-base: 0 4px 12px 0 rgba(0, 0, 0, 0.15);
+  --shadow-md: 0 8px 24px 0 rgba(0, 0, 0, 0.2);
+  --shadow-lg: 0 16px 40px 0 rgba(0, 0, 0, 0.25);
+  --shadow-xl: 0 24px 60px 0 rgba(0, 0, 0, 0.3);
+
+  /* Hover lift shadows */
+  --shadow-hover: 0 12px 32px 0 rgba(212, 175, 55, 0.1);
+  --shadow-focus: 0 0 0 3px rgba(212, 175, 55, 0.1);
+
+  /* ============================================================
+     BORDERS & RADIUS
+     ============================================================ */
+  
+  --radius-xs: 2px;
+  --radius-sm: 4px;
+  --radius-base: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-full: 9999px;
+
+  /* ============================================================
+     TYPOGRAPHY - Optical alignment
+     ============================================================ */
+  
+  --font-family-primary: 'Poppins', sans-serif;
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extrabold: 800;
+
+  /* Line height system */
+  --line-height-tight: 1.2;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.75;
+  --line-height-loose: 2;
+
+  /* Letter spacing */
+  --letter-spacing-tight: -0.01em;
+  --letter-spacing-normal: 0em;
+  --letter-spacing-wide: 0.05em;
+  --letter-spacing-wider: 0.1em;
+  --letter-spacing-widest: 0.15em;
+
+  /* ============================================================
+     SPACING SYSTEM
+     ============================================================ */
+  
+  --space-0: 0;
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --space-24: 6rem;
+  --space-32: 8rem;
+
+  /* ============================================================
+     BREAKPOINTS
+     ============================================================ */
+  
+  --breakpoint-mobile: 640px;
+  --breakpoint-tablet: 768px;
+  --breakpoint-desktop: 1024px;
+  --breakpoint-wide: 1280px;
+  --breakpoint-ultra: 1536px;
+
+  /* ============================================================
+     GLASS & BACKDROP EFFECTS
+     ============================================================ */
+  
+  --backdrop-blur-sm: blur(4px);
+  --backdrop-blur-md: blur(8px);
+  --backdrop-blur-lg: blur(12px);
+  --backdrop-blur-xl: blur(16px);
+
+  /* ============================================================
+     Z-INDEX SYSTEM - Strict layering
+     ============================================================ */
+  
+  --z-hide: -1;
+  --z-base: 0;
+  --z-dropdown: 10;
+  --z-sticky: 20;
+  --z-fixed: 30;
+  --z-modal-backdrop: 40;
+  --z-modal: 50;
+  --z-popover: 60;
+  --z-tooltip: 70;
+  --z-notification: 80;
+  --z-grain: 999;
+  --z-vignette: 1000;
+}
+
+/* ============================================================
+   HIGH CONTRAST MODE SUPPORT
+   ============================================================ */
+
+@media (prefers-contrast: more) {
+  :root {
+    --color-gray-200: #c8cdd6;
+    --color-gray-400: #6b7280;
+    --shadow-base: 0 4px 16px 0 rgba(0, 0, 0, 0.25);
+  }
+}
+
+/* ============================================================
+   DARK MODE (Already primary on this site, but explicit)
+   ============================================================ */
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-surface-primary: #000000;
+    --color-surface-secondary: #0a0a0a;
+  }
+}
+
+/* ============================================================
+   UTILITY CLASSES - Fast application
+   ============================================================ */
+
+.text-accent-gold {
+  color: var(--color-accent-gold);
+}
+
+.text-accent-gold-light {
+  color: var(--color-accent-gold-light);
+}
+
+.bg-glass-1 {
+  background: var(--color-glass-1);
+  backdrop-filter: var(--backdrop-blur-md);
+}
+
+.bg-glass-2 {
+  background: var(--color-glass-2);
+  backdrop-filter: var(--backdrop-blur-lg);
+}
+
+.shadow-hover {
+  box-shadow: var(--shadow-hover);
+}
+
+.shadow-focus {
+  box-shadow: var(--shadow-focus);
+}
+
+/* Focus ring utility */
+.focus-ring:focus {
+  outline: 2px solid var(--color-accent-gold);
+  outline-offset: 2px;
+}
+
+/* Reduced motion support (applies globally) */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --motion-duration-instant: 0ms;
+    --motion-duration-fast: 0ms;
+    --motion-duration-base: 0ms;
+    --motion-duration-slow: 0ms;
+    --motion-duration-slower: 0ms;
+    --motion-duration-animation: 0ms;
+  }
+}

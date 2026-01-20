@@ -1,0 +1,331 @@
+/* ============================================
+   UNIFIED MODAL SYSTEM FOR NOMINEES
+   Video & Creator Detail Modals
+   ============================================ */
+
+/* MODAL CONTAINER */
+.nominee-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.nominee-modal.active {
+  display: flex;
+  animation: fadeIn 0.3s ease forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* MODAL OVERLAY */
+.modal-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* MODAL CONTAINER */
+.modal-container {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  max-height: 90vh;
+  background: rgba(20, 20, 20, 0.98);
+  border: 1px solid rgba(128, 0, 0, 0.3);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.9), 
+              0 0 40px rgba(128, 0, 0, 0.2);
+  animation: slideUp 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  z-index: 10000;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(40px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* CLOSE BUTTON */
+.modal-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: rgba(128, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  font-size: 28px;
+  cursor: pointer;
+  z-index: 10001;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  font-weight: 300;
+  line-height: 1;
+  padding: 0;
+}
+
+.modal-close:hover {
+  background: #800000;
+  border-color: rgba(255, 255, 255, 0.4);
+  transform: rotate(90deg) scale(1.1);
+}
+
+.modal-close:active {
+  transform: rotate(90deg) scale(0.95);
+}
+
+/* MODAL CONTENT */
+.modal-content {
+  height: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+  padding: 3rem;
+  color: white;
+}
+
+.modal-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.modal-content::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+}
+
+.modal-content::-webkit-scrollbar-thumb {
+  background: #800000;
+  border-radius: 10px;
+}
+
+.modal-content::-webkit-scrollbar-thumb:hover {
+  background: #E11D2E;
+}
+
+/* VIDEO CONTAINER */
+.video-container {
+  width: 100%;
+  height: 0;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+  position: relative;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid rgba(128, 0, 0, 0.2);
+}
+
+.video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 8px;
+}
+
+.video-container[style*="display: none"] {
+  display: none !important;
+}
+
+/* CREATOR CONTENT */
+.creator-container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.creator-container[style*="display: none"] {
+  display: none !important;
+}
+
+.creator-modal-content {
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.creator-modal-title {
+  font-size: clamp(1.75rem, 5vw, 3rem);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  margin-bottom: 0.5rem;
+  color: #ffffff;
+  text-align: center;
+}
+
+.creator-modal-subtitle {
+  font-size: 1.125rem;
+  color: #800000;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 2rem;
+  text-align: center;
+  font-weight: 600;
+}
+
+.creator-modal-body {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 2.5rem;
+}
+
+.creator-modal-body p {
+  margin-bottom: 1.5rem;
+  text-align: justify;
+}
+
+.creator-modal-body p:last-child {
+  margin-bottom: 0;
+}
+
+.creator-website {
+  display: inline-block;
+  padding: 0.875rem 2rem;
+  background: linear-gradient(135deg, #800000, #660000);
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 2px solid transparent;
+  cursor: pointer;
+  text-align: center;
+}
+
+.creator-website:hover {
+  background: linear-gradient(135deg, #660000, #800000);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(128, 0, 0, 0.3);
+  border-color: #E11D2E;
+}
+
+.creator-website:active {
+  transform: translateY(-2px);
+}
+
+/* MODAL ACCESSIBILITY */
+@media (max-width: 768px) {
+  .modal-close {
+    width: 40px;
+    height: 40px;
+    font-size: 24px;
+    top: 15px;
+    right: 15px;
+  }
+
+  .modal-content {
+    padding: 2rem 1.5rem;
+  }
+
+  .creator-modal-title {
+    font-size: 1.75rem;
+  }
+
+  .creator-modal-body {
+    font-size: 1rem;
+  }
+
+  .modal-container {
+    border-radius: 8px;
+  }
+}
+
+/* BODY OVERFLOW CONTROL */
+body.modal-open {
+  overflow: hidden;
+  height: 100vh;
+}
+
+/* FOCUS MANAGEMENT */
+.modal-close:focus,
+.creator-website:focus {
+  outline: 2px solid #800000;
+  outline-offset: 2px;
+}
+
+/* LOADING STATE */
+.modal-content.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 300px;
+}
+
+.modal-content.loading::after {
+  content: '';
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba(128, 0, 0, 0.3);
+  border-top-color: #800000;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* PRINT STYLES */
+@media print {
+  .nominee-modal,
+  .modal-overlay,
+  .modal-close {
+    display: none !important;
+  }
+}
+
+/* REDUCED MOTION */
+@media (prefers-reduced-motion: reduce) {
+  .nominee-modal,
+  .modal-container,
+  .modal-close,
+  .creator-modal-content {
+    animation: none;
+    transition: none;
+  }
+}

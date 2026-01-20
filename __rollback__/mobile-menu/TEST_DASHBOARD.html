@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🚀 Single Source of Truth - Testing Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #1e1e1e 0%, #0d0d0d 100%);
+            color: #e0e0e0;
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        header {
+            margin-bottom: 50px;
+            text-align: center;
+        }
+        
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #e91e63 0%, #ff6f00 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .status {
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-weight: 600;
+            margin: 10px 0;
+        }
+        
+        .status.active {
+            background: rgba(76, 175, 80, 0.2);
+            color: #4caf50;
+            border: 1px solid #4caf50;
+        }
+        
+        .status.inactive {
+            background: rgba(244, 67, 54, 0.2);
+            color: #f44336;
+            border: 1px solid #f44336;
+        }
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        
+        .info-box {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 20px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .info-box h3 {
+            color: #ff6f00;
+            margin-bottom: 10px;
+            font-size: 0.9em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .info-box p {
+            font-size: 1.1em;
+            font-family: 'Monaco', 'Courier New', monospace;
+            color: #e0e0e0;
+            word-break: break-all;
+        }
+        
+        .pages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+        
+        .page-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            text-decoration: none;
+            color: #4caf50;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-align: center;
+        }
+        
+        .page-link:hover {
+            background: rgba(76, 175, 80, 0.1);
+            border-color: #4caf50;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(76, 175, 80, 0.2);
+        }
+        
+        .page-link.reference {
+            background: rgba(255, 152, 0, 0.1);
+            border-color: #ff9800;
+            color: #ff9800;
+        }
+        
+        .page-link.reference:hover {
+            box-shadow: 0 10px 30px rgba(255, 152, 0, 0.2);
+        }
+        
+        .section {
+            margin-bottom: 40px;
+        }
+        
+        .section h2 {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            color: #ff6f00;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(255, 111, 0, 0.3);
+        }
+        
+        .checklist {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 20px;
+        }
+        
+        .checklist-item {
+            display: flex;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .checklist-item:last-child {
+            border-bottom: none;
+        }
+        
+        .checklist-item input {
+            margin-right: 15px;
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+        
+        .checklist-item label {
+            cursor: pointer;
+            flex: 1;
+        }
+        
+        .warning-box {
+            background: rgba(255, 152, 0, 0.1);
+            border-left: 4px solid #ff9800;
+            border-radius: 4px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .warning-box strong {
+            color: #ff9800;
+        }
+        
+        .code-block {
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            padding: 15px;
+            margin: 15px 0;
+            font-family: 'Monaco', 'Courier New', monospace;
+            font-size: 0.9em;
+            overflow-x: auto;
+            color: #4caf50;
+        }
+        
+        .button-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        
+        button {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-size: 0.95em;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #e91e63 0%, #ff6f00 100%);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(233, 30, 99, 0.3);
+        }
+        
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: #e0e0e0;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.15);
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 60px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #888;
+            font-size: 0.9em;
+        }
+        
+        .badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.85em;
+            font-weight: 600;
+            margin-left: 10px;
+        }
+        
+        .badge.reference {
+            background: rgba(255, 152, 0, 0.2);
+            color: #ff9800;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🚀 Single Source of Truth</h1>
+            <p>Local Testing Dashboard - Port 8000</p>
+            <div class="status active">● ACTIVE</div>
+        </header>
+        
+        <div class="info-grid">
+            <div class="info-box">
+                <h3>🌐 Server Port</h3>
+                <p>8000</p>
+            </div>
+            <div class="info-box">
+                <h3>📍 Base URL</h3>
+                <p>http://localhost:8000</p>
+            </div>
+            <div class="info-box">
+                <h3>📁 Project Root</h3>
+                <p>/Users/madhav/hungama-festival-site</p>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>📄 Testing Pages</h2>
+            <div class="warning-box">
+                <strong>⚠️ IMPORTANT:</strong> Always test reference page first (sponsors.html), then compare all others to it.
+            </div>
+            
+            <div class="pages-grid">
+                <a href="http://localhost:8000/sponsors.html" target="_blank" class="page-link reference">
+                    ⭐ Sponsors<br><span class="badge reference">REFERENCE</span>
+                </a>
+                <a href="http://localhost:8000/index.html" target="_blank" class="page-link">
+                    🏠 Index
+                </a>
+                <a href="http://localhost:8000/jury.html" target="_blank" class="page-link">
+                    ⚖️ Jury
+                </a>
+                <a href="http://localhost:8000/nominees.html" target="_blank" class="page-link">
+                    🎬 Nominees
+                </a>
+                <a href="http://localhost:8000/vision.html" target="_blank" class="page-link">
+                    👁️ Vision
+                </a>
+                <a href="http://localhost:8000/honors.html" target="_blank" class="page-link">
+                    🏆 Honors
+                </a>
+                <a href="http://localhost:8000/press.html" target="_blank" class="page-link">
+                    📰 Press
+                </a>
+                <a href="http://localhost:8000/submit.html" target="_blank" class="page-link">
+                    ✉️ Submit
+                </a>
+                <a href="http://localhost:8000/contact.html" target="_blank" class="page-link">
+                    ☎️ Contact
+                </a>
+                <a href="http://localhost:8000/privacy.html" target="_blank" class="page-link">
+                    🔒 Privacy
+                </a>
+                <a href="http://localhost:8000/terms.html" target="_blank" class="page-link">
+                    ⚙️ Terms
+                </a>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>🧪 Verification Checklist</h2>
+            <div class="checklist">
+                <div class="checklist-item">
+                    <input type="checkbox" id="check1">
+                    <label for="check1">✅ Port 8000 is the ONLY active server</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="check2">
+                    <label for="check2">✅ Ports 3000 and 5173 are completely clear</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="check3">
+                    <label for="check3">✅ All pages load and return HTTP 200</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="check4">
+                    <label for="check4">✅ Navbar looks identical on all pages</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="check5">
+                    <label for="check5">✅ Responsive behavior matches (1280, 1024, 768, 375px)</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="check6">
+                    <label for="check6">✅ All interactive elements work correctly</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="check7">
+                    <label for="check7">✅ No CSS conflicts or styling variations</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="check8">
+                    <label for="check8">✅ No JavaScript errors in console</label>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>⚡ Quick Commands</h2>
+            
+            <h3 style="color: #888; margin: 15px 0 10px 0; font-size: 0.9em;">Verify server status:</h3>
+            <div class="code-block">lsof -i :8000</div>
+            
+            <h3 style="color: #888; margin: 15px 0 10px 0; font-size: 0.9em;">Clear all ports and restart:</h3>
+            <div class="code-block">./terminate_all_servers.sh && python3 -m http.server 8000</div>
+            
+            <h3 style="color: #888; margin: 15px 0 10px 0; font-size: 0.9em;">Test page connectivity:</h3>
+            <div class="code-block">curl -I http://localhost:8000/sponsors.html</div>
+            
+            <h3 style="color: #888; margin: 15px 0 10px 0; font-size: 0.9em;">View server logs:</h3>
+            <div class="code-block">cat /tmp/server_8000.log</div>
+        </div>
+        
+        <div class="section">
+            <h2>⚠️ Important Notes</h2>
+            <div class="warning-box" style="background: rgba(244, 67, 54, 0.1); border-left-color: #f44336;">
+                <strong style="color: #f44336;">CRITICAL:</strong> 
+                <ul style="margin-left: 20px; margin-top: 10px; line-height: 1.8;">
+                    <li>🚫 DO NOT use localhost:3000 or localhost:5173</li>
+                    <li>🚫 DO NOT start any other dev servers</li>
+                    <li>✅ ALWAYS compare to sponsors.html first</li>
+                    <li>✅ ALWAYS use hard refresh (Cmd+Shift+R)</li>
+                    <li>✅ ALWAYS check console for errors</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>📚 Reference Documentation</h2>
+            <div class="button-group">
+                <a href="file:///Users/madhav/hungama-festival-site/SINGLE_SOURCE_TRUTH.md" target="_blank">
+                    <button class="btn-primary">📖 Full Documentation</button>
+                </a>
+                <button class="btn-secondary" onclick="openDevTools()">🔧 Open DevTools (F12)</button>
+                <button class="btn-secondary" onclick="testAllPages()">🧪 Test All Pages</button>
+            </div>
+        </div>
+        
+        <footer>
+            <p>Last Updated: January 20, 2026</p>
+            <p>Single Source of Truth Testing Environment v1.0</p>
+            <p>Port 8000 is the ONLY valid testing endpoint</p>
+        </footer>
+    </div>
+    
+    <script>
+        // Persist checklist state
+        function saveChecklist() {
+            const state = {};
+            for (let i = 1; i <= 8; i++) {
+                state[`check${i}`] = document.getElementById(`check${i}`).checked;
+            }
+            localStorage.setItem('verification-checklist', JSON.stringify(state));
+        }
+        
+        function loadChecklist() {
+            const saved = localStorage.getItem('verification-checklist');
+            if (saved) {
+                const state = JSON.parse(saved);
+                for (let i = 1; i <= 8; i++) {
+                    document.getElementById(`check${i}`).checked = state[`check${i}`] || false;
+                }
+            }
+        }
+        
+        // Add event listeners
+        for (let i = 1; i <= 8; i++) {
+            document.getElementById(`check${i}`).addEventListener('change', saveChecklist);
+        }
+        
+        // Load saved state
+        loadChecklist();
+        
+        // Test all pages
+        function testAllPages() {
+            const pages = [
+                'sponsors.html',
+                'index.html',
+                'jury.html',
+                'nominees.html',
+                'vision.html',
+                'honors.html',
+                'press.html',
+                'submit.html'
+            ];
+            
+            pages.forEach(page => {
+                fetch(`http://localhost:8000/${page}`)
+                    .then(r => r.ok ? console.log(`✅ ${page}`) : console.error(`❌ ${page}`))
+                    .catch(e => console.error(`❌ ${page}: ${e.message}`));
+            });
+        }
+        
+        // Open DevTools
+        function openDevTools() {
+            alert('Press F12 or Cmd+Option+I (macOS) / Ctrl+Shift+I (Windows) to open DevTools');
+        }
+    </script>
+
+  <!-- Navbar Scroll Behavior -->
+  <script src="/js/navbar-scroll.js"></script>
+</body>
+</html>
