@@ -250,11 +250,61 @@ class HungamaProductionSystem {
   }
 }
 
+/* ================================
+   VISIBILITY GUARANTEE SYSTEM
+   ================================ */
+
+function forceVisibility() {
+  const html = document.documentElement;
+  const body = document.body;
+
+  html.classList.remove('page-load');
+  html.classList.add('page-loaded');
+
+  body.style.opacity = '1';
+  body.style.visibility = 'visible';
+  body.style.transform = 'none';
+
+  body.classList.add('visible-fallback');
+
+  console.log('✅ Visibility guaranteed');
+}
+
 // Initialize on page load
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', () => {
+    document.documentElement.classList.add('page-load');
     window.HungamaSystem = new HungamaProductionSystem();
+
+    /* Primary exit */
+    setTimeout(forceVisibility, 500);
+
+    /* Backup */
+    setTimeout(forceVisibility, 2000);
+
+    /* Interaction-based escape hatches */
+    ['scroll', 'click', 'keydown'].forEach(evt => {
+      document.addEventListener(evt, forceVisibility, { once: true });
+    });
+
+    /* Absolute last resort */
+    window.addEventListener('load', forceVisibility);
   });
 } else {
+  document.documentElement.classList.add('page-load');
   window.HungamaSystem = new HungamaProductionSystem();
+
+  /* Primary exit */
+  setTimeout(forceVisibility, 500);
+
+  /* Backup */
+  setTimeout(forceVisibility, 2000);
+
+  /* Interaction-based escape hatches */
+  ['scroll', 'click', 'keydown'].forEach(evt => {
+    document.addEventListener(evt, forceVisibility, { once: true });
+  });
+
+  /* Absolute last resort */
+  window.addEventListener('load', forceVisibility);
 }

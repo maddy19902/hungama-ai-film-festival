@@ -349,3 +349,40 @@ html {
     transform: scale(0.98);
   }
 }
+
+/* ================================
+   🚨 GLOBAL VISIBILITY FAILSAFE
+   ================================ */
+
+.page-loaded,
+.scroll-fallback,
+body.visible-fallback {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: none !important;
+  animation: none !important;
+}
+
+/* Hard reset if loading class is gone */
+html:not(.page-load) body,
+html.page-loaded body {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+/* Scoped page-load animation — protect fixed UI */
+html.page-load body > *:not(.navbar):not(.fixed):not([data-fixed]) {
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 0.8s var(--ease-out-expo),
+    transform 0.8s var(--ease-out-expo);
+}
+
+/* Explicitly protect fixed UI */
+html.page-load .navbar,
+html.page-load .fixed,
+html.page-load [data-fixed] {
+  opacity: 1 !important;
+  transform: none !important;
+}

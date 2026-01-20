@@ -1,0 +1,9 @@
+/* ================================
+   LOCAL + PATH FAILURE FALLBACK
+   ================================ */
+
+body,
+* {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
