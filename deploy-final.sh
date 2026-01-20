@@ -10,7 +10,7 @@ echo ""
 
 # 1. Stop test server
 echo "Step 1: Stopping test server..."
-pkill -f "python3.*http.server 3000" 2>/dev/null || true
+pkill -f "python3.*http.server 8000" 2>/dev/null || true
 sleep 1
 echo "✅ Test server stopped"
 echo ""
