@@ -1,0 +1,126 @@
+/**
+ * SCROLL PHYSICS & BOUNDARY FIXES
+ * Eliminates elastic banding and optimizes parallax performance
+ */
+
+/* KILL ELASTIC BANDING */
+html, body {
+  overscroll-behavior: none;
+  overflow-x: hidden;
+}
+
+body {
+  -webkit-overflow-scrolling: auto;
+}
+
+/* PARALLAX LAYER OPTIMIZATION */
+[data-parallax-layer] {
+  contain: layout style paint;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  will-change: transform;
+}
+
+/* HERO SECTIONS - Viewport-relative sizing */
+[data-parallax-layer="background"]:is(.hero, .hero-section, [class*="hero"]) {
+  min-height: 100svh;
+  position: relative;
+  overflow: hidden;
+  padding-top: max(env(safe-area-inset-top), 60px);
+}
+
+/* FOREGROUND LAYERS - Content rendering */
+[data-parallax-layer="foreground"] {
+  position: relative;
+  z-index: 10;
+}
+
+/* TEXT LAYERS - Special handling */
+[data-parallax-layer="text"] {
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+}
+
+/* REDUCED MOTION SUPPORT */
+@media (prefers-reduced-motion: reduce) {
+  [data-parallax-layer] {
+    transform: none !important;
+    animation: none !important;
+  }
+}
+
+/* MOBILE OPTIMIZATION */
+@media (max-width: 768px) {
+  [data-parallax-layer] {
+    /* Reduce parallax intensity on mobile for smoother performance */
+    --parallax-intensity: 0.5;
+  }
+  
+  [data-parallax-layer="background"] {
+    /* Background layers move slower on mobile */
+    min-height: 50vh;
+  }
+}
+
+/* iOS-specific: Fix momentum scrolling */
+@media (max-width: 1024px) {
+  html, body {
+    -webkit-overflow-scrolling: touch;
+    position: relative;
+  }
+  
+  body {
+    /* Prevent position fixed issues on iOS */
+    position: relative;
+  }
+}
+
+/* PERFORMANCE TRICKS */
+[data-parallax-layer] {
+  /* Enable GPU acceleration */
+  transform: translate3d(0, 0, 0);
+  
+  /* Reduce paint areas */
+  will-change: transform;
+  
+  /* Optimize rendering */
+  contain: layout style paint;
+}
+
+/* High refresh rate support */
+@supports ((-webkit-appearance: none) and (contain: layout)) {
+  [data-parallax-layer] {
+    /* Modern browsers with contain support */
+    contain: layout style paint;
+  }
+}
+
+/* SCROLL SMOOTH BUT NOT TOO SMOOTH */
+html {
+  scroll-behavior: auto;
+}
+
+/* PREVENT LAYOUT SHIFT */
+body {
+  scrollbar-gutter: stable;
+}
+
+/* ENSURE SMOOTH TOUCH SCROLLING */
+@media (hover: none) and (pointer: coarse) {
+  html {
+    -webkit-user-select: none;
+  }
+}
+
+/* DEBUG MODE HELPERS */
+[debug-parallax="true"] [data-parallax-layer] {
+  border: 2px solid rgba(255, 0, 0, 0.1);
+}
+
+[debug-parallax="true"] [data-parallax-layer="background"] {
+  border-color: rgba(0, 255, 0, 0.2);
+}
+
+[debug-parallax="true"] [data-parallax-layer="foreground"] {
+  border-color: rgba(0, 0, 255, 0.2);
+}

@@ -1,0 +1,128 @@
+/**
+ * CTA SYSTEM - GLOBAL CALL-TO-ACTION STYLING
+ * Hungama AI Film Festival
+ * 
+ * Unified button and link styling:
+ * - Red/maroon background with white text
+ * - Hover lift and glow effects
+ * - Consistent motion and feedback
+ */
+
+/* ============================================================
+   PRIMARY CTA BUTTONS - Red Background
+   ============================================================ */
+
+/* Tailwind .bg-red-600, .bg-brandRed, .bg-red-700 buttons */
+[class*="bg-red"],
+[class*="bg-brand"],
+button:not([class*="border"]),
+a[class*="bg-red"]:not([class*="border"]),
+a[class*="bg-brand"]:not([class*="border"]),
+.cta-primary {
+  background-color: #dc2626 !important;
+  color: #ffffff !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.05em !important;
+  position: relative;
+}
+
+/* CTA Hover State */
+[class*="bg-red"]:hover,
+[class*="bg-brand"]:hover,
+button:not([class*="border"]):hover,
+a[class*="bg-red"]:not([class*="border"]):hover,
+a[class*="bg-brand"]:not([class*="border"]):hover,
+.cta-primary:hover {
+  background-color: #8b2e2e !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 12px 24px rgba(220, 20, 60, 0.3), 
+              0 0 20px rgba(139, 46, 46, 0.4) !important;
+  color: #ffffff !important;
+}
+
+/* CTA Active/Focus State */
+[class*="bg-red"]:focus,
+[class*="bg-brand"]:focus,
+button:not([class*="border"]):focus,
+a[class*="bg-red"]:not([class*="border"]):focus,
+a[class*="bg-brand"]:not([class*="border"]):focus,
+.cta-primary:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(139, 46, 46, 0.3), 
+              0 12px 24px rgba(220, 20, 60, 0.3) !important;
+}
+
+/* ============================================================
+   SECONDARY CTA - Outlined Style
+   ============================================================ */
+
+a[class*="border"][class*="text-red"],
+a[class*="border"][class*="text-brand"],
+a[class*="border-brand"],
+a[class*="border-red"],
+.cta-secondary {
+  border-color: #dc2626 !important;
+  color: #dc2626 !important;
+  background-color: transparent !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+a[class*="border"][class*="text-red"]:hover,
+a[class*="border"][class*="text-brand"]:hover,
+a[class*="border-brand"]:hover,
+a[class*="border-red"]:hover,
+.cta-secondary:hover {
+  background-color: #dc2626 !important;
+  color: #ffffff !important;
+  border-color: #dc2626 !important;
+  box-shadow: 0 8px 16px rgba(220, 20, 60, 0.2) !important;
+  transform: translateY(-2px) !important;
+}
+
+/* ============================================================
+   INPUT FOCUS STATES - Soft Glow
+   ============================================================ */
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none !important;
+  border-color: rgba(139, 46, 46, 0.5) !important;
+  box-shadow: 0 0 0 3px rgba(139, 46, 46, 0.1), 
+              0 0 8px rgba(139, 46, 46, 0.2) !important;
+}
+
+/* ============================================================
+   SUBMIT BUTTON CONSISTENCY
+   ============================================================ */
+
+button[type="submit"],
+input[type="submit"] {
+  background-color: #dc2626 !important;
+  color: #ffffff !important;
+  border: none !important;
+  cursor: pointer !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+button[type="submit"]:hover,
+input[type="submit"]:hover {
+  background-color: #8b2e2e !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 12px 24px rgba(220, 20, 60, 0.3) !important;
+}
+
+/* ============================================================
+   MOBILE OPTIMIZATION
+   ============================================================ */
+
+@media (max-width: 768px) {
+  [class*="bg-red"],
+  [class*="bg-brand"],
+  button:not([class*="border"]),
+  .cta-primary {
+    padding: 0.75rem 1.5rem !important;
+    font-size: 0.875rem !important;
+  }
+}

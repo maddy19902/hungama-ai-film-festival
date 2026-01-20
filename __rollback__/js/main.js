@@ -308,23 +308,3 @@ if (document.readyState === 'loading') {
   /* Absolute last resort */
   window.addEventListener('load', forceVisibility);
 }
-
-// =========================================================
-// APP-LIKE NAVBAR SCROLL BEHAVIOR
-// Hides on scroll down, shows on scroll up
-// =========================================================
-(() => {
-  let lastScrollY = window.scrollY;
-  const nav = document.querySelector('nav');
-  if (!nav) return;
-
-  window.addEventListener('scroll', () => {
-    const currentY = window.scrollY;
-    if (currentY > lastScrollY && currentY > 80) {
-      nav.classList.add('nav-hidden');
-    } else {
-      nav.classList.remove('nav-hidden');
-    }
-    lastScrollY = currentY;
-  }, { passive: true });
-})();

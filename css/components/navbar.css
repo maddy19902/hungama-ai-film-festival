@@ -3,6 +3,37 @@
  * Fixed position glass effect, responsive layout
  */
 
+/* =========================================================
+   NAVBAR HARD ISOLATION — FIXES LAYOUT CONTEXT BLEED
+   DO NOT REMOVE
+   ========================================================= */
+
+nav {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+
+  width: 100vw !important;
+  max-width: none !important;
+
+  transform: none !important;
+  perspective: none !important;
+  filter: none !important;
+
+  contain: layout paint !important;
+  isolation: isolate !important;
+
+  pointer-events: auto !important;
+
+  height: 80px;
+  background: rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  z-index: 999;
+}
+
 /* Navigation Container */
 nav {
   position: fixed;
@@ -38,6 +69,34 @@ nav.nav-hero {
 nav.scrolled {
   background: rgba(0, 0, 0, 0.5);
   border-bottom-color: rgba(255, 255, 255, 0.1);
+}
+
+/* 🔥 PHASE 2: REMOVE PAGE LAYOUT INFLUENCE ON NAVBAR */
+body,
+main,
+section,
+.hero,
+[data-parallax],
+[data-scroll],
+[data-lenis],
+[data-smooth-scroll] {
+  transform-style: flat !important;
+}
+
+/* Prevent fixed-position breaking due to transforms */
+body {
+  transform: none !important;
+  perspective: none !important;
+}
+
+/* 🔥 PHASE 3: FORCE IDENTICAL INNER ALIGNMENT */
+nav > div {
+  max-width: 1280px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding-left: 2rem !important;
+  padding-right: 2rem !important;
+  width: 100% !important;
 }
 
 /* Logo Section */
@@ -313,4 +372,12 @@ nav.scrolled {
 .nav-mobile-toggle:focus-visible {
   outline: 2px solid #d4af37;
   outline-offset: 2px;
+}
+/* =========================================================
+   APP-LIKE NAVBAR SCROLL BEHAVIOR
+   Hides on scroll down, reappears on scroll up
+   ========================================================= */
+.nav-hidden {
+  transform: translateY(-100%);
+  transition: transform 0.3s ease;
 }
