@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Press & Media | Hungama AI Film Festival</title>
+  <link href="css/output.css" rel="stylesheet">
+  <link href="css/design-tokens.css" rel="stylesheet">
+  <link href="css/premium-interactions.css" rel="stylesheet">
+  <link href="css/scroll-transitions.css" rel="stylesheet">
+  <link href="css/animations.css" rel="stylesheet">
+  <link href="css/micro-details.css" rel="stylesheet">
+  <link href="css/global-hover-system.css" rel="stylesheet">
+  <link href="css/final-polish.css" rel="stylesheet">
+  <link href="css/cta-system.css" rel="stylesheet">
+  <link href="css/typography-hierarchy.css" rel="stylesheet">
+  <link href="css/parallax-system.css" rel="stylesheet">
+  <link href="css/scroll-physics.css" rel="stylesheet">
+  <link href="css/elastic-elimination.css" rel="stylesheet">
+  <link href="css/components/navbar.css" rel="stylesheet">
+  <link href="css/polish.css" rel="stylesheet">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * {
+      font-family: 'Poppins', sans-serif;
+    }
+
+    /* PASS 1: GLOBAL CINEMATIC VIGNETTE */
+    .vignette {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1000;
+      background: radial-gradient(
+        ellipse 150% 150% at center,
+        transparent 0%,
+        rgba(0, 0, 0, 0.25) 40%,
+        rgba(0, 0, 0, 0.65) 100%
+      );
+    }
+
+    /* PASS 2: FILM GRAIN TEXTURE */
+    .grain {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 999;
+      opacity: 0.03;
+      background-image: url('images/grain.png');
+      background-repeat: repeat;
+      background-size: 100px 100px;
+      mix-blend-mode: overlay;
+    }
+
+    /* NAVIGATION */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: transparent;
+      padding: 1rem 2rem;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* PASS 3: SECTION TRANSITION BLENDING */
+    section::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 80px;
+      background: linear-gradient(
+        to bottom,
+        transparent 0%,
+        rgba(10, 10, 10, 0.3) 100%
+      );
+      pointer-events: none;
+      z-index: 10;
+    }
+
+    /* PASS 4: TYPOGRAPHIC CALM & INSTITUTIONAL FEEL */
+    h1, h2, h3, h4, h5, h6 {
+      letter-spacing: 0.08em;
+    }
+
+    body {
+      line-height: 1.65;
+      letter-spacing: 0.01em;
+    }
+
+    p, .text-lg, .text-sm {
+      letter-spacing: 0.015em;
+    }
+
+    .text-gray-300 {
+      opacity: 0.94;
+    }
+
+    .text-gray-400 {
+      opacity: 0.88;
+    }
+
+    .text-gray-500 {
+      opacity: 0.82;
+    }
+
+    button {
+      letter-spacing: 0.1em;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+
+    button:hover {
+      letter-spacing: 0.12em;
+    }
+
+    /* Ensure section positioning for ::after overlay */
+    section {
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* PRESS PAGE SPECIFIC */
+    .press-hero {
+      min-h-[85vh] bg-cover bg-center relative flex items-center
+    }
+
+    .press-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        135deg,
+        rgba(0, 0, 0, 0.7) 0%,
+        rgba(0, 0, 0, 0.5) 50%,
+        rgba(225, 29, 46, 0.1) 100%
+      );
+      z-index: 1;
+    }
+
+    .press-hero > * {
+      position: relative;
+      z-index: 2;
+    }
+
+    .press-release-card {
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: linear-gradient(135deg, rgba(30, 30, 30, 0.5), rgba(10, 10, 10, 0.5));
+      border-radius: 0.5rem;
+      overflow: hidden;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .press-release-card:hover {
+      border-color: rgba(225, 29, 46, 0.3);
+      background: linear-gradient(135deg, rgba(40, 40, 40, 0.6), rgba(20, 20, 20, 0.6));
+      transform: translateY(-4px) scale(1.01);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3), 0 0 20px rgba(220, 20, 60, 0.1);
+    }
+
+    .release-date {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: rgba(225, 29, 46, 0.8);
+      margin-bottom: 0.5rem;
+    }
+
+    .release-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .release-description {
+      font-size: 0.9375rem;
+      color: rgba(255, 255, 255, 0.7);
+      margin-bottom: 1rem;
+      line-height: 1.6;
+    }
+
+    .release-link {
+      color: rgba(225, 29, 46, 1);
+      font-size: 0.875rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      display: inline-block;
+    }
+
+    .release-link:hover {
+      letter-spacing: 0.05em;
+    }
+
+    .brand-asset-card {
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: linear-gradient(135deg, rgba(30, 30, 30, 0.5), rgba(10, 10, 10, 0.5));
+      border-radius: 0.5rem;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      min-height: 200px;
+      text-align: center;
+    }
+
+    .brand-asset-card:hover {
+      border-color: rgba(225, 29, 46, 0.3);
+      background: linear-gradient(135deg, rgba(40, 40, 40, 0.6), rgba(20, 20, 20, 0.6));
+    }
+
+    .brand-asset-title {
+      font-weight: 600;
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .brand-asset-subtitle {
+      font-size: 0.75rem;
+      color: rgba(255, 255, 255, 0.5);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .media-inquiries-panel {
+      background: linear-gradient(135deg, rgba(30, 30, 30, 0.5), rgba(10, 10, 10, 0.5));
+      border: 1px solid rgba(225, 29, 46, 0.2);
+      border-radius: 0.5rem;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    .inquiry-method {
+      margin-bottom: 2rem;
+    }
+
+    .inquiry-method:last-child {
+      margin-bottom: 0;
+    }
+
+    .inquiry-label {
+      font-size: 0.875rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: rgba(225, 29, 46, 0.8);
+      margin-bottom: 0.5rem;
+    }
+
+    .inquiry-value {
+      font-size: 1.125rem;
+      font-weight: 500;
+      color: white;
+    }
+
+    .inquiry-value a {
+      color: rgba(225, 29, 46, 1);
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .inquiry-value a:hover {
+      letter-spacing: 0.02em;
+    }
+  </style>
+  <script src="js/elastic-free-parallax.js"></script>
+</head>
+
+<body class="bg-black text-white">
+
+  <!-- PASS 1 & 2: VIGNETTE AND GRAIN OVERLAYS -->
+  <div class="vignette"></div>
+  <div class="grain"></div>
+
+  <!-- NAVIGATION -->
+  <nav class="fixed top-0 w-full z-50 backdrop-blur-lg py-4 px-8 transition-transform duration-300">
+    <div class="max-w-7xl mx-auto flex justify-between items-center">
+      <a href="index.html" class="text-xl font-bold tracking-wider">HUNGAMA</a>
+      
+      <div class="hidden md:flex gap-8 items-center text-sm">
+        <a href="index.html" class="transition">Home</a>
+        <a href="vision.html" class="transition">Vision</a>
+        <a href="honors.html" class="transition">Honors</a>
+        <a href="nominees.html" class="transition">Nominees</a>
+        <a href="jury.html" class="transition">Jury</a>
+        <a href="ceremony.html" class="transition">Ceremony</a>
+        <a href="winners.html" class="transition">Winners</a>
+        <a href="press.html" class="">Press</a>
+        <a href="sponsors.html" class="transition">Partners</a>
+        <a href="submit.html" class="border border-brandRed text-brandRed hover:bg-brandRed hover:text-white transition px-4 py-2 rounded-full text-xs font-semibold">Submit</a>
+      </div>
+
+      <div class="md:hidden">
+        <button data-mobile-menu-toggle class="border border-gray-600 px-4 py-2 rounded text-sm" aria-label="Open menu">Menu</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- PRESS HERO SECTION -->
+  <section 
+    class="h-screen bg-cover bg-center flex items-center justify-center relative"
+    style="background-image: url('images/press-bg.png'); min-height: 100svh;"
+    data-parallax-layer="background"
+    data-parallax-speed="0.15"
+  >
+    <div class="absolute inset-0 bg-black/40"></div>
+    <div class="max-w-5xl mx-auto px-8 w-full text-center relative z-10">
+      <h1 class="text-6xl xl:text-8xl font-bold leading-tight mb-6 tracking-tight" data-parallax-layer="text">
+        PRESS & MEDIA
+      </h1>
+
+      <p class="text-lg text-gray-300 max-w-3xl mx-auto mb-12 font-light leading-relaxed">
+        Access press releases, brand assets, media kit, and official resources.
+      </p>
+
+      <div class="flex gap-6 items-center flex-wrap justify-center">
+        <button class="bg-brandRed hover:bg-red-700 transition px-10 py-4 rounded-full font-semibold text-white tracking-wide uppercase text-sm" data-download-kit>
+          ↓ Download Press Kit
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRESS RELEASES SECTION -->
+  <section class="py-24 px-8 bg-black relative" data-parallax-layer="midground">
+    <div class="max-w-7xl mx-auto">
+      <h2 class="text-5xl font-bold mb-2 tracking-tight">PRESS RELEASES</h2>
+      <p class="text-sm text-gray-400 mb-16 font-light">| Official statements and announcements</p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Press Release 1 -->
+        <a href="./public/press/release-1.pdf" target="_blank" class="press-release-card">
+          <div class="release-date">January 15, 2026</div>
+          <div class="release-title">Hungama AI Film Festival Announces Grand Jury Panel</div>
+          <div class="release-description">
+            We are thrilled to unveil the visionary filmmakers and industry leaders who will judge this year's festival. The jury brings together decades of creative innovation and expertise in AI cinema.
+          </div>
+          <span class="release-link">Read Release →</span>
+        </a>
+
+        <!-- Press Release 2 -->
+        <a href="./public/press/release-2.pdf" target="_blank" class="press-release-card">
+          <div class="release-date">January 10, 2026</div>
+          <div class="release-title">Early Submissions Break Festival Records</div>
+          <div class="release-description">
+            Hungama AI Film Festival has already received entries from 47 countries in the first week of submissions. The overwhelming response reflects growing global interest in AI-native cinema.
+          </div>
+          <span class="release-link">Read Release →</span>
+        </a>
+
+        <!-- Press Release 3 -->
+        <a href="./public/press/release-3.pdf" target="_blank" class="press-release-card">
+          <div class="release-date">January 5, 2026</div>
+          <div class="release-title">Festival Partners Announced: NVIDIA, OpenAI, and FutureFund</div>
+          <div class="release-description">
+            Strategic partnerships with leading technology and creative organizations will enhance the festival experience and foster innovation in AI filmmaking.
+          </div>
+          <span class="release-link">Read Release →</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- INSTITUTIONAL BRANDING SECTION -->
+  <section class="py-24 px-8 bg-black relative" data-parallax-layer="foreground">
+    <div class="max-w-7xl mx-auto">
+      <h2 class="text-5xl font-bold mb-2 tracking-tight">BRAND ASSETS</h2>
+      <p class="text-sm text-gray-400 mb-16 font-light">| Logos, guidelines, and official materials</p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+        <a href="./public/press/logo-light.png" target="_blank" class="brand-asset-card">
+          <div class="brand-asset-title">Primary Logo</div>
+          <div class="brand-asset-subtitle">Light Version</div>
+        </a>
+
+        <a href="./public/press/logo-dark.png" target="_blank" class="brand-asset-card">
+          <div class="brand-asset-title">Primary Logo</div>
+          <div class="brand-asset-subtitle">Dark Version</div>
+        </a>
+
+        <a href="./public/press/brand-guidelines.pdf" target="_blank" class="brand-asset-card">
+          <div class="brand-asset-title">Brand Guidelines</div>
+          <div class="brand-asset-subtitle">PDF Download</div>
+        </a>
+
+        <a href="./public/press/laurels.zip" download class="brand-asset-card">
+          <div class="brand-asset-title">Official Laurels</div>
+          <div class="brand-asset-subtitle">For Use in Marketing</div>
+        </a>
+      </div>
+
+      <!-- Additional Brand Images -->
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        <div class="border border-gray-800/50 rounded-lg p-8 bg-gradient-to-br from-gray-900/20 to-black flex items-center justify-center min-h-48">
+          <span class="text-gray-600 text-sm">Thumbnail</span>
+        </div>
+        <div class="border border-gray-800/50 rounded-lg p-8 bg-gradient-to-br from-gray-900/20 to-black flex items-center justify-center min-h-48">
+          <span class="text-gray-600 text-sm">Thumbnail</span>
+        </div>
+        <div class="border border-gray-800/50 rounded-lg p-8 bg-gradient-to-br from-gray-900/20 to-black flex items-center justify-center min-h-48">
+          <span class="text-gray-600 text-sm">Thumbnail</span>
+        </div>
+        <div class="border border-gray-800/50 rounded-lg p-8 bg-gradient-to-br from-gray-900/20 to-black flex items-center justify-center min-h-48">
+          <span class="text-gray-600 text-sm">Thumbnail</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MEDIA INQUIRIES SECTION -->
+  <section class="py-24 px-8 bg-black relative" data-parallax-layer="midground">
+    <div class="max-w-3xl mx-auto">
+      <h2 class="text-5xl font-bold mb-2 tracking-tight text-center">MEDIA INQUIRIES</h2>
+      <p class="text-sm text-gray-400 mb-16 text-center font-light">| Press contact and mailing list</p>
+
+      <div class="media-inquiries-panel">
+        <div class="inquiry-method">
+          <div class="inquiry-label">Email</div>
+          <div class="inquiry-value">
+            <a href="mailto:press@hungamafestival.com">press@hungamafestival.com</a>
+          </div>
+        </div>
+
+        <div class="inquiry-method">
+          <div class="inquiry-label">Phone</div>
+          <div class="inquiry-value">+91 22 XXXX XXXX</div>
+        </div>
+
+        <div class="inquiry-method">
+          <div class="inquiry-label">Press Mailing List</div>
+          <p class="text-sm text-gray-300 mt-2">
+            Subscribe to receive announcements and festival updates.
+          </p>
+          <form data-email-capture data-source="press-mailing" style="margin-top: 1rem; display: flex; gap: 0.5rem;">
+            <input 
+              type="email" 
+              placeholder="your@email.com" 
+              required
+              style="flex: 1; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: white; padding: 0.75rem; border-radius: 0.25rem;"
+            >
+            <button class="bg-brandRed hover:bg-red-700 transition px-6 py-2 rounded-full font-semibold text-white tracking-wide uppercase text-xs" type="submit">
+              Subscribe
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="py-12 px-8 bg-black border-t border-gray-900/50">
+    <div class="max-w-7xl mx-auto flex justify-between items-center">
+      <div>
+        <p class="text-sm font-semibold tracking-wide">HUNGAMA AI FILM FESTIVAL</p>
+        <p class="text-xs text-gray-500 mt-1">Celebrating Future Cinema</p>
+      </div>
+      
+      <div class="flex gap-8 text-xs text-gray-400">
+        <a href="privacy.html" class="hover:text-white transition">Privacy Policy</a>
+        <a href="terms.html" class="hover:text-white transition">Terms & Conditions</a>
+        <a href="contact.html" class="hover:text-white transition">Contact</a>
+      </div>
+    </div>
+  </footer>
+  <!-- Production Scroll System -->
+  <script src="js/production-scroll.js"></script>
+  
+  <!-- Production Parallax Engine -->
+  <script src="js/production-parallax.js"></script>
+
+  <!-- Main Entry Point -->
+  <script src="js/main.js"></script>
+
+  <!-- Feature Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/email-capture.js"></script>
+  <script src="js/press-kit-download.js"></script>
+  <script src="js/cta-wiring.js"></script>
+</body>
+</html>

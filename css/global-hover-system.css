@@ -1,0 +1,210 @@
+/**
+ * GLOBAL HOVER SYSTEM
+ * Apple × Linear × Stripe interactive patterns
+ * Unified lift, glow, scale, shadow across all interactive elements
+ */
+
+/* ============================================================
+   CARD SYSTEM - Universal lift and glow
+   ============================================================ */
+
+.card,
+[data-card],
+.nominee-card,
+.jury-card,
+.archive-item,
+.partner-logo-card,
+.tech-partner-card,
+.press-release-card,
+.brand-asset-card,
+.download-tile {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-origin: center bottom;
+}
+
+.card:hover,
+[data-card]:hover,
+.nominee-card:hover,
+.jury-card:hover,
+.archive-item:hover,
+.partner-logo-card:hover,
+.tech-partner-card:hover,
+.press-release-card:hover,
+.brand-asset-card:hover,
+.download-tile:hover {
+  transform: translateY(-4px) scale(1.01);
+  border-color: rgba(220, 20, 60, 0.5);
+  box-shadow: 
+    0 16px 32px rgba(0, 0, 0, 0.3),
+    0 0 20px rgba(220, 20, 60, 0.2),
+    inset 0 0 1px rgba(220, 20, 60, 0.1);
+}
+
+/* ============================================================
+   BUTTON SYSTEM - Compression and glow
+   ============================================================ */
+
+button,
+a.button,
+.btn,
+.cta-button {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+
+button:hover,
+a.button:hover,
+.btn:hover,
+.cta-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 
+    0 12px 24px rgba(220, 20, 60, 0.2),
+    0 0 16px rgba(220, 20, 60, 0.15);
+}
+
+button:active,
+a.button:active,
+.btn:active,
+.cta-button:active {
+  transform: translateY(0);
+}
+
+/* ============================================================
+   LOGO HOVER - Transparent, glow only
+   ============================================================ */
+
+.logo,
+.partner-logo,
+.sponsor-logo,
+[data-logo] {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 1;
+  filter: brightness(1) drop-shadow(0 0 0 transparent);
+}
+
+.logo:hover,
+.partner-logo:hover,
+.sponsor-logo:hover,
+[data-logo]:hover {
+  opacity: 1;
+  filter: brightness(1.1) drop-shadow(0 0 12px rgba(220, 20, 60, 0.3));
+}
+
+/* ============================================================
+   LINK HOVER - Subtle underline and color shift
+   ============================================================ */
+
+a:not(.button):not([class*="btn"]):not([role="button"]):not([class*="logo"]) {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  border-bottom: 1px solid transparent;
+}
+
+a:hover:not(.button):not([class*="btn"]):not([role="button"]):not([class*="logo"]) {
+  color: rgba(220, 20, 60, 1);
+  border-bottom-color: rgba(220, 20, 60, 0.6);
+}
+
+/* ============================================================
+   IMAGE HOVER - Subtle zoom on card hover
+   ============================================================ */
+
+.card:hover img,
+[data-card]:hover img,
+.nominee-card:hover img,
+.jury-card:hover img,
+.press-release-card:hover img,
+.brand-asset-card:hover img {
+  transform: scale(1.02);
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ============================================================
+   DOWNLOAD TILE HOVER - Interactive state
+   ============================================================ */
+
+.download-tile,
+[data-download] {
+  padding: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.5rem;
+  background: linear-gradient(135deg, rgba(30, 30, 30, 0.5), rgba(10, 10, 10, 0.5));
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.download-tile:hover,
+[data-download]:hover {
+  transform: translateY(-4px);
+  border-color: rgba(220, 20, 60, 0.5);
+  background: linear-gradient(135deg, rgba(40, 40, 40, 0.6), rgba(20, 20, 20, 0.6));
+  box-shadow: 
+    0 12px 24px rgba(0, 0, 0, 0.2),
+    0 0 16px rgba(220, 20, 60, 0.15);
+}
+
+/* ============================================================
+   FORM ELEMENT HOVER - Focus states
+   ============================================================ */
+
+input[type="email"],
+textarea,
+select {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+input[type="email"]:hover,
+textarea:hover,
+select:hover {
+  border-color: rgba(255, 255, 255, 0.2);
+  background-color: rgba(40, 40, 40, 0.6);
+}
+
+input[type="email"]:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: rgba(220, 20, 60, 0.8);
+  box-shadow: 
+    0 0 12px rgba(220, 20, 60, 0.2),
+    0 0 0 2px rgba(0, 0, 0, 0.9),
+    0 0 0 3px rgba(220, 20, 60, 0.6);
+}
+
+/* ============================================================
+   NAVIGATION ITEM HOVER - Subtle enhancement
+   ============================================================ */
+
+nav a:not(.logo),
+.nav-item {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  color: #ffffff;
+}
+
+nav a:hover:not(.logo),
+.nav-item:hover {
+  color: #8b2e2e;
+  text-shadow: 0 0 8px rgba(139, 46, 46, 0.3);
+}
+
+/* Active navigation link state */
+nav a.active:not(.logo),
+.nav-item.active {
+  color: #8b2e2e;
+  text-shadow: 0 0 8px rgba(139, 46, 46, 0.3);
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 6px;
+}
+
+/* ============================================================
+   SECTION HEADING - Enhanced hierarchy
+   ============================================================ */
+
+h1, h2, h3, h4, h5, h6 {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+[class*="hover-lift"]:hover {
+  transform: translateY(-2px);
+}

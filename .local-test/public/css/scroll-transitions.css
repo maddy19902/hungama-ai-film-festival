@@ -1,0 +1,383 @@
+/**
+ * HUNGAMA FESTIVAL - SECTION SCROLL TRANSITIONS
+ * 
+ * Calm, cinematic, intentional animations
+ * Every section gets smooth entrance via scroll
+ * Opacity + translate + scale + easing
+ */
+
+/* ============================================================
+   SCROLL TRIGGER ANIMATION KEYFRAMES
+   ============================================================ */
+
+@keyframes scroll-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scroll-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scroll-scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes scroll-slide-in-left {
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scroll-slide-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* ============================================================
+   SECTION ANIMATION TRIGGERS
+   
+   - All sections start invisible
+   - Intersection Observer adds 'animate-in' class
+   - CSS animates from invisible to visible
+   - Respects prefers-reduced-motion
+   ============================================================ */
+
+/* Default state - invisible, ready to animate */
+section,
+[data-section],
+.hero,
+.gallery,
+.testimonials,
+.timeline,
+.form-section {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity var(--motion-duration-slow) var(--ease-out-smooth),
+              transform var(--motion-duration-slow) var(--ease-out-smooth);
+}
+
+/* Animated state - visible and settled */
+section.animate-in,
+[data-section].animate-in,
+.hero.animate-in,
+.gallery.animate-in,
+.testimonials.animate-in,
+.timeline.animate-in,
+.form-section.animate-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ============================================================
+   STAGGERED CHILD ANIMATIONS
+   
+   Elements within sections animate with delay
+   Creates cascading entrance effect
+   ============================================================ */
+
+[data-stagger] {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity var(--motion-duration-slow) var(--ease-out-smooth),
+              transform var(--motion-duration-slow) var(--ease-out-smooth);
+}
+
+section.animate-in [data-stagger],
+[data-section].animate-in [data-stagger] {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger delays for cascading effect */
+[data-stagger]:nth-child(1) {
+  transition-delay: 0ms;
+}
+
+[data-stagger]:nth-child(2) {
+  transition-delay: 100ms;
+}
+
+[data-stagger]:nth-child(3) {
+  transition-delay: 200ms;
+}
+
+[data-stagger]:nth-child(4) {
+  transition-delay: 300ms;
+}
+
+[data-stagger]:nth-child(5) {
+  transition-delay: 400ms;
+}
+
+[data-stagger]:nth-child(n+6) {
+  transition-delay: 500ms;
+}
+
+section.animate-in [data-stagger]:nth-child(1),
+[data-section].animate-in [data-stagger]:nth-child(1) {
+  transition-delay: 100ms;
+}
+
+section.animate-in [data-stagger]:nth-child(2),
+[data-section].animate-in [data-stagger]:nth-child(2) {
+  transition-delay: 150ms;
+}
+
+section.animate-in [data-stagger]:nth-child(3),
+[data-section].animate-in [data-stagger]:nth-child(3) {
+  transition-delay: 200ms;
+}
+
+section.animate-in [data-stagger]:nth-child(4),
+[data-section].animate-in [data-stagger]:nth-child(4) {
+  transition-delay: 250ms;
+}
+
+section.animate-in [data-stagger]:nth-child(5),
+[data-section].animate-in [data-stagger]:nth-child(5) {
+  transition-delay: 300ms;
+}
+
+/* ============================================================
+   SPECIFIC ANIMATION PATTERNS
+   ============================================================ */
+
+/* Fade only - no movement */
+[data-animation="fade-only"] {
+  opacity: 0;
+  transform: none;
+}
+
+[data-animation="fade-only"].animate-in {
+  opacity: 1;
+}
+
+/* Scale + Fade - elegant entrance */
+[data-animation="scale"] {
+  opacity: 0;
+  transform: scale(0.95);
+}
+
+[data-animation="scale"].animate-in {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Slide from left */
+[data-animation="slide-left"] {
+  opacity: 0;
+  transform: translateX(-40px);
+}
+
+[data-animation="slide-left"].animate-in {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Slide from right */
+[data-animation="slide-right"] {
+  opacity: 0;
+  transform: translateX(40px);
+}
+
+[data-animation="slide-right"].animate-in {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ============================================================
+   PARALLAX EFFECT REFINEMENT
+   ============================================================ */
+
+[data-parallax] {
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+/* ============================================================
+   IMAGE FADE-IN ON LOAD
+   ============================================================ */
+
+img[loading="lazy"] {
+  opacity: 0;
+  animation: fade-in var(--motion-duration-slow) var(--ease-out-smooth) forwards;
+}
+
+img[loading="lazy"][src] {
+  opacity: 1;
+  animation: none;
+}
+
+@keyframes fade-in {
+  to {
+    opacity: 1;
+  }
+}
+
+/* ============================================================
+   REDUCED MOTION - Disable all animations
+   ============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  section,
+  [data-section],
+  .hero,
+  .gallery,
+  .testimonials,
+  .timeline,
+  .form-section,
+  [data-stagger],
+  [data-animation] {
+    opacity: 1;
+    transform: none !important;
+    transition: none !important;
+    animation: none !important;
+  }
+
+  section.animate-in,
+  [data-section].animate-in,
+  .hero.animate-in,
+  .gallery.animate-in,
+  .testimonials.animate-in,
+  .timeline.animate-in,
+  .form-section.animate-in {
+    opacity: 1;
+    transform: none !important;
+  }
+}
+
+/* ============================================================
+   HERO SECTION ENHANCEMENTS
+   ============================================================ */
+
+.hero,
+.hero-section,
+[data-hero] {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Hero background parallax */
+.hero::before,
+.hero-section::before,
+[data-hero]::before {
+  content: '';
+  position: absolute;
+  top: -20%;
+  left: 0;
+  width: 100%;
+  height: 120%;
+  background: inherit;
+  z-index: -1;
+  will-change: transform;
+}
+
+/* ============================================================
+   CARD ENTRANCE ANIMATIONS
+   ============================================================ */
+
+.card,
+[data-card],
+.nominee-card,
+.jury-card,
+.archive-item,
+.gallery-item {
+  will-change: transform, opacity;
+}
+
+.card[data-stagger],
+[data-card][data-stagger],
+.nominee-card[data-stagger],
+.jury-card[data-stagger],
+.archive-item[data-stagger],
+.gallery-item[data-stagger] {
+  opacity: 0;
+  transform: translateY(20px) scale(0.98);
+}
+
+section.animate-in .card[data-stagger],
+section.animate-in [data-card][data-stagger],
+section.animate-in .nominee-card[data-stagger],
+section.animate-in .jury-card[data-stagger],
+section.animate-in .archive-item[data-stagger],
+section.animate-in .gallery-item[data-stagger] {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* ============================================================
+   TEXT ANIMATION - Letter/word entrance
+   ============================================================ */
+
+[data-text-animate] {
+  opacity: 0;
+}
+
+section.animate-in [data-text-animate] {
+  opacity: 1;
+}
+
+/* ============================================================
+   BUTTON ENTRANCE
+   ============================================================ */
+
+button[data-stagger],
+a.button[data-stagger],
+.btn[data-stagger] {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+section.animate-in button[data-stagger],
+section.animate-in a.button[data-stagger],
+section.animate-in .btn[data-stagger] {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ============================================================
+   PERFORMANCE - GPU ACCELERATION
+   ============================================================ */
+
+section,
+[data-section],
+[data-stagger],
+[data-animation] {
+  transform: translateZ(0);
+  will-change: auto;
+}
+
+section.animate-in,
+[data-section].animate-in {
+  will-change: auto;
+}

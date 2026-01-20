@@ -1,0 +1,424 @@
+/* ============================================
+   NOMINEES PAGE COMPREHENSIVE FIXES
+   Hero, Typography, Colors, Deep Linking
+   ============================================ */
+
+/* NOMINEES HERO - FIX ADDRESS BAR INTRUSION */
+.nominees-hero {
+  min-height: 100svh;
+  padding-top: env(safe-area-inset-top);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a0000 50%, #0a0a0a 100%);
+}
+
+@media (max-height: 700px) {
+  .nominees-hero {
+    min-height: calc(100svh + 60px);
+    padding-top: 60px;
+  }
+}
+
+.nominees-hero h1 {
+  font-size: clamp(2.5rem, 8vw, 5rem);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.nominees-hero p {
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  text-align: center;
+  max-width: 600px;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* CATEGORY NAVIGATION - STICKY DEEP LINKING */
+.category-nav {
+  position: sticky;
+  top: 80px;
+  z-index: 850;
+  background: rgba(10, 10, 10, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(128, 0, 0, 0.2);
+  padding: 1rem 2rem;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+}
+
+.category-nav .nav-scroll {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  gap: 2rem;
+  white-space: nowrap;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.category-nav .nav-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.category-nav .nav-item {
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 600;
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.6);
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-bottom: 2px solid transparent;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+
+.category-nav .nav-item:hover {
+  color: #fff;
+  border-bottom-color: #800000;
+}
+
+.category-nav .nav-item.active {
+  color: #fff;
+  border-bottom-color: #800000;
+}
+
+/* NOMINEE SECTIONS WITH ANCHOR SUPPORT */
+.nominee-section {
+  scroll-margin-top: 180px;
+  padding: 4rem 2rem;
+}
+
+.nominee-section[id] {
+  position: relative;
+}
+
+.nominee-section:first-of-type {
+  margin-top: 2rem;
+}
+
+/* SECTION HEADERS */
+.section-header {
+  margin-bottom: 3rem;
+  text-align: left;
+}
+
+.section-title {
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  margin-bottom: 0.75rem;
+  color: #fff;
+}
+
+.section-description {
+  font-size: 1.125rem;
+  font-weight: 300;
+  letter-spacing: 0.02em;
+  color: rgba(255, 255, 255, 0.75);
+  max-width: 600px;
+}
+
+/* NOMINEES GRID */
+.nominees-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+@media (min-width: 768px) {
+  .nominees-grid {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .nominees-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+  }
+}
+
+/* NOMINEE CARD */
+.nominee-card {
+  group;
+  border: 1px solid rgba(128, 0, 0, 0.2);
+  background: linear-gradient(135deg, rgba(30, 30, 30, 0.6), rgba(10, 10, 10, 0.6));
+  border-radius: 8px;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  position: relative;
+}
+
+.nominee-card:hover {
+  border-color: #800000;
+  background: linear-gradient(135deg, rgba(40, 40, 40, 0.8), rgba(20, 20, 20, 0.8));
+  transform: translateY(-8px);
+  box-shadow: 0 20px 50px rgba(128, 0, 0, 0.3);
+}
+
+.nominee-thumbnail {
+  aspect-ratio: 2/3;
+  background: linear-gradient(135deg, #333, #111);
+  overflow: hidden;
+  position: relative;
+}
+
+.nominee-thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.nominee-card:hover .nominee-thumbnail img {
+  transform: scale(1.05);
+}
+
+.play-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60px;
+  height: 60px;
+  background: rgba(128, 0, 0, 0.8);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.nominee-card:hover .play-button {
+  opacity: 1;
+  background: #800000;
+}
+
+.play-button svg {
+  width: 32px;
+  height: 32px;
+  color: white;
+  margin-left: 4px;
+}
+
+.nominee-info {
+  padding: 1.25rem;
+}
+
+.nominee-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5rem;
+  color: #fff;
+}
+
+.nominee-director {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.6);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  margin-bottom: 0.75rem;
+}
+
+.nominee-description {
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* LEGENDARY CREATOR SECTION */
+.legendary-nominees {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.legendary-card {
+  background: linear-gradient(135deg, rgba(128, 0, 0, 0.1), rgba(225, 29, 46, 0.05));
+  border: 2px solid #800000;
+  border-radius: 12px;
+  padding: 2rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.legendary-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(128, 0, 0, 0.2), rgba(225, 29, 46, 0.1));
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: -1;
+}
+
+.legendary-card:hover {
+  border-color: #E11D2E;
+  transform: translateY(-12px);
+  box-shadow: 0 25px 60px rgba(128, 0, 0, 0.4);
+}
+
+.legendary-card:hover::before {
+  opacity: 1;
+}
+
+.creator-name {
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.5rem;
+  color: #fff;
+}
+
+.creator-title {
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #800000;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.creator-achievement {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: 1.5rem;
+  font-weight: 300;
+}
+
+.view-details-btn {
+  display: inline-block;
+  padding: 0.75rem 1.75rem;
+  background: #800000;
+  color: white;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 600;
+  font-size: 0.85rem;
+  border: 2px solid #800000;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.view-details-btn:hover {
+  background: transparent;
+  color: #800000;
+}
+
+/* COLOR SYSTEM - MAROON/RED ONLY */
+:root {
+  --color-maroon: #800000;
+  --color-red: #E11D2E;
+  --color-dark-maroon: #660000;
+}
+
+/* Remove any yellow references */
+.badge-yellow,
+.tag-yellow,
+.highlight-yellow,
+.accent-yellow,
+.btn-yellow,
+.button-yellow,
+.text-yellow,
+.highlight-text,
+.border-yellow,
+.divider-yellow,
+.shadow-yellow,
+.glow-yellow {
+  background-color: var(--color-maroon) !important;
+  border-color: var(--color-maroon) !important;
+  color: white !important;
+  box-shadow: 0 0 20px rgba(128, 0, 0, 0.3) !important;
+}
+
+.text-yellow,
+.highlight-text {
+  color: var(--color-red) !important;
+}
+
+/* SCROLL ANCHOR INDICATOR */
+section[id]::before {
+  content: '';
+  position: absolute;
+  top: -80px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: transparent;
+  pointer-events: none;
+}
+
+/* RESPONSIVE FIXES */
+@media (max-width: 768px) {
+  .category-nav {
+    top: 60px;
+  }
+
+  .nominee-section {
+    scroll-margin-top: 140px;
+    padding: 2.5rem 1rem;
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+  }
+
+  .nominees-grid {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 1rem;
+  }
+
+  .legendary-nominees {
+    grid-template-columns: 1fr;
+  }
+
+  .legendary-card {
+    padding: 1.5rem;
+  }
+
+  .creator-name {
+    font-size: 1.25rem;
+  }
+}
+
+/* LOADING STATE */
+.nominees-page.loading .nominee-card {
+  opacity: 0.7;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 0.7;
+  }
+  50% {
+    opacity: 0.4;
+  }
+}

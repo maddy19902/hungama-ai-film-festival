@@ -1,0 +1,142 @@
+/* === ELASTIC BAND ELIMINATION - GLOBAL === */
+
+/* 1. Kill ALL browser elastic scrolling */
+html, body {
+  overscroll-behavior: none !important;
+  -webkit-overflow-scrolling: auto !important;
+  overflow-x: hidden;
+  height: 100%;
+  position: relative;
+}
+
+/* Prevent scrollbar width layout shift */
+html {
+  scrollbar-gutter: stable;
+}
+
+/* 2. Force GPU acceleration globally */
+* {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* 3. Hero section safe area (FIXES ADDRESS BAR INTRUSION) */
+.hero-section,
+section[data-parallax-layer="background"] {
+  min-height: calc(100svh - 80px); /* Account for navbar + safety */
+  padding-top: 80px; /* Navbar height */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* 4. Parallax layer GPU acceleration */
+[data-parallax-layer] {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+  will-change: transform;
+  /* Prevent layout thrashing */
+  contain: layout style paint;
+}
+
+/* 5. Boundary state indicators */
+body.at-scroll-top,
+body.at-scroll-bottom {
+  /* Visual feedback for being at boundary */
+}
+
+/* 6. Mobile optimization */
+@media (max-width: 768px) {
+  /* Reduce parallax intensity on mobile */
+  [data-parallax-layer] {
+    --parallax-intensity: 0.3;
+  }
+  
+  /* Further boundary damping on mobile */
+  .hero-section {
+    min-height: calc(100svh - 60px);
+    padding-top: 60px;
+  }
+}
+
+/* 7. Disable parallax for reduced motion users */
+@media (prefers-reduced-motion: reduce) {
+  [data-parallax-layer] {
+    transform: none !important;
+    transition: none !important;
+  }
+  
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* 8. Ensure sections position properly */
+section {
+  position: relative;
+  overflow: hidden;
+}
+
+/* 9. iOS momentum scrolling fix */
+@supports (-webkit-touch-callout: none) {
+  html, body {
+    position: fixed;
+    width: 100%;
+    overflow: hidden;
+  }
+  
+  body {
+    position: relative;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* 10. Smooth scroll for anchor links */
+html {
+  scroll-behavior: smooth;
+}
+
+/* 11. Scroll performance optimization */
+body {
+  scroll-behavior: auto;
+  will-change: scroll-position;
+}
+
+/* 12. Remove rubber band effect on iOS Safari */
+body {
+  overscroll-behavior-y: contain;
+  overscroll-behavior-x: contain;
+}
+
+/* 13. Text layer specific handling */
+[data-parallax-layer="text"] {
+  will-change: opacity, transform;
+}
+
+/* 14. Background layer specific handling */
+[data-parallax-layer="background"] {
+  will-change: transform;
+  transform-origin: center;
+}
+
+/* 15. Fix for nav overlap */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 900;
+  height: 80px;
+  display: flex;
+  align-items: center;
+}
+
+/* Mobile nav height */
+@media (max-width: 768px) {
+  nav {
+    height: 60px;
+  }
+}

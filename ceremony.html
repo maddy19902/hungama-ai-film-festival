@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ceremony | Hungama AI Film Festival</title>
+  <link href="css/output.css" rel="stylesheet">
+  <link href="css/design-tokens.css" rel="stylesheet">
+  <link href="css/premium-interactions.css" rel="stylesheet">
+  <link href="css/scroll-transitions.css" rel="stylesheet">
+  <link href="css/animations.css" rel="stylesheet">
+  <link href="css/micro-details.css" rel="stylesheet">
+  <link href="css/global-hover-system.css" rel="stylesheet">
+  <link href="css/final-polish.css" rel="stylesheet">
+  <link href="css/cta-system.css" rel="stylesheet">
+  <link href="css/typography-hierarchy.css" rel="stylesheet">
+  <link href="css/parallax-system.css" rel="stylesheet">
+  <link href="css/scroll-physics.css" rel="stylesheet">
+  <link href="css/elastic-elimination.css" rel="stylesheet">
+  <link href="css/components/navbar.css" rel="stylesheet">
+  <link href="css/polish.css" rel="stylesheet">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <script src="js/elastic-free-parallax.js"></script>
+</head>
+
+<body class="bg-black text-white">
+
+  <!-- NAVIGATION -->
+  <nav class="fixed top-0 w-full z-50 backdrop-blur-lg py-4 px-8 transition-transform duration-300">
+    <div class="max-w-7xl mx-auto flex justify-between items-center">
+      <a href="index.html" class="text-xl font-bold tracking-wider">HUNGAMA</a>
+      
+      <div class="hidden md:flex gap-8 items-center text-sm">
+        <a href="index.html" class="transition">Home</a>
+        <a href="vision.html" class="transition">Vision</a>
+        <a href="honors.html" class="transition">Honors</a>
+        <a href="nominees.html" class="transition">Nominees</a>
+        <a href="jury.html" class="transition">Jury</a>
+        <a href="ceremony.html" class="">Ceremony</a>
+        <a href="winners.html" class="transition">Winners</a>
+        <a href="press.html" class="transition">Press</a>
+        <a href="sponsors.html" class="transition">Partners</a>
+        <a href="submit.html" class="border border-red-600 text-red-600 hover:bg-red-600 hover:text-white transition px-4 py-2 rounded-full text-xs font-semibold">Submit</a>
+      </div>
+
+      <div class="md:hidden">
+        <button data-mobile-menu-toggle class="border border-gray-600 px-4 py-2 rounded text-sm" aria-label="Open menu">Menu</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO SECTION -->
+  <section class="min-h-[85vh] bg-gradient-to-br from-black via-red-900/10 to-black flex items-center pt-32" data-parallax-layer="background">
+    <div class="max-w-7xl mx-auto px-8 w-full">
+      <h1 class="text-7xl xl:text-8xl font-bold leading-none mb-6 tracking-tight" data-parallax-layer="text">MUMBAI SHOWCASE NIGHT</h1>
+      <p class="text-xl text-gray-300 max-w-2xl mb-4 font-light">
+        An invitation-only awards ceremony celebrating the future of cinema.
+      </p>
+      <p class="text-lg text-red-400 font-semibold mb-12">
+        March 2026
+      </p>
+
+      <div class="flex gap-6 items-center">
+        <button class="bg-red-600 hover:bg-red-700 transition px-8 py-4 rounded-full font-semibold text-white tracking-wide uppercase text-sm">
+          Reserve Your Invitation
+        </button>
+        <button class="border border-gray-700 hover:border-red-600 transition px-8 py-4 rounded-full font-semibold text-white tracking-wide uppercase text-sm">
+          Enter Submissions
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- TIMELINE SECTION -->
+  <section class="py-24 px-8 bg-gradient-to-b from-black to-gray-900/20" data-parallax-layer="midground">
+    <div class="max-w-7xl mx-auto">
+      <h2 class="text-4xl font-bold mb-16 tracking-tight">Festival Timeline</h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <!-- Milestone 1 -->
+        <div class="border-l-2 border-red-600 pl-6">
+          <p class="text-red-500 text-sm font-semibold tracking-widest mb-2">JANUARY 2026</p>
+          <h3 class="text-xl font-bold mb-2">Call for Entries Opens</h3>
+          <p class="text-gray-400 text-sm">Submit your AI-native films and begin the journey to the festival.</p>
+        </div>
+
+        <!-- Milestone 2 -->
+        <div class="border-l-2 border-gray-700 pl-6">
+          <p class="text-gray-500 text-sm font-semibold tracking-widest mb-2">APRIL 2026</p>
+          <h3 class="text-xl font-bold mb-2">Submissions Close</h3>
+          <p class="text-gray-400 text-sm">Final deadline for all entries. Jury begins their evaluation process.</p>
+        </div>
+
+        <!-- Milestone 3 -->
+        <div class="border-l-2 border-gray-700 pl-6">
+          <p class="text-gray-500 text-sm font-semibold tracking-widest mb-2">MAY 2026</p>
+          <h3 class="text-xl font-bold mb-2">Finalists Announced</h3>
+          <p class="text-gray-400 text-sm">Selected films and creators are announced globally across all platforms.</p>
+        </div>
+
+        <!-- Milestone 4 -->
+        <div class="border-l-2 border-red-600 pl-6">
+          <p class="text-red-500 text-sm font-semibold tracking-widest mb-2">JUNE 2026</p>
+          <h3 class="text-xl font-bold mb-2">Physical Festival</h3>
+          <p class="text-gray-400 text-sm">Celebration kicks off in Mumbai with screenings, exhibitions, and the ceremony.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VENUE SECTION -->
+  <section class="py-24 px-8 bg-gradient-to-b from-gray-900/20 via-black to-black" data-parallax-layer="foreground">
+    <div class="max-w-7xl mx-auto">
+      <h2 class="text-4xl font-bold mb-16 tracking-tight">Venue & Details</h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <!-- Venue Card -->
+        <div class="border border-gray-800 rounded-lg p-8 bg-gradient-to-br from-gray-900/30 to-black">
+          <h3 class="text-2xl font-bold mb-6">The Grand Hall</h3>
+
+          <div class="space-y-4">
+            <div>
+              <p class="text-xs text-red-500 font-semibold tracking-widest mb-2">LOCATION</p>
+              <p class="text-gray-300">Mumbai, India</p>
+            </div>
+
+            <div>
+              <p class="text-xs text-red-500 font-semibold tracking-widest mb-2">DATE</p>
+              <p class="text-gray-300">June 15, 2026</p>
+            </div>
+
+            <div>
+              <p class="text-xs text-red-500 font-semibold tracking-widest mb-2">DRESS CODE</p>
+              <p class="text-gray-300">Black Tie / Elegant Cocktail</p>
+            </div>
+
+            <div>
+              <p class="text-xs text-red-500 font-semibold tracking-widest mb-2">TIMING</p>
+              <p class="text-gray-300">6:00 PM - 11:00 PM IST</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Map Placeholder -->
+        <div class="border border-gray-800 rounded-lg bg-gradient-to-br from-gray-900/30 to-black flex items-center justify-center p-8 min-h-96">
+          <div class="text-center">
+            <div class="w-16 h-16 bg-red-600/20 rounded-full flex items-center justify-center mx-auto mb-4">
+              <span class="text-2xl">📍</span>
+            </div>
+            <p class="text-gray-400">Map Coming Soon</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AGENDA SECTION -->
+  <section class="py-24 px-8 bg-gradient-to-b from-black to-gray-900/20" data-parallax-layer="midground">
+    <div class="max-w-3xl mx-auto">
+      <h2 class="text-4xl font-bold mb-16 tracking-tight">Ceremony Agenda</h2>
+
+      <div class="space-y-6">
+        <!-- Timeline Item 1 -->
+        <div class="flex gap-8">
+          <div class="text-red-500 font-semibold text-sm tracking-widest min-w-max pt-1">6:00 PM</div>
+          <div class="border-l border-gray-800 pl-8 pb-8">
+            <h3 class="text-lg font-bold mb-2">Red Carpet & Welcome Reception</h3>
+            <p class="text-gray-400">Networking and celebration among creators, jury, and partners.</p>
+          </div>
+        </div>
+
+        <!-- Timeline Item 2 -->
+        <div class="flex gap-8">
+          <div class="text-red-500 font-semibold text-sm tracking-widest min-w-max pt-1">7:00 PM</div>
+          <div class="border-l border-gray-800 pl-8 pb-8">
+            <h3 class="text-lg font-bold mb-2">Welcome Address</h3>
+            <p class="text-gray-400">Festival director opens the ceremony with remarks on the year's achievements.</p>
+          </div>
+        </div>
+
+        <!-- Timeline Item 3 -->
+        <div class="flex gap-8">
+          <div class="text-red-500 font-semibold text-sm tracking-widest min-w-max pt-1">7:30 PM</div>
+          <div class="border-l border-gray-800 pl-8 pb-8">
+            <h3 class="text-lg font-bold mb-2">Finalist Film Screenings</h3>
+            <p class="text-gray-400">Selection of nominated and finalist films showcased to the audience.</p>
+          </div>
+        </div>
+
+        <!-- Timeline Item 4 -->
+        <div class="flex gap-8">
+          <div class="text-red-500 font-semibold text-sm tracking-widest min-w-max pt-1">9:00 PM</div>
+          <div class="border-l border-gray-800 pl-8 pb-8">
+            <h3 class="text-lg font-bold mb-2">Award Presentations</h3>
+            <p class="text-gray-400">Celebration of winners across all categories and special recognitions.</p>
+          </div>
+        </div>
+
+        <!-- Timeline Item 5 -->
+        <div class="flex gap-8">
+          <div class="text-red-500 font-semibold text-sm tracking-widest min-w-max pt-1">10:00 PM</div>
+          <div class="border-l border-gray-800 pl-8">
+            <h3 class="text-lg font-bold mb-2">Closing Celebration</h3>
+            <p class="text-gray-400">Final remarks and networking concluding the evening.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOSTS SECTION -->
+  <section class="py-24 px-8 bg-gradient-to-b from-gray-900/20 via-black to-black" data-parallax-layer="foreground">
+    <div class="max-w-7xl mx-auto">
+      <h2 class="text-4xl font-bold mb-16 tracking-tight">Meet the Hosts</h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+        <!-- Host 1 -->
+        <div class="text-center">
+          <div class="aspect-square bg-gradient-to-br from-red-600/20 to-gray-900/50 rounded-lg border border-gray-800 flex items-center justify-center mb-6">
+            <span class="text-gray-500">Portrait</span>
+          </div>
+          <h3 class="text-2xl font-bold mb-2">Host Name</h3>
+          <p class="text-red-500 text-sm font-semibold tracking-widest mb-4">FILMMAKER & CURATOR</p>
+          <p class="text-gray-400 text-sm leading-relaxed">
+            Award-winning filmmaker and visionary curator bringing three decades of cinema expertise to the stage.
+          </p>
+        </div>
+
+        <!-- Host 2 -->
+        <div class="text-center">
+          <div class="aspect-square bg-gradient-to-br from-red-600/20 to-gray-900/50 rounded-lg border border-gray-800 flex items-center justify-center mb-6">
+            <span class="text-gray-500">Portrait</span>
+          </div>
+          <h3 class="text-2xl font-bold mb-2">Host Name</h3>
+          <p class="text-red-500 text-sm font-semibold tracking-widest mb-4">PRODUCER & TECHNOLOGIST</p>
+          <p class="text-gray-400 text-sm leading-relaxed">
+            Pioneering producer merging cutting-edge technology with creative storytelling since the early days of AI cinema.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="py-12 px-8 bg-black border-t border-gray-900/50">
+    <div class="max-w-7xl mx-auto flex justify-between items-center">
+      <div>
+        <p class="text-sm font-semibold tracking-wide">HUNGAMA AI FILM FESTIVAL</p>
+        <p class="text-xs text-gray-500 mt-1">Celebrating Future Cinema</p>
+      </div>
+      
+      <div class="flex gap-8 text-xs text-gray-400">
+        <a href="privacy.html" class="hover:text-white transition">Privacy Policy</a>
+        <a href="terms.html" class="hover:text-white transition">Terms & Conditions</a>
+        <a href="contact.html" class="hover:text-white transition">Contact</a>
+      </div>
+    </div>
+  </footer>
+  <!-- Production Scroll System -->
+  <script src="js/production-scroll.js"></script>
+  
+  <!-- Production Parallax Engine -->
+  <script src="js/production-parallax.js"></script>
+
+  <!-- Main Entry Point -->
+  <script src="js/main.js"></script>
+
+  <!-- Feature Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/email-capture.js"></script>
+  <script src="js/cta-wiring.js"></script>
+</body>
+</html>

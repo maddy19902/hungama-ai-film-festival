@@ -1,0 +1,209 @@
+/**
+ * TYPOGRAPHY HIERARCHY - GLOBAL CONSISTENCY
+ * Hungama AI Film Festival
+ * 
+ * Ensures clean typography hierarchy:
+ * - H1: Dominant (80px+, 800 weight, tracking-tight)
+ * - H2: Section headers (48px, 700 weight)
+ * - H3: Subsections (32px, 600 weight)
+ * - H4-H6: Supporting (smaller, 500-600 weight)
+ * - Body: Clean legibility (16px, 400 weight)
+ */
+
+/* ============================================================
+   H1 - DOMINANT PAGE HEADINGS
+   ============================================================ */
+
+h1 {
+  font-size: 3.5rem !important;
+  line-height: 1.1 !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.02em !important;
+  color: #ffffff !important;
+  margin-bottom: 1.5rem !important;
+  text-shadow: 0 0 0 transparent;
+}
+
+/* XL screens */
+@media (min-width: 1280px) {
+  h1 {
+    font-size: 4rem !important;
+  }
+}
+
+/* ============================================================
+   H2 - SECTION HEADERS
+   ============================================================ */
+
+h2 {
+  font-size: 3rem !important;
+  line-height: 1.2 !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.015em !important;
+  color: #ffffff !important;
+  margin-bottom: 1rem !important;
+  margin-top: 2rem !important;
+}
+
+/* ============================================================
+   H3 - SUBSECTION HEADERS
+   ============================================================ */
+
+h3 {
+  font-size: 1.875rem !important;
+  line-height: 1.3 !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.01em !important;
+  color: #ffffff !important;
+  margin-bottom: 0.75rem !important;
+  margin-top: 1.5rem !important;
+}
+
+/* ============================================================
+   H4 - SUPPORTING HEADINGS
+   ============================================================ */
+
+h4 {
+  font-size: 1.5rem !important;
+  line-height: 1.4 !important;
+  font-weight: 600 !important;
+  letter-spacing: 0em !important;
+  color: #ffffff !important;
+  margin-bottom: 0.5rem !important;
+}
+
+/* ============================================================
+   H5, H6 - SMALL HEADINGS
+   ============================================================ */
+
+h5, h6 {
+  font-size: 1.125rem !important;
+  line-height: 1.5 !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.01em !important;
+  color: #ffffff !important;
+  margin-bottom: 0.5rem !important;
+}
+
+/* ============================================================
+   PARAGRAPH TEXT
+   ============================================================ */
+
+p {
+  font-size: 1rem !important;
+  line-height: 1.65 !important;
+  letter-spacing: 0.01em !important;
+  color: rgba(255, 255, 255, 0.9) !important;
+  margin-bottom: 1rem !important;
+  font-weight: 400 !important;
+}
+
+/* Large paragraph variant */
+.text-lg {
+  font-size: 1.125rem !important;
+  line-height: 1.75 !important;
+}
+
+/* Small text */
+.text-sm {
+  font-size: 0.875rem !important;
+  line-height: 1.5 !important;
+  letter-spacing: 0.015em !important;
+}
+
+/* Extra small text */
+.text-xs {
+  font-size: 0.75rem !important;
+  line-height: 1.4 !important;
+  letter-spacing: 0.05em !important;
+  text-transform: uppercase !important;
+}
+
+/* ============================================================
+   LABEL & DESCRIPTION TEXT
+   ============================================================ */
+
+label {
+  font-size: 0.875rem !important;
+  font-weight: 500 !important;
+  color: rgba(255, 255, 255, 0.85) !important;
+  letter-spacing: 0.01em !important;
+  display: block !important;
+  margin-bottom: 0.5rem !important;
+}
+
+.description,
+.subtitle {
+  font-size: 0.9375rem !important;
+  color: rgba(255, 255, 255, 0.75) !important;
+  line-height: 1.6 !important;
+  letter-spacing: 0.01em !important;
+}
+
+/* ============================================================
+   EMPHASIS & SPECIAL TEXT
+   ============================================================ */
+
+strong, b {
+  font-weight: 700 !important;
+}
+
+em, i {
+  font-style: italic !important;
+}
+
+/* Accent/highlight text */
+.text-accent,
+.highlight {
+  color: #dc2626 !important;
+  font-weight: 600 !important;
+}
+
+/* Muted text */
+.text-muted,
+.text-gray-400 {
+  color: rgba(255, 255, 255, 0.6) !important;
+  font-weight: 400 !important;
+}
+
+/* ============================================================
+   MOBILE TYPOGRAPHY ADJUSTMENTS
+   ============================================================ */
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2.25rem !important;
+  }
+
+  h2 {
+    font-size: 2rem !important;
+  }
+
+  h3 {
+    font-size: 1.5rem !important;
+  }
+
+  h4 {
+    font-size: 1.25rem !important;
+  }
+
+  p {
+    font-size: 0.9375rem !important;
+  }
+
+  .text-lg {
+    font-size: 1rem !important;
+  }
+}
+
+/* ============================================================
+   BODY BASELINE
+   ============================================================ */
+
+body {
+  font-family: 'Poppins', sans-serif !important;
+  font-size: 16px !important;
+  line-height: 1.65 !important;
+  letter-spacing: 0.01em !important;
+  color: rgba(255, 255, 255, 0.9) !important;
+}

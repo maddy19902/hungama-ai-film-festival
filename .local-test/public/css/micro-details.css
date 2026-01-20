@@ -1,0 +1,499 @@
+/**
+ * HUNGAMA FESTIVAL - APPLE-LEVEL MICRO-DETAILS
+ * 
+ * Button compression • Focus rings • Scrollbar styling
+ * Typography optical alignment • Image loading polish
+ * Form elegance • Reduced motion support
+ */
+
+/* ============================================================
+   BUTTON COMPRESSION & PRESS FEEDBACK
+   ============================================================ */
+
+button,
+a.button,
+.btn,
+[role="button"] {
+  position: relative;
+  
+  /* Enable press feedback */
+  transition: all var(--motion-duration-fast) cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+button:active,
+a.button:active,
+.btn:active,
+[role="button"]:active {
+  transform: translateY(1px) scale(0.98);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) inset;
+}
+
+/* Haptic-like feedback on mobile */
+@media (hover: none) and (pointer: coarse) {
+  button:active,
+  a.button:active,
+  .btn:active,
+  [role="button"]:active {
+    transform: translateY(2px) scale(0.96);
+  }
+}
+
+/* ============================================================
+   FOCUS RING REFINEMENT
+   ============================================================ */
+
+:focus-visible {
+  outline: 2px solid rgba(220, 20, 60, 0.8);
+  outline-offset: 2px;
+}
+
+/* Button specific focus */
+button:focus-visible,
+a.button:focus-visible,
+.btn:focus-visible,
+[role="button"]:focus-visible {
+  outline: 2px solid rgba(220, 20, 60, 0.8);
+  outline-offset: 2px;
+  border-radius: var(--radius-lg);
+}
+
+/* Input focus ring */
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid rgba(220, 20, 60, 0.8);
+  outline-offset: 1px;
+}
+
+/* Smooth focus ring animation */
+@media (prefers-reduced-motion: no-preference) {
+  button:focus-visible,
+  a.button:focus-visible,
+  input:focus-visible,
+  textarea:focus-visible,
+  select:focus-visible {
+    animation: focus-ring-pulse var(--motion-duration-base) ease-out;
+  }
+}
+
+@keyframes focus-ring-pulse {
+  from {
+    outline-offset: 4px;
+    opacity: 0.5;
+  }
+  to {
+    outline-offset: 2px;
+    opacity: 1;
+  }
+}
+
+/* ============================================================
+   INPUT FOCUS STATES - Sacred form experience
+   ============================================================ */
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="number"],
+input[type="date"],
+input[type="time"],
+textarea,
+select {
+  position: relative;
+  background: var(--color-surface-secondary);
+  border: 1px solid var(--color-glass-1);
+  color: var(--color-white);
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-lg);
+  
+  transition: all var(--motion-duration-base) var(--ease-out-smooth);
+  
+  /* Placeholder styling */
+  font-size: 1rem;
+  font-family: var(--font-family-primary);
+}
+
+/* Filled state */
+input:not(:placeholder-shown),
+textarea:not(:placeholder-shown),
+select:not([value=""]):not([value]) {
+  border-color: rgba(220, 20, 60, 0.6);
+  background: linear-gradient(
+    180deg,
+    var(--color-surface-secondary) 0%,
+    var(--color-surface-tertiary) 100%
+  );
+}
+
+/* Hover state */
+input:hover:not(:focus),
+textarea:hover:not(:focus),
+select:hover:not(:focus) {
+  border-color: var(--color-glass-2);
+  background-color: var(--color-surface-tertiary);
+  cursor: text;
+}
+
+/* Focus state */
+input:focus,
+textarea:focus,
+select:focus {
+  background: linear-gradient(
+    180deg,
+    var(--color-surface-secondary) 0%,
+    var(--color-surface-tertiary) 100%
+  );
+  border-color: rgba(220, 20, 60, 0.8);
+  box-shadow: 
+    inset 0 1px 2px rgba(220, 20, 60, 0.1),
+    0 0 0 3px rgba(220, 20, 60, 0.05);
+}
+
+/* Placeholder text */
+input::placeholder,
+textarea::placeholder {
+  color: var(--color-gray-400);
+  opacity: 0.8;
+}
+
+/* Error state */
+input.error,
+textarea.error,
+select.error {
+  border-color: var(--color-error);
+  background-color: rgba(239, 68, 68, 0.05);
+}
+
+input.error:focus,
+textarea.error:focus,
+select.error:focus {
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+}
+
+/* Success state */
+input.success,
+textarea.success,
+select.success {
+  border-color: var(--color-success);
+}
+
+input.success:focus,
+textarea.success:focus,
+select.success:focus {
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+}
+
+/* ============================================================
+   CHECKBOX & RADIO CUSTOM STYLING
+   ============================================================ */
+
+input[type="checkbox"],
+input[type="radio"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--color-glass-2);
+  border-radius: var(--radius-sm);
+  background: transparent;
+  cursor: pointer;
+  
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  
+  transition: all var(--motion-duration-base) var(--ease-out-smooth);
+  margin-right: 0.5rem;
+}
+
+input[type="radio"] {
+  border-radius: 50%;
+}
+
+input[type="checkbox"]:hover,
+input[type="radio"]:hover {
+  border-color: rgba(220, 20, 60, 0.8);
+  background-color: var(--color-glass-1);
+}
+
+input[type="checkbox"]:checked,
+input[type="radio"]:checked {
+  border-color: rgba(220, 20, 60, 0.8);
+  background-color: rgba(220, 20, 60, 0.9);
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='%23fff' d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 111.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3e%3c/svg%3e");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+input[type="checkbox"]:checked:hover,
+input[type="radio"]:checked:hover {
+  transform: scale(1.1);
+}
+
+input[type="checkbox"]:focus-visible,
+input[type="radio"]:focus-visible {
+  outline: 2px solid rgba(220, 20, 60, 0.8);
+  outline-offset: 2px;
+}
+
+/* ============================================================
+   SELECT DROPDOWN STYLING
+   ============================================================ */
+
+select {
+  padding-right: 2.5rem;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23dc143c' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 16px;
+  padding-right: 2.5rem;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+select:hover {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23e5c158' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
+}
+
+/* ============================================================
+   SCROLLBAR CUSTOM STYLING - Premium look
+   ============================================================ */
+
+/* Webkit scrollbars (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-surface-primary);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    180deg,
+    var(--color-gray-600) 0%,
+    var(--color-gray-500) 100%
+  );
+  border-radius: 5px;
+  border: 2px solid var(--color-surface-primary);
+  
+  transition: background var(--motion-duration-base);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(
+    180deg,
+    rgba(220, 20, 60, 0.8) 0%,
+    rgba(220, 20, 60, 1) 100%
+  );
+}
+
+/* Firefox scrollbar */
+* {
+  scrollbar-color: var(--color-gray-600) var(--color-surface-primary);
+  scrollbar-width: thin;
+}
+
+/* ============================================================
+   LINK UNDERLINE ANIMATION
+   ============================================================ */
+
+a:not(.button):not([class*="btn"]):not([role="button"]) {
+  position: relative;
+  color: var(--color-white);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: all var(--motion-duration-base) var(--ease-out-smooth);
+}
+
+a:hover:not(.button):not([class*="btn"]):not([role="button"]) {
+  color: rgba(220, 20, 60, 1);
+  border-bottom-color: rgba(220, 20, 60, 0.6);
+}
+
+/* ============================================================
+   TYPOGRAPHY OPTICAL ALIGNMENT
+   ============================================================ */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  line-height: var(--line-height-tight);
+  letter-spacing: var(--letter-spacing-tight);
+  font-weight: var(--font-weight-bold);
+  
+  /* Optical adjustment for large text */
+  margin-top: -0.04em;
+}
+
+h1 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: var(--font-weight-extrabold);
+  margin-top: -0.08em;
+  margin-bottom: 1.5rem;
+}
+
+h2 {
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  margin-bottom: 1.25rem;
+}
+
+h3 {
+  font-size: clamp(1.25rem, 3vw, 1.875rem);
+  margin-bottom: 1rem;
+}
+
+p {
+  line-height: var(--line-height-normal);
+  letter-spacing: var(--letter-spacing-normal);
+  margin-bottom: 1rem;
+}
+
+/* ============================================================
+   BLOCKQUOTE STYLING
+   ============================================================ */
+
+blockquote {
+  border-left: 3px solid rgba(220, 20, 60, 0.8);
+  padding-left: 1.5rem;
+  margin-left: 0;
+  color: var(--color-gray-300);
+  font-style: italic;
+}
+
+/* ============================================================
+   CODE BLOCK STYLING
+   ============================================================ */
+
+code,
+pre {
+  background-color: var(--color-surface-secondary);
+  border: 1px solid var(--color-glass-1);
+  border-radius: var(--radius-lg);
+  color: rgba(220, 20, 60, 1);
+  font-family: 'Courier New', monospace;
+  font-size: 0.875rem;
+}
+
+code {
+  padding: 0.25rem 0.5rem;
+  display: inline-block;
+}
+
+pre {
+  padding: 1rem;
+  overflow-x: auto;
+  margin: 1rem 0;
+}
+
+pre code {
+  background: transparent;
+  border: none;
+  padding: 0;
+  display: block;
+}
+
+/* ============================================================
+   REDUCED MOTION - Disable micro-interactions
+   ============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  button:active,
+  a.button:active,
+  .btn:active,
+  [role="button"]:active {
+    transform: none;
+  }
+
+  @keyframes focus-ring-pulse {
+    from { outline-offset: 2px; }
+    to { outline-offset: 2px; }
+  }
+
+  input[type="checkbox"]:checked:hover,
+  input[type="radio"]:checked:hover {
+    transform: none;
+  }
+}
+
+/* ============================================================
+   HIGH CONTRAST MODE SUPPORT
+   ============================================================ */
+
+@media (prefers-contrast: more) {
+  button,
+  a.button,
+  .btn {
+    border-width: 2px;
+  }
+
+  input,
+  textarea,
+  select {
+    border-width: 2px;
+  }
+
+  :focus-visible {
+    outline-width: 3px;
+  }
+}
+
+/* ============================================================
+   DARK MODE OPTIMIZATION
+   ============================================================ */
+
+@media (prefers-color-scheme: dark) {
+  /* Already dark by default, but optimize contrast */
+  input::placeholder,
+  textarea::placeholder {
+    color: var(--color-gray-500);
+  }
+}
+
+/* ============================================================
+   TOUCH TARGET SIZING - WCAG AAA compliance
+   ============================================================ */
+
+@media (hover: none) and (pointer: coarse) {
+  button,
+  a.button,
+  .btn,
+  [role="button"],
+  input[type="checkbox"],
+  input[type="radio"] {
+    min-height: 44px;
+    min-width: 44px;
+    padding: 0.75rem;
+  }
+
+  .card,
+  [data-card],
+  .nominee-card,
+  .jury-card {
+    min-height: 44px;
+  }
+}
+
+/* ============================================================
+   RESPONSIVE ADJUSTMENTS
+   ============================================================ */
+
+@media (max-width: 640px) {
+  input,
+  textarea,
+  select {
+    font-size: 16px; /* Prevent iOS zoom on focus */
+  }
+
+  button,
+  a.button,
+  .btn {
+    font-size: 1rem;
+  }
+}
