@@ -195,49 +195,41 @@
     </div>
   </section>
 
-  <!-- A NEW LANGUAGE OF CINEMA - SIDE-BY-SIDE STRUCTURE -->
+  <!-- A NEW LANGUAGE OF CINEMA - FORCED NUCLEAR REBUILD -->
   <section class="py-16 sm:py-24 lg:py-32 px-5 sm:px-8 lg:px-12 bg-gradient-to-b from-[#0a0a0a] via-brandDark to-[#0a0a0a]" data-parallax-layer="midground">
     <div class="max-w-7xl mx-auto">
       
-      <!-- DESKTOP: TWO COLUMN GRID -->
-      <div class="lg:grid lg:grid-cols-5 lg:gap-12 items-center">
+      <!-- FORCE 2 COLUMNS ON DESKTOP, 1 COLUMN ON MOBILE -->
+      <div class="block lg:flex lg:items-center">
         
-        <!-- LEFT COLUMN: TEXT (3/5 width on desktop) -->
-        <div class="lg:col-span-3 mb-12 lg:mb-0">
-          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight mb-6 lg:mb-8 tracking-tight">
+        <!-- TEXT: LEFT ON DESKTOP, TOP ON MOBILE -->
+        <div class="lg:w-3/5 lg:pr-12 mb-10 lg:mb-0">
+          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight mb-6 lg:mb-8 tracking-tight text-left">
             A New Language<br />
             <span class="text-brandRed/90">of Cinema</span>
           </h2>
           
-          <p class="text-gray-400 text-base lg:text-lg leading-relaxed font-light">
+          <p class="text-gray-400 text-base sm:text-lg leading-relaxed font-light text-left">
             Where artificial intelligence meets human creativity. Hungama AI Film Festival explores the intersection of technology and storytelling, showcasing works that redefine the boundaries of cinema.
           </p>
         </div>
 
-        <!-- RIGHT COLUMN: IMAGES (2/5 width on desktop) -->
-        <div class="lg:col-span-2">
-          <!-- IMAGES CONTAINER: Both images in same div, side-by-side -->
-          <div class="flex items-center justify-center lg:justify-end gap-6 lg:gap-8">
-            
-            <!-- HUMANOID: Reduced size, not dominant -->
-            <div class="relative">
-              <img
-                src="images/humanoid.png"
-                alt="Humanoid illustration"
-                class="w-40 sm:w-48 lg:w-64 opacity-80"
-                style="filter: saturate(0.85);"
-              />
-            </div>
-            
-            <!-- FILM REEL: Smaller, beside humanoid -->
-            <div class="relative">
-              <img
-                src="images/film-reel.png"
-                alt="Film reel"
-                class="w-16 sm:w-20 lg:w-24 opacity-60"
-              />
-            </div>
-            
+        <!-- IMAGES: RIGHT ON DESKTOP, BELOW ON MOBILE -->
+        <div class="lg:w-2/5">
+          <div class="flex items-center justify-center lg:justify-end gap-4 sm:gap-6">
+            <!-- HUMANOID: REDUCED SIZE -->
+            <img
+              src="images/humanoid.png"
+              alt="Humanoid illustration"
+              class="w-40 sm:w-48 lg:w-64 flex-shrink-0 opacity-80"
+              style="filter: saturate(0.85);"
+            />
+            <!-- FILM REEL: SMALLER, BESIDE HUMANOID -->
+            <img
+              src="images/film-reel.png"
+              alt="Film reel"
+              class="w-16 sm:w-20 lg:w-24 flex-shrink-0 opacity-60"
+            />
           </div>
         </div>
         
