@@ -96,7 +96,7 @@ class MobileNavbarOverlay {
       border-top: 1px solid rgba(55, 65, 81, 0.5);
     `;
     cta.innerHTML = `
-      <a href="submit.html" style="display: block; width: 100%; text-align: center; background-color: #dc2626; color: white; padding: 1rem; border-radius: 0.5rem; font-weight: 600; text-decoration: none; font-size: 1.125rem; transition: background-color 0.3s ease;" onmouseover="this.style.backgroundColor='#b91c1c'" onmouseout="this.style.backgroundColor='#dc2626'">Submit Your Work</a>
+      <a href="submit.html" style="display: block; width: 100%; text-align: center; background-color: #dc2626; color: white; padding: 1rem; border-radius: 0.5rem; font-weight: 600; text-decoration: none; font-size: 1.125rem; transition: background-color 0.3s ease;" onmouseover="this.style.backgroundColor='#b91c1c'" onmouseout="this.style.backgroundColor='#dc2626'">Submit Your Film</a>
     `;
 
     overlay.appendChild(header);
