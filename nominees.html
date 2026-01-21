@@ -22,7 +22,6 @@
   <link href="css/components/navbar.css" rel="stylesheet">
   <link href="css/polish.css" rel="stylesheet">
   <link href="css/responsiveness.css" rel="stylesheet">
-  <link href="css/nominees-improvements.css" rel="stylesheet">
   <link href="css/modal-system.css" rel="stylesheet">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -67,23 +66,6 @@
       mix-blend-mode: overlay;
     }
 
-    /* PASS 3: SECTION TRANSITION BLENDING */
-    section::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      height: 80px;
-      background: linear-gradient(
-        to bottom,
-        transparent 0%,
-        rgba(10, 10, 10, 0.3) 100%
-      );
-      pointer-events: none;
-      z-index: 10;
-    }
-
     /* PASS 4: TYPOGRAPHIC CALM & INSTITUTIONAL FEEL */
     h1, h2, h3, h4, h5, h6 {
       letter-spacing: 0.08em;
@@ -120,16 +102,28 @@
       letter-spacing: 0.12em;
     }
 
-    /* Ensure section positioning for ::after overlay */
+    /* BASE STYLES */
     section {
       position: relative;
       overflow: hidden;
     }
 
-    /* NOMINEES PAGE SPECIFIC */
     .nominees-hero {
       min-h-[85vh] bg-cover bg-center bg-gradient-to-br from-brandDark via-black to-black flex items-center pt-32 relative;
       background-image: url('images/nominees-bg.png');
+    }
+
+    .nominees-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(192, 0, 0, 0.3), rgba(0, 0, 0, 0.6));
+      pointer-events: none;
+    }
+
+    .nominees-hero > * {
+      position: relative;
+      z-index: 10;
     }
 
     @media (max-width: 768px) {
@@ -140,226 +134,247 @@
         background-size: cover !important;
       }
     }
-    
-    .nominees-hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, rgba(192, 0, 0, 0.3), rgba(0, 0, 0, 0.6));
-      pointer-events: none;
+
+    /* EDITORIAL NOMINEES SYSTEM */
+    .nominees-container {
+      background: linear-gradient(to bottom, #0a0a0a 0%, #1a1a1d 50%, #0a0a0a 100%);
+      padding: 4rem 2rem;
     }
-    
-    .nominees-hero > * {
+
+    .category-section {
+      max-width: 1200px;
+      margin: 0 auto 6rem;
+      opacity: 1;
+      transition: opacity 0.3s ease;
+    }
+
+    .category-header {
+      margin-bottom: 3rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding-bottom: 1.5rem;
+    }
+
+    .category-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #ffffff;
+      margin: 0;
+    }
+
+    .category-label {
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #999;
+      margin-top: 0.5rem;
+      display: block;
+    }
+
+    /* DESKTOP TWO-COLUMN LAYOUT */
+    .nominees-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    .highlight-panel {
       position: relative;
-      z-index: 10;
+      background: #1a1a1d;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 0.375rem;
+      overflow: hidden;
+      aspect-ratio: 3 / 4;
     }
 
-    .nominee-card {
-      border: 1px solid rgba(255, 255, 255, 0.08) !important;
-      background: #1a1a1d !important;
-      border-radius: 0.375rem !important;
-      overflow: visible !important;
-      transition: all 0.3s ease !important;
-      display: flex !important;
-      flex-direction: column !important;
-      height: auto !important;
+    .highlight-image {
+      width: 100%;
+      height: 70%;
+      background: #0f0f0f;
+      overflow: hidden;
     }
 
-    .nominee-card:hover {
-      border-color: rgba(225, 29, 46, 0.4) !important;
-      background: #222225 !important;
+    .highlight-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 1;
+      transition: opacity 0.5s ease;
+    }
+
+    .highlight-content {
+      padding: 1.5rem;
+      height: 30%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      background: #0a0a0a;
+    }
+
+    .highlight-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #ffffff;
+      line-height: 1.3;
+      margin: 0;
+    }
+
+    .highlight-credit {
+      font-size: 0.85rem;
+      color: #999;
+      margin: 0.5rem 0 0;
+      line-height: 1.2;
+    }
+
+    .nominees-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .nominee-item {
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      gap: 1rem;
+      padding: 1rem;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 0.375rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      background: rgba(26, 26, 29, 0.5);
+      opacity: 0.6;
+    }
+
+    .nominee-item:hover,
+    .nominee-item.active {
+      opacity: 1;
+      border-color: rgba(225, 29, 46, 0.3);
+      background: rgba(26, 26, 29, 1);
     }
 
     .nominee-thumbnail {
-      aspect-ratio: 2/3;
+      width: 80px;
+      height: 110px;
       background: #0f0f0f;
-      overflow: hidden !important;
+      border-radius: 0.25rem;
+      overflow: hidden;
       flex-shrink: 0;
-      border-radius: 0.375rem 0.375rem 0 0;
     }
 
     .nominee-thumbnail img {
-      width: 100% !important;
-      height: 100% !important;
-      object-fit: cover !important;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
 
-    .nominee-card .p-4 {
-      flex: 1 !important;
-      display: flex !important;
-      flex-direction: column !important;
-      justify-content: flex-start !important;
-      background: #1a1a1d !important;
-      border-radius: 0 0 0.375rem 0.375rem !important;
-      border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
-      padding: 0.75rem !important;
-      min-height: 3.5rem !important;
-      overflow: visible !important;
-    }
-
-    .nominee-card h3 {
-      color: #ffffff !important;
-      font-weight: 600 !important;
-      font-size: 0.85rem !important;
-      line-height: 1.2 !important;
-      margin-bottom: 0.35rem !important;
-      margin: 0 !important;
-      overflow: visible !important;
-    }
-
-    .nominee-card p {
-      color: #ffffff !important;
-      margin: 0 !important;
-      font-size: 0.7rem !important;
-      line-height: 1.2 !important;
-      overflow: visible !important;
-      opacity: 1 !important;
-    }
-
-    /* CAROUSEL STYLING */
-    .carousel-container {
-      overflow-x: auto;
-      overflow-y: hidden;
-      scroll-behavior: smooth;
-      -webkit-overflow-scrolling: touch;
-      margin: -0.5rem 0;
-      padding: 0.5rem 0;
-    }
-
-    .carousel-track {
-      display: flex;
-      gap: 1rem;
-      padding: 0;
-    }
-
-    .nominee-card {
-      flex-shrink: 0;
-      width: clamp(180px, 22vw, 300px);
-      height: auto !important;
-      min-width: 180px !important;
-    }
-
-    .nominee-card .p-4 {
-      padding: 0.75rem !important;
-      min-height: auto !important;
-    }
-
-    .nominee-card h3 {
-      font-size: 0.85rem !important;
-      line-height: 1.2 !important;
-      margin-bottom: 0.35rem !important;
-      color: #ffffff !important;
-    }
-
-    .nominee-card p {
-      font-size: 0.7rem !important;
-      color: #ffffff !important;
-      margin: 0 !important;
-      opacity: 1 !important;
-    }
-
-    /* Aspect ratio classes */
-    .aspect-2x3 {
-      aspect-ratio: 2 / 3;
-    }
-
-    .aspect-4x5 {
-      aspect-ratio: 4 / 5;
-    }
-
-    .aspect-1x1 {
-      aspect-ratio: 1 / 1;
-    }
-
-    .aspect-16x9 {
-      aspect-ratio: 16 / 9;
-    }
-
-    /* Mobile snap scrolling */
-    @media (max-width: 768px) {
-      .carousel-container {
-        scroll-snap-type: x mandatory;
-      }
-
-      .nominee-card {
-        scroll-snap-align: start;
-        scroll-snap-stop: always;
-        width: clamp(100px, 28vw, 160px) !important;
-        height: auto !important;
-        min-height: auto !important;
-      }
-
-      .nominee-card .p-4 {
-        padding: 0.75rem !important;
-        min-height: auto !important;
-      }
-
-      .nominee-card h3 {
-        font-size: 0.75rem !important;
-        line-height: 1.2 !important;
-        margin-bottom: 0.25rem !important;
-        color: #ffffff !important;
-      }
-
-      .nominee-card p {
-        font-size: 0.65rem !important;
-        color: #ffffff !important;
-        margin: 0 !important;
-        opacity: 1 !important;
-      }
-
-      .carousel-track {
-        gap: 0.75rem;
-      }
-    }
-  </style>
-  <style>
-    /* FORCEFUL OVERRIDES FOR NOMINEE CARD VISIBILITY */
-    .nominee-card {
-      overflow: visible !important;
-      height: auto !important;
-      min-height: auto !important;
-      max-height: none !important;
-    }
-
-    .nominee-card .p-4,
     .nominee-info {
-      overflow: visible !important;
-      height: auto !important;
-      min-height: auto !important;
-      max-height: none !important;
-      display: flex !important;
-      flex-direction: column !important;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
 
-    .nominee-card h3,
-    .nominee-title {
-      overflow: visible !important;
-      color: #ffffff !important;
-      opacity: 1 !important;
-      font-size: inherit !important;
+    .nominee-name {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #ffffff;
+      margin: 0;
+      line-height: 1.2;
     }
 
-    .nominee-card p,
-    .nominee-director,
-    .nominee-description {
-      overflow: visible !important;
-      color: #ffffff !important;
-      opacity: 1 !important;
-      display: block !important;
+    .nominee-credit {
+      font-size: 0.8rem;
+      color: #999;
+      margin: 0.3rem 0 0;
     }
 
-    .carousel-container {
-      overflow-x: auto !important;
-      overflow-y: visible !important;
+    /* MOBILE TWO-ROW LAYOUT */
+    @media (max-width: 768px) {
+      .nominees-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .highlight-panel {
+        aspect-ratio: 9 / 16;
+      }
+
+      .highlight-content {
+        height: 25%;
+        padding: 1rem;
+      }
+
+      .highlight-title {
+        font-size: 0.95rem;
+      }
+
+      .highlight-credit {
+        font-size: 0.75rem;
+      }
+
+      .nominees-list {
+        flex-direction: row;
+        gap: 0.75rem;
+        overflow-x: auto;
+        scroll-behavior: smooth;
+        padding: 0.5rem 0;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .nominee-item {
+        flex-shrink: 0;
+        width: 90px;
+        height: 140px;
+        padding: 0;
+        gap: 0;
+        grid-template-columns: none;
+        display: flex;
+        align-items: stretch;
+        border: none;
+        background: transparent;
+        cursor: pointer;
+        opacity: 1;
+      }
+
+      .nominee-item:hover,
+      .nominee-item.active {
+        opacity: 1;
+        border-color: transparent;
+        background: transparent;
+      }
+
+      .nominee-thumbnail {
+        width: 90px;
+        height: 140px;
+        border-radius: 0.25rem;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+      }
+
+      .nominee-info {
+        display: none;
+      }
     }
 
-    .carousel-track {
-      overflow: visible !important;
+    .nominees-container {
+      padding: 4rem 1.5rem;
+    }
+
+    .category-section {
+      margin: 0 auto 4rem;
+    }
+
+    .category-header {
+      margin-bottom: 2rem;
+      padding-bottom: 1rem;
+    }
+
+    .category-title {
+      font-size: 1.25rem;
     }
   </style>
   <script src="js/elastic-free-parallax.js"></script>
-  <script src="js/nominees-system.js"></script>
 </head>
 
 <body class="bg-black text-white">
@@ -401,100 +416,705 @@
     </div>
   </section>
 
-  <!-- AI SHORT FILM CATEGORY -->
-  <section class="nominee-section py-24 px-8 bg-gradient-to-b from-black via-brandDark to-black" data-category="short-film" data-aspect="2x3">
-    <div class="max-w-7xl mx-auto">
-      <div class="flex items-center justify-between mb-12">
-        <h2 class="text-4xl font-bold tracking-tight">AI Short Film</h2>
-        <div class="flex gap-2">
-          <button class="carousel-nav carousel-prev w-10 h-10 border border-gray-600 rounded flex items-center justify-center hover:border-white transition" aria-label="Previous">←</button>
-          <button class="carousel-nav carousel-next w-10 h-10 border border-gray-600 rounded flex items-center justify-center hover:border-white transition" aria-label="Next">→</button>
-        </div>
+  <!-- EDITORIAL NOMINEES CONTAINER -->
+  <section class="nominees-container" data-parallax-layer="background" data-parallax-speed="0.05">
+    
+    <!-- FILM CATEGORY 1: BEST AI FEATURE FILM -->
+    <div class="category-section">
+      <div class="category-header">
+        <h2 class="category-title">Best AI Feature Film</h2>
+        <span class="category-label">Film</span>
       </div>
-      <div class="carousel-container">
-        <div class="carousel-track">
-          <div class="nominee-card aspect-2x3"><div class="nominee-thumbnail"><img src="images/nominees/echoes_of_tomorrow.jpg" alt="Echoes of Tomorrow"></div><div class="p-4"><h3 class="font-semibold text-sm mb-1">Echoes of Tomorrow</h3><p class="text-xs text-gray-400">Aarav Khanna</p></div></div>
-          <div class="nominee-card aspect-2x3"><div class="nominee-thumbnail"><img src="images/nominees/synthetic_dawn.jpg" alt="Synthetic Dawn"></div><div class="p-4"><h3 class="font-semibold text-sm mb-1">Synthetic Dawn</h3><p class="text-xs text-gray-400">Silverline VFX Collective</p></div></div>
-          <div class="nominee-card aspect-2x3"><div class="nominee-thumbnail"><img src="images/nominees/the_last_prompt.jpg" alt="The Last Prompt"></div><div class="p-4"><h3 class="font-semibold text-sm mb-1">The Last Prompt</h3><p class="text-xs text-gray-400">Julian Cross</p></div></div>
-          <div class="nominee-card aspect-2x3"><div class="nominee-thumbnail"><img src="images/nominees/ghosts_in_the_model.jpg" alt="Ghosts in the Model"></div><div class="p-4"><h3 class="font-semibold text-sm mb-1">Ghosts in the Model</h3><p class="text-xs text-gray-400">Parallax Storyworks</p></div></div>
-          <div class="nominee-card aspect-2x3"><div class="nominee-thumbnail"><img src="images/nominees/rendered_silence.jpg" alt="Rendered Silence"></div><div class="p-4"><h3 class="font-semibold text-sm mb-1">Rendered Silence</h3><p class="text-xs text-gray-400">Theo Markovic</p></div></div>
-          <div class="nominee-card aspect-2x3"><div class="nominee-thumbnail"><img src="images/nominees/fragments_of_code.jpg" alt="Fragments of Code"></div><div class="p-4"><h3 class="font-semibold text-sm mb-1">Fragments of Code</h3><p class="text-xs text-gray-400">Neural Canvas Studios</p></div></div>
-          <div class="nominee-card aspect-2x3"><div class="nominee-thumbnail"><img src="images/nominees/after_the_algorithm.jpg" alt="After the Algorithm"></div><div class="p-4"><h3 class="font-semibold text-sm mb-1">After the Algorithm</h3><p class="text-xs text-gray-400">Riya Banerjee</p></div></div>
+      <div class="nominees-grid">
+        <div class="highlight-panel">
+          <div class="highlight-image">
+            <img src="images/nominees/echoes_of_tomorrow.jpg" alt="Echoes of Tomorrow" class="hero-image">
+          </div>
+          <div class="highlight-content">
+            <div>
+              <p class="highlight-title">Echoes of Tomorrow</p>
+              <p class="highlight-credit">Aarav Khanna</p>
+            </div>
+          </div>
+        </div>
+        <div class="nominees-list" data-category="best-ai-feature-film">
+          <div class="nominee-item active" data-index="0">
+            <div class="nominee-thumbnail"><img src="images/nominees/echoes_of_tomorrow.jpg" alt="Echoes of Tomorrow"></div>
+            <div class="nominee-info">
+              <p class="nominee-name">Echoes of Tomorrow</p>
+              <p class="nominee-credit">Aarav Khanna</p>
+            </div>
+          </div>
+          <div class="nominee-item" data-index="1">
+            <div class="nominee-thumbnail"><img src="images/nominees/synthetic_dawn.jpg" alt="Synthetic Dawn"></div>
+            <div class="nominee-info">
+              <p class="nominee-name">Synthetic Dawn</p>
+              <p class="nominee-credit">Silverline VFX Collective</p>
+            </div>
+          </div>
+          <div class="nominee-item" data-index="2">
+            <div class="nominee-thumbnail"><img src="images/nominees/the_last_prompt.jpg" alt="The Last Prompt"></div>
+            <div class="nominee-info">
+              <p class="nominee-name">The Last Prompt</p>
+              <p class="nominee-credit">Julian Cross</p>
+            </div>
+          </div>
+          <div class="nominee-item" data-index="3">
+            <div class="nominee-thumbnail"><img src="images/nominees/ghosts_in_the_model.jpg" alt="Ghosts in the Model"></div>
+            <div class="nominee-info">
+              <p class="nominee-name">Ghosts in the Model</p>
+              <p class="nominee-credit">Parallax Storyworks</p>
+            </div>
+          </div>
+          <div class="nominee-item" data-index="4">
+            <div class="nominee-thumbnail"><img src="images/nominees/rendered_silence.jpg" alt="Rendered Silence"></div>
+            <div class="nominee-info">
+              <p class="nominee-name">Rendered Silence</p>
+              <p class="nominee-credit">Theo Markovic</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </section>
 
-  <!-- AI MICRO DRAMA CATEGORY -->
-  <section class="nominee-section py-24 px-8 bg-gradient-to-b from-black via-black to-brandDark" data-category="micro-drama" data-aspect="4x5">
-    <div class="max-w-7xl mx-auto">
-      <div class="flex items-center justify-between mb-12">
-        <h2 class="text-4xl font-bold tracking-tight">AI Micro Drama</h2>
-        <div class="flex gap-2">
-          <button class="carousel-nav carousel-prev w-10 h-10 border border-gray-600 rounded flex items-center justify-center hover:border-white transition" aria-label="Previous">←</button>
-          <button class="carousel-nav carousel-next w-10 h-10 border border-gray-600 rounded flex items-center justify-center hover:border-white transition" aria-label="Next">→</button>
-        </div>
+    <!-- FILM CATEGORY 2: BEST AI SHORT FILM -->
+    <div class="category-section">
+      <div class="category-header">
+        <h2 class="category-title">Best AI Short Film</h2>
+        <span class="category-label">Film</span>
       </div>
-      <div class="carousel-container">
-        <div class="carousel-track">
-          <div class="nominee-card aspect-4x5"><div class="nominee-thumbnail"><img src="images/nominees/a_quiet_decision.jpg" alt="A Quiet Decision"></div><div class="p-4"><h3 class="font-semibold text-sm mb-1">A Quiet Decision</h3><p class="text-xs text-gray-400">Elena Morozova</p></div></div>
-          <div class="nominee-card aspect-4x5"><div class="nominee-thumbnail"><img src="images/nominees/seven_minutes.jpg" alt="Seven Minutes"></div><div class="p-4"><h3 class="font-semibold text-sm mb-1">Seven Minutes</h3><p class="text-xs text-gray-400">Caleb Owens</p></div></div>
-          <div class="nominee-card aspect-4x5"><div class="nominee-thumbnail"><img src="images/nominees/the_weight_of_yes.jpg" alt="The Weight of Yes"></div><div class="p-4"><h3 class="font-semibold text-sm mb-1">The Weight of Yes</h3><p class="text-xs text-gray-400">Parallax Storyworks</p></div></div>
-          <div class="nominee-card aspect-4x5"><div class="nominee-thumbnail"><img src="images/nominees/before_the_call.jpg" alt="Before the Call"></div><div class="p-4"><h3 class="font-semibold text-sm mb-1">Before the Call</h3><p class="text-xs text-gray-400">Farah Al-Hassan</p></div></div>
-          <div class="nominee-card aspect-4x5"><div class="nominee-thumbnail"><img src="images/nominees/still_standing.jpg" alt="Still Standing"></div><div class="p-4"><h3 class="font-semibold text-sm mb-1">Still Standing</h3><p class="text-xs text-gray-400">Hearthlight Studios</p></div></div>
-          <div class="nominee-card aspect-4x5"><div class="nominee-thumbnail"><img src="images/nominees/the_last_room.jpg" alt="The Last Room"></div><div class="p-4"><h3 class="font-semibold text-sm mb-1">The Last Room</h3><p class="text-xs text-gray-400">Noa Ben-Ami</p></div></div>
-          <div class="nominee-card aspect-4x5"><div class="nominee-thumbnail"><img src="images/nominees/between_words.jpg" alt="Between Words"></div><div class="p-4"><h3 class="font-semibold text-sm mb-1">Between Words</h3><p class="text-xs text-gray-400">Amrita Iyer</p></div></div>
+      <div class="nominees-grid">
+        <div class="highlight-panel">
+          <div class="highlight-image">
+            <img src="images/nominees/fragments_of_code.jpg" alt="Fragments of Code" class="hero-image">
+          </div>
+          <div class="highlight-content">
+            <div>
+              <p class="highlight-title">Fragments of Code</p>
+              <p class="highlight-credit">Neural Canvas Studios</p>
+            </div>
+          </div>
+        </div>
+        <div class="nominees-list" data-category="best-ai-short-film">
+          <div class="nominee-item active" data-index="0">
+            <div class="nominee-thumbnail"><img src="images/nominees/fragments_of_code.jpg" alt="Fragments of Code"></div>
+            <div class="nominee-info">
+              <p class="nominee-name">Fragments of Code</p>
+              <p class="nominee-credit">Neural Canvas Studios</p>
+            </div>
+          </div>
+          <div class="nominee-item" data-index="1">
+            <div class="nominee-thumbnail"><img src="images/nominees/after_the_algorithm.jpg" alt="After the Algorithm"></div>
+            <div class="nominee-info">
+              <p class="nominee-name">After the Algorithm</p>
+              <p class="nominee-credit">Riya Banerjee</p>
+            </div>
+          </div>
+          <div class="nominee-item" data-index="2">
+            <div class="nominee-thumbnail"><img src="images/nominees/a_quiet_decision.jpg" alt="A Quiet Decision"></div>
+            <div class="nominee-info">
+              <p class="nominee-name">A Quiet Decision</p>
+              <p class="nominee-credit">Elena Morozova</p>
+            </div>
+          </div>
+          <div class="nominee-item" data-index="3">
+            <div class="nominee-thumbnail"><img src="images/nominees/seven_minutes.jpg" alt="Seven Minutes"></div>
+            <div class="nominee-info">
+              <p class="nominee-name">Seven Minutes</p>
+              <p class="nominee-credit">Caleb Owens</p>
+            </div>
+          </div>
+          <div class="nominee-item" data-index="4">
+            <div class="nominee-thumbnail"><img src="images/nominees/the_weight_of_yes.jpg" alt="The Weight of Yes"></div>
+            <div class="nominee-info">
+              <p class="nominee-name">The Weight of Yes</p>
+              <p class="nominee-credit">Parallax Storyworks</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </section>
 
-  <!-- AI COMMERCIAL FILM CATEGORY -->
-  <section class="nominee-section py-24 px-8 bg-gradient-to-b from-black via-brandDark to-black" data-category="commercial-film" data-aspect="16x9">
-    <div class="max-w-7xl mx-auto">
-      <div class="flex items-center justify-between mb-12">
-        <h2 class="text-4xl font-bold tracking-tight">AI Commercial Film</h2>
-        <div class="flex gap-2">
-          <button class="carousel-nav carousel-prev w-10 h-10 border border-gray-600 rounded flex items-center justify-center hover:border-white transition" aria-label="Previous">←</button>
-          <button class="carousel-nav carousel-next w-10 h-10 border border-gray-600 rounded flex items-center justify-center hover:border-white transition" aria-label="Next">→</button>
-        </div>
+    <!-- FILM CATEGORY 3: BEST AI DOCUMENTARY -->
+    <div class="category-section">
+      <div class="category-header">
+        <h2 class="category-title">Best AI Documentary</h2>
+        <span class="category-label">Film</span>
       </div>
-      <div class="carousel-container">
-        <div class="carousel-track">
-          <div class="nominee-card aspect-16x9"><div class="nominee-thumbnail"><img src="images/nominees/built_for_tomorrow.jpg" alt="Built for Tomorrow"></div><div class="p-4"><h3 class="font-semibold text-sm mb-1">Built for Tomorrow</h3><p class="text-xs text-gray-400">Hearthlight Studios</p></div></div>
-          <div class="nominee-card aspect-16x9"><div class="nominee-thumbnail"><img src="images/nominees/the_first_step.jpg" alt="The First Step"></div><div class="p-4"><h3 class="font-semibold text-sm mb-1">The First Step</h3><p class="text-xs text-gray-400">Daniel Cho</p></div></div>
-          <div class="nominee-card aspect-16x9"><div class="nominee-thumbnail"><img src="images/nominees/beyond_utility.jpg" alt="Beyond Utility"></div><div class="p-4"><h3 class="font-semibold text-sm mb-1">Beyond Utility</h3><p class="text-xs text-gray-400">Northline Creative</p></div></div>
-          <div class="nominee-card aspect-16x9"><div class="nominee-thumbnail"><img src="images/nominees/human_touch.jpg" alt="Human Touch"></div><div class="p-4"><h3 class="font-semibold text-sm mb-1">Human Touch</h3><p class="text-xs text-gray-400">Karim El-Masri</p></div></div>
-          <div class="nominee-card aspect-16x9"><div class="nominee-thumbnail"><img src="images/nominees/designed_to_last.jpg" alt="Designed to Last"></div><div class="p-4"><h3 class="font-semibold text-sm mb-1">Designed to Last</h3><p class="text-xs text-gray-400">Silverline VFX Collective</p></div></div>
-          <div class="nominee-card aspect-16x9"><div class="nominee-thumbnail"><img src="images/nominees/momentum.jpg" alt="Momentum"></div><div class="p-4"><h3 class="font-semibold text-sm mb-1">Momentum</h3><p class="text-xs text-gray-400">Static Bloom</p></div></div>
-          <div class="nominee-card aspect-16x9"><div class="nominee-thumbnail"><img src="images/nominees/what_we_choose.jpg" alt="What We Choose"></div><div class="p-4"><h3 class="font-semibold text-sm mb-1">What We Choose</h3><p class="text-xs text-gray-400">Lucia Romano</p></div></div>
+      <div class="nominees-grid">
+        <div class="highlight-panel">
+          <div class="highlight-image">
+            <img src="images/nominees/before_the_call.jpg" alt="Before the Call" class="hero-image">
+          </div>
+          <div class="highlight-content">
+            <div>
+              <p class="highlight-title">Before the Call</p>
+              <p class="highlight-credit">Farah Al-Hassan</p>
+            </div>
+          </div>
+        </div>
+        <div class="nominees-list" data-category="best-ai-documentary">
+          <div class="nominee-item active" data-index="0">
+            <div class="nominee-thumbnail"><img src="images/nominees/before_the_call.jpg" alt="Before the Call"></div>
+            <div class="nominee-info">
+              <p class="nominee-name">Before the Call</p>
+              <p class="nominee-credit">Farah Al-Hassan</p>
+            </div>
+          </div>
+          <div class="nominee-item" data-index="1">
+            <div class="nominee-thumbnail"><img src="images/nominees/still_standing.jpg" alt="Still Standing"></div>
+            <div class="nominee-info">
+              <p class="nominee-name">Still Standing</p>
+              <p class="nominee-credit">Hearthlight Studios</p>
+            </div>
+          </div>
+          <div class="nominee-item" data-index="2">
+            <div class="nominee-thumbnail"><img src="images/nominees/the_last_room.jpg" alt="The Last Room"></div>
+            <div class="nominee-info">
+              <p class="nominee-name">The Last Room</p>
+              <p class="nominee-credit">Noa Ben-Ami</p>
+            </div>
+          </div>
+          <div class="nominee-item" data-index="3">
+            <div class="nominee-thumbnail"><img src="images/nominees/between_words.jpg" alt="Between Words"></div>
+            <div class="nominee-info">
+              <p class="nominee-name">Between Words</p>
+              <p class="nominee-credit">Amrita Iyer</p>
+            </div>
+          </div>
+          <div class="nominee-item" data-index="4">
+            <div class="nominee-thumbnail"><img src="images/nominees/built_for_tomorrow.jpg" alt="Built for Tomorrow"></div>
+            <div class="nominee-info">
+              <p class="nominee-name">Built for Tomorrow</p>
+              <p class="nominee-credit">Hearthlight Studios</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </section>
 
-  <!-- AI MUSIC VIDEO CATEGORY -->
-  <section class="nominee-section py-24 px-8 bg-gradient-to-b from-black via-black to-brandDark" data-category="music-video" data-aspect="1x1">
-    <div class="max-w-7xl mx-auto">
-      <div class="flex items-center justify-between mb-12">
-        <h2 class="text-4xl font-bold tracking-tight">AI Music Video</h2>
-        <div class="flex gap-2">
-          <button class="carousel-nav carousel-prev w-10 h-10 border border-gray-600 rounded flex items-center justify-center hover:border-white transition" aria-label="Previous">←</button>
-          <button class="carousel-nav carousel-next w-10 h-10 border border-gray-600 rounded flex items-center justify-center hover:border-white transition" aria-label="Next">→</button>
-        </div>
+    <!-- FILM CATEGORY 4: BEST EXPERIMENTAL AI FILM -->
+    <div class="category-section">
+      <div class="category-header">
+        <h2 class="category-title">Best Experimental AI Film</h2>
+        <span class="category-label">Film</span>
       </div>
-      <div class="carousel-container">
-        <div class="carousel-track">
-          <div class="nominee-card aspect-1x1"><div class="nominee-thumbnail"><img src="images/nominees/neon_pulse.jpg" alt="Neon Pulse"></div><div class="p-4"><h3 class="font-semibold text-sm mb-1">Neon Pulse</h3><p class="text-xs text-gray-400">Pulseframe Collective</p></div></div>
-          <div class="nominee-card aspect-1x1"><div class="nominee-thumbnail"><img src="images/nominees/digital_fever.jpg" alt="Digital Fever"></div><div class="p-4"><h3 class="font-semibold text-sm mb-1">Digital Fever</h3><p class="text-xs text-gray-400">Santi Morales</p></div></div>
-          <div class="nominee-card aspect-1x1"><div class="nominee-thumbnail"><img src="images/nominees/echo_bass.jpg" alt="Echo Bass"></div><div class="p-4"><h3 class="font-semibold text-sm mb-1">Echo Bass</h3><p class="text-xs text-gray-400">Neural Canvas Studios</p></div></div>
-          <div class="nominee-card aspect-1x1"><div class="nominee-thumbnail"><img src="images/nominees/synthetic_groove.jpg" alt="Synthetic Groove"></div><div class="p-4"><h3 class="font-semibold text-sm mb-1">Synthetic Groove</h3><p class="text-xs text-gray-400">Yara Haddad</p></div></div>
-          <div class="nominee-card aspect-1x1"><div class="nominee-thumbnail"><img src="images/nominees/frequency_dreams.jpg" alt="Frequency Dreams"></div><div class="p-4"><h3 class="font-semibold text-sm mb-1">Frequency Dreams</h3><p class="text-xs text-gray-400">Pulseframe Collective</p></div></div>
-          <div class="nominee-card aspect-1x1"><div class="nominee-thumbnail"><img src="images/nominees/after_the_beat.jpg" alt="After the Beat"></div><div class="p-4"><h3 class="font-semibold text-sm mb-1">After the Beat</h3><p class="text-xs text-gray-400">Jonas Feld</p></div></div>
-          <div class="nominee-card aspect-1x1"><div class="nominee-thumbnail"><img src="images/nominees/chromatic_noise.jpg" alt="Chromatic Noise"></div><div class="p-4"><h3 class="font-semibold text-sm mb-1">Chromatic Noise</h3><p class="text-xs text-gray-400">Static Bloom</p></div></div>
+      <div class="nominees-grid">
+        <div class="highlight-panel">
+          <div class="highlight-image">
+            <img src="images/nominees/the_first_step.jpg" alt="The First Step" class="hero-image">
+          </div>
+          <div class="highlight-content">
+            <div>
+              <p class="highlight-title">The First Step</p>
+              <p class="highlight-credit">Daniel Cho</p>
+            </div>
+          </div>
+        </div>
+        <div class="nominees-list" data-category="best-experimental-ai-film">
+          <div class="nominee-item active" data-index="0">
+            <div class="nominee-thumbnail"><img src="images/nominees/the_first_step.jpg" alt="The First Step"></div>
+            <div class="nominee-info">
+              <p class="nominee-name">The First Step</p>
+              <p class="nominee-credit">Daniel Cho</p>
+            </div>
+          </div>
+          <div class="nominee-item" data-index="1">
+            <div class="nominee-thumbnail"><img src="images/nominees/beyond_utility.jpg" alt="Beyond Utility"></div>
+            <div class="nominee-info">
+              <p class="nominee-name">Beyond Utility</p>
+              <p class="nominee-credit">Northline Creative</p>
+            </div>
+          </div>
+          <div class="nominee-item" data-index="2">
+            <div class="nominee-thumbnail"><img src="images/nominees/human_touch.jpg" alt="Human Touch"></div>
+            <div class="nominee-info">
+              <p class="nominee-name">Human Touch</p>
+              <p class="nominee-credit">Karim El-Masri</p>
+            </div>
+          </div>
+          <div class="nominee-item" data-index="3">
+            <div class="nominee-thumbnail"><img src="images/nominees/designed_to_last.jpg" alt="Designed to Last"></div>
+            <div class="nominee-info">
+              <p class="nominee-name">Designed to Last</p>
+              <p class="nominee-credit">Silverline VFX Collective</p>
+            </div>
+          </div>
+          <div class="nominee-item" data-index="4">
+            <div class="nominee-thumbnail"><img src="images/nominees/momentum.jpg" alt="Momentum"></div>
+            <div class="nominee-info">
+              <p class="nominee-name">Momentum</p>
+              <p class="nominee-credit">Static Bloom</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
+
+    <!-- CRAFT & INNOVATION CATEGORY 5: BEST AI-ASSISTED SCREENPLAY -->
+    <div class="category-section">
+      <div class="category-header">
+        <h2 class="category-title">Best AI-Assisted Screenplay</h2>
+        <span class="category-label">Craft & Innovation</span>
+      </div>
+      <div class="nominees-grid">
+        <div class="highlight-panel">
+          <div class="highlight-image">
+            <img src="images/nominees/what_we_choose.jpg" alt="What We Choose" class="hero-image">
+          </div>
+          <div class="highlight-content">
+            <div>
+              <p class="highlight-title">What We Choose</p>
+              <p class="highlight-credit">Lucia Romano</p>
+            </div>
+          </div>
+        </div>
+        <div class="nominees-list" data-category="best-ai-assisted-screenplay">
+          <div class="nominee-item active" data-index="0">
+            <div class="nominee-thumbnail"><img src="images/nominees/what_we_choose.jpg" alt="What We Choose"></div>
+            <div class="nominee-info">
+              <p class="nominee-name">What We Choose</p>
+              <p class="nominee-credit">Lucia Romano</p>
+            </div>
+          </div>
+          <div class="nominee-item" data-index="1">
+            <div class="nominee-thumbnail"><img src="images/nominees/neon_pulse.jpg" alt="Neon Pulse"></div>
+            <div class="nominee-info">
+              <p class="nominee-name">Neon Pulse</p>
+              <p class="nominee-credit">Pulseframe Collective</p>
+            </div>
+          </div>
+          <div class="nominee-item" data-index="2">
+            <div class="nominee-thumbnail"><img src="images/nominees/digital_fever.jpg" alt="Digital Fever"></div>
+            <div class="nominee-info">
+              <p class="nominee-name">Digital Fever</p>
+              <p class="nominee-credit">Santi Morales</p>
+            </div>
+          </div>
+          <div class="nominee-item" data-index="3">
+            <div class="nominee-thumbnail"><img src="images/nominees/echo_bass.jpg" alt="Echo Bass"></div>
+            <div class="nominee-info">
+              <p class="nominee-name">Echo Bass</p>
+              <p class="nominee-credit">Neural Canvas Studios</p>
+            </div>
+          </div>
+          <div class="nominee-item" data-index="4">
+            <div class="nominee-thumbnail"><img src="images/nominees/synthetic_groove.jpg" alt="Synthetic Groove"></div>
+            <div class="nominee-info">
+              <p class="nominee-name">Synthetic Groove</p>
+              <p class="nominee-credit">Yara Haddad</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CRAFT & INNOVATION CATEGORY 6: BEST VISUAL INNOVATION USING AI -->
+    <div class="category-section">
+      <div class="category-header">
+        <h2 class="category-title">Best Visual Innovation using AI</h2>
+        <span class="category-label">Craft & Innovation</span>
+      </div>
+      <div class="nominees-grid">
+        <div class="highlight-panel">
+          <div class="highlight-image">
+            <img src="images/nominees/frequency_dreams.jpg" alt="Frequency Dreams" class="hero-image">
+          </div>
+          <div class="highlight-content">
+            <div>
+              <p class="highlight-title">Frequency Dreams</p>
+              <p class="highlight-credit">Pulseframe Collective</p>
+            </div>
+          </div>
+        </div>
+        <div class="nominees-list" data-category="best-visual-innovation-ai">
+          <div class="nominee-item active" data-index="0">
+            <div class="nominee-thumbnail"><img src="images/nominees/frequency_dreams.jpg" alt="Frequency Dreams"></div>
+            <div class="nominee-info">
+              <p class="nominee-name">Frequency Dreams</p>
+              <p class="nominee-credit">Pulseframe Collective</p>
+            </div>
+          </div>
+          <div class="nominee-item" data-index="1">
+            <div class="nominee-thumbnail"><img src="images/nominees/after_the_beat.jpg" alt="After the Beat"></div>
+            <div class="nominee-info">
+              <p class="nominee-name">After the Beat</p>
+              <p class="nominee-credit">Jonas Feld</p>
+            </div>
+          </div>
+          <div class="nominee-item" data-index="2">
+            <div class="nominee-thumbnail"><img src="images/nominees/chromatic_noise.jpg" alt="Chromatic Noise"></div>
+            <div class="nominee-info">
+              <p class="nominee-name">Chromatic Noise</p>
+              <p class="nominee-credit">Static Bloom</p>
+            </div>
+          </div>
+          <div class="nominee-item" data-index="3">
+            <div class="nominee-thumbnail"><img src="images/nominees/echoes_of_tomorrow.jpg" alt="Echoes of Tomorrow"></div>
+            <div class="nominee-info">
+              <p class="nominee-name">Echoes of Tomorrow</p>
+              <p class="nominee-credit">Aarav Khanna</p>
+            </div>
+          </div>
+          <div class="nominee-item" data-index="4">
+            <div class="nominee-thumbnail"><img src="images/nominees/synthetic_dawn.jpg" alt="Synthetic Dawn"></div>
+            <div class="nominee-info">
+              <p class="nominee-name">Synthetic Dawn</p>
+              <p class="nominee-credit">Silverline VFX Collective</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CRAFT & INNOVATION CATEGORY 7: BEST SOUND & MUSIC DESIGN USING AI -->
+    <div class="category-section">
+      <div class="category-header">
+        <h2 class="category-title">Best Sound & Music Design using AI</h2>
+        <span class="category-label">Craft & Innovation</span>
+      </div>
+      <div class="nominees-grid">
+        <div class="highlight-panel">
+          <div class="highlight-image">
+            <img src="images/nominees/the_last_prompt.jpg" alt="The Last Prompt" class="hero-image">
+          </div>
+          <div class="highlight-content">
+            <div>
+              <p class="highlight-title">The Last Prompt</p>
+              <p class="highlight-credit">Julian Cross</p>
+            </div>
+          </div>
+        </div>
+        <div class="nominees-list" data-category="best-sound-music-ai">
+          <div class="nominee-item active" data-index="0">
+            <div class="nominee-thumbnail"><img src="images/nominees/the_last_prompt.jpg" alt="The Last Prompt"></div>
+            <div class="nominee-info">
+              <p class="nominee-name">The Last Prompt</p>
+              <p class="nominee-credit">Julian Cross</p>
+            </div>
+          </div>
+          <div class="nominee-item" data-index="1">
+            <div class="nominee-thumbnail"><img src="images/nominees/ghosts_in_the_model.jpg" alt="Ghosts in the Model"></div>
+            <div class="nominee-info">
+              <p class="nominee-name">Ghosts in the Model</p>
+              <p class="nominee-credit">Parallax Storyworks</p>
+            </div>
+          </div>
+          <div class="nominee-item" data-index="2">
+            <div class="nominee-thumbnail"><img src="images/nominees/rendered_silence.jpg" alt="Rendered Silence"></div>
+            <div class="nominee-info">
+              <p class="nominee-name">Rendered Silence</p>
+              <p class="nominee-credit">Theo Markovic</p>
+            </div>
+          </div>
+          <div class="nominee-item" data-index="3">
+            <div class="nominee-thumbnail"><img src="images/nominees/fragments_of_code.jpg" alt="Fragments of Code"></div>
+            <div class="nominee-info">
+              <p class="nominee-name">Fragments of Code</p>
+              <p class="nominee-credit">Neural Canvas Studios</p>
+            </div>
+          </div>
+          <div class="nominee-item" data-index="4">
+            <div class="nominee-thumbnail"><img src="images/nominees/after_the_algorithm.jpg" alt="After the Algorithm"></div>
+            <div class="nominee-info">
+              <p class="nominee-name">After the Algorithm</p>
+              <p class="nominee-credit">Riya Banerjee</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CRAFT & INNOVATION CATEGORY 8: BEST AI-DRIVEN PERFORMANCE -->
+    <div class="category-section">
+      <div class="category-header">
+        <h2 class="category-title">Best AI-Driven Performance</h2>
+        <span class="category-label">Craft & Innovation</span>
+      </div>
+      <div class="nominees-grid">
+        <div class="highlight-panel">
+          <div class="highlight-image">
+            <img src="images/nominees/a_quiet_decision.jpg" alt="A Quiet Decision" class="hero-image">
+          </div>
+          <div class="highlight-content">
+            <div>
+              <p class="highlight-title">A Quiet Decision</p>
+              <p class="highlight-credit">Elena Morozova</p>
+            </div>
+          </div>
+        </div>
+        <div class="nominees-list" data-category="best-ai-driven-performance">
+          <div class="nominee-item active" data-index="0">
+            <div class="nominee-thumbnail"><img src="images/nominees/a_quiet_decision.jpg" alt="A Quiet Decision"></div>
+            <div class="nominee-info">
+              <p class="nominee-name">A Quiet Decision</p>
+              <p class="nominee-credit">Elena Morozova</p>
+            </div>
+          </div>
+          <div class="nominee-item" data-index="1">
+            <div class="nominee-thumbnail"><img src="images/nominees/seven_minutes.jpg" alt="Seven Minutes"></div>
+            <div class="nominee-info">
+              <p class="nominee-name">Seven Minutes</p>
+              <p class="nominee-credit">Caleb Owens</p>
+            </div>
+          </div>
+          <div class="nominee-item" data-index="2">
+            <div class="nominee-thumbnail"><img src="images/nominees/the_weight_of_yes.jpg" alt="The Weight of Yes"></div>
+            <div class="nominee-info">
+              <p class="nominee-name">The Weight of Yes</p>
+              <p class="nominee-credit">Parallax Storyworks</p>
+            </div>
+          </div>
+          <div class="nominee-item" data-index="3">
+            <div class="nominee-thumbnail"><img src="images/nominees/before_the_call.jpg" alt="Before the Call"></div>
+            <div class="nominee-info">
+              <p class="nominee-name">Before the Call</p>
+              <p class="nominee-credit">Farah Al-Hassan</p>
+            </div>
+          </div>
+          <div class="nominee-item" data-index="4">
+            <div class="nominee-thumbnail"><img src="images/nominees/still_standing.jpg" alt="Still Standing"></div>
+            <div class="nominee-info">
+              <p class="nominee-name">Still Standing</p>
+              <p class="nominee-credit">Hearthlight Studios</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CRAFT & INNOVATION CATEGORY 9: BEST WORLD-BUILDING & DESIGN -->
+    <div class="category-section">
+      <div class="category-header">
+        <h2 class="category-title">Best World-Building & Design</h2>
+        <span class="category-label">Craft & Innovation</span>
+      </div>
+      <div class="nominees-grid">
+        <div class="highlight-panel">
+          <div class="highlight-image">
+            <img src="images/nominees/the_last_room.jpg" alt="The Last Room" class="hero-image">
+          </div>
+          <div class="highlight-content">
+            <div>
+              <p class="highlight-title">The Last Room</p>
+              <p class="highlight-credit">Noa Ben-Ami</p>
+            </div>
+          </div>
+        </div>
+        <div class="nominees-list" data-category="best-world-building-design">
+          <div class="nominee-item active" data-index="0">
+            <div class="nominee-thumbnail"><img src="images/nominees/the_last_room.jpg" alt="The Last Room"></div>
+            <div class="nominee-info">
+              <p class="nominee-name">The Last Room</p>
+              <p class="nominee-credit">Noa Ben-Ami</p>
+            </div>
+          </div>
+          <div class="nominee-item" data-index="1">
+            <div class="nominee-thumbnail"><img src="images/nominees/between_words.jpg" alt="Between Words"></div>
+            <div class="nominee-info">
+              <p class="nominee-name">Between Words</p>
+              <p class="nominee-credit">Amrita Iyer</p>
+            </div>
+          </div>
+          <div class="nominee-item" data-index="2">
+            <div class="nominee-thumbnail"><img src="images/nominees/built_for_tomorrow.jpg" alt="Built for Tomorrow"></div>
+            <div class="nominee-info">
+              <p class="nominee-name">Built for Tomorrow</p>
+              <p class="nominee-credit">Hearthlight Studios</p>
+            </div>
+          </div>
+          <div class="nominee-item" data-index="3">
+            <div class="nominee-thumbnail"><img src="images/nominees/the_first_step.jpg" alt="The First Step"></div>
+            <div class="nominee-info">
+              <p class="nominee-name">The First Step</p>
+              <p class="nominee-credit">Daniel Cho</p>
+            </div>
+          </div>
+          <div class="nominee-item" data-index="4">
+            <div class="nominee-thumbnail"><img src="images/nominees/beyond_utility.jpg" alt="Beyond Utility"></div>
+            <div class="nominee-info">
+              <p class="nominee-name">Beyond Utility</p>
+              <p class="nominee-credit">Northline Creative</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- IMPACT & META CATEGORY 10: HUMAN-AI COLLABORATION AWARD -->
+    <div class="category-section">
+      <div class="category-header">
+        <h2 class="category-title">Human–AI Collaboration Award</h2>
+        <span class="category-label">Impact & Meta</span>
+      </div>
+      <div class="nominees-grid">
+        <div class="highlight-panel">
+          <div class="highlight-image">
+            <img src="images/nominees/human_touch.jpg" alt="Human Touch" class="hero-image">
+          </div>
+          <div class="highlight-content">
+            <div>
+              <p class="highlight-title">Human Touch</p>
+              <p class="highlight-credit">Karim El-Masri</p>
+            </div>
+          </div>
+        </div>
+        <div class="nominees-list" data-category="human-ai-collaboration">
+          <div class="nominee-item active" data-index="0">
+            <div class="nominee-thumbnail"><img src="images/nominees/human_touch.jpg" alt="Human Touch"></div>
+            <div class="nominee-info">
+              <p class="nominee-name">Human Touch</p>
+              <p class="nominee-credit">Karim El-Masri</p>
+            </div>
+          </div>
+          <div class="nominee-item" data-index="1">
+            <div class="nominee-thumbnail"><img src="images/nominees/designed_to_last.jpg" alt="Designed to Last"></div>
+            <div class="nominee-info">
+              <p class="nominee-name">Designed to Last</p>
+              <p class="nominee-credit">Silverline VFX Collective</p>
+            </div>
+          </div>
+          <div class="nominee-item" data-index="2">
+            <div class="nominee-thumbnail"><img src="images/nominees/momentum.jpg" alt="Momentum"></div>
+            <div class="nominee-info">
+              <p class="nominee-name">Momentum</p>
+              <p class="nominee-credit">Static Bloom</p>
+            </div>
+          </div>
+          <div class="nominee-item" data-index="3">
+            <div class="nominee-thumbnail"><img src="images/nominees/what_we_choose.jpg" alt="What We Choose"></div>
+            <div class="nominee-info">
+              <p class="nominee-name">What We Choose</p>
+              <p class="nominee-credit">Lucia Romano</p>
+            </div>
+          </div>
+          <div class="nominee-item" data-index="4">
+            <div class="nominee-thumbnail"><img src="images/nominees/neon_pulse.jpg" alt="Neon Pulse"></div>
+            <div class="nominee-info">
+              <p class="nominee-name">Neon Pulse</p>
+              <p class="nominee-credit">Pulseframe Collective</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- IMPACT & META CATEGORY 11: BREAKTHROUGH AI STORYTELLER -->
+    <div class="category-section">
+      <div class="category-header">
+        <h2 class="category-title">Breakthrough AI Storyteller</h2>
+        <span class="category-label">Impact & Meta</span>
+      </div>
+      <div class="nominees-grid">
+        <div class="highlight-panel">
+          <div class="highlight-image">
+            <img src="images/nominees/digital_fever.jpg" alt="Digital Fever" class="hero-image">
+          </div>
+          <div class="highlight-content">
+            <div>
+              <p class="highlight-title">Digital Fever</p>
+              <p class="highlight-credit">Santi Morales</p>
+            </div>
+          </div>
+        </div>
+        <div class="nominees-list" data-category="breakthrough-ai-storyteller">
+          <div class="nominee-item active" data-index="0">
+            <div class="nominee-thumbnail"><img src="images/nominees/digital_fever.jpg" alt="Digital Fever"></div>
+            <div class="nominee-info">
+              <p class="nominee-name">Digital Fever</p>
+              <p class="nominee-credit">Santi Morales</p>
+            </div>
+          </div>
+          <div class="nominee-item" data-index="1">
+            <div class="nominee-thumbnail"><img src="images/nominees/echo_bass.jpg" alt="Echo Bass"></div>
+            <div class="nominee-info">
+              <p class="nominee-name">Echo Bass</p>
+              <p class="nominee-credit">Neural Canvas Studios</p>
+            </div>
+          </div>
+          <div class="nominee-item" data-index="2">
+            <div class="nominee-thumbnail"><img src="images/nominees/synthetic_groove.jpg" alt="Synthetic Groove"></div>
+            <div class="nominee-info">
+              <p class="nominee-name">Synthetic Groove</p>
+              <p class="nominee-credit">Yara Haddad</p>
+            </div>
+          </div>
+          <div class="nominee-item" data-index="3">
+            <div class="nominee-thumbnail"><img src="images/nominees/frequency_dreams.jpg" alt="Frequency Dreams"></div>
+            <div class="nominee-info">
+              <p class="nominee-name">Frequency Dreams</p>
+              <p class="nominee-credit">Pulseframe Collective</p>
+            </div>
+          </div>
+          <div class="nominee-item" data-index="4">
+            <div class="nominee-thumbnail"><img src="images/nominees/after_the_beat.jpg" alt="After the Beat"></div>
+            <div class="nominee-info">
+              <p class="nominee-name">After the Beat</p>
+              <p class="nominee-credit">Jonas Feld</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- IMPACT & META CATEGORY 12: ETHICAL & RESPONSIBLE AI STORYTELLING AWARD -->
+    <div class="category-section">
+      <div class="category-header">
+        <h2 class="category-title">Ethical & Responsible AI Storytelling Award</h2>
+        <span class="category-label">Impact & Meta</span>
+      </div>
+      <div class="nominees-grid">
+        <div class="highlight-panel">
+          <div class="highlight-image">
+            <img src="images/nominees/chromatic_noise.jpg" alt="Chromatic Noise" class="hero-image">
+          </div>
+          <div class="highlight-content">
+            <div>
+              <p class="highlight-title">Chromatic Noise</p>
+              <p class="highlight-credit">Static Bloom</p>
+            </div>
+          </div>
+        </div>
+        <div class="nominees-list" data-category="ethical-responsible-ai">
+          <div class="nominee-item active" data-index="0">
+            <div class="nominee-thumbnail"><img src="images/nominees/chromatic_noise.jpg" alt="Chromatic Noise"></div>
+            <div class="nominee-info">
+              <p class="nominee-name">Chromatic Noise</p>
+              <p class="nominee-credit">Static Bloom</p>
+            </div>
+          </div>
+          <div class="nominee-item" data-index="1">
+            <div class="nominee-thumbnail"><img src="images/nominees/echoes_of_tomorrow.jpg" alt="Echoes of Tomorrow"></div>
+            <div class="nominee-info">
+              <p class="nominee-name">Echoes of Tomorrow</p>
+              <p class="nominee-credit">Aarav Khanna</p>
+            </div>
+          </div>
+          <div class="nominee-item" data-index="2">
+            <div class="nominee-thumbnail"><img src="images/nominees/synthetic_dawn.jpg" alt="Synthetic Dawn"></div>
+            <div class="nominee-info">
+              <p class="nominee-name">Synthetic Dawn</p>
+              <p class="nominee-credit">Silverline VFX Collective</p>
+            </div>
+          </div>
+          <div class="nominee-item" data-index="3">
+            <div class="nominee-thumbnail"><img src="images/nominees/the_last_prompt.jpg" alt="The Last Prompt"></div>
+            <div class="nominee-info">
+              <p class="nominee-name">The Last Prompt</p>
+              <p class="nominee-credit">Julian Cross</p>
+            </div>
+          </div>
+          <div class="nominee-item" data-index="4">
+            <div class="nominee-thumbnail"><img src="images/nominees/ghosts_in_the_model.jpg" alt="Ghosts in the Model"></div>
+            <div class="nominee-info">
+              <p class="nominee-name">Ghosts in the Model</p>
+              <p class="nominee-credit">Parallax Storyworks</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </section>
 
   <!-- FOOTER -->
@@ -512,6 +1132,7 @@
       </div>
     </div>
   </footer>
+
   <!-- Production Scroll System -->
   <script src="js/production-scroll.js"></script>
   
@@ -533,103 +1154,170 @@
   <!-- Mobile Navbar Overlay System -->
   <script src="js/navbar-mobile-overlay.js"></script>
 
-  <!-- Nominees Carousel System -->
+  <!-- Editorial Nominees System -->
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const sections = document.querySelectorAll('.nominee-section');
+    class EditorialNomineesSystem {
+      constructor() {
+        this.categoryStates = new Map();
+        this.init();
+      }
 
-      sections.forEach(section => {
-        const container = section.querySelector('.carousel-container');
-        const track = section.querySelector('.carousel-track');
-        const prevBtn = section.querySelector('.carousel-prev');
-        const nextBtn = section.querySelector('.carousel-next');
-        let autoScrollInterval;
-        let isHovering = false;
+      init() {
+        const categorySections = document.querySelectorAll('.nominees-list');
+        categorySections.forEach(section => {
+          const category = section.dataset.category;
+          const items = section.querySelectorAll('.nominee-item');
+          const highlightPanel = section.closest('.nominees-grid').querySelector('.highlight-panel');
+          
+          this.categoryStates.set(category, {
+            currentIndex: 0,
+            items: items,
+            highlightPanel: highlightPanel,
+            autoRotateInterval: null,
+            hovering: false,
+            resumeTimeout: null
+          });
 
-        if (!container || !track) return;
+          // Setup hover listeners
+          items.forEach((item, index) => {
+            item.addEventListener('mouseenter', () => this.handleItemHover(category, index));
+            item.addEventListener('click', () => this.handleItemTap(category, index));
+          });
 
-        const getCardWidth = () => {
-          const firstCard = track.querySelector('.nominee-card');
-          if (!firstCard) return 0;
-          return firstCard.offsetWidth;
-        };
+          // Start auto-rotation
+          this.startAutoRotate(category);
+        });
 
-        const getGap = () => {
-          const style = window.getComputedStyle(track);
-          return parseFloat(style.gap) || 16;
-        };
+        // Mobile: Start thumbnail auto-scroll
+        this.initMobileThumbnailScroll();
+      }
 
-        // Auto-scroll every 4 seconds (desktop and mobile)
-        function startAutoScroll() {
-          if (!isHovering) {
-            autoScrollInterval = setInterval(() => {
-              const cardWidth = getCardWidth();
-              const gap = getGap();
-              const distance = cardWidth + gap;
-              container.scrollLeft += distance;
-              
-              if (container.scrollLeft >= container.scrollWidth - container.clientWidth - 10) {
-                container.scrollLeft = 0;
+      handleItemHover(category, index) {
+        const state = this.categoryStates.get(category);
+        if (!state) return;
+
+        state.hovering = true;
+        this.stopAutoRotate(category);
+        this.showNominee(category, index);
+      }
+
+      handleItemTap(category, index) {
+        const state = this.categoryStates.get(category);
+        if (!state) return;
+
+        this.stopAutoRotate(category);
+        this.showNominee(category, index);
+
+        // Resume auto-rotation after 4 seconds
+        if (state.resumeTimeout) clearTimeout(state.resumeTimeout);
+        state.resumeTimeout = setTimeout(() => {
+          state.hovering = false;
+          this.startAutoRotate(category);
+        }, 4000);
+      }
+
+      showNominee(category, index) {
+        const state = this.categoryStates.get(category);
+        if (!state) return;
+
+        state.currentIndex = index;
+        const item = state.items[index];
+        const highlightPanel = state.highlightPanel;
+
+        // Update active state
+        state.items.forEach((el, i) => {
+          if (i === index) {
+            el.classList.add('active');
+          } else {
+            el.classList.remove('active');
+          }
+        });
+
+        // Update highlight panel
+        const img = item.querySelector('img');
+        const name = item.querySelector('.nominee-name')?.textContent || 'Coming Soon';
+        const credit = item.querySelector('.nominee-credit')?.textContent || '';
+
+        const heroImage = highlightPanel.querySelector('.hero-image');
+        const highlightTitle = highlightPanel.querySelector('.highlight-title');
+        const highlightCredit = highlightPanel.querySelector('.highlight-credit');
+
+        if (heroImage && img) {
+          heroImage.src = img.src;
+          heroImage.alt = img.alt;
+        }
+        if (highlightTitle) {
+          highlightTitle.textContent = name;
+        }
+        if (highlightCredit) {
+          highlightCredit.textContent = credit;
+        }
+      }
+
+      startAutoRotate(category) {
+        const state = this.categoryStates.get(category);
+        if (!state || state.hovering) return;
+
+        // Clear existing interval
+        if (state.autoRotateInterval) clearInterval(state.autoRotateInterval);
+
+        state.autoRotateInterval = setInterval(() => {
+          if (!state.hovering) {
+            state.currentIndex = (state.currentIndex + 1) % state.items.length;
+            this.showNominee(category, state.currentIndex);
+          }
+        }, 3500); // 3.5 second interval
+      }
+
+      stopAutoRotate(category) {
+        const state = this.categoryStates.get(category);
+        if (!state) return;
+
+        if (state.autoRotateInterval) {
+          clearInterval(state.autoRotateInterval);
+          state.autoRotateInterval = null;
+        }
+      }
+
+      initMobileThumbnailScroll() {
+        const isMobile = window.innerWidth <= 768;
+        if (!isMobile) return;
+
+        const nomineesList = document.querySelectorAll('.nominees-list');
+        nomineesList.forEach(list => {
+          // Auto-scroll thumbnails on mobile
+          let scrollInterval;
+          let autoScrolling = true;
+
+          const startAutoScroll = () => {
+            if (!autoScrolling) return;
+            scrollInterval = setInterval(() => {
+              const cardWidth = list.querySelector('.nominee-item')?.offsetWidth || 100;
+              list.scrollLeft += cardWidth + 12; // 12px gap
+              if (list.scrollLeft >= list.scrollWidth - list.clientWidth) {
+                list.scrollLeft = 0;
               }
             }, 4000);
-          }
-        }
+          };
 
-        function stopAutoScroll() {
-          clearInterval(autoScrollInterval);
-        }
+          list.addEventListener('touchstart', () => {
+            autoScrolling = false;
+            if (scrollInterval) clearInterval(scrollInterval);
+          });
 
-        // Arrow navigation - move exactly one card
-        if (prevBtn) {
-          prevBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            const cardWidth = getCardWidth();
-            const gap = getGap();
-            const distance = cardWidth + gap;
-            container.scrollLeft -= distance;
-            stopAutoScroll();
+          list.addEventListener('touchend', () => {
+            autoScrolling = true;
             startAutoScroll();
           });
-        }
 
-        if (nextBtn) {
-          nextBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            const cardWidth = getCardWidth();
-            const gap = getGap();
-            const distance = cardWidth + gap;
-            container.scrollLeft += distance;
-            stopAutoScroll();
-            startAutoScroll();
-          });
-        }
-
-        // Pause on hover
-        container.addEventListener('mouseenter', () => {
-          isHovering = true;
-          stopAutoScroll();
-        });
-
-        container.addEventListener('mouseleave', () => {
-          isHovering = false;
-          stopAutoScroll();
           startAutoScroll();
         });
+      }
+    }
 
-        // Stop auto-scroll on touch
-        container.addEventListener('touchstart', () => {
-          stopAutoScroll();
-        });
-
-        container.addEventListener('touchend', () => {
-          if (!isHovering) {
-            startAutoScroll();
-          }
-        });
-
-        // Start auto-scroll on load
-        startAutoScroll();
-      });
+    // Initialize when DOM is ready
+    document.addEventListener('DOMContentLoaded', () => {
+      new EditorialNomineesSystem();
     });
   </script>
 </body>
