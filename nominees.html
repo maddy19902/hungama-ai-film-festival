@@ -169,6 +169,61 @@
       height: 100%;
       object-fit: cover;
     }
+
+    /* CAROUSEL STYLING */
+    .carousel-container {
+      overflow-x: auto;
+      overflow-y: hidden;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .carousel-track {
+      display: flex;
+      gap: 1.5rem;
+      padding: 0.5rem 0;
+    }
+
+    .nominee-card {
+      flex-shrink: 0;
+      min-width: 200px;
+    }
+
+    /* Aspect ratio classes */
+    .aspect-2x3 {
+      aspect-ratio: 2 / 3;
+    }
+
+    .aspect-4x5 {
+      aspect-ratio: 4 / 5;
+    }
+
+    .aspect-1x1 {
+      aspect-ratio: 1 / 1;
+    }
+
+    .aspect-16x9 {
+      aspect-ratio: 16 / 9;
+    }
+
+    /* Mobile snap scrolling */
+    @media (max-width: 768px) {
+      .carousel-container {
+        scroll-snap-type: x mandatory;
+      }
+
+      .nominee-card {
+        scroll-snap-align: start;
+      }
+
+      .carousel-track {
+        gap: 1rem;
+      }
+
+      .nominee-card {
+        min-width: 160px;
+      }
+    }
   </style>
   <script src="js/elastic-free-parallax.js"></script>
   <script src="js/nominees-system.js"></script>
@@ -214,204 +269,96 @@
   </section>
 
   <!-- AI SHORT FILM CATEGORY -->
-  <section class="py-20 px-8 bg-gradient-to-b from-black via-brandDark to-black" data-parallax-layer="midground">
+  <section class="nominee-section py-20 px-8 bg-gradient-to-b from-black via-brandDark to-black" data-category="short-film" data-aspect="2x3">
     <div class="max-w-7xl mx-auto">
-      <h2 class="text-4xl font-bold mb-12 tracking-tight">
-        AI Short Film
-      </h2>
-      
-      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-8">
-        <div class="nominee-card">
-          <div class="nominee-thumbnail bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center" style="height: 300px;">
-            <span class="text-gray-600 text-sm">Thumbnail</span>
-          </div>
-          <div class="p-4">
-            <h4 class="font-semibold text-sm mb-1">Film Title</h4>
-            <p class="text-xs text-gray-400">Director Name</p>
-          </div>
+      <div class="flex items-center justify-between mb-12">
+        <h2 class="text-4xl font-bold tracking-tight">AI Short Film</h2>
+        <div class="flex gap-2">
+          <button class="carousel-nav carousel-prev w-10 h-10 border border-gray-600 rounded flex items-center justify-center hover:border-white transition" aria-label="Previous">←</button>
+          <button class="carousel-nav carousel-next w-10 h-10 border border-gray-600 rounded flex items-center justify-center hover:border-white transition" aria-label="Next">→</button>
         </div>
-        
-        <div class="nominee-card">
-          <div class="nominee-thumbnail bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center" style="height: 300px;">
-            <span class="text-gray-600 text-sm">Thumbnail</span>
-          </div>
-          <div class="p-4">
-            <h4 class="font-semibold text-sm mb-1">Film Title</h4>
-            <p class="text-xs text-gray-400">Director Name</p>
-          </div>
-        </div>
-
-        <div class="nominee-card">
-          <div class="nominee-thumbnail bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center" style="height: 300px;">
-            <span class="text-gray-600 text-sm">Thumbnail</span>
-          </div>
-          <div class="p-4">
-            <h4 class="font-semibold text-sm mb-1">Film Title</h4>
-            <p class="text-xs text-gray-400">Director Name</p>
-          </div>
-        </div>
-
-        <div class="nominee-card">
-          <div class="nominee-thumbnail bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center" style="height: 300px;">
-            <span class="text-gray-600 text-sm">Thumbnail</span>
-          </div>
-          <div class="p-4">
-            <h4 class="font-semibold text-sm mb-1">Film Title</h4>
-            <p class="text-xs text-gray-400">Director Name</p>
-          </div>
+      </div>
+      <div class="carousel-container">
+        <div class="carousel-track">
+          <div class="nominee-card aspect-2x3"><div class="nominee-thumbnail"><img src="images/nominees/echoes_of_tomorrow.jpg" alt="Echoes of Tomorrow"></div><div class="p-4"><h3 class="font-semibold text-sm mb-1">Echoes of Tomorrow</h3><p class="text-xs text-gray-400">Director: Aarav Khanna</p></div></div>
+          <div class="nominee-card aspect-2x3"><div class="nominee-thumbnail"><img src="images/nominees/synthetic_dawn.jpg" alt="Synthetic Dawn"></div><div class="p-4"><h3 class="font-semibold text-sm mb-1">Synthetic Dawn</h3><p class="text-xs text-gray-400">Silverline VFX Collective</p></div></div>
+          <div class="nominee-card aspect-2x3"><div class="nominee-thumbnail"><img src="images/nominees/the_last_prompt.jpg" alt="The Last Prompt"></div><div class="p-4"><h3 class="font-semibold text-sm mb-1">The Last Prompt</h3><p class="text-xs text-gray-400">Director: Julian Cross</p></div></div>
+          <div class="nominee-card aspect-2x3"><div class="nominee-thumbnail"><img src="images/nominees/ghosts_in_the_model.jpg" alt="Ghosts in the Model"></div><div class="p-4"><h3 class="font-semibold text-sm mb-1">Ghosts in the Model</h3><p class="text-xs text-gray-400">Parallax Storyworks</p></div></div>
+          <div class="nominee-card aspect-2x3"><div class="nominee-thumbnail"><img src="images/nominees/rendered_silence.jpg" alt="Rendered Silence"></div><div class="p-4"><h3 class="font-semibold text-sm mb-1">Rendered Silence</h3><p class="text-xs text-gray-400">Director: Theo Markovic</p></div></div>
+          <div class="nominee-card aspect-2x3"><div class="nominee-thumbnail"><img src="images/nominees/fragments_of_code.jpg" alt="Fragments of Code"></div><div class="p-4"><h3 class="font-semibold text-sm mb-1">Fragments of Code</h3><p class="text-xs text-gray-400">Neural Canvas Studios</p></div></div>
+          <div class="nominee-card aspect-2x3"><div class="nominee-thumbnail"><img src="images/nominees/after_the_algorithm.jpg" alt="After the Algorithm"></div><div class="p-4"><h3 class="font-semibold text-sm mb-1">After the Algorithm</h3><p class="text-xs text-gray-400">Director: Riya Banerjee</p></div></div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- AI MICRO DRAMA CATEGORY -->
-  <section class="py-20 px-8 bg-gradient-to-b from-black via-black to-brandDark" data-parallax-layer="foreground">
+  <section class="nominee-section py-20 px-8 bg-gradient-to-b from-black via-black to-brandDark" data-category="micro-drama" data-aspect="4x5">
     <div class="max-w-7xl mx-auto">
-      <h2 class="text-4xl font-bold mb-12 tracking-tight">
-        AI Micro Drama
-      </h2>
-      
-      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-8">
-        <div class="nominee-card">
-          <div class="nominee-thumbnail bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center" style="height: 300px;">
-            <span class="text-gray-600 text-sm">Thumbnail</span>
-          </div>
-          <div class="p-4">
-            <h4 class="font-semibold text-sm mb-1">Film Title</h4>
-            <p class="text-xs text-gray-400">Director Name</p>
-          </div>
+      <div class="flex items-center justify-between mb-12">
+        <h2 class="text-4xl font-bold tracking-tight">AI Micro Drama</h2>
+        <div class="flex gap-2">
+          <button class="carousel-nav carousel-prev w-10 h-10 border border-gray-600 rounded flex items-center justify-center hover:border-white transition" aria-label="Previous">←</button>
+          <button class="carousel-nav carousel-next w-10 h-10 border border-gray-600 rounded flex items-center justify-center hover:border-white transition" aria-label="Next">→</button>
         </div>
-        
-        <div class="nominee-card">
-          <div class="nominee-thumbnail bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center" style="height: 300px;">
-            <span class="text-gray-600 text-sm">Thumbnail</span>
-          </div>
-          <div class="p-4">
-            <h4 class="font-semibold text-sm mb-1">Film Title</h4>
-            <p class="text-xs text-gray-400">Director Name</p>
-          </div>
-        </div>
-
-        <div class="nominee-card">
-          <div class="nominee-thumbnail bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center" style="height: 300px;">
-            <span class="text-gray-600 text-sm">Thumbnail</span>
-          </div>
-          <div class="p-4">
-            <h4 class="font-semibold text-sm mb-1">Film Title</h4>
-            <p class="text-xs text-gray-400">Director Name</p>
-          </div>
-        </div>
-
-        <div class="nominee-card">
-          <div class="nominee-thumbnail bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center" style="height: 300px;">
-            <span class="text-gray-600 text-sm">Thumbnail</span>
-          </div>
-          <div class="p-4">
-            <h4 class="font-semibold text-sm mb-1">Film Title</h4>
-            <p class="text-xs text-gray-400">Director Name</p>
-          </div>
+      </div>
+      <div class="carousel-container">
+        <div class="carousel-track">
+          <div class="nominee-card aspect-4x5"><div class="nominee-thumbnail"><img src="images/nominees/a_quiet_decision.jpg" alt="A Quiet Decision"></div><div class="p-4"><h3 class="font-semibold text-sm mb-1">A Quiet Decision</h3><p class="text-xs text-gray-400">Director: Elena Morozova</p></div></div>
+          <div class="nominee-card aspect-4x5"><div class="nominee-thumbnail"><img src="images/nominees/seven_minutes.jpg" alt="Seven Minutes"></div><div class="p-4"><h3 class="font-semibold text-sm mb-1">Seven Minutes</h3><p class="text-xs text-gray-400">Director: Caleb Owens</p></div></div>
+          <div class="nominee-card aspect-4x5"><div class="nominee-thumbnail"><img src="images/nominees/the_weight_of_yes.jpg" alt="The Weight of Yes"></div><div class="p-4"><h3 class="font-semibold text-sm mb-1">The Weight of Yes</h3><p class="text-xs text-gray-400">Parallax Storyworks</p></div></div>
+          <div class="nominee-card aspect-4x5"><div class="nominee-thumbnail"><img src="images/nominees/before_the_call.jpg" alt="Before the Call"></div><div class="p-4"><h3 class="font-semibold text-sm mb-1">Before the Call</h3><p class="text-xs text-gray-400">Director: Farah Al-Hassan</p></div></div>
+          <div class="nominee-card aspect-4x5"><div class="nominee-thumbnail"><img src="images/nominees/still_standing.jpg" alt="Still Standing"></div><div class="p-4"><h3 class="font-semibold text-sm mb-1">Still Standing</h3><p class="text-xs text-gray-400">Hearthlight Studios</p></div></div>
+          <div class="nominee-card aspect-4x5"><div class="nominee-thumbnail"><img src="images/nominees/the_last_room.jpg" alt="The Last Room"></div><div class="p-4"><h3 class="font-semibold text-sm mb-1">The Last Room</h3><p class="text-xs text-gray-400">Director: Noa Ben-Ami</p></div></div>
+          <div class="nominee-card aspect-4x5"><div class="nominee-thumbnail"><img src="images/nominees/between_words.jpg" alt="Between Words"></div><div class="p-4"><h3 class="font-semibold text-sm mb-1">Between Words</h3><p class="text-xs text-gray-400">Director: Amrita Iyer</p></div></div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- AI COMMERCIAL FILM CATEGORY -->
-  <section class="py-20 px-8 bg-gradient-to-b from-black via-brandDark to-black" data-parallax-layer="midground">
+  <section class="nominee-section py-20 px-8 bg-gradient-to-b from-black via-brandDark to-black" data-category="commercial-film" data-aspect="16x9">
     <div class="max-w-7xl mx-auto">
-      <h2 class="text-4xl font-bold mb-12 tracking-tight">
-        AI Commercial Film
-      </h2>
-      
-      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-8">
-        <div class="nominee-card">
-          <div class="nominee-thumbnail bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center" style="height: 300px;">
-            <span class="text-gray-600 text-sm">Thumbnail</span>
-          </div>
-          <div class="p-4">
-            <h4 class="font-semibold text-sm mb-1">Film Title</h4>
-            <p class="text-xs text-gray-400">Director Name</p>
-          </div>
+      <div class="flex items-center justify-between mb-12">
+        <h2 class="text-4xl font-bold tracking-tight">AI Commercial Film</h2>
+        <div class="flex gap-2">
+          <button class="carousel-nav carousel-prev w-10 h-10 border border-gray-600 rounded flex items-center justify-center hover:border-white transition" aria-label="Previous">←</button>
+          <button class="carousel-nav carousel-next w-10 h-10 border border-gray-600 rounded flex items-center justify-center hover:border-white transition" aria-label="Next">→</button>
         </div>
-        
-        <div class="nominee-card">
-          <div class="nominee-thumbnail bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center" style="height: 300px;">
-            <span class="text-gray-600 text-sm">Thumbnail</span>
-          </div>
-          <div class="p-4">
-            <h4 class="font-semibold text-sm mb-1">Film Title</h4>
-            <p class="text-xs text-gray-400">Director Name</p>
-          </div>
-        </div>
-
-        <div class="nominee-card">
-          <div class="nominee-thumbnail bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center" style="height: 300px;">
-            <span class="text-gray-600 text-sm">Thumbnail</span>
-          </div>
-          <div class="p-4">
-            <h4 class="font-semibold text-sm mb-1">Film Title</h4>
-            <p class="text-xs text-gray-400">Director Name</p>
-          </div>
-        </div>
-
-        <div class="nominee-card">
-          <div class="nominee-thumbnail bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center" style="height: 300px;">
-            <span class="text-gray-600 text-sm">Thumbnail</span>
-          </div>
-          <div class="p-4">
-            <h4 class="font-semibold text-sm mb-1">Film Title</h4>
-            <p class="text-xs text-gray-400">Director Name</p>
-          </div>
+      </div>
+      <div class="carousel-container">
+        <div class="carousel-track">
+          <div class="nominee-card aspect-16x9"><div class="nominee-thumbnail"><img src="images/nominees/built_for_tomorrow.jpg" alt="Built for Tomorrow"></div><div class="p-4"><h3 class="font-semibold text-sm mb-1">Built for Tomorrow</h3><p class="text-xs text-gray-400">Hearthlight Studios</p></div></div>
+          <div class="nominee-card aspect-16x9"><div class="nominee-thumbnail"><img src="images/nominees/the_first_step.jpg" alt="The First Step"></div><div class="p-4"><h3 class="font-semibold text-sm mb-1">The First Step</h3><p class="text-xs text-gray-400">Director: Daniel Cho</p></div></div>
+          <div class="nominee-card aspect-16x9"><div class="nominee-thumbnail"><img src="images/nominees/beyond_utility.jpg" alt="Beyond Utility"></div><div class="p-4"><h3 class="font-semibold text-sm mb-1">Beyond Utility</h3><p class="text-xs text-gray-400">Northline Creative</p></div></div>
+          <div class="nominee-card aspect-16x9"><div class="nominee-thumbnail"><img src="images/nominees/human_touch.jpg" alt="Human Touch"></div><div class="p-4"><h3 class="font-semibold text-sm mb-1">Human Touch</h3><p class="text-xs text-gray-400">Director: Karim El-Masri</p></div></div>
+          <div class="nominee-card aspect-16x9"><div class="nominee-thumbnail"><img src="images/nominees/designed_to_last.jpg" alt="Designed to Last"></div><div class="p-4"><h3 class="font-semibold text-sm mb-1">Designed to Last</h3><p class="text-xs text-gray-400">Silverline VFX Collective</p></div></div>
+          <div class="nominee-card aspect-16x9"><div class="nominee-thumbnail"><img src="images/nominees/momentum.jpg" alt="Momentum"></div><div class="p-4"><h3 class="font-semibold text-sm mb-1">Momentum</h3><p class="text-xs text-gray-400">Static Bloom</p></div></div>
+          <div class="nominee-card aspect-16x9"><div class="nominee-thumbnail"><img src="images/nominees/what_we_choose.jpg" alt="What We Choose"></div><div class="p-4"><h3 class="font-semibold text-sm mb-1">What We Choose</h3><p class="text-xs text-gray-400">Director: Lucia Romano</p></div></div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- AI MUSIC VIDEO CATEGORY -->
-  <section class="py-20 px-8 bg-gradient-to-b from-black via-black to-brandDark" data-parallax-layer="foreground">
+  <section class="nominee-section py-20 px-8 bg-gradient-to-b from-black via-black to-brandDark" data-category="music-video" data-aspect="1x1">
     <div class="max-w-7xl mx-auto">
-      <h2 class="text-4xl font-bold mb-12 tracking-tight">
-        AI Music Video
-      </h2>
-      
-      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-8">
-        <div class="nominee-card">
-          <div class="nominee-thumbnail bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center" style="height: 300px;">
-            <span class="text-gray-600 text-sm">Thumbnail</span>
-          </div>
-          <div class="p-4">
-            <h4 class="font-semibold text-sm mb-1">Film Title</h4>
-            <p class="text-xs text-gray-400">Director Name</p>
-          </div>
+      <div class="flex items-center justify-between mb-12">
+        <h2 class="text-4xl font-bold tracking-tight">AI Music Video</h2>
+        <div class="flex gap-2">
+          <button class="carousel-nav carousel-prev w-10 h-10 border border-gray-600 rounded flex items-center justify-center hover:border-white transition" aria-label="Previous">←</button>
+          <button class="carousel-nav carousel-next w-10 h-10 border border-gray-600 rounded flex items-center justify-center hover:border-white transition" aria-label="Next">→</button>
         </div>
-        
-        <div class="nominee-card">
-          <div class="nominee-thumbnail bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center" style="height: 300px;">
-            <span class="text-gray-600 text-sm">Thumbnail</span>
-          </div>
-          <div class="p-4">
-            <h4 class="font-semibold text-sm mb-1">Film Title</h4>
-            <p class="text-xs text-gray-400">Director Name</p>
-          </div>
-        </div>
-
-        <div class="nominee-card">
-          <div class="nominee-thumbnail bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center" style="height: 300px;">
-            <span class="text-gray-600 text-sm">Thumbnail</span>
-          </div>
-          <div class="p-4">
-            <h4 class="font-semibold text-sm mb-1">Film Title</h4>
-            <p class="text-xs text-gray-400">Director Name</p>
-          </div>
-        </div>
-
-        <div class="nominee-card">
-          <div class="nominee-thumbnail bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center" style="height: 300px;">
-            <span class="text-gray-600 text-sm">Thumbnail</span>
-          </div>
-          <div class="p-4">
-            <h4 class="font-semibold text-sm mb-1">Film Title</h4>
-            <p class="text-xs text-gray-400">Director Name</p>
-          </div>
+      </div>
+      <div class="carousel-container">
+        <div class="carousel-track">
+          <div class="nominee-card aspect-1x1"><div class="nominee-thumbnail"><img src="images/nominees/neon_pulse.jpg" alt="Neon Pulse"></div><div class="p-4"><h3 class="font-semibold text-sm mb-1">Neon Pulse</h3><p class="text-xs text-gray-400">Pulseframe Collective</p></div></div>
+          <div class="nominee-card aspect-1x1"><div class="nominee-thumbnail"><img src="images/nominees/digital_fever.jpg" alt="Digital Fever"></div><div class="p-4"><h3 class="font-semibold text-sm mb-1">Digital Fever</h3><p class="text-xs text-gray-400">Director: Santi Morales</p></div></div>
+          <div class="nominee-card aspect-1x1"><div class="nominee-thumbnail"><img src="images/nominees/echo_bass.jpg" alt="Echo Bass"></div><div class="p-4"><h3 class="font-semibold text-sm mb-1">Echo Bass</h3><p class="text-xs text-gray-400">Neural Canvas Studios</p></div></div>
+          <div class="nominee-card aspect-1x1"><div class="nominee-thumbnail"><img src="images/nominees/synthetic_groove.jpg" alt="Synthetic Groove"></div><div class="p-4"><h3 class="font-semibold text-sm mb-1">Synthetic Groove</h3><p class="text-xs text-gray-400">Director: Yara Haddad</p></div></div>
+          <div class="nominee-card aspect-1x1"><div class="nominee-thumbnail"><img src="images/nominees/frequency_dreams.jpg" alt="Frequency Dreams"></div><div class="p-4"><h3 class="font-semibold text-sm mb-1">Frequency Dreams</h3><p class="text-xs text-gray-400">Pulseframe Collective</p></div></div>
+          <div class="nominee-card aspect-1x1"><div class="nominee-thumbnail"><img src="images/nominees/after_the_beat.jpg" alt="After the Beat"></div><div class="p-4"><h3 class="font-semibold text-sm mb-1">After the Beat</h3><p class="text-xs text-gray-400">Director: Jonas Feld</p></div></div>
+          <div class="nominee-card aspect-1x1"><div class="nominee-thumbnail"><img src="images/nominees/chromatic_noise.jpg" alt="Chromatic Noise"></div><div class="p-4"><h3 class="font-semibold text-sm mb-1">Chromatic Noise</h3><p class="text-xs text-gray-400">Static Bloom</p></div></div>
         </div>
       </div>
     </div>
@@ -452,6 +399,69 @@
 
   <!-- Mobile Navbar Overlay System -->
   <script src="js/navbar-mobile-overlay.js"></script>
+
+  <!-- Nominees Carousel System -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const sections = document.querySelectorAll('.nominee-section');
+
+      sections.forEach(section => {
+        const container = section.querySelector('.carousel-container');
+        const track = section.querySelector('.carousel-track');
+        const prevBtn = section.querySelector('.carousel-prev');
+        const nextBtn = section.querySelector('.carousel-next');
+        let autoScrollInterval;
+
+        if (!container || !track) return;
+
+        // Auto-scroll every 4 seconds on desktop
+        function startAutoScroll() {
+          if (window.innerWidth > 768) {
+            autoScrollInterval = setInterval(() => {
+              container.scrollLeft += 220;
+              if (container.scrollLeft >= container.scrollWidth - container.clientWidth - 10) {
+                container.scrollLeft = 0;
+              }
+            }, 4000);
+          }
+        }
+
+        function stopAutoScroll() {
+          clearInterval(autoScrollInterval);
+        }
+
+        // Arrow navigation
+        if (prevBtn) {
+          prevBtn.addEventListener('click', () => {
+            container.scrollLeft -= 220;
+            stopAutoScroll();
+            startAutoScroll();
+          });
+        }
+
+        if (nextBtn) {
+          nextBtn.addEventListener('click', () => {
+            container.scrollLeft += 220;
+            stopAutoScroll();
+            startAutoScroll();
+          });
+        }
+
+        // Pause on hover
+        container.addEventListener('mouseenter', stopAutoScroll);
+        container.addEventListener('mouseleave', () => {
+          stopAutoScroll();
+          startAutoScroll();
+        });
+
+        // Stop auto-scroll on touch
+        container.addEventListener('touchstart', stopAutoScroll);
+
+        // Start auto-scroll on load
+        startAutoScroll();
+      });
+    });
+  </script>
 </body>
 </html>
 
