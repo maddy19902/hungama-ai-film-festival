@@ -137,81 +137,115 @@
 
     /* AWARD CARD STYLING - MATCHES NOMINEES */
     .award-card {
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      background: #1a1a1d;
-      border-radius: 0.375rem;
-      overflow: hidden;
-      transition: all 0.3s ease;
-      display: flex;
-      flex-direction: column;
-      height: auto;
+      border: 1px solid rgba(255, 255, 255, 0.08) !important;
+      background: #1a1a1d !important;
+      border-radius: 0.375rem !important;
+      overflow: visible !important;
+      transition: all 0.3s ease !important;
+      display: flex !important;
+      flex-direction: column !important;
+      height: auto !important;
     }
 
     .award-card:hover {
-      border-color: rgba(225, 29, 46, 0.4);
-      background: #222225;
+      border-color: rgba(225, 29, 46, 0.4) !important;
+      background: #222225 !important;
     }
 
     .award-thumbnail {
       aspect-ratio: 2/3;
       background: #0f0f0f;
-      overflow: hidden;
+      overflow: hidden !important;
       flex-shrink: 0;
       border-radius: 0.375rem 0.375rem 0 0;
     }
 
     .award-thumbnail img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
+      width: 100% !important;
+      height: 100% !important;
+      object-fit: cover !important;
     }
 
     .award-card .award-info {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      background: #1a1a1d;
-      border-radius: 0 0 0.375rem 0.375rem;
-      border-top: 1px solid rgba(255, 255, 255, 0.08);
-      padding: 0.75rem;
-      min-height: 3.5rem;
+      flex: 1 !important;
+      display: flex !important;
+      flex-direction: column !important;
+      justify-content: flex-start !important;
+      background: #1a1a1d !important;
+      border-radius: 0 0 0.375rem 0.375rem !important;
+      border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+      padding: 0.75rem !important;
+      min-height: auto !important;
+      overflow: visible !important;
     }
 
     .award-card h3 {
-      color: #ffffff;
-      font-weight: 600;
-      font-size: 0.85rem;
-      line-height: 1.2;
-      margin: 0;
-      margin-bottom: 0.35rem;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
+      color: #ffffff !important;
+      font-weight: 600 !important;
+      font-size: 0.85rem !important;
+      line-height: 1.2 !important;
+      margin: 0 !important;
+      margin-bottom: 0.35rem !important;
+      overflow: visible !important;
     }
 
-    /* GRID LAYOUT */
-    .award-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: 1rem;
+    /* DESKTOP: GRID LAYOUT */
+    .carousel-container {
       width: 100%;
     }
 
-    @media (max-width: 768px) {
-      .award-grid {
-        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-        gap: 0.75rem;
-      }
+    .carousel-track {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+      padding: 0;
     }
 
-    /* HONOR CATEGORY SECTION */
-    .honor-category {
-      py-20 px-8;
+    /* Carousel layout for sections with 5+ items on desktop */
+    .carousel-container.carousel-mode {
+      overflow-x: auto;
+      overflow-y: hidden;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+      margin: -0.5rem 0;
+      padding: 0.5rem 0;
     }
 
+    .carousel-track.carousel-flex {
+      display: flex;
+      grid-template-columns: unset;
+      gap: 1rem;
+      padding: 0;
+    }
+
+    .carousel-track.carousel-flex .award-card {
+      flex-shrink: 0;
+      width: clamp(180px, 22vw, 300px);
+      min-width: 180px !important;
+    }
+
+    /* Button styling */
+    .carousel-nav {
+      width: 40px;
+      height: 40px;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 0.375rem;
+      background: transparent;
+      color: #ffffff;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+    }
+
+    .carousel-nav:hover {
+      border-color: rgba(255, 255, 255, 0.6);
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    /* Category headings */
     .honor-category h2 {
       font-size: 1.875rem;
       font-weight: bold;
@@ -220,10 +254,73 @@
       color: #ffffff;
     }
 
+    /* TABLET: 3 COLUMNS */
+    @media (max-width: 1024px) {
+      .carousel-track {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+      }
+    }
+
+    /* MOBILE: CAROUSEL LAYOUT */
     @media (max-width: 768px) {
+      .carousel-container {
+        overflow-x: auto;
+        overflow-y: hidden;
+        scroll-behavior: smooth;
+        -webkit-overflow-scrolling: touch;
+        margin: -0.5rem 0;
+        padding: 0.5rem 0;
+      }
+
+      .carousel-track {
+        display: flex;
+        grid-template-columns: unset;
+        gap: 0.75rem;
+        padding: 0;
+        scroll-snap-type: x mandatory;
+      }
+
+      .award-card {
+        scroll-snap-align: start;
+        scroll-snap-stop: always;
+        flex-shrink: 0;
+        width: calc(33.333% - 0.75rem) !important;
+        min-width: calc(33.333% - 0.75rem) !important;
+        max-width: calc(33.333% - 0.75rem) !important;
+        height: auto !important;
+        min-height: auto !important;
+      }
+
+      .carousel-track.carousel-flex .award-card {
+        width: calc(33.333% - 0.75rem) !important;
+        min-width: calc(33.333% - 0.75rem) !important;
+        max-width: calc(33.333% - 0.75rem) !important;
+      }
+
+      .award-card .award-info {
+        padding: 0.75rem !important;
+        min-height: auto !important;
+      }
+
+      .award-card h3 {
+        font-size: 0.75rem !important;
+        line-height: 1.2 !important;
+        margin-bottom: 0.25rem !important;
+        color: #ffffff !important;
+      }
+
       .honor-category h2 {
-        font-size: 1.875rem;
-        margin-bottom: 2rem;
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+        line-height: 1.2;
+      }
+
+      .carousel-nav {
+        display: flex !important;
+        width: 36px;
+        height: 36px;
+        font-size: 0.9rem;
       }
     }
 
@@ -276,23 +373,19 @@
   <!-- PRIMARY HONORS CATEGORY -->
   <section class="honor-category py-20 px-8 bg-gradient-to-b from-black via-brandDark to-black">
     <div class="max-w-7xl mx-auto">
-      <h2 class="text-4xl font-bold tracking-tight mb-12">Primary Honors</h2>
-      <div class="award-grid">
-        <div class="award-card">
-          <div class="award-thumbnail"><img src="images/honors/best-ai-feature.jpg" alt="Best AI Feature Film"></div>
-          <div class="award-info"><h3>Best AI Feature Film</h3></div>
+      <div class="flex items-center justify-between mb-12">
+        <h2 class="text-4xl font-bold tracking-tight">Primary Honors</h2>
+        <div class="flex gap-2 primary-nav">
+          <button class="carousel-nav carousel-prev w-10 h-10 border border-gray-600 rounded flex items-center justify-center hover:border-white transition" aria-label="Previous">←</button>
+          <button class="carousel-nav carousel-next w-10 h-10 border border-gray-600 rounded flex items-center justify-center hover:border-white transition" aria-label="Next">→</button>
         </div>
-        <div class="award-card">
-          <div class="award-thumbnail"><img src="images/honors/best-ai-short.jpg" alt="Best AI Short Film"></div>
-          <div class="award-info"><h3>Best AI Short Film</h3></div>
-        </div>
-        <div class="award-card">
-          <div class="award-thumbnail"><img src="images/honors/best-ai-documentary.jpg" alt="Best AI Documentary"></div>
-          <div class="award-info"><h3>Best AI Documentary</h3></div>
-        </div>
-        <div class="award-card">
-          <div class="award-thumbnail"><img src="images/honors/best-experimental-ai.jpg" alt="Best Experimental AI Film"></div>
-          <div class="award-info"><h3>Best Experimental AI Film</h3></div>
+      </div>
+      <div class="carousel-container">
+        <div class="carousel-track">
+          <div class="award-card"><div class="award-thumbnail"><img src="images/honors/best-ai-feature.jpg" alt="Best AI Feature Film"></div><div class="award-info"><h3>Best AI Feature Film</h3></div></div>
+          <div class="award-card"><div class="award-thumbnail"><img src="images/honors/best-ai-short.jpg" alt="Best AI Short Film"></div><div class="award-info"><h3>Best AI Short Film</h3></div></div>
+          <div class="award-card"><div class="award-thumbnail"><img src="images/honors/best-ai-documentary.jpg" alt="Best AI Documentary"></div><div class="award-info"><h3>Best AI Documentary</h3></div></div>
+          <div class="award-card"><div class="award-thumbnail"><img src="images/honors/best-experimental-ai.jpg" alt="Best Experimental AI Film"></div><div class="award-info"><h3>Best Experimental AI Film</h3></div></div>
         </div>
       </div>
     </div>
@@ -301,27 +394,20 @@
   <!-- CREATIVE & TECHNICAL HONORS CATEGORY -->
   <section class="honor-category py-20 px-8 bg-gradient-to-b from-black via-black to-brandDark">
     <div class="max-w-7xl mx-auto">
-      <h2 class="text-4xl font-bold tracking-tight mb-12">Creative & Technical Honours</h2>
-      <div class="award-grid">
-        <div class="award-card">
-          <div class="award-thumbnail"><img src="images/honors/best-screenplay.jpg" alt="Best AI-Assisted Screenplay"></div>
-          <div class="award-info"><h3>Best AI-Assisted Screenplay</h3></div>
+      <div class="flex items-center justify-between mb-12">
+        <h2 class="text-4xl font-bold tracking-tight">Creative & Technical Honours</h2>
+        <div class="flex gap-2 creative-nav">
+          <button class="carousel-nav carousel-prev w-10 h-10 border border-gray-600 rounded flex items-center justify-center hover:border-white transition" aria-label="Previous">←</button>
+          <button class="carousel-nav carousel-next w-10 h-10 border border-gray-600 rounded flex items-center justify-center hover:border-white transition" aria-label="Next">→</button>
         </div>
-        <div class="award-card">
-          <div class="award-thumbnail"><img src="images/honors/best-visual-innovation.jpg" alt="Best Visual Innovation using AI"></div>
-          <div class="award-info"><h3>Best Visual Innovation using AI</h3></div>
-        </div>
-        <div class="award-card">
-          <div class="award-thumbnail"><img src="images/honors/best-sound-music.jpg" alt="Best Sound & Music Design using AI"></div>
-          <div class="award-info"><h3>Best Sound & Music Design using AI</h3></div>
-        </div>
-        <div class="award-card">
-          <div class="award-thumbnail"><img src="images/honors/best-ai-performance.jpg" alt="Best AI-Driven Performance"></div>
-          <div class="award-info"><h3>Best AI-Driven Performance</h3></div>
-        </div>
-        <div class="award-card">
-          <div class="award-thumbnail"><img src="images/honors/best-world-building.jpg" alt="Best World-Building & Design"></div>
-          <div class="award-info"><h3>Best World-Building & Design</h3></div>
+      </div>
+      <div class="carousel-container carousel-mode">
+        <div class="carousel-track carousel-flex">
+          <div class="award-card"><div class="award-thumbnail"><img src="images/honors/best-screenplay.jpg" alt="Best AI-Assisted Screenplay"></div><div class="award-info"><h3>Best AI-Assisted Screenplay</h3></div></div>
+          <div class="award-card"><div class="award-thumbnail"><img src="images/honors/best-visual-innovation.jpg" alt="Best Visual Innovation using AI"></div><div class="award-info"><h3>Best Visual Innovation using AI</h3></div></div>
+          <div class="award-card"><div class="award-thumbnail"><img src="images/honors/best-sound-music.jpg" alt="Best Sound & Music Design using AI"></div><div class="award-info"><h3>Best Sound & Music Design using AI</h3></div></div>
+          <div class="award-card"><div class="award-thumbnail"><img src="images/honors/best-ai-performance.jpg" alt="Best AI-Driven Performance"></div><div class="award-info"><h3>Best AI-Driven Performance</h3></div></div>
+          <div class="award-card"><div class="award-thumbnail"><img src="images/honors/best-world-building.jpg" alt="Best World-Building & Design"></div><div class="award-info"><h3>Best World-Building & Design</h3></div></div>
         </div>
       </div>
     </div>
@@ -330,19 +416,18 @@
   <!-- SPECIAL JURY HONORS CATEGORY -->
   <section class="honor-category py-20 px-8 bg-gradient-to-b from-black via-brandDark to-black">
     <div class="max-w-7xl mx-auto">
-      <h2 class="text-4xl font-bold tracking-tight mb-12">Special Jury Honours</h2>
-      <div class="award-grid">
-        <div class="award-card">
-          <div class="award-thumbnail"><img src="images/honors/human-ai-collaboration.jpg" alt="Human–AI Collaboration Award"></div>
-          <div class="award-info"><h3>Human–AI Collaboration Award</h3></div>
+      <div class="flex items-center justify-between mb-12">
+        <h2 class="text-4xl font-bold tracking-tight">Special Jury Honours</h2>
+        <div class="flex gap-2 special-nav">
+          <button class="carousel-nav carousel-prev w-10 h-10 border border-gray-600 rounded flex items-center justify-center hover:border-white transition" aria-label="Previous">←</button>
+          <button class="carousel-nav carousel-next w-10 h-10 border border-gray-600 rounded flex items-center justify-center hover:border-white transition" aria-label="Next">→</button>
         </div>
-        <div class="award-card">
-          <div class="award-thumbnail"><img src="images/honors/breakthrough-storyteller.jpg" alt="Breakthrough AI Storyteller"></div>
-          <div class="award-info"><h3>Breakthrough AI Storyteller</h3></div>
-        </div>
-        <div class="award-card">
-          <div class="award-thumbnail"><img src="images/honors/ethical-ai-storytelling.jpg" alt="Ethical & Responsible AI Storytelling Award"></div>
-          <div class="award-info"><h3>Ethical & Responsible AI Storytelling Award</h3></div>
+      </div>
+      <div class="carousel-container">
+        <div class="carousel-track">
+          <div class="award-card"><div class="award-thumbnail"><img src="images/honors/human-ai-collaboration.jpg" alt="Human–AI Collaboration Award"></div><div class="award-info"><h3>Human–AI Collaboration Award</h3></div></div>
+          <div class="award-card"><div class="award-thumbnail"><img src="images/honors/breakthrough-storyteller.jpg" alt="Breakthrough AI Storyteller"></div><div class="award-info"><h3>Breakthrough AI Storyteller</h3></div></div>
+          <div class="award-card"><div class="award-thumbnail"><img src="images/honors/ethical-ai-storytelling.jpg" alt="Ethical & Responsible AI Storytelling Award"></div><div class="award-info"><h3>Ethical & Responsible AI Storytelling Award</h3></div></div>
         </div>
       </div>
     </div>
@@ -375,6 +460,143 @@
   <script src="js/emergency-override.js" defer></script>
   <script src="/js/navbar-scroll.js"></script>
   <script src="js/navbar-mobile-overlay.js"></script>
+
+  <!-- Honors Carousel System - Responsive Evaluation -->
+  <script>
+    // Carousel evaluation based on card count and breakpoint
+    function evaluateAllCarousels() {
+      const isMobile = window.innerWidth <= 768;
+      const maxDesktopCards = 4;
+      const maxMobileCards = 3;
+      
+      const sections = document.querySelectorAll('.honor-category');
+      
+      sections.forEach(section => {
+        const container = section.querySelector('.carousel-container');
+        const track = section.querySelector('.carousel-track');
+        const prevBtn = section.querySelector('.carousel-prev');
+        const nextBtn = section.querySelector('.carousel-next');
+        
+        if (!container || !track) return;
+        
+        const cardCount = track.querySelectorAll('.award-card').length;
+        const maxCards = isMobile ? maxMobileCards : maxDesktopCards;
+        const isCarousel = cardCount > maxCards;
+        
+        // Show/hide buttons based on card count
+        if (prevBtn) prevBtn.style.display = isCarousel ? 'flex' : 'none';
+        if (nextBtn) nextBtn.style.display = isCarousel ? 'flex' : 'none';
+        
+        // Manage auto-scroll
+        if (isCarousel && container.classList.contains('carousel-mode')) {
+          if (!container.autoScrollInterval) {
+            setupAutoScroll(container, track);
+          }
+        } else {
+          if (container.autoScrollInterval) {
+            clearInterval(container.autoScrollInterval);
+            container.autoScrollInterval = null;
+          }
+        }
+      });
+    }
+    
+    function setupAutoScroll(container, track) {
+      function startAutoScroll() {
+        container.autoScrollInterval = setInterval(() => {
+          const cardWidth = getCardWidth(track);
+          const gap = getGap(track);
+          const distance = cardWidth + gap;
+          
+          container.scrollLeft += distance;
+          
+          if (container.scrollLeft >= container.scrollWidth - container.clientWidth - 10) {
+            container.scrollLeft = 0;
+          }
+        }, 4000);
+      }
+      
+      function stopAutoScroll() {
+        clearInterval(container.autoScrollInterval);
+        container.autoScrollInterval = null;
+      }
+      
+      container.addEventListener('mouseenter', () => {
+        stopAutoScroll();
+      });
+      
+      container.addEventListener('mouseleave', () => {
+        startAutoScroll();
+      });
+      
+      container.addEventListener('touchstart', () => {
+        stopAutoScroll();
+      });
+      
+      container.addEventListener('touchend', () => {
+        startAutoScroll();
+      });
+      
+      startAutoScroll();
+    }
+    
+    function getCardWidth(track) {
+      const firstCard = track.querySelector('.award-card');
+      if (!firstCard) return 0;
+      return firstCard.offsetWidth;
+    }
+    
+    function getGap(track) {
+      const style = window.getComputedStyle(track);
+      return parseFloat(style.gap) || 12;
+    }
+    
+    // Button click handlers
+    document.addEventListener('DOMContentLoaded', function() {
+      evaluateAllCarousels();
+      
+      document.querySelectorAll('.carousel-prev').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          e.preventDefault();
+          const section = btn.closest('.honor-category');
+          const container = section.querySelector('.carousel-container');
+          const track = section.querySelector('.carousel-track');
+          
+          if (container && track) {
+            const cardWidth = getCardWidth(track);
+            const gap = getGap(track);
+            const distance = cardWidth + gap;
+            container.scrollLeft -= distance;
+          }
+        });
+      });
+      
+      document.querySelectorAll('.carousel-next').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          e.preventDefault();
+          const section = btn.closest('.honor-category');
+          const container = section.querySelector('.carousel-container');
+          const track = section.querySelector('.carousel-track');
+          
+          if (container && track) {
+            const cardWidth = getCardWidth(track);
+            const gap = getGap(track);
+            const distance = cardWidth + gap;
+            container.scrollLeft += distance;
+          }
+        });
+      });
+    });
+    
+    // Re-evaluate on window resize with debouncing
+    let resizeTimeout;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(() => {
+        evaluateAllCarousels();
+      }, 250);
+    });
+  </script>
 
 </body>
 </html>
