@@ -195,46 +195,54 @@
     </div>
   </section>
 
-  <!-- A NEW LANGUAGE OF CINEMA - EDITORIAL LAYOUT -->
-  <section class="py-20 sm:py-28 lg:py-36 px-5 sm:px-8 lg:px-12 bg-gradient-to-b from-[#0a0a0a] via-brandDark to-[#0a0a0a]" data-parallax-layer="midground">
+  <!-- A NEW LANGUAGE OF CINEMA - SIDE-BY-SIDE STRUCTURE -->
+  <section class="py-16 sm:py-24 lg:py-32 px-5 sm:px-8 lg:px-12 bg-gradient-to-b from-[#0a0a0a] via-brandDark to-[#0a0a0a]" data-parallax-layer="midground">
     <div class="max-w-7xl mx-auto">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+      
+      <!-- DESKTOP: TWO COLUMN GRID -->
+      <div class="lg:grid lg:grid-cols-5 lg:gap-12 items-center">
         
-        <!-- LEFT COLUMN: TEXT CONTENT -->
-        <div class="max-w-xl mx-auto lg:mx-0 text-center lg:text-left">
-          <h2 class="text-4xl sm:text-5xl xl:text-6xl font-bold leading-tight mb-8 tracking-tight">
+        <!-- LEFT COLUMN: TEXT (3/5 width on desktop) -->
+        <div class="lg:col-span-3 mb-12 lg:mb-0">
+          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight mb-6 lg:mb-8 tracking-tight">
             A New Language<br />
             <span class="text-brandRed/90">of Cinema</span>
           </h2>
           
-          <p class="text-gray-400 text-base sm:text-lg leading-relaxed font-light">
+          <p class="text-gray-400 text-base lg:text-lg leading-relaxed font-light">
             Where artificial intelligence meets human creativity. Hungama AI Film Festival explores the intersection of technology and storytelling, showcasing works that redefine the boundaries of cinema.
           </p>
         </div>
 
-        <!-- RIGHT COLUMN: EDITORIAL IMAGES -->
-        <div class="relative flex justify-center lg:justify-end">
-          
-          <!-- PRIMARY IMAGE: Humanoid (right-aligned on desktop, centered on mobile) -->
-          <div class="relative">
-            <img
-              src="images/humanoid.png"
-              alt="Humanoid illustration"
-              class="w-[80%] sm:w-[70%] lg:w-[420px] opacity-80 lg:opacity-75 mx-auto lg:mx-0"
-              style="filter: saturate(0.85);"
-            />
+        <!-- RIGHT COLUMN: IMAGES (2/5 width on desktop) -->
+        <div class="lg:col-span-2">
+          <!-- IMAGES CONTAINER: Both images in same div, side-by-side -->
+          <div class="flex items-center justify-center lg:justify-end gap-6 lg:gap-8">
             
-            <!-- SECONDARY ACCENT: Film Reel (positioned relative to humanoid) -->
-            <img
-              src="images/film-reel.png"
-              alt="Film reel accent"
-              class="hidden lg:block absolute -bottom-8 -left-16 w-48 opacity-40"
-            />
+            <!-- HUMANOID: Reduced size, not dominant -->
+            <div class="relative">
+              <img
+                src="images/humanoid.png"
+                alt="Humanoid illustration"
+                class="w-40 sm:w-48 lg:w-64 opacity-80"
+                style="filter: saturate(0.85);"
+              />
+            </div>
+            
+            <!-- FILM REEL: Smaller, beside humanoid -->
+            <div class="relative">
+              <img
+                src="images/film-reel.png"
+                alt="Film reel"
+                class="w-16 sm:w-20 lg:w-24 opacity-60"
+              />
+            </div>
+            
           </div>
-          
         </div>
         
       </div>
+      
     </div>
   </section>
 
