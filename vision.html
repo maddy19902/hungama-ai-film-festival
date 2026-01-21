@@ -220,126 +220,173 @@
       margin-bottom: 0;
     }
 
-    /* VERTICAL TIMELINE STYLES */
+    /* ============================================
+       VISION MANIFESTO EDITORIAL LAYOUT
+       ============================================ */
+
+    /* Desktop: 3-Column Editorial Grid */
     .vision-timeline {
-      max-width: 800px;
-      margin: 0 auto;
       position: relative;
-      padding: 2rem 0;
     }
 
-    .timeline-vertical-line {
+    /* Vertical timeline spine (DESKTOP ONLY) */
+    .vision-timeline::before {
+      content: '';
       position: absolute;
       left: 50%;
       top: 0;
       bottom: 0;
-      width: 2px;
+      width: 1px;
       background: linear-gradient(
         to bottom,
         transparent 0%,
         rgba(239, 68, 68, 0.3) 10%,
-        rgba(239, 68, 68, 0.5) 50%,
+        rgba(239, 68, 68, 0.4) 50%,
         rgba(239, 68, 68, 0.3) 90%,
         transparent 100%
       );
       transform: translateX(-50%);
+      z-index: 1;
     }
 
-    .timeline-step {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 4rem;
-      margin-bottom: 4rem;
+    .vision-item {
+      margin-bottom: 6rem;
       position: relative;
+      z-index: 2;
+    }
+
+    .vision-item:last-child {
+      margin-bottom: 0;
+    }
+
+    /* 3-Column Grid for Desktop */
+    .vision-grid {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: 4rem;
       align-items: center;
     }
 
-    .timeline-step:nth-child(even) {
-      direction: rtl;
+    /* Column 1: Headline (Right-aligned for desktop) */
+    .vision-headline {
+      text-align: right;
+      padding-right: 2rem;
     }
 
-    .timeline-step:nth-child(even) > * {
-      direction: ltr;
-    }
-
-    .timeline-step-content {
-      padding: 2rem;
-      border: 1px solid rgba(239, 68, 68, 0.2);
-      border-radius: 0.5rem;
-      background: rgba(239, 68, 68, 0.02);
-      backdrop-filter: blur(10px);
-      transition: all 0.3s ease;
-    }
-
-    .timeline-step-content:hover {
-      border-color: rgba(239, 68, 68, 0.4);
-      background: rgba(239, 68, 68, 0.05);
-      transform: translateY(-4px);
-    }
-
-    .timeline-step-content h3 {
-      font-size: 1.5rem;
+    .vision-headline h3 {
+      font-size: 2rem;
       font-weight: 700;
-      margin-bottom: 1rem;
-      background: linear-gradient(135deg, #ffffff 0%, #ef4444 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+      line-height: 1.3;
+      letter-spacing: 0.05em;
+      color: #ffffff;
     }
 
-    .timeline-step-content p {
-      font-size: 0.95rem;
-      color: rgba(255, 255, 255, 0.8);
-      line-height: 1.7;
+    /* Column 2: Timeline Spine */
+    .vision-spine {
+      position: relative;
+      width: 20px;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
-    .timeline-dot {
-      width: 16px;
-      height: 16px;
-      border-radius: 50%;
+    .timeline-node {
+      width: 14px;
+      height: 14px;
       background: #ef4444;
-      border: 3px solid rgba(0, 0, 0, 0.9);
-      box-shadow: 0 0 20px rgba(239, 68, 68, 0.6);
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
-      z-index: 10;
+      border-radius: 50%;
+      border: 2px solid rgba(0, 0, 0, 0.8);
+      box-shadow: 0 0 15px rgba(239, 68, 68, 0.5);
+      position: relative;
+      z-index: 3;
     }
 
+    /* Column 3: Description (Left-aligned for desktop) */
+    .vision-description {
+      text-align: left;
+      padding-left: 2rem;
+      max-width: 580px;
+    }
+
+    .vision-description p {
+      font-size: 1.125rem;
+      line-height: 1.75;
+      color: rgba(255, 255, 255, 0.85);
+      font-weight: 300;
+    }
+
+    /* ============================================
+       MOBILE RESPONSIVE LAYOUT
+       ============================================ */
     @media (max-width: 768px) {
-      .timeline-step {
+      /* Remove vertical spine on mobile */
+      .vision-timeline::before {
+        display: none;
+      }
+
+      /* Single column stack for mobile */
+      .vision-grid {
         grid-template-columns: 1fr;
         gap: 2rem;
-        margin-bottom: 3rem;
       }
 
-      .timeline-step:nth-child(even) {
-        direction: ltr;
+      /* Headline becomes centered on mobile */
+      .vision-headline {
+        text-align: center;
+        padding-right: 0;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid rgba(239, 68, 68, 0.2);
       }
 
-      .timeline-vertical-line {
-        left: 0;
-        transform: translateX(-9px);
+      .vision-headline h3 {
+        font-size: 1.75rem;
       }
 
-      .timeline-dot {
-        left: 0;
-        width: 18px;
-        height: 18px;
-        border-width: 4px;
+      /* Hide timeline spine column on mobile */
+      .vision-spine {
+        display: none;
       }
 
-      .timeline-step-content {
-        padding: 1.5rem;
+      /* Description becomes full width on mobile */
+      .vision-description {
+        padding-left: 0;
+        padding-top: 1rem;
+        max-width: 100%;
       }
 
-      .timeline-step-content h3 {
-        font-size: 1.25rem;
+      .vision-description p {
+        font-size: 1.05rem;
+        line-height: 1.7;
       }
 
-      .timeline-step-content p {
-        font-size: 0.9rem;
+      /* Adjust spacing for mobile */
+      .vision-item {
+        margin-bottom: 4rem;
+        padding-bottom: 2rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      }
+
+      .vision-item:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
+      }
+    }
+
+    /* ============================================
+       TABLET RESPONSIVE ADJUSTMENTS
+       ============================================ */
+    @media (min-width: 769px) and (max-width: 1023px) {
+      .vision-grid {
+        gap: 3rem;
+      }
+
+      .vision-headline h3 {
+        font-size: 1.75rem;
+      }
+
+      .vision-description p {
+        font-size: 1.05rem;
       }
     }
   </style>
@@ -404,49 +451,78 @@
     </div>
   </section>
 
-  <!-- VISION JOURNEY - HORIZONTAL TIMELINE -->
-  <section class="py-24 px-8 bg-black" data-parallax-layer="midground">
+  <!-- VISION MANIFESTO - EDITORIAL LAYOUT -->
+  <section class="py-32 px-8 bg-black vision-manifesto" data-parallax-layer="midground">
     <div class="max-w-7xl mx-auto">
-      <h2 class="text-4xl font-bold mb-24 tracking-tight text-center uppercase">OUR VISION</h2>
-      
-      <div class="vision-timeline-horizontal">
-        <div class="timeline-horizontal-line"></div>
 
-        <!-- Timeline Step 1: Why Festival Exists -->
-        <div class="timeline-step">
-          <div class="timeline-step-content">
-            <h3>Why This Festival Exists</h3>
-            <p>
-              We are witnessing a fundamental shift in how stories can be created. AI is not replacing filmmakers—it is expanding the canvas on which human creativity can flourish.
-            </p>
+      <!-- Section Title -->
+      <h2 class="text-4xl font-bold mb-32 tracking-tight uppercase text-center">
+        OUR VISION
+      </h2>
+
+      <!-- Vision Timeline Container -->
+      <div class="vision-timeline">
+
+        <!-- Vision Item 1: Why Festival Exists -->
+        <div class="vision-item">
+          <div class="vision-grid">
+            <!-- COLUMN 1: Headline -->
+            <div class="vision-headline">
+              <h3 class="text-3xl font-bold uppercase tracking-wide">WHY THIS FESTIVAL EXISTS</h3>
+            </div>
+
+            <!-- COLUMN 2: Timeline Spine -->
+            <div class="vision-spine">
+              <div class="timeline-node"></div>
+            </div>
+
+            <!-- COLUMN 3: Description -->
+            <div class="vision-description">
+              <p class="text-lg text-gray-300 leading-relaxed">
+                We are witnessing a fundamental shift in how stories can be created. AI is not replacing filmmakers—it is expanding the canvas on which human creativity can flourish. Generative AI has reached a defining moment in cinema. What was once experimental is now expressive, emotional, and cinematic. The Hungama AI Film Festival exists to recognize, legitimize, and elevate AI-developed films as a serious creative medium.
+              </p>
+            </div>
           </div>
-          <div class="timeline-dot"></div>
-          <div></div>
         </div>
 
-        <!-- Timeline Step 2: Beyond Tools -->
-        <div class="timeline-step">
-          <div></div>
-          <div class="timeline-dot"></div>
-          <div class="timeline-step-content">
-            <h3>Beyond Tools. Toward Story.</h3>
-            <p>
-              For the first time, AI is not just a tool in the filmmaker's hands, but a creative partner, collaborator, and storyteller in its own right. When technology becomes creative voice—when the tool becomes the artist.
-            </p>
+        <!-- Vision Item 2: Beyond Tools -->
+        <div class="vision-item">
+          <div class="vision-grid">
+            <div class="vision-headline">
+              <h3 class="text-3xl font-bold uppercase tracking-wide">BEYOND TOOLS. TOWARD STORY.</h3>
+            </div>
+
+            <div class="vision-spine">
+              <div class="timeline-node"></div>
+            </div>
+
+            <div class="vision-description">
+              <p class="text-lg text-gray-300 leading-relaxed">
+                This festival is not about software. It is about authorship, intent, craft, and imagination. We celebrate filmmakers who use AI not as a shortcut, but as a new language of storytelling. For the first time, AI is not just a tool in the filmmaker's hands, but a creative partner, collaborator, and storyteller in its own right. When technology becomes creative voice—when the tool becomes the artist.
+              </p>
+            </div>
           </div>
         </div>
 
-        <!-- Timeline Step 3: Institutional Platform -->
-        <div class="timeline-step">
-          <div class="timeline-step-content">
-            <h3>An Institutional Platform</h3>
-            <p>
-              Hungama AI Film Festival is more than a competition. We work with filmmakers to develop their craft, connect them with resources, and position AI cinema within the broader cultural conversation for the next generation.
-            </p>
+        <!-- Vision Item 3: Institutional Platform -->
+        <div class="vision-item">
+          <div class="vision-grid">
+            <div class="vision-headline">
+              <h3 class="text-3xl font-bold uppercase tracking-wide">AN INSTITUTIONAL PLATFORM</h3>
+            </div>
+
+            <div class="vision-spine">
+              <div class="timeline-node"></div>
+            </div>
+
+            <div class="vision-description">
+              <p class="text-lg text-gray-300 leading-relaxed">
+                Hungama stands at the intersection of content, creators, intellectual property, and global distribution. This festival is designed to bridge AI-native creators with studios, platforms, collaborators, and long-term opportunity. Hungama AI Film Festival is more than a competition. We work with filmmakers to develop their craft, connect them with resources, and position AI cinema within the broader cultural conversation for the next generation.
+              </p>
+            </div>
           </div>
-          <div class="timeline-dot"></div>
-          <div></div>
         </div>
+
       </div>
     </div>
   </section>
