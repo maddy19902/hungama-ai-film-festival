@@ -1,0 +1,325 @@
+./__archive__/old_backups/css_backup_1768888398/animations.css
+./__archive__/old_backups/css_backup_1768888398/cta-system.css
+./__archive__/old_backups/css_backup_1768888398/design-tokens.css
+./__archive__/old_backups/css_backup_1768888398/elastic-elimination.css
+./__archive__/old_backups/css_backup_1768888398/final-polish.css
+./__archive__/old_backups/css_backup_1768888398/global-hover-system.css
+./__archive__/old_backups/css_backup_1768888398/micro-details.css
+./__archive__/old_backups/css_backup_1768888398/modal-system.css
+./__archive__/old_backups/css_backup_1768888398/nominees-improvements.css
+./__archive__/old_backups/css_backup_1768888398/output.css
+./__archive__/old_backups/css_backup_1768888398/parallax-system.css
+./__archive__/old_backups/css_backup_1768888398/premium-interactions.css
+./__archive__/old_backups/css_backup_1768888398/scroll-physics.css
+./__archive__/old_backups/css_backup_1768888398/scroll-transitions.css
+./__archive__/old_backups/css_backup_1768888398/typography-hierarchy.css
+./__archive__/scripts/inject_brightening.py
+./__archive__/scripts/inject_navbar.py
+./__archive__/scripts/inject_responsiveness.py
+./__archive__/scripts/inject_responsiveness_remaining.py
+./__archive__/tests/TEST_DASHBOARD.html
+./__archive__/tests/__CRITICAL_FIXES_STATUS.html
+./__archive__/tests/__test_grain.html
+./__archive__/tests/__test_jury_hero.html
+./__rollback__/css/animations.css
+./__rollback__/css/cta-system.css
+./__rollback__/css/design-tokens.css
+./__rollback__/css/elastic-elimination.css
+./__rollback__/css/final-polish.css
+./__rollback__/css/global-hover-system.css
+./__rollback__/css/micro-details.css
+./__rollback__/css/modal-system.css
+./__rollback__/css/nominees-improvements.css
+./__rollback__/css/output.css
+./__rollback__/css/parallax-system.css
+./__rollback__/css/path-fallback.css
+./__rollback__/css/polish.css
+./__rollback__/css/premium-interactions.css
+./__rollback__/css/scroll-physics.css
+./__rollback__/css/scroll-transitions.css
+./__rollback__/css/typography-hierarchy.css
+./__rollback__/html/TEST_DASHBOARD.html
+./__rollback__/html/ceremony.html
+./__rollback__/html/contact.html
+./__rollback__/html/honors.html
+./__rollback__/html/index.html
+./__rollback__/html/jury.html
+./__rollback__/html/nominees.html
+./__rollback__/html/press.html
+./__rollback__/html/privacy.html
+./__rollback__/html/sponsors.html
+./__rollback__/html/submit.html
+./__rollback__/html/terms.html
+./__rollback__/html/vision.html
+./__rollback__/html/winners.html
+./__rollback__/js/asset-check.js
+./__rollback__/js/cache-buster.js
+./__rollback__/js/carousel.js
+./__rollback__/js/cinematic.js
+./__rollback__/js/cta-wiring.js
+./__rollback__/js/data.js
+./__rollback__/js/elastic-free-parallax.js
+./__rollback__/js/email-capture.js
+./__rollback__/js/emergency-override.js
+./__rollback__/js/main.js
+./__rollback__/js/navbar-controller.js
+./__rollback__/js/nominees-system.js
+./__rollback__/js/parallax-engine.js
+./__rollback__/js/parallax-validator.js
+./__rollback__/js/parallax.js
+./__rollback__/js/premium-nav.js
+./__rollback__/js/press-kit-download.js
+./__rollback__/js/production-parallax.js
+./__rollback__/js/production-scroll.js
+./__rollback__/js/scroll-controller.js
+./__rollback__/js/scroll-observer.js
+./__rollback__/js/split-layer-parallax.js
+./__rollback__/js/view-transitions.js
+./__rollback__/js/vision-scroll-observer.js
+./__rollback__/mobile-menu/TEST_DASHBOARD.html
+./__rollback__/mobile-menu/__CRITICAL_FIXES_STATUS.html
+./__rollback__/mobile-menu/__test_grain.html
+./__rollback__/mobile-menu/__test_jury_hero.html
+./__rollback__/mobile-menu/ceremony.html
+./__rollback__/mobile-menu/contact.html
+./__rollback__/mobile-menu/css_backup/animations.css
+./__rollback__/mobile-menu/css_backup/components/navbar.css
+./__rollback__/mobile-menu/css_backup/cta-system.css
+./__rollback__/mobile-menu/css_backup/design-tokens.css
+./__rollback__/mobile-menu/css_backup/elastic-elimination.css
+./__rollback__/mobile-menu/css_backup/final-polish.css
+./__rollback__/mobile-menu/css_backup/global-hover-system.css
+./__rollback__/mobile-menu/css_backup/grain-disable.css
+./__rollback__/mobile-menu/css_backup/jury-hero-fix.css
+./__rollback__/mobile-menu/css_backup/jury-modals.css
+./__rollback__/mobile-menu/css_backup/micro-details.css
+./__rollback__/mobile-menu/css_backup/modal-system.css
+./__rollback__/mobile-menu/css_backup/nominees-improvements.css
+./__rollback__/mobile-menu/css_backup/output.css
+./__rollback__/mobile-menu/css_backup/pages/awards.css
+./__rollback__/mobile-menu/css_backup/pages/jury.css
+./__rollback__/mobile-menu/css_backup/pages/vision.css
+./__rollback__/mobile-menu/css_backup/parallax-system.css
+./__rollback__/mobile-menu/css_backup/pass2-ceremony-finish.css
+./__rollback__/mobile-menu/css_backup/pass2-global-brightening.css
+./__rollback__/mobile-menu/css_backup/pass2-honors-finish.css
+./__rollback__/mobile-menu/css_backup/pass2-jury-finish.css
+./__rollback__/mobile-menu/css_backup/pass2-vision-finish.css
+./__rollback__/mobile-menu/css_backup/pass2-winners-finish.css
+./__rollback__/mobile-menu/css_backup/path-fallback.css
+./__rollback__/mobile-menu/css_backup/polish.css
+./__rollback__/mobile-menu/css_backup/premium-interactions.css
+./__rollback__/mobile-menu/css_backup/responsiveness.css
+./__rollback__/mobile-menu/css_backup/scroll-physics.css
+./__rollback__/mobile-menu/css_backup/scroll-transitions.css
+./__rollback__/mobile-menu/css_backup/typography-hierarchy.css
+./__rollback__/mobile-menu/honors.html
+./__rollback__/mobile-menu/index.html
+./__rollback__/mobile-menu/js_backup/asset-check.js
+./__rollback__/mobile-menu/js_backup/cache-buster.js
+./__rollback__/mobile-menu/js_backup/carousel.js
+./__rollback__/mobile-menu/js_backup/cinematic.js
+./__rollback__/mobile-menu/js_backup/cta-wiring.js
+./__rollback__/mobile-menu/js_backup/data.js
+./__rollback__/mobile-menu/js_backup/elastic-free-parallax.js
+./__rollback__/mobile-menu/js_backup/email-capture.js
+./__rollback__/mobile-menu/js_backup/emergency-override.js
+./__rollback__/mobile-menu/js_backup/jury-modals.js
+./__rollback__/mobile-menu/js_backup/main.js
+./__rollback__/mobile-menu/js_backup/navbar-controller.js
+./__rollback__/mobile-menu/js_backup/navbar-scroll.js
+./__rollback__/mobile-menu/js_backup/nominees-system.js
+./__rollback__/mobile-menu/js_backup/parallax-engine.js
+./__rollback__/mobile-menu/js_backup/parallax-validator.js
+./__rollback__/mobile-menu/js_backup/parallax.js
+./__rollback__/mobile-menu/js_backup/premium-nav.js
+./__rollback__/mobile-menu/js_backup/press-kit-download.js
+./__rollback__/mobile-menu/js_backup/production-parallax.js
+./__rollback__/mobile-menu/js_backup/production-scroll.js
+./__rollback__/mobile-menu/js_backup/scroll-controller.js
+./__rollback__/mobile-menu/js_backup/scroll-observer.js
+./__rollback__/mobile-menu/js_backup/split-layer-parallax.js
+./__rollback__/mobile-menu/js_backup/view-transitions.js
+./__rollback__/mobile-menu/js_backup/vision-scroll-observer.js
+./__rollback__/mobile-menu/jury.html
+./__rollback__/mobile-menu/nominees.html
+./__rollback__/mobile-menu/press.html
+./__rollback__/mobile-menu/privacy.html
+./__rollback__/mobile-menu/sponsors.html
+./__rollback__/mobile-menu/submit.html
+./__rollback__/mobile-menu/terms.html
+./__rollback__/mobile-menu/vision.html
+./__rollback__/mobile-menu/winners.html
+./api/capture-email.js
+./api/email-capture.js
+./ceremony.html
+./contact.html
+./css/animations.css
+./css/components/navbar.css
+./css/cta-system.css
+./css/design-tokens.css
+./css/elastic-elimination.css
+./css/final-polish.css
+./css/global-hover-system.css
+./css/grain-disable.css
+./css/jury-grid-system.css
+./css/jury-hero-fix.css
+./css/jury-modals.css
+./css/micro-details.css
+./css/mobile-menu.css
+./css/modal-system.css
+./css/nominees-improvements.css
+./css/output.css
+./css/pages/awards.css
+./css/pages/jury.css
+./css/pages/vision.css
+./css/parallax-system.css
+./css/pass2-ceremony-finish.css
+./css/pass2-global-brightening.css
+./css/pass2-honors-finish.css
+./css/pass2-jury-finish.css
+./css/pass2-vision-finish.css
+./css/pass2-winners-finish.css
+./css/path-fallback.css
+./css/polish.css
+./css/premium-interactions.css
+./css/responsiveness.css
+./css/scroll-physics.css
+./css/scroll-transitions.css
+./css/typography-hierarchy.css
+./honors.html
+./index.html
+./js/asset-check.js
+./js/cache-buster.js
+./js/carousel.js
+./js/cinematic.js
+./js/cta-wiring.js
+./js/data.js
+./js/elastic-free-parallax.js
+./js/email-capture.js
+./js/emergency-override.js
+./js/jury-modals.js
+./js/main.js
+./js/mobile-menu.js
+./js/navbar-controller.js
+./js/navbar-mobile-overlay.js
+./js/navbar-scroll.js
+./js/nominees-system.js
+./js/parallax-engine.js
+./js/parallax-validator.js
+./js/parallax.js
+./js/premium-nav.js
+./js/press-kit-download.js
+./js/production-parallax.js
+./js/production-scroll.js
+./js/scroll-controller.js
+./js/scroll-observer.js
+./js/split-layer-parallax.js
+./js/view-transitions.js
+./js/vision-scroll-observer.js
+./jury.html
+./nominees.html
+./postcss.config.js
+./press.html
+./privacy.html
+./public/css/animations.css
+./public/css/cta-system.css
+./public/css/design-tokens.css
+./public/css/final-polish.css
+./public/css/global-hover-system.css
+./public/css/micro-details.css
+./public/css/output.css
+./public/css/premium-interactions.css
+./public/css/scroll-transitions.css
+./public/css/typography-hierarchy.css
+./public/js/asset-check.js
+./public/js/cinematic.js
+./public/js/data.js
+./public/js/email-capture.js
+./public/js/premium-nav.js
+./public/js/press-kit-download.js
+./public/js/scroll-observer.js
+./public/js/view-transitions.js
+./public/output.css
+./sponsors.html
+./submit.html
+./tailwind.config.js
+./terms.html
+./verify-deployment.js
+./vision.html
+./winners.html
+=== HTML FILES ===
+ceremony.html 13007 bytes
+contact.html 10958 bytes
+honors.html 21709 bytes
+index.html 13966 bytes
+jury.html 21863 bytes
+nominees.html 27436 bytes
+press.html 17507 bytes
+privacy.html 9082 bytes
+sponsors.html 15662 bytes
+submit.html 45692 bytes
+terms.html 9692 bytes
+vision.html 21916 bytes
+winners.html 12004 bytes
+
+=== CSS FILES ===
+css/animations.css 9875 bytes
+css/cta-system.css 3930 bytes
+css/design-tokens.css 7672 bytes
+css/elastic-elimination.css 2868 bytes
+css/final-polish.css 9964 bytes
+css/global-hover-system.css 5405 bytes
+css/grain-disable.css 1237 bytes
+css/jury-grid-system.css 16661 bytes
+css/jury-hero-fix.css 3774 bytes
+css/jury-modals.css 2616 bytes
+css/micro-details.css 11787 bytes
+css/mobile-menu.css 2330 bytes
+css/modal-system.css 5960 bytes
+css/nominees-improvements.css 8146 bytes
+css/output.css 19319 bytes
+css/parallax-system.css 3080 bytes
+css/pass2-ceremony-finish.css 5006 bytes
+css/pass2-global-brightening.css 5968 bytes
+css/pass2-honors-finish.css 6151 bytes
+css/pass2-jury-finish.css 4127 bytes
+css/pass2-vision-finish.css 6404 bytes
+css/pass2-winners-finish.css 4761 bytes
+css/path-fallback.css 180 bytes
+css/polish.css 9391 bytes
+css/premium-interactions.css 12745 bytes
+css/responsiveness.css 4944 bytes
+css/scroll-physics.css 2681 bytes
+css/scroll-transitions.css 8222 bytes
+css/typography-hierarchy.css 5048 bytes
+
+=== JS FILES ===
+js/asset-check.js 1224 bytes
+js/cache-buster.js 4001 bytes
+js/carousel.js 4737 bytes
+js/cinematic.js 9313 bytes
+js/cta-wiring.js 4624 bytes
+js/data.js 5690 bytes
+js/elastic-free-parallax.js 10704 bytes
+js/email-capture.js 4302 bytes
+js/emergency-override.js 560 bytes
+js/jury-modals.js 2259 bytes
+js/main.js 9653 bytes
+js/mobile-menu.js 3378 bytes
+js/navbar-controller.js 4487 bytes
+js/navbar-mobile-overlay.js 7106 bytes
+js/navbar-scroll.js 398 bytes
+js/nominees-system.js 12644 bytes
+js/parallax-engine.js 8260 bytes
+js/parallax-validator.js 3460 bytes
+js/parallax.js 3761 bytes
+js/premium-nav.js 8370 bytes
+js/press-kit-download.js 4659 bytes
+js/production-parallax.js 9883 bytes
+js/production-scroll.js 6165 bytes
+js/scroll-controller.js 9715 bytes
+js/scroll-observer.js 6082 bytes
+js/split-layer-parallax.js 9496 bytes
+js/view-transitions.js 3392 bytes
+js/vision-scroll-observer.js 1662 bytes

@@ -1,0 +1,86 @@
+CSS Analysis Report
+==================================================
+
+css/elastic-elimination.css
+
+css/final-polish.css
+
+css/grain-disable.css
+
+css/modal-system.css
+
+css/global-hover-system.css
+
+css/parallax-system.css
+
+css/typography-hierarchy.css
+
+css/animations.css
+
+css/pass2-ceremony-finish.css
+
+css/pass2-honors-finish.css
+
+css/pass2-vision-finish.css
+
+css/premium-interactions.css
+
+css/jury-grid-system.css
+
+css/mobile-menu.css
+
+css/cta-system.css
+
+css/nominees-improvements.css
+
+css/responsiveness.css
+
+css/pass2-winners-finish.css
+
+css/jury-hero-fix.css
+
+css/design-tokens.css
+
+css/pass2-jury-finish.css
+
+css/micro-details.css
+
+css/scroll-transitions.css
+
+css/path-fallback.css
+
+css/output.css
+
+css/scroll-physics.css
+
+css/jury-modals.css
+
+css/polish.css
+
+css/pass2-global-brightening.css
+
+
+Total CSS Files: 29
+Total Duplicate Selectors: 31
+Total @keyframes: 33
+Total transition/transform rules: 301
+
+!important rules:
+  css/elastic-elimination.css: 6 !important rules
+  css/final-polish.css: 74 !important rules
+  css/grain-disable.css: 21 !important rules
+  css/modal-system.css: 3 !important rules
+  css/typography-hierarchy.css: 75 !important rules
+  css/animations.css: 10 !important rules
+  css/premium-interactions.css: 4 !important rules
+  css/jury-grid-system.css: 1 !important rules
+  css/mobile-menu.css: 1 !important rules
+  css/cta-system.css: 32 !important rules
+  css/nominees-improvements.css: 5 !important rules
+  css/responsiveness.css: 1 !important rules
+  css/jury-hero-fix.css: 48 !important rules
+  css/scroll-transitions.css: 4 !important rules
+  css/path-fallback.css: 2 !important rules
+  css/scroll-physics.css: 2 !important rules
+  css/polish.css: 12 !important rules
+  css/pass2-global-brightening.css: 6 !important rules

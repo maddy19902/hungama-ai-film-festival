@@ -141,25 +141,25 @@
 
     /* VISION PAGE SPECIFIC */
     .vision-hero {
-      min-h-[85vh] bg-cover bg-center relative flex items-center
+      min-h-[85vh] bg-cover bg-center relative flex items-center;
+      background-attachment: fixed;
     }
 
     .vision-hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(
-        135deg,
-        rgba(0, 0, 0, 0.7) 0%,
-        rgba(0, 0, 0, 0.5) 50%,
-        rgba(225, 29, 46, 0.1) 100%
-      );
-      z-index: 1;
+      display: none;
     }
 
     .vision-hero > * {
       position: relative;
       z-index: 2;
+      text-align: left;
+    }
+
+    .vision-hero h1,
+    .vision-hero p,
+    .vision-hero a,
+    .vision-hero button {
+      text-align: left !important;
     }
 
     .timeline-item {
@@ -386,7 +386,7 @@
         align-items: start;
       }
 
-      /* Timeline column (left spine) */
+      /* Timeline spine column - positioned to align with headline */
       .vision-spine {
         grid-area: timeline;
         position: relative;
@@ -394,9 +394,10 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+        justify-content: flex-start;
       }
 
-      /* Timeline node */
+      /* Timeline node - positioned ON the spine, aligned to headline */
       .timeline-node {
         width: 12px;
         height: 12px;
@@ -404,9 +405,11 @@
         border-radius: 50%;
         border: 2px solid rgba(0, 0, 0, 0.9);
         box-shadow: 0 0 8px rgba(239, 68, 68, 0.5);
-        position: relative;
+        position: absolute;
+        left: 50%;
+        top: 0.1rem;
         z-index: 2;
-        margin-top: 0.25rem;
+        transform: translateX(-50%);
       }
 
       /* Headline column */
@@ -450,15 +453,7 @@
 
       /* Ensure spine connects through all items */
       .vision-item:not(:last-child) .vision-spine::after {
-        content: '';
-        position: absolute;
-        top: 24px;
-        bottom: -3rem;
-        width: 2px;
-        background: rgba(239, 68, 68, 0.2);
-        left: 50%;
-        transform: translateX(-50%);
-        z-index: 1;
+        display: none !important;
       }
     }
 
@@ -491,6 +486,16 @@
       .vision-description p {
         font-size: 0.9rem;
       }
+
+      /* MOBILE HERO FIX (≤480px) - Cover with padding */
+      section.vision-hero {
+        min-height: unset;
+        height: auto;
+        padding-top: 4rem;
+        padding-bottom: 4rem;
+        background-size: cover;
+        background-attachment: scroll;
+      }
     }
 
     /* ============================================
@@ -507,6 +512,18 @@
 
       .vision-description p {
         font-size: 1.05rem;
+      }
+    }
+
+    /* MOBILE HERO FIX (≤768px) - Cover with padding, NOT contain */
+    @media (max-width: 768px) {
+      section.vision-hero {
+        min-height: unset;
+        height: auto;
+        padding-top: 6rem;
+        padding-bottom: 6rem;
+        background-size: cover;
+        background-attachment: scroll;
       }
     }
 
@@ -590,8 +607,8 @@
 
   <!-- VISION HERO SECTION -->
   <section
-    class="min-h-[85vh] bg-cover bg-center flex items-center relative pt-32"
-    style="background-image: url('images/home-hero-bg.png');"
+    class="min-h-[85vh] bg-contain bg-center bg-no-repeat flex items-center relative pt-32 vision-hero"
+    style="background-image: url('images/vision-bg.jpg');"
     data-parallax-layer="background"
     data-parallax-speed="0.15"
   >

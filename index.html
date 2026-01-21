@@ -195,68 +195,88 @@
     </div>
   </section>
 
-  <!-- A NEW LANGUAGE OF CINEMA - FORCED NUCLEAR REBUILD -->
-  <section class="py-16 sm:py-24 lg:py-32 px-5 sm:px-8 lg:px-12 bg-gradient-to-b from-[#0a0a0a] via-brandDark to-[#0a0a0a]" data-parallax-layer="midground">
+  <!-- MANIFESTO: TEXT-DOMINANT ASYMMETRICAL COMPOSITION -->
+  <section class="py-20 sm:py-28 lg:py-40 px-5 sm:px-8 lg:px-12 bg-gradient-to-b from-[#0a0a0a] via-[#0b0b0b] to-[#0a0a0a]" data-parallax-layer="midground">
     <div class="max-w-7xl mx-auto">
-      
-      <!-- FORCE 2 COLUMNS ON DESKTOP, 1 COLUMN ON MOBILE -->
-      <div class="block lg:flex lg:items-center">
+      <div class="block lg:grid lg:grid-cols-3 lg:gap-12 lg:items-start">
         
-        <!-- TEXT: LEFT ON DESKTOP, TOP ON MOBILE -->
-        <div class="lg:w-3/5 lg:pr-12 mb-10 lg:mb-0">
-          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight mb-6 lg:mb-8 tracking-tight text-left">
+        <!-- TEXT DOMINATES: ~60% VISUAL WEIGHT -->
+        <div class="lg:col-span-2 mb-12 lg:mb-0">
+          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight mb-6 lg:mb-8 tracking-tight">
             India's Premier<br />
             <span class="text-brandRed/90">AI Film Festival</span>
           </h2>
           
-          <p class="text-gray-400 text-base sm:text-lg leading-relaxed font-light text-left">
+          <p class="text-gray-400 text-base sm:text-lg leading-relaxed font-light mb-6">
             Hungama AI Film Festival is India's leading platform dedicated to AI-native films—where human imagination and artificial intelligence converge to create bold, original cinematic work. We celebrate a new language of filmmaking that emerges from collaboration, experimentation, and emotion—reshaping how stories are imagined, authored, and experienced across cultures.
           </p>
         </div>
 
-        <!-- IMAGES: RIGHT ON DESKTOP, BELOW ON MOBILE -->
-        <div class="lg:w-2/5">
-          <div class="flex items-center justify-center lg:justify-end gap-4 sm:gap-6">
-            <!-- HUMANOID: REDUCED SIZE -->
-            <img
-              src="images/humanoid.png"
-              alt="Humanoid illustration"
-              class="w-40 sm:w-48 lg:w-64 flex-shrink-0 opacity-80"
-              style="filter: saturate(0.85);"
-            />
-            <!-- FILM REEL: SMALLER, BESIDE HUMANOID -->
-            <img
-              src="images/film-reel.png"
-              alt="Film reel"
-              class="w-16 sm:w-20 lg:w-24 flex-shrink-0 opacity-60"
-            />
+        <!-- IMAGES: OFFSET & PERIPHERAL ON RIGHT -->
+        <div class="lg:col-span-1 lg:relative" style="min-height: 400px;">
+          <div class="absolute lg:top-0 lg:right-0 lg:-mr-12" style="width: 100%; max-width: 320px;">
+            <!-- HUMANOID: OFFSET TO RIGHT, PARTIAL VISIBILITY -->
+            <div class="relative mb-6">
+              <img
+                src="images/humanoid.png"
+                alt="Humanoid illustration"
+                class="w-48 sm:w-56 lg:w-64 flex-shrink-0 opacity-75 lg:absolute lg:right-0 lg:top-0"
+                style="filter: saturate(0.80); transform: translateX(20px);"
+              />
+            </div>
+            
+            <!-- FILM REEL: COMPLEMENT HUMANOID IN NEGATIVE SPACE -->
+            <div class="flex justify-end mt-4 lg:mt-0 lg:absolute lg:bottom-0 lg:right-8" style="transform: translateY(60px);">
+              <img
+                src="images/film-reel.png"
+                alt="Film reel"
+                class="w-20 sm:w-24 lg:w-28 flex-shrink-0 opacity-65"
+                style="filter: saturate(0.75);"
+              />
+            </div>
           </div>
         </div>
         
       </div>
-      
     </div>
   </section>
 
-  <!-- SUPPORTED BY: PRINCIPAL PARTNERS SECTION -->
-  <section class="py-16 px-5 sm:px-8 lg:px-12 bg-[#0a0a0a]" data-parallax-layer="foreground">
-    <div class="max-w-5xl mx-auto text-center">
-      <p class="text-xs tracking-[0.18em] text-gray-500 uppercase mb-8">
+  <!-- SPONSORS: LOGO + NAME PAIRING -->
+  <section class="py-16 sm:py-20 px-5 sm:px-8 lg:px-12 bg-gradient-to-b from-[#0a0a0a] via-[#0a0a0a] to-[#0b0b0b]" data-parallax-layer="foreground">
+    <div class="max-w-5xl mx-auto">
+      <p class="text-xs tracking-[0.18em] text-gray-500 uppercase mb-10 text-center">
         Supported by
       </p>
       
-      <div class="flex flex-wrap justify-center gap-x-8 gap-y-6 text-xs text-gray-500">
-        <div class="flex items-center gap-3 opacity-70">
-          <span class="w-5 h-5 bg-white/15 rounded flex-shrink-0"></span>
-          <span class="font-light">Aurora Nexus</span>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-12">
+        <!-- Aurora Nexus -->
+        <div class="flex flex-col items-center sm:items-start gap-3 opacity-75 hover:opacity-100 transition">
+          <img
+            src="images/sponsors/aurora-nexus-logo.png"
+            alt="Aurora Nexus"
+            class="h-6 sm:h-8 grayscale hover:grayscale-0 transition"
+          />
+          <span class="text-xs text-gray-500 font-light">Aurora Nexus</span>
         </div>
-        <div class="flex items-center gap-3 opacity-70">
-          <span class="w-5 h-5 bg-white/15 rounded flex-shrink-0"></span>
-          <span class="font-light">HelixOne</span>
+        
+        <!-- HelixOne -->
+        <div class="flex flex-col items-center sm:items-start gap-3 opacity-75 hover:opacity-100 transition">
+          <img
+            src="images/sponsors/helixone-logo.png"
+            alt="HelixOne"
+            class="h-6 sm:h-8 grayscale hover:grayscale-0 transition"
+          />
+          <span class="text-xs text-gray-500 font-light">HelixOne</span>
         </div>
-        <div class="flex items-center gap-3 opacity-70">
-          <span class="w-5 h-5 bg-white/15 rounded flex-shrink-0"></span>
-          <span class="font-light">NovaForge</span>
+        
+        <!-- NovaForge -->
+        <div class="flex flex-col items-center sm:items-start gap-3 opacity-75 hover:opacity-100 transition">
+          <img
+            src="images/sponsors/novaforge-logo.png"
+            alt="NovaForge"
+            class="h-6 sm:h-8 grayscale hover:grayscale-0 transition"
+          />
+          <span class="text-xs text-gray-500 font-light">NovaForge</span>
         </div>
       </div>
     </div>
