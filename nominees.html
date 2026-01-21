@@ -559,9 +559,9 @@
           return parseFloat(style.gap) || 16;
         };
 
-        // Auto-scroll every 4 seconds on desktop
+        // Auto-scroll every 4 seconds (desktop and mobile)
         function startAutoScroll() {
-          if (window.innerWidth > 768 && !isHovering) {
+          if (!isHovering) {
             autoScrollInterval = setInterval(() => {
               const cardWidth = getCardWidth();
               const gap = getGap();
@@ -622,7 +622,7 @@
         });
 
         container.addEventListener('touchend', () => {
-          if (!isHovering && window.innerWidth > 768) {
+          if (!isHovering) {
             startAutoScroll();
           }
         });
