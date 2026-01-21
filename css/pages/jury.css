@@ -1,201 +1,87 @@
 /**
  * PHASE 5: JURY COLLAGE REFINEMENT
- * Absolute positioning, mixed card sizes, asymmetric layout
+ * NEUTRALIZED - Grid-based layout handled by jury-grid-system.css
  */
 
+/* Legacy containers - disabled to prevent override */
 .jury-collage-container {
-  position: relative;
+  position: static;
   width: 100%;
-  min-height: 800px;
-  padding: 4rem 2rem;
-  background: linear-gradient(135deg, rgba(0, 0, 0, 0.95) 0%, rgba(20, 5, 5, 0.9) 100%);
+  min-height: auto;
+  padding: 0;
+  background: transparent;
 }
 
 .jury-collage {
-  position: relative;
+  position: static;
   width: 100%;
-  max-width: 1000px;
-  margin: 0 auto;
-  min-height: 700px;
+  max-width: 100%;
+  margin: 0;
+  min-height: auto;
 }
 
-/* Card Sizing System */
+/* Cards use grid layout - no absolute positioning */
 .jury-card {
-  position: absolute;
-  border-radius: 8px;
+  position: static !important;
+  top: auto !important;
+  left: auto !important;
+  right: auto !important;
+  border-radius: 12px;
   overflow: hidden;
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition: all 0.3s ease;
   cursor: pointer;
-  filter: grayscale(100%);
-  will-change: transform, filter;
+  filter: none;
+  will-change: transform;
 }
 
-/* Large Cards (400x500) */
-.jury-card.size-large {
-  width: 400px;
-  height: 500px;
-}
-
-/* Medium Cards (320x400) */
-.jury-card.size-medium {
-  width: 320px;
-  height: 400px;
-}
-
-/* Small Cards (280x350) */
+/* Legacy card sizing - removed */
+.jury-card.size-large,
+.jury-card.size-medium,
 .jury-card.size-small {
-  width: 280px;
-  height: 350px;
+  width: auto;
+  height: auto;
 }
 
-/* Card Image */
+/* Legacy image styling - use grid-system instead */
 .jury-card-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.6s ease-out;
+  display: none;
 }
 
-/* Card Overlay */
+/* Legacy overlay - disabled */
 .jury-card-overlay {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.95), rgba(0, 0, 0, 0.6), transparent);
-  padding: 2rem 1.5rem 1.5rem;
-  transform: translateY(40px);
-  opacity: 0;
-  transition: all 0.4s ease-out;
-  z-index: 10;
+  display: none;
 }
 
 .jury-card-name {
-  color: white;
-  font-size: 1.125rem;
-  font-weight: 700;
-  margin-bottom: 0.25rem;
-  letter-spacing: 0.025em;
+  display: none;
 }
 
 .jury-card-title {
-  color: #d4af37;
-  font-size: 0.8rem;
-  font-weight: 600;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  margin-bottom: 0.5rem;
+  display: none;
 }
 
 .jury-card-bio {
-  color: rgba(255, 255, 255, 0.75);
-  font-size: 0.8rem;
-  line-height: 1.5;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
+  display: none;
 }
 
-/* Hover Effects */
+/* Hover Effects - Grid-based */
 .jury-card:hover {
-  transform: translateY(-12px) scale(1.04);
-  filter: grayscale(0%);
-  border-color: rgba(139, 0, 0, 0.5);
-  box-shadow: 0 20px 40px rgba(139, 0, 0, 0.3);
-  z-index: 100;
+  transform: translateY(-4px);
+  filter: none;
+  border-color: rgba(139, 0, 0, 0.3);
+  box-shadow: 0 8px 24px rgba(139, 0, 0, 0.15);
+  z-index: auto;
 }
 
-.jury-card:hover .jury-card-image {
-  transform: scale(1.08);
-}
+/* Positioning rules removed - grid layout handles all cards */
 
-.jury-card:hover .jury-card-overlay {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Parallax for Cards */
-.jury-card.parallax-bg {
-  --parallax-speed: 0.08;
-}
-
-.jury-card.parallax-mid {
-  --parallax-speed: 0.15;
-}
-
-.jury-card.parallax-fg {
-  --parallax-speed: 0.25;
-}
-
-/* Asymmetric Positioning Variations */
-
-/* Row 1 - 3 cards */
-.jury-card:nth-child(1) {
-  top: 0;
-  left: 0;
-  z-index: 15;
-}
-
-.jury-card:nth-child(2) {
-  top: 40px;
-  left: 300px;
-  z-index: 14;
-}
-
-.jury-card:nth-child(3) {
-  top: 0;
-  right: 0;
-  z-index: 15;
-}
-
-/* Row 2 - Offset cards */
-.jury-card:nth-child(4) {
-  top: 350px;
-  left: 80px;
-  z-index: 12;
-}
-
-.jury-card:nth-child(5) {
-  top: 320px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 16; /* Bring to front */
-}
-
-.jury-card:nth-child(6) {
-  top: 350px;
-  right: 80px;
-  z-index: 12;
-}
-
-/* Row 3 - Lower tier */
-.jury-card:nth-child(7) {
-  top: 600px;
-  left: 150px;
-  z-index: 11;
-}
-
-.jury-card:nth-child(8) {
-  top: 580px;
-  right: 150px;
-  z-index: 11;
-}
-
-.jury-card:nth-child(9) {
-  top: 550px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 10;
-}
-
-/* Mobile Responsive */
+/* Mobile Responsive - Grid layout handles all */
 @media (max-width: 768px) {
   .jury-collage-container {
     min-height: auto;
-    padding: 2rem 1rem;
+    padding: 0;
   }
 
   .jury-collage {
@@ -203,13 +89,13 @@
   }
 
   .jury-card {
-    position: relative !important;
+    position: static !important;
     top: auto !important;
     left: auto !important;
     right: auto !important;
-    margin-bottom: 1.5rem;
-    width: 100% !important;
-    height: 300px !important;
+    margin-bottom: 0;
+    width: auto !important;
+    height: auto !important;
   }
 
   .jury-card:nth-child(n) {
@@ -220,67 +106,29 @@
   }
 
   .jury-card:hover {
-    transform: translateY(-8px) scale(1.02);
+    transform: translateY(-4px);
   }
 }
 
-/* Tablet Layout */
+/* Tablet Layout - Grid handles all */
 @media (max-width: 1024px) {
   .jury-collage {
-    min-height: 600px;
+    min-height: auto;
   }
 
   .jury-card.size-large {
-    width: 350px;
-    height: 450px;
+    width: auto;
+    height: auto;
   }
 
   .jury-card.size-medium {
-    width: 280px;
-    height: 350px;
+    width: auto;
+    height: auto;
   }
 
   .jury-card.size-small {
-    width: 240px;
-    height: 300px;
-  }
-
-  /* Adjust positions for tablet */
-  .jury-card:nth-child(1) {
-    top: 0;
-    left: 0;
-  }
-
-  .jury-card:nth-child(2) {
-    top: 20px;
-    left: 250px;
-  }
-
-  .jury-card:nth-child(3) {
-    top: 0;
-    right: 0;
-  }
-
-  .jury-card:nth-child(4) {
-    top: 280px;
-    left: 50px;
-  }
-
-  .jury-card:nth-child(5) {
-    top: 250px;
-    left: 50%;
-    transform: translateX(-50%);
-  }
-
-  .jury-card:nth-child(6) {
-    top: 280px;
-    right: 50px;
-  }
-
-  .jury-card:nth-child(7),
-  .jury-card:nth-child(8),
-  .jury-card:nth-child(9) {
-    display: none;
+    width: auto;
+    height: auto;
   }
 }
 

@@ -15,7 +15,6 @@
   <link href="css/global-hover-system.css" rel="stylesheet">
   <link href="css/final-polish.css" rel="stylesheet">
   <link href="css/responsiveness.css" rel="stylesheet">
-  <link href="css/mobile-menu.css" rel="stylesheet">
   <link href="css/cta-system.css" rel="stylesheet">
   <link href="css/typography-hierarchy.css" rel="stylesheet">
 
@@ -28,37 +27,12 @@
       font-family: 'Poppins', sans-serif;
     }
 
-    /* PASS 1: GLOBAL CINEMATIC VIGNETTE */
-    .vignette {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: 1000;
-      background: radial-gradient(
-        ellipse 150% 150% at center,
-        transparent 0%,
-        rgba(0, 0, 0, 0.25) 40%,
-        rgba(0, 0, 0, 0.65) 100%
-      );
-    }
-
-    /* PASS 2: FILM GRAIN TEXTURE */
+    /* PASS 2: FILM GRAIN TEXTURE - DISABLED */
     .grain {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: 999;
-      opacity: 0.03;
-      background-image: url('images/grain.png');
-      background-repeat: repeat;
-      background-size: 100px 100px;
-      mix-blend-mode: overlay;
+      display: none !important;
+      visibility: hidden !important;
+      opacity: 0 !important;
+      pointer-events: none !important;
     }
 
     /* NAVIGATION */
@@ -75,21 +49,14 @@
       color: inherit;
     }
 
-    /* PASS 3: SECTION TRANSITION BLENDING */
+    /* PASS 3: SECTION TRANSITION BLENDING - DISABLED */
     section::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      height: 80px;
-      background: linear-gradient(
-        to bottom,
-        transparent 0%,
-        rgba(10, 10, 10, 0.3) 100%
-      );
-      pointer-events: none;
-      z-index: 10;
+      display: none !important;
+      visibility: hidden !important;
+      opacity: 0 !important;
+      content: none !important;
+      height: 0 !important;
+      background: none !important;
     }
 
     /* PASS 4: TYPOGRAPHIC CALM & INSTITUTIONAL FEEL */
@@ -132,111 +99,211 @@
     section {
       position: relative;
       overflow: hidden;
+      background: transparent !important;
     }
 
-    /* SPONSORS PAGE SPECIFIC */
-    .sponsors-hero {
-      min-h-[85vh] bg-cover bg-center relative flex items-center pt-32
+    /* Remove black backgrounds from sponsor sections */
+    section {
+      background: transparent !important;
+      background-color: transparent !important;
+      background-image: none !important;
     }
 
-    .sponsors-hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(
-        135deg,
-        rgba(0, 0, 0, 0.7) 0%,
-        rgba(0, 0, 0, 0.5) 50%,
-        rgba(225, 29, 46, 0.1) 100%
-      );
-      z-index: 1;
+    section:not(:first-of-type):not(:last-of-type) {
+      background: transparent !important;
+      background-color: transparent !important;
+      background-image: none !important;
+    }
+    
+    /* Ensure no divs create background blocks */
+    .max-w-7xl {
+      background: transparent !important;
+      background-color: transparent !important;
     }
 
-    .sponsors-hero > * {
-      position: relative;
-      z-index: 2;
+    /* Kill all Tailwind bg classes on this page */
+    [class*="bg-"] {
+      background-color: transparent !important;
+      background: transparent !important;
+    }
+    
+    /* Except for overlay divs which need their opacity */
+    .absolute[class*="bg-black"] {
+      background-color: var(--tw-bg-opacity, 1) !important;
     }
 
-    .partner-logo-card {
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      background: linear-gradient(135deg, rgba(30, 30, 30, 0.5), rgba(10, 10, 10, 0.5));
-      border-radius: 0.5rem;
-      overflow: hidden;
-      transition: all 0.3s ease;
+    /* SPONSORS PAGE RESPONSIVE */
+    @media (max-width: 768px) {
+      .grid {
+        grid-auto-flow: row;
+      }
+
+      section {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+      }
+
+      h2 {
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+      }
+    }
+
+    /* Logo hover effect */
+    img[src*="sponsors"] {
+      opacity: 0.9;
+      transition: opacity 0.3s ease;
+    }
+
+    img[src*="sponsors"]:hover {
+      opacity: 1;
+    }
+
+    /* CRITICAL OVERRIDE: Defeat external CSS conflicts */
+    .sponsor-logo,
+    img[src*="sponsors"] {
+      object-fit: contain;
+      margin-bottom: 1rem;
+      display: block;
+      filter: saturate(0.8) !important;
+      brightness: 1 !important;
+      drop-shadow: none !important;
+      transition: filter 0.4s ease !important;
+    }
+
+    /* Desktop hover - ONLY applies on hover-capable devices */
+    @media (hover: hover) and (pointer: fine) {
+      .sponsor-logo:hover,
+      img[src*="sponsors"]:hover {
+        filter: saturate(1.2) !important;
+        brightness: 1 !important;
+      }
+    }
+
+    /* Mobile - ABSOLUTELY NO COLOR ON TAP */
+    @media (hover: none) and (pointer: coarse) {
+      .sponsor-logo:active,
+      .sponsor-logo:focus,
+      .sponsor-logo:focus-visible,
+      img[src*="sponsors"]:active,
+      img[src*="sponsors"]:focus,
+      img[src*="sponsors"]:focus-visible {
+        filter: saturate(0.8) !important;
+        brightness: 1 !important;
+      }
+    }
+
+    /* SPONSORS PAGE RAIL-BASED LAYOUT */
+    .sponsor-item {
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
-      min-height: 200px;
+      background: transparent;
+      padding: 0;
     }
 
-    .partner-logo-card:hover {
-      border-color: rgba(225, 29, 46, 0.3);
-      background: linear-gradient(135deg, rgba(40, 40, 40, 0.6), rgba(20, 20, 20, 0.6));
-    }
-
-    .partner-logo-text {
+    .sponsor-name {
+      font-size: 0.75rem;
       font-weight: 600;
-      font-size: 1.125rem;
-      color: rgba(255, 255, 255, 0.8);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(156, 163, 175, 1);
+      opacity: 0.75;
     }
 
-    .tech-partner-card {
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      background: linear-gradient(135deg, rgba(30, 30, 30, 0.5), rgba(10, 10, 10, 0.5));
-      border-radius: 0.5rem;
-      padding: 2rem;
-      transition: all 0.3s ease;
-      text-align: center;
-      cursor: pointer;
-      min-height: 200px;
+    /* RAIL 1: PRINCIPAL PARTNERS (3 columns) */
+    .sponsors-rail-principal {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 3rem;
+      padding-bottom: 4rem;
     }
 
-    .tech-partner-card:hover {
-      transform: translateY(-4px) scale(1.01);
-      border-color: rgba(220, 20, 60, 0.5);
-      background: linear-gradient(135deg, rgba(40, 40, 40, 0.6), rgba(20, 20, 20, 0.6));
-      box-shadow: 
-        0 16px 32px rgba(0, 0, 0, 0.3),
-        0 0 20px rgba(220, 20, 60, 0.2),
-        inset 0 0 1px rgba(220, 20, 60, 0.1);
+    .sponsors-rail-principal .sponsor-logo {
+      max-width: 200px !important;
+      max-height: 200px !important;
     }
 
-    .tech-icon {
-      width: 4rem;
-      height: 4rem;
-      background: rgba(225, 29, 46, 0.1);
-      border-radius: 0.5rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 1rem;
-      font-size: 1.5rem;
-      color: rgba(225, 29, 46, 0.6);
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    /* RAIL 2: TECHNOLOGY PARTNERS - FIRST GROUP (3 columns) */
+    .sponsors-rail-tech-1 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 3rem;
     }
 
-    .tech-partner-card:hover .tech-icon {
-      background: rgba(220, 20, 60, 0.2);
-      color: rgba(220, 20, 60, 0.9);
+    .sponsors-rail-tech-1 .sponsor-logo {
+      max-width: 160px !important;
+      max-height: 160px !important;
     }
 
-    .tech-partner-name {
-      font-weight: 600;
-      font-size: 1.125rem;
-      margin-bottom: 0.5rem;
+    /* RAIL 3: TECHNOLOGY PARTNERS - SECOND GROUP (2 columns, centered) */
+    .sponsors-rail-tech-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 4rem;
+      max-width: 32rem;
+      margin: 0 auto;
     }
 
-    .tech-partner-focus {
-      font-size: 0.875rem;
-      color: rgba(255, 255, 255, 0.6);
+    .sponsors-rail-tech-2 .sponsor-logo {
+      max-width: 160px !important;
+      max-height: 160px !important;
+    }
+
+    /* RAIL 4: MEDIA PARTNERS (4 columns) */
+    .sponsors-rail-media {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+    }
+
+    .sponsors-rail-media .sponsor-logo {
+      max-width: 130px !important;
+      max-height: 130px !important;
+    }
+
+    /* MOBILE RESPONSIVE (≤768px) */
+    @media (max-width: 768px) {
+      .sponsors-rail-principal,
+      .sponsors-rail-tech-1,
+      .sponsors-rail-tech-2,
+      .sponsors-rail-media {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        max-width: 100%;
+      }
+
+      .sponsors-rail-principal .sponsor-logo {
+        max-width: 220px !important;
+        max-height: 220px !important;
+      }
+
+      .sponsors-rail-tech-1 .sponsor-logo,
+      .sponsors-rail-tech-2 .sponsor-logo {
+        max-width: 180px !important;
+        max-height: 180px !important;
+      }
+
+      .sponsors-rail-media .sponsor-logo {
+        max-width: 160px !important;
+        max-height: 160px !important;
+      }
+
+      section {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+      }
+
+      h2 {
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+      }
     }
   </style>
 </head>
 
-<body class="bg-black text-white">
-
-  <!-- PASS 1 & 2: VIGNETTE AND GRAIN OVERLAYS -->
-  <div class="vignette"></div>
+<body class="text-white" style="background: #000000 !important; min-height: 100vh !important;">
 
   <!-- NAVIGATION -->
   <nav class="fixed top-0 w-full z-50 backdrop-blur-lg py-4 px-8 transition-transform duration-300">
@@ -257,7 +324,7 @@
       </div>
 
       <div class="md:hidden">
-        <button data-mobile-menu-toggle class="border border-gray-600 px-4 py-2 rounded text-sm" aria-label="Open menu">Menu</button>
+        <button data-mobile-menu-toggle class="border border-gray-400 px-4 py-2 rounded text-sm text-white hover:bg-white hover:bg-opacity-10 transition" aria-label="Open menu">☰</button>
       </div>
     </div>
   </nav>
@@ -283,109 +350,84 @@
   </section>
 
   <!-- PRINCIPAL PARTNERS SECTION -->
-  <section class="py-24 px-8 bg-black relative">
+  <section class="py-24 px-8 relative">
     <div class="max-w-7xl mx-auto">
-      <p class="text-xs text-gray-500 uppercase tracking-widest mb-2 font-light">— TIER 1</p>
-      <h2 class="text-5xl font-bold mb-2 tracking-tight">PRINCIPAL PARTNERS</h2>
-      <p class="text-sm text-gray-400 mb-16 font-light">| Patrons and Supporters for AI Cinema</p>
+      <h2 class="text-5xl font-bold mb-2 tracking-tight">Principal Partners</h2>
+      <p class="text-sm text-gray-400 mb-16 font-light">Patrons and supporters of AI Cinema</p>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 pb-8">
-        <div class="flex items-center justify-center bg-gradient-to-br from-gray-900 to-black border border-gray-800 rounded-lg hover:border-red-600/50 hover:shadow-lg hover:shadow-red-600/20 transition-all duration-300 cursor-pointer group min-h-32">
-          <span class="text-center px-6 group-hover:opacity-80">NVIDIA</span>
+      <div class="sponsors-rail-principal">
+        <div class="sponsor-item">
+          <img src="images/sponsors/aurora-nexus.jpg" alt="Aurora Nexus" class="sponsor-logo">
+          <p class="sponsor-name">Aurora Nexus</p>
         </div>
-
-        <div class="flex items-center justify-center bg-gradient-to-br from-gray-900 to-black border border-gray-800 rounded-lg hover:border-red-600/50 hover:shadow-lg hover:shadow-red-600/20 transition-all duration-300 cursor-pointer group min-h-32">
-          <span class="text-center px-6 group-hover:opacity-80">OpenAI</span>
+        <div class="sponsor-item">
+          <img src="images/sponsors/helixone.jpg" alt="HelixOne" class="sponsor-logo">
+          <p class="sponsor-name">HelixOne</p>
         </div>
-
-        <div class="flex items-center justify-center bg-gradient-to-br from-gray-900 to-black border border-gray-800 rounded-lg hover:border-red-600/50 hover:shadow-lg hover:shadow-red-600/20 transition-all duration-300 cursor-pointer group min-h-32">
-          <span class="text-center px-6 group-hover:opacity-80">FutureFund</span>
+        <div class="sponsor-item">
+          <img src="images/sponsors/novaforge.jpg" alt="NovaForge" class="sponsor-logo">
+          <p class="sponsor-name">NovaForge</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- TECHNOLOGY PARTNERS SECTION -->
-  <section class="py-24 px-8 bg-black relative">
+  <section class="py-24 px-8 relative">
     <div class="max-w-7xl mx-auto">
-      <p class="text-xs text-gray-500 uppercase tracking-widest mb-2 font-light">— INFRASTRUCTURE</p>
-      <h2 class="text-5xl font-bold mb-2 tracking-tight">TECHNOLOGY PARTNERS</h2>
-      <p class="text-sm text-gray-400 mb-16 font-light">| Platforms and Enablers for creation of AI Cinema</p>
+      <h2 class="text-5xl font-bold mb-2 tracking-tight">Technology Partners</h2>
+      <p class="text-sm text-gray-400 mb-16 font-light">Platforms and enablers for AI-native creation</p>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pb-8">
-        <div class="tech-partner-card">
-          <div class="tech-icon">⚙️</div>
-          <div class="tech-partner-name">AI Platform</div>
-          <div class="tech-partner-focus">Inference & Rendering</div>
+      <div class="sponsors-rail-tech-1 mb-16 pb-16">
+        <div class="sponsor-item">
+          <img src="images/sponsors/pixellayer.jpg" alt="PixelLayer" class="sponsor-logo">
+          <p class="sponsor-name">PixelLayer</p>
         </div>
-
-        <div class="tech-partner-card">
-          <div class="tech-icon">🎬</div>
-          <div class="tech-partner-name">Creative Suite</div>
-          <div class="tech-partner-focus">Authoring Tools</div>
+        <div class="sponsor-item">
+          <img src="images/sponsors/synaptic-labs.jpg" alt="Synaptic Labs" class="sponsor-logo">
+          <p class="sponsor-name">Synaptic Labs</p>
         </div>
-
-        <div class="tech-partner-card">
-          <div class="tech-icon">☁️</div>
-          <div class="tech-partner-name">Cloud Infrastructure</div>
-          <div class="tech-partner-focus">Compute & Storage</div>
+        <div class="sponsor-item">
+          <img src="images/sponsors/renderflow.jpg" alt="RenderFlow" class="sponsor-logo">
+          <p class="sponsor-name">RenderFlow</p>
         </div>
+      </div>
 
-        <div class="tech-partner-card">
-          <div class="tech-icon">🔍</div>
-          <div class="tech-partner-name">Analytics</div>
-          <div class="tech-partner-focus">Insights & Data</div>
+      <div class="sponsors-rail-tech-2">
+        <div class="sponsor-item">
+          <img src="images/sponsors/datavista.jpg" alt="DataVista" class="sponsor-logo">
+          <p class="sponsor-name">DataVista</p>
         </div>
-
-        <div class="tech-partner-card">
-          <div class="tech-icon">🎨</div>
-          <div class="tech-partner-name">Design Tools</div>
-          <div class="tech-partner-focus">Visual Development</div>
-        </div>
-
-        <div class="tech-partner-card">
-          <div class="tech-icon">🎵</div>
-          <div class="tech-partner-name">Audio Solutions</div>
-          <div class="tech-partner-focus">Sound & Music</div>
-        </div>
-
-        <div class="tech-partner-card">
-          <div class="tech-icon">📡</div>
-          <div class="tech-partner-name">Distribution</div>
-          <div class="tech-partner-focus">Streaming & Delivery</div>
-        </div>
-
-        <div class="tech-partner-card">
-          <div class="tech-icon">🔐</div>
-          <div class="tech-partner-name">Security</div>
-          <div class="tech-partner-focus">IP Protection</div>
+        <div class="sponsor-item">
+          <img src="images/sponsors/edgeworks.jpg" alt="EdgeWorks AI" class="sponsor-logo">
+          <p class="sponsor-name">EdgeWorks AI</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- CULTURAL & MEDIA PARTNERS SECTION -->
-  <section class="py-24 px-8 bg-black relative">
+  <section class="py-24 px-8 relative">
     <div class="max-w-7xl mx-auto">
-      <p class="text-xs text-gray-500 uppercase tracking-widest mb-2 font-light">— REACH</p>
-      <h2 class="text-5xl font-bold mb-2 tracking-tight">CULTURAL & MEDIA PARTNERS</h2>
-      <p class="text-sm text-gray-400 mb-16 font-light">| Supporters advancing global visibility and dialogue</p>
+      <h2 class="text-5xl font-bold mb-2 tracking-tight">Cultural & Media Partners</h2>
+      <p class="text-sm text-gray-400 mb-16 font-light">Amplifying global visibility and dialogue</p>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 pb-8">
-        <div class="flex items-center justify-center bg-gradient-to-br from-gray-900 to-black border border-gray-800 rounded-lg hover:border-red-600/50 hover:shadow-lg hover:shadow-red-600/20 transition-all duration-300 cursor-pointer group min-h-32">
-          <span class="text-center px-6 group-hover:opacity-80">Film Institute</span>
+      <div class="sponsors-rail-media">
+        <div class="sponsor-item">
+          <img src="images/sponsors/futureframes.jpg" alt="FutureFrames" class="sponsor-logo">
+          <p class="sponsor-name">FutureFrames</p>
         </div>
-
-        <div class="flex items-center justify-center bg-gradient-to-br from-gray-900 to-black border border-gray-800 rounded-lg hover:border-red-600/50 hover:shadow-lg hover:shadow-red-600/20 transition-all duration-300 cursor-pointer group min-h-32">
-          <span class="text-center px-6 group-hover:opacity-80">Media Guild</span>
+        <div class="sponsor-item">
+          <img src="images/sponsors/techlens.jpg" alt="TechLens" class="sponsor-logo">
+          <p class="sponsor-name">TechLens</p>
         </div>
-
-        <div class="flex items-center justify-center bg-gradient-to-br from-gray-900 to-black border border-gray-800 rounded-lg hover:border-red-600/50 hover:shadow-lg hover:shadow-red-600/20 transition-all duration-300 cursor-pointer group min-h-32">
-          <span class="text-center px-6 group-hover:opacity-80">Arts Council</span>
+        <div class="sponsor-item">
+          <img src="images/sponsors/creative-circuit.jpg" alt="Creative Circuit" class="sponsor-logo">
+          <p class="sponsor-name">Creative Circuit</p>
         </div>
-
-        <div class="flex items-center justify-center bg-gradient-to-br from-gray-900 to-black border border-gray-800 rounded-lg hover:border-red-600/50 hover:shadow-lg hover:shadow-red-600/20 transition-all duration-300 cursor-pointer group min-h-32">
-          <span class="text-center px-6 group-hover:opacity-80">Production House</span>
+        <div class="sponsor-item">
+          <img src="images/sponsors/ai-dispatch.jpg" alt="AI Dispatch" class="sponsor-logo">
+          <p class="sponsor-name">AI Dispatch</p>
         </div>
       </div>
     </div>
@@ -413,7 +455,7 @@
   </section>
 
   <!-- FOOTER -->
-  <footer class="py-12 px-8 bg-black border-t border-gray-900/50">
+  <footer class="py-12 px-8">
     <div class="max-w-7xl mx-auto flex justify-between items-center">
       <div>
         <p class="text-sm font-semibold tracking-wide">HUNGAMA AI FILM FESTIVAL</p>
@@ -444,7 +486,8 @@
 
   <!-- Navbar Scroll Behavior -->
   <script src="/js/navbar-scroll.js"></script>
-  <!-- Mobile Menu System -->
-  <script src="js/mobile-menu.js"></script>
+
+  <!-- Mobile Navbar Overlay System -->
+  <script src="js/navbar-mobile-overlay.js"></script>
 </body>
 </html>

@@ -22,7 +22,6 @@
   <link href="css/components/navbar.css" rel="stylesheet">
   <link href="css/polish.css" rel="stylesheet">
   <link href="css/responsiveness.css" rel="stylesheet">
-  <link href="css/mobile-menu.css" rel="stylesheet">
   <link href="css/nominees-improvements.css" rel="stylesheet">
   <link href="css/modal-system.css" rel="stylesheet">
 
@@ -199,7 +198,7 @@
       </div>
 
       <div class="md:hidden">
-        <button data-mobile-menu-toggle class="border border-gray-600 px-4 py-2 rounded text-sm" aria-label="Open menu">Menu</button>
+        <button data-mobile-menu-toggle class="border border-gray-400 px-4 py-2 rounded text-sm text-white hover:bg-white hover:bg-opacity-10 transition" aria-label="Open menu">☰</button>
       </div>
     </div>
   </nav>
@@ -367,11 +366,11 @@
     </div>
   </section>
 
-  <!-- EXPERIMENTAL / ART FILM CATEGORY -->
+  <!-- AI MUSIC VIDEO CATEGORY -->
   <section class="py-20 px-8 bg-gradient-to-b from-black via-black to-brandDark" data-parallax-layer="foreground">
     <div class="max-w-7xl mx-auto">
       <h2 class="text-4xl font-bold mb-12 tracking-tight">
-        Experimental / Art Film
+        AI Music Video
       </h2>
       
       <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-8">
@@ -450,8 +449,9 @@
 
   <!-- Navbar Scroll Behavior -->
   <script src="/js/navbar-scroll.js"></script>
-  <!-- Mobile Menu System -->
-  <script src="js/mobile-menu.js"></script>
+
+  <!-- Mobile Navbar Overlay System -->
+  <script src="js/navbar-mobile-overlay.js"></script>
 </body>
 </html>
 

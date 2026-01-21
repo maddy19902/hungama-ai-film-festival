@@ -22,7 +22,6 @@
   <link href="css/components/navbar.css" rel="stylesheet">
   <link href="css/polish.css" rel="stylesheet">
   <link href="css/responsiveness.css" rel="stylesheet">
-  <link href="css/mobile-menu.css" rel="stylesheet">
   <link href="css/pages/awards.css" rel="stylesheet">
   <link href="css/nominees-improvements.css" rel="stylesheet">
   <link href="css/modal-system.css" rel="stylesheet">
@@ -941,7 +940,7 @@
       </div>
 
       <div class="md:hidden">
-        <button data-mobile-menu-toggle class="border border-gray-600 px-4 py-2 rounded text-sm" aria-label="Open menu">Menu</button>
+        <button data-mobile-menu-toggle class="border border-gray-400 px-4 py-2 rounded text-sm text-white hover:bg-white hover:bg-opacity-10 transition" aria-label="Open menu">☰</button>
       </div>
     </div>
   </nav>
@@ -992,7 +991,7 @@
       <!-- Category Card 4 -->
       <div class="category-card">
         <div class="category-icon">📺</div>
-        <h3 class="category-title">Commercial Film</h3>
+        <h3 class="category-title">AI Commercial Film</h3>
         <div class="award-title">Narrative Excellence</div>
         <p class="category-description">AI-generated commercial content that balances brand narrative with artistic merit.</p>
       </div>
@@ -1170,7 +1169,8 @@
 
   <!-- Navbar Scroll Behavior -->
   <script src="/js/navbar-scroll.js"></script>
-  <!-- Mobile Menu System -->
-  <script src="js/mobile-menu.js"></script>
+
+  <!-- Mobile Navbar Overlay System -->
+  <script src="js/navbar-mobile-overlay.js"></script>
 </body>
 </html>

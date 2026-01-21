@@ -1,188 +1,123 @@
 /**
- * MOBILE MENU COMPONENT
- * Handles full-screen overlay mobile navigation across all pages
- * Single source of truth for mobile menu behavior
+ * MOBILE MENU - ZERO-HALLUCINATION VERSION
+ * Single-screen overlay navigation
+ * NO editorial styling, NO invented colors
+ * Uses desktop nav as truth source
  */
 
-class MobileMenuManager {
+class MobileMenu {
   constructor() {
-    this.menuOpen = false;
-    this.menuId = 'mobile-menu-overlay';
-    this.scrollLocked = false;
+    this.isOpen = false;
+    this.overlay = null;
     this.init();
   }
 
   init() {
-    // Inject menu overlay once per page
-    this.injectMenuOverlay();
-    
-    // Setup event listeners
-    this.setupEventListeners();
-    
-    console.log('✅ Mobile Menu Manager initialized');
+    this.createOverlay();
+    this.attachListeners();
   }
 
-  injectMenuOverlay() {
-    // Don't inject if already present
-    if (document.getElementById(this.menuId)) {
+  createOverlay() {
+    // Only inject once
+    if (document.getElementById('mobile-nav-overlay')) {
+      this.overlay = document.getElementById('mobile-nav-overlay');
       return;
     }
 
-    const menuHTML = `
-      <div id="${this.menuId}" class="mobile-menu-overlay" role="navigation" aria-label="Mobile navigation">
-        <!-- Backdrop -->
-        <div class="mobile-menu-backdrop"></div>
-        
-        <!-- Menu Container -->
-        <div class="mobile-menu-container">
-          <!-- Close Button -->
-          <button class="mobile-menu-close" aria-label="Close menu" aria-expanded="false">
-            <svg class="close-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <line x1="18" y1="6" x2="6" y2="18"></line>
-              <line x1="6" y1="6" x2="18" y2="18"></line>
-            </svg>
-          </button>
-          
-          <!-- Menu Links -->
-          <nav class="mobile-menu-links">
-            <a href="index.html" class="mobile-menu-link" data-route="home">Home</a>
-            <a href="vision.html" class="mobile-menu-link" data-route="vision">Vision</a>
-            <a href="honors.html" class="mobile-menu-link" data-route="honors">Honors</a>
-            <a href="nominees.html" class="mobile-menu-link" data-route="nominees">Nominees</a>
-            <a href="jury.html" class="mobile-menu-link" data-route="jury">Jury</a>
-            <a href="ceremony.html" class="mobile-menu-link" data-route="ceremony">Ceremony</a>
-            <a href="winners.html" class="mobile-menu-link" data-route="winners">Winners</a>
-            <a href="press.html" class="mobile-menu-link" data-route="press">Press</a>
-            <a href="sponsors.html" class="mobile-menu-link" data-route="partners">Partners</a>
-            <div class="mobile-menu-divider"></div>
-            <a href="submit.html" class="mobile-menu-link mobile-menu-cta" data-route="submit">Submit</a>
-          </nav>
-        </div>
+    const overlay = document.createElement('div');
+    overlay.id = 'mobile-nav-overlay';
+    overlay.innerHTML = `
+      <div class="mobile-nav-backdrop"></div>
+      <div class="mobile-nav-panel">
+        <button class="mobile-nav-close" type="button" aria-label="Close menu">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+        <nav class="mobile-nav-links">
+          <a href="index.html" class="mobile-nav-link">Home</a>
+          <a href="vision.html" class="mobile-nav-link">Vision</a>
+          <a href="honors.html" class="mobile-nav-link">Honors</a>
+          <a href="nominees.html" class="mobile-nav-link">Nominees</a>
+          <a href="jury.html" class="mobile-nav-link">Jury</a>
+          <a href="ceremony.html" class="mobile-nav-link">Ceremony</a>
+          <a href="winners.html" class="mobile-nav-link">Winners</a>
+          <a href="press.html" class="mobile-nav-link">Press</a>
+          <a href="sponsors.html" class="mobile-nav-link">Partners</a>
+          <a href="submit.html" class="mobile-nav-link mobile-nav-submit">Submit</a>
+        </nav>
       </div>
     `;
-
-    document.body.insertAdjacentHTML('beforeend', menuHTML);
+    
+    document.body.appendChild(overlay);
+    this.overlay = overlay;
   }
 
-  setupEventListeners() {
+  attachListeners() {
     // Toggle button
-    const toggleBtn = document.querySelector('[data-mobile-menu-toggle]');
-    if (toggleBtn) {
-      toggleBtn.addEventListener('click', () => this.openMenu());
-    }
+    document.addEventListener('click', (e) => {
+      if (e.target.closest('[data-mobile-menu-toggle]')) {
+        e.preventDefault();
+        this.toggle();
+      }
+    });
 
     // Close button
-    const closeBtn = document.querySelector('.mobile-menu-close');
-    if (closeBtn) {
-      closeBtn.addEventListener('click', () => this.closeMenu());
-    }
+    this.overlay.addEventListener('click', (e) => {
+      if (e.target.closest('.mobile-nav-close')) {
+        this.close();
+      }
+    });
 
     // Backdrop click
-    const backdrop = document.querySelector('.mobile-menu-backdrop');
-    if (backdrop) {
-      backdrop.addEventListener('click', () => this.closeMenu());
-    }
+    this.overlay.addEventListener('click', (e) => {
+      if (e.target.classList.contains('mobile-nav-backdrop')) {
+        this.close();
+      }
+    });
 
-    // Menu links
-    const links = document.querySelectorAll('.mobile-menu-link');
-    links.forEach(link => {
-      link.addEventListener('click', () => this.closeMenu());
+    // Link clicks
+    this.overlay.addEventListener('click', (e) => {
+      if (e.target.classList.contains('mobile-nav-link')) {
+        this.close();
+      }
     });
 
     // ESC key
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && this.menuOpen) {
-        this.closeMenu();
+      if (e.key === 'Escape' && this.isOpen) {
+        this.close();
       }
     });
   }
 
-  openMenu() {
-    const overlay = document.getElementById(this.menuId);
-    if (!overlay) return;
-
-    this.menuOpen = true;
-    overlay.classList.add('active');
-    this.lockScroll();
-    
-    // Update button state
-    const toggleBtn = document.querySelector('[data-mobile-menu-toggle]');
-    if (toggleBtn) {
-      toggleBtn.setAttribute('aria-expanded', 'true');
-    }
-
-    // Set focus to close button for accessibility
-    const closeBtn = document.querySelector('.mobile-menu-close');
-    if (closeBtn) {
-      closeBtn.focus();
-    }
-
-    console.log('📱 Mobile menu opened');
-  }
-
-  closeMenu() {
-    const overlay = document.getElementById(this.menuId);
-    if (!overlay) return;
-
-    this.menuOpen = false;
-    overlay.classList.remove('active');
-    this.unlockScroll();
-
-    // Update button state
-    const toggleBtn = document.querySelector('[data-mobile-menu-toggle]');
-    if (toggleBtn) {
-      toggleBtn.setAttribute('aria-expanded', 'false');
-      toggleBtn.focus();
-    }
-
-    console.log('📱 Mobile menu closed');
-  }
-
-  lockScroll() {
-    if (this.scrollLocked) return;
-    
-    document.body.style.overflow = 'hidden';
-    document.body.style.paddingRight = this.getScrollbarWidth() + 'px';
-    this.scrollLocked = true;
-  }
-
-  unlockScroll() {
-    if (!this.scrollLocked) return;
-    
-    document.body.style.overflow = '';
-    document.body.style.paddingRight = '';
-    this.scrollLocked = false;
-  }
-
-  getScrollbarWidth() {
-    const outer = document.createElement('div');
-    outer.style.visibility = 'hidden';
-    outer.style.overflow = 'scroll';
-    document.body.appendChild(outer);
-    
-    const inner = document.createElement('div');
-    outer.appendChild(inner);
-    
-    const scrollbarWidth = outer.offsetWidth - inner.offsetWidth;
-    outer.parentNode.removeChild(outer);
-    
-    return scrollbarWidth;
-  }
-
-  toggleMenu() {
-    if (this.menuOpen) {
-      this.closeMenu();
+  toggle() {
+    if (this.isOpen) {
+      this.close();
     } else {
-      this.openMenu();
+      this.open();
     }
+  }
+
+  open() {
+    this.isOpen = true;
+    this.overlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  close() {
+    this.isOpen = false;
+    this.overlay.classList.remove('active');
+    document.body.style.overflow = '';
   }
 }
 
-// Initialize when DOM is ready
+// Initialize on DOM ready
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', () => {
-    window.mobileMenuManager = new MobileMenuManager();
+    window.mobileMenu = new MobileMenu();
   });
 } else {
-  window.mobileMenuManager = new MobileMenuManager();
+  window.mobileMenu = new MobileMenu();
 }

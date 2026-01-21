@@ -16,7 +16,6 @@ body {
 .card,
 .container,
 section {
-  background-color: var(--bg-surface, #121214);
 }
 
 /* Elevated sections (modals, overlays, featured content) */

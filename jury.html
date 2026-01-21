@@ -23,10 +23,10 @@
   <link href="css/components/navbar.css" rel="stylesheet">
   <link href="css/polish.css" rel="stylesheet">
   <link href="css/responsiveness.css" rel="stylesheet">
-  <link href="css/mobile-menu.css" rel="stylesheet">
   <link href="css/pages/jury.css" rel="stylesheet">
   <link href="css/jury-modals.css" rel="stylesheet">
   <link href="css/pass2-jury-finish.css" rel="stylesheet">
+  <link href="css/jury-grid-system.css" rel="stylesheet">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -123,8 +123,13 @@
 
     /* JURY PAGE SPECIFIC */
     .jury-hero {
-      min-h-[85vh] bg-cover bg-center relative flex items-center pt-32
-      style="background-image: url('images/hall-bg.png');"
+      min-height: 85vh;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      display: flex;
+      align-items: center;
+      padding-top: 100px;
     }
 
     .jury-hero::before {
@@ -235,7 +240,7 @@
       </div>
 
       <div class="md:hidden">
-        <button data-mobile-menu-toggle class="border border-gray-600 px-4 py-2 rounded text-sm" aria-label="Open menu">Menu</button>
+        <button data-mobile-menu-toggle class="border border-gray-400 px-4 py-2 rounded text-sm text-white hover:bg-white hover:bg-opacity-10 transition" aria-label="Open menu">☰</button>
       </div>
     </div>
   </nav>
@@ -250,10 +255,7 @@
       data-parallax="true"
       data-parallax-speed="0.065"
       data-parallax-mobile="0.03"
-    >
-      <!-- Subtle Gradient Overlay for Text Readability -->
-      <div class="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-transparent"></div>
-    </div>
+    ></div>
     
     <!-- Content Container -->
     <div class="container relative z-10 mx-auto px-6 lg:px-12 py-20">
@@ -264,128 +266,280 @@
             GRAND JURY
           </h1>
           <p class="text-xl lg:text-2xl text-gray-300 mb-8 max-w-lg leading-relaxed">
-            Distinguished filmmakers and innovators shaping the future of AI cinema.
+            Leading experts in AI, creativity, and technology
           </p>
-          <!-- Scroll Indicator -->
-          <!-- <div class="mt-16 animate-pulse">
-            <div class="inline-flex items-center gap-3 text-gray-400 text-sm">
-              <span>Scroll to explore</span>
-              <div class="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center">
-                <div class="w-1 h-3 bg-white/50 rounded-full mt-2 animate-bounce"></div>
-              </div>
-            </div>
-          </div> -->
         </div>
       </div>
     </div>
   </section>
 
   <!-- GRAND JURY MEMBERS SECTION -->
-  <section class="py-24 px-8 bg-gradient-to-b from-black via-brandDark to-black" data-parallax-layer="midground">
+  <section class="jury-section py-24 px-8 bg-gradient-to-b from-black via-brandDark to-black" data-parallax-layer="midground" id="jury-members">
     <div class="max-w-7xl mx-auto">
-      <h2 class="text-4xl font-bold mb-16 text-center tracking-tight">GRAND JURY</h2>
       
-      <!-- Row 1: 3 Jurors -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-16 mb-24">
-        <div class="juror-card">
-          <div class="juror-portrait">
-            <span class="text-gray-600 text-sm">Portrait</span>
+      <!-- JURY GRID: 3 Featured + 4 + 4 Standard -->
+      <div class="jury-grid">
+        
+        <!-- ROW 1: FEATURED JURORS (3) -->
+        
+        <!-- Featured Juror 1: Arjun Mehta -->
+        <div class="jury-card jury-card--featured">
+          <div class="jury-card__image-container">
+            <img src="/images/jury/arjun-mehta.jpg" 
+                 alt="Arjun Mehta - Senior AI Pipeline Engineer at LuminaFX Studios" 
+                 class="jury-card__image"
+                 loading="lazy">
           </div>
-          <div class="juror-name">Juror Name</div>
-          <p class="text-sm text-gray-400">
-            Visionary filmmaker and industry pioneer.
-          </p>
-        </div>
-
-        <div class="juror-card lead-juror">
-          <div class="juror-portrait">
-            <span class="text-gray-600 text-sm">Portrait</span>
+          <div class="jury-card__content">
+            <div>
+              <h3 class="jury-card__name">Arjun Mehta</h3>
+              <p class="jury-card__title">Senior AI Pipeline Engineer</p>
+              <p class="jury-card__company">LuminaFX Studios</p>
+            </div>
+            <div class="jury-card__expertise">
+              <span class="expertise-tag">AI Pipelines</span>
+              <span class="expertise-tag">Visual Effects</span>
+            </div>
           </div>
-          <div class="juror-name">Juror Name</div>
-          <div class="juror-role">Jury President</div>
-          <p class="text-sm text-gray-400">
-            Award-winning director and storyteller.
-          </p>
         </div>
-
-        <div class="juror-card lead-juror">
-          <div class="juror-portrait">
-            <span class="text-gray-600 text-sm">Portrait</span>
+        
+        <!-- Featured Juror 2: Sofia Alvarez -->
+        <div class="jury-card jury-card--featured">
+          <div class="jury-card__image-container">
+            <img src="/images/jury/sofia-alvarez.jpg" 
+                 alt="Sofia Alvarez - Virtual Production Director at NeonFrame Studios" 
+                 class="jury-card__image"
+                 loading="lazy">
           </div>
-          <div class="juror-name">Juror Name</div>
-          <div class="juror-role">Lead Evaluator</div>
-          <p class="text-sm text-gray-400">
-            Expert in AI and creative innovation.
-          </p>
-        </div>
-      </div>
-
-      <!-- Row 2-3: 8 Jurors (4 each) -->
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-12">
-        <div class="juror-card">
-          <div class="juror-portrait">
-            <span class="text-gray-600 text-xs">Portrait</span>
+          <div class="jury-card__content">
+            <div>
+              <h3 class="jury-card__name">Sofia Alvarez</h3>
+              <p class="jury-card__title">Virtual Production Director</p>
+              <p class="jury-card__company">NeonFrame Studios</p>
+            </div>
+            <div class="jury-card__expertise">
+              <span class="expertise-tag">Virtual Production</span>
+              <span class="expertise-tag">Real-time Rendering</span>
+            </div>
           </div>
-          <div class="juror-name text-base">Juror Name</div>
         </div>
-
-        <div class="juror-card">
-          <div class="juror-portrait">
-            <span class="text-gray-600 text-xs">Portrait</span>
+        
+        <!-- Featured Juror 3: Malik Johnson -->
+        <div class="jury-card jury-card--featured">
+          <div class="jury-card__image-container">
+            <img src="/images/jury/malik-johnson.jpg" 
+                 alt="Malik Johnson - Lead ML Researcher, Generative Audio at SoundWave AI" 
+                 class="jury-card__image"
+                 loading="lazy">
           </div>
-          <div class="juror-name text-base">Juror Name</div>
-          <div class="juror-role text-xs">Specialist</div>
-        </div>
-
-        <div class="juror-card">
-          <div class="juror-portrait">
-            <span class="text-gray-600 text-xs">Portrait</span>
+          <div class="jury-card__content">
+            <div>
+              <h3 class="jury-card__name">Malik Johnson</h3>
+              <p class="jury-card__title">Lead ML Researcher</p>
+              <p class="jury-card__company">SoundWave AI</p>
+            </div>
+            <div class="jury-card__expertise">
+              <span class="expertise-tag">Audio AI</span>
+              <span class="expertise-tag">Generative Models</span>
+            </div>
           </div>
-          <div class="juror-name text-base">Juror Name</div>
-          <div class="juror-role text-xs">Specialist</div>
         </div>
-
-        <div class="juror-card">
-          <div class="juror-portrait">
-            <span class="text-gray-600 text-xs">Portrait</span>
+        
+        <!-- Juror 4: Maya Kapoor -->
+        <div class="jury-card">
+          <div class="jury-card__image-container">
+            <img src="/images/jury/maya-kapoor.jpg" 
+                 alt="Maya Kapoor - VP, Original Content & AI Innovation at Crestline Studios" 
+                 class="jury-card__image"
+                 loading="lazy">
           </div>
-          <div class="juror-name text-base">Juror Name</div>
-          <div class="juror-role text-xs">Specialist</div>
-        </div>
-
-        <div class="juror-card">
-          <div class="juror-portrait">
-            <span class="text-gray-600 text-xs">Portrait</span>
+          <div class="jury-card__content">
+            <div>
+              <h3 class="jury-card__name">Maya Kapoor</h3>
+              <p class="jury-card__title">VP, Original Content & AI Innovation</p>
+              <p class="jury-card__company">Crestline Studios</p>
+            </div>
+            <div class="jury-card__expertise">
+              <span class="expertise-tag">Original Content</span>
+              <span class="expertise-tag">AI Innovation</span>
+            </div>
           </div>
-          <div class="juror-name text-base">Juror Name</div>
-          <div class="juror-role text-xs">Specialist</div>
         </div>
-
-        <div class="juror-card">
-          <div class="juror-portrait">
-            <span class="text-gray-600 text-xs">Portrait</span>
+        
+        <!-- ROW 2: STANDARD JURORS (5) -->
+        
+        <!-- Juror 5: Hana Sato -->
+        <div class="jury-card">
+          <div class="jury-card__image-container">
+            <img src="/images/jury/hana-soto.jpg" 
+                 alt="Hana Sato - Chief Creative Technologist at DreamLoop Interactive" 
+                 class="jury-card__image"
+                 loading="lazy">
           </div>
-          <div class="juror-name text-base">Juror Name</div>
-          <div class="juror-role text-xs">Specialist</div>
-        </div>
-
-        <div class="juror-card">
-          <div class="juror-portrait">
-            <span class="text-gray-600 text-xs">Portrait</span>
+          <div class="jury-card__content">
+            <div>
+              <h3 class="jury-card__name">Hana Sato</h3>
+              <p class="jury-card__title">Chief Creative Technologist</p>
+              <p class="jury-card__company">DreamLoop Interactive</p>
+            </div>
+            <div class="jury-card__expertise">
+              <span class="expertise-tag">Creative Tech</span>
+              <span class="expertise-tag">Interactive Media</span>
+            </div>
           </div>
-          <div class="juror-name text-base">Juror Name</div>
-          <div class="juror-role text-xs">Specialist</div>
         </div>
-
-        <div class="juror-card">
-          <div class="juror-portrait">
-            <span class="text-gray-600 text-xs">Portrait</span>
+        
+        <!-- Juror 5: Liam O'Connor -->
+        <div class="jury-card">
+          <div class="jury-card__image-container">
+            <img src="/images/jury/liam-o-connor.jpg" 
+                 alt="Liam O'Connor - Digital Human Supervisor at SynCast Labs" 
+                 class="jury-card__image"
+                 loading="lazy">
           </div>
-          <div class="juror-name text-base">Juror Name</div>
-          <div class="juror-role text-xs">Specialist</div>
+          <div class="jury-card__content">
+            <div>
+              <h3 class="jury-card__name">Liam O'Connor</h3>
+              <p class="jury-card__title">Digital Human Supervisor</p>
+              <p class="jury-card__company">SynCast Labs</p>
+            </div>
+            <div class="jury-card__expertise">
+              <span class="expertise-tag">Digital Humans</span>
+              <span class="expertise-tag">Character AI</span>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
+        
+        <!-- Juror 6: Priya Nair -->
+        <div class="jury-card">
+          <div class="jury-card__image-container">
+            <img src="/images/jury/priya-nair.jpg" 
+                 alt="Priya Nair - Motion Capture Specialist at CinemaMotion Studios" 
+                 class="jury-card__image"
+                 loading="lazy">
+          </div>
+          <div class="jury-card__content">
+            <div>
+              <h3 class="jury-card__name">Priya Nair</h3>
+              <p class="jury-card__title">Motion Capture Specialist</p>
+              <p class="jury-card__company">CinemaMotion Studios</p>
+            </div>
+            <div class="jury-card__expertise">
+              <span class="expertise-tag">Motion Capture</span>
+              <span class="expertise-tag">Animation</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Juror 7: Elena Rossi -->
+        <div class="jury-card">
+          <div class="jury-card__image-container">
+            <img src="/images/jury/elena-rossi.jpg" 
+                 alt="Elena Rossi - Color Grading & VFX Supervisor at CinemaLabs" 
+                 class="jury-card__image"
+                 loading="lazy">
+          </div>
+          <div class="jury-card__content">
+            <div>
+              <h3 class="jury-card__name">Elena Rossi</h3>
+              <p class="jury-card__title">Color Grading & VFX Supervisor</p>
+              <p class="jury-card__company">CinemaLabs</p>
+            </div>
+            <div class="jury-card__expertise">
+              <span class="expertise-tag">Color Grading</span>
+              <span class="expertise-tag">VFX Supervision</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- ROW 3: STANDARD JURORS (4) -->
+        
+        <!-- Juror 8: Noah Kim -->
+        <div class="jury-card">
+          <div class="jury-card__image-container">
+            <img src="/images/jury/noah-kim.jpg" 
+                 alt="Noah Kim - Cinematography Director at FrameArt Productions" 
+                 class="jury-card__image"
+                 loading="lazy">
+          </div>
+          <div class="jury-card__content">
+            <div>
+              <h3 class="jury-card__name">Noah Kim</h3>
+              <p class="jury-card__title">Cinematography Director</p>
+              <p class="jury-card__company">FrameArt Productions</p>
+            </div>
+            <div class="jury-card__expertise">
+              <span class="expertise-tag">Cinematography</span>
+              <span class="expertise-tag">Visual Storytelling</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Juror 9: Zahra El-Sayed -->
+        <div class="jury-card">
+          <div class="jury-card__image-container">
+            <img src="/images/jury/zahra-el-sayed.jpg" 
+                 alt="Zahra El-Sayed - Sound Design & AI Audio at AudioVerse Technologies" 
+                 class="jury-card__image"
+                 loading="lazy">
+          </div>
+          <div class="jury-card__content">
+            <div>
+              <h3 class="jury-card__name">Zahra El-Sayed</h3>
+              <p class="jury-card__title">Sound Design & AI Audio</p>
+              <p class="jury-card__company">AudioVerse Technologies</p>
+            </div>
+            <div class="jury-card__expertise">
+              <span class="expertise-tag">Sound Design</span>
+              <span class="expertise-tag">Audio AI</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Juror 10: Diego Martinez -->
+        <div class="jury-card">
+          <div class="jury-card__image-container">
+            <img src="/images/jury/diego-martinez.jpg" 
+                 alt="Diego Martinez - Editing & Post-Production Director at CutEdge Studio" 
+                 class="jury-card__image"
+                 loading="lazy">
+          </div>
+          <div class="jury-card__content">
+            <div>
+              <h3 class="jury-card__name">Diego Martinez</h3>
+              <p class="jury-card__title">Editing & Post-Production Director</p>
+              <p class="jury-card__company">CutEdge Studio</p>
+            </div>
+            <div class="jury-card__expertise">
+              <span class="expertise-tag">Editing</span>
+              <span class="expertise-tag">Post-Production</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Juror 11: Lucas van Dijk -->
+        <div class="jury-card">
+          <div class="jury-card__image-container">
+            <img src="/images/jury/lucas-van-dijk.jpg" 
+                 alt="Lucas van Dijk - Narrative AI Researcher at StoryWeave Labs" 
+                 class="jury-card__image"
+                 loading="lazy">
+          </div>
+          <div class="jury-card__content">
+            <div>
+              <h3 class="jury-card__name">Lucas van Dijk</h3>
+              <p class="jury-card__title">Narrative AI Researcher</p>
+              <p class="jury-card__company">StoryWeave Labs</p>
+            </div>
+            <div class="jury-card__expertise">
+              <span class="expertise-tag">Narrative AI</span>
+              <span class="expertise-tag">Story Structure</span>
+            </div>
+          </div>
+        </div>
+        
+      </div> <!-- End jury-grid -->
+    </div> <!-- End max-w-7xl container -->
   </section>
 
   <!-- EVALUATION FRAMEWORK SECTION -->
@@ -462,7 +616,8 @@
 
   <!-- Navbar Scroll Behavior -->
   <script src="/js/navbar-scroll.js"></script>
-  <!-- Mobile Menu System -->
-  <script src="js/mobile-menu.js"></script>
+
+  <!-- Mobile Navbar Overlay System -->
+  <script src="js/navbar-mobile-overlay.js"></script>
 </body>
 </html>
