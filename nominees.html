@@ -146,21 +146,21 @@
     }
 
     .nominee-card {
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      background: linear-gradient(135deg, rgba(30, 30, 30, 0.5), rgba(10, 10, 10, 0.5));
-      border-radius: 0.5rem;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: #1a1a1d;
+      border-radius: 0.375rem;
       overflow: hidden;
       transition: all 0.3s ease;
     }
 
     .nominee-card:hover {
-      border-color: rgba(225, 29, 46, 0.3);
-      background: linear-gradient(135deg, rgba(40, 40, 40, 0.6), rgba(20, 20, 20, 0.6));
+      border-color: rgba(225, 29, 46, 0.4);
+      background: #222225;
     }
 
     .nominee-thumbnail {
       aspect-ratio: 2/3;
-      background: linear-gradient(135deg, #333, #111);
+      background: #0f0f0f;
       overflow: hidden;
     }
 
@@ -176,17 +176,33 @@
       overflow-y: hidden;
       scroll-behavior: smooth;
       -webkit-overflow-scrolling: touch;
+      margin: -0.5rem 0;
+      padding: 0.5rem 0;
     }
 
     .carousel-track {
       display: flex;
-      gap: 1.5rem;
-      padding: 0.5rem 0;
+      gap: 1rem;
+      padding: 0;
     }
 
     .nominee-card {
       flex-shrink: 0;
-      min-width: 200px;
+      width: clamp(120px, calc(100vw / 5.5), 160px);
+    }
+
+    .nominee-card .p-4 {
+      padding: 0.75rem;
+    }
+
+    .nominee-card h3 {
+      font-size: 0.75rem;
+      line-height: 1.2;
+      margin-bottom: 0.25rem;
+    }
+
+    .nominee-card p {
+      font-size: 0.65rem;
     }
 
     /* Aspect ratio classes */
@@ -214,14 +230,24 @@
 
       .nominee-card {
         scroll-snap-align: start;
+        scroll-snap-stop: always;
       }
 
       .carousel-track {
-        gap: 1rem;
+        gap: 0.75rem;
       }
 
       .nominee-card {
-        min-width: 160px;
+        width: clamp(110px, calc(100vw / 3.2), 150px);
+        max-height: calc(65vh - 80px);
+      }
+
+      .nominee-card h3 {
+        font-size: 0.7rem;
+      }
+
+      .nominee-card p {
+        font-size: 0.6rem;
       }
     }
   </style>
@@ -269,7 +295,7 @@
   </section>
 
   <!-- AI SHORT FILM CATEGORY -->
-  <section class="nominee-section py-20 px-8 bg-gradient-to-b from-black via-brandDark to-black" data-category="short-film" data-aspect="2x3">
+  <section class="nominee-section py-24 px-8 bg-gradient-to-b from-black via-brandDark to-black" data-category="short-film" data-aspect="2x3">
     <div class="max-w-7xl mx-auto">
       <div class="flex items-center justify-between mb-12">
         <h2 class="text-4xl font-bold tracking-tight">AI Short Film</h2>
@@ -293,7 +319,7 @@
   </section>
 
   <!-- AI MICRO DRAMA CATEGORY -->
-  <section class="nominee-section py-20 px-8 bg-gradient-to-b from-black via-black to-brandDark" data-category="micro-drama" data-aspect="4x5">
+  <section class="nominee-section py-24 px-8 bg-gradient-to-b from-black via-black to-brandDark" data-category="micro-drama" data-aspect="4x5">
     <div class="max-w-7xl mx-auto">
       <div class="flex items-center justify-between mb-12">
         <h2 class="text-4xl font-bold tracking-tight">AI Micro Drama</h2>
@@ -317,7 +343,7 @@
   </section>
 
   <!-- AI COMMERCIAL FILM CATEGORY -->
-  <section class="nominee-section py-20 px-8 bg-gradient-to-b from-black via-brandDark to-black" data-category="commercial-film" data-aspect="16x9">
+  <section class="nominee-section py-24 px-8 bg-gradient-to-b from-black via-brandDark to-black" data-category="commercial-film" data-aspect="16x9">
     <div class="max-w-7xl mx-auto">
       <div class="flex items-center justify-between mb-12">
         <h2 class="text-4xl font-bold tracking-tight">AI Commercial Film</h2>
@@ -341,7 +367,7 @@
   </section>
 
   <!-- AI MUSIC VIDEO CATEGORY -->
-  <section class="nominee-section py-20 px-8 bg-gradient-to-b from-black via-black to-brandDark" data-category="music-video" data-aspect="1x1">
+  <section class="nominee-section py-24 px-8 bg-gradient-to-b from-black via-black to-brandDark" data-category="music-video" data-aspect="1x1">
     <div class="max-w-7xl mx-auto">
       <div class="flex items-center justify-between mb-12">
         <h2 class="text-4xl font-bold tracking-tight">AI Music Video</h2>
@@ -411,14 +437,30 @@
         const prevBtn = section.querySelector('.carousel-prev');
         const nextBtn = section.querySelector('.carousel-next');
         let autoScrollInterval;
+        let isHovering = false;
 
         if (!container || !track) return;
 
+        const getCardWidth = () => {
+          const firstCard = track.querySelector('.nominee-card');
+          if (!firstCard) return 0;
+          return firstCard.offsetWidth;
+        };
+
+        const getGap = () => {
+          const style = window.getComputedStyle(track);
+          return parseFloat(style.gap) || 16;
+        };
+
         // Auto-scroll every 4 seconds on desktop
         function startAutoScroll() {
-          if (window.innerWidth > 768) {
+          if (window.innerWidth > 768 && !isHovering) {
             autoScrollInterval = setInterval(() => {
-              container.scrollLeft += 220;
+              const cardWidth = getCardWidth();
+              const gap = getGap();
+              const distance = cardWidth + gap;
+              container.scrollLeft += distance;
+              
               if (container.scrollLeft >= container.scrollWidth - container.clientWidth - 10) {
                 container.scrollLeft = 0;
               }
@@ -430,32 +472,53 @@
           clearInterval(autoScrollInterval);
         }
 
-        // Arrow navigation
+        // Arrow navigation - move exactly one card
         if (prevBtn) {
-          prevBtn.addEventListener('click', () => {
-            container.scrollLeft -= 220;
+          prevBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            const cardWidth = getCardWidth();
+            const gap = getGap();
+            const distance = cardWidth + gap;
+            container.scrollLeft -= distance;
             stopAutoScroll();
             startAutoScroll();
           });
         }
 
         if (nextBtn) {
-          nextBtn.addEventListener('click', () => {
-            container.scrollLeft += 220;
+          nextBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            const cardWidth = getCardWidth();
+            const gap = getGap();
+            const distance = cardWidth + gap;
+            container.scrollLeft += distance;
             stopAutoScroll();
             startAutoScroll();
           });
         }
 
         // Pause on hover
-        container.addEventListener('mouseenter', stopAutoScroll);
+        container.addEventListener('mouseenter', () => {
+          isHovering = true;
+          stopAutoScroll();
+        });
+
         container.addEventListener('mouseleave', () => {
+          isHovering = false;
           stopAutoScroll();
           startAutoScroll();
         });
 
         // Stop auto-scroll on touch
-        container.addEventListener('touchstart', stopAutoScroll);
+        container.addEventListener('touchstart', () => {
+          stopAutoScroll();
+        });
+
+        container.addEventListener('touchend', () => {
+          if (!isHovering && window.innerWidth > 768) {
+            startAutoScroll();
+          }
+        });
 
         // Start auto-scroll on load
         startAutoScroll();
