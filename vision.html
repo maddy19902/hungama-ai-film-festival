@@ -317,59 +317,179 @@
     }
 
     /* ============================================
-       MOBILE RESPONSIVE LAYOUT
+       DESKTOP CLEAN BACKGROUND - NO RED PANELS
+       ============================================ */
+    .vision-manifesto {
+      background-color: #000 !important;
+    }
+
+    .vision-timeline,
+    .vision-item,
+    .vision-grid,
+    .vision-headline,
+    .vision-description {
+      background: transparent !important;
+      backdrop-filter: none !important;
+      border: none !important;
+      box-shadow: none !important;
+    }
+
+    .vision-item:hover {
+      background: transparent !important;
+    }
+
+    .vision-item:hover .vision-headline,
+    .vision-item:hover .vision-description {
+      background: transparent !important;
+    }
+
+    /* ============================================
+       MOBILE TIMELINE - CONTINUOUS SPINE LAYOUT
        ============================================ */
     @media (max-width: 768px) {
-      /* Remove vertical spine on mobile */
+      
+      /* Continuous timeline spine */
+      .vision-timeline {
+        position: relative;
+        padding-left: 16px;
+      }
+
       .vision-timeline::before {
-        display: none;
+        content: '';
+        position: absolute;
+        left: 8px;
+        top: 0;
+        bottom: 0;
+        width: 2px;
+        background: rgba(239, 68, 68, 0.35);
+        z-index: 1;
+        display: block !important;
       }
 
-      /* Single column stack for mobile */
+      /* Vision item container */
+      .vision-item {
+        position: relative;
+        margin-bottom: 3rem;
+        min-height: 120px;
+        padding-bottom: 0;
+        border-bottom: none;
+      }
+
+      /* Mobile grid layout */
       .vision-grid {
-        grid-template-columns: 1fr;
-        gap: 2rem;
+        display: grid;
+        grid-template-columns: 24px 1fr;
+        grid-template-areas:
+          "timeline headline"
+          "timeline description";
+        gap: 0.5rem 1rem;
+        align-items: start;
       }
 
-      /* Headline becomes centered on mobile */
+      /* Timeline column (left spine) */
+      .vision-spine {
+        grid-area: timeline;
+        position: relative;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      /* Timeline node */
+      .timeline-node {
+        width: 12px;
+        height: 12px;
+        background: #ef4444;
+        border-radius: 50%;
+        border: 2px solid rgba(0, 0, 0, 0.9);
+        box-shadow: 0 0 8px rgba(239, 68, 68, 0.5);
+        position: relative;
+        z-index: 2;
+        margin-top: 0.25rem;
+      }
+
+      /* Headline column */
       .vision-headline {
-        text-align: center;
+        grid-area: headline;
+        margin-bottom: 0.5rem;
+        text-align: left;
         padding-right: 0;
-        padding-bottom: 1rem;
-        border-bottom: 1px solid rgba(239, 68, 68, 0.2);
+        padding-bottom: 0;
+        border-bottom: none;
       }
 
       .vision-headline h3 {
-        font-size: 1.75rem;
+        font-size: 1.1rem;
+        font-weight: 700;
+        letter-spacing: 0.05em;
+        line-height: 1.3;
+        color: #ffffff;
       }
 
-      /* Hide timeline spine column on mobile */
-      .vision-spine {
-        display: none;
-      }
-
-      /* Description becomes full width on mobile */
+      /* Description column */
       .vision-description {
+        grid-area: description;
+        margin-top: 0;
+        text-align: left;
         padding-left: 0;
-        padding-top: 1rem;
         max-width: 100%;
       }
 
       .vision-description p {
-        font-size: 1.05rem;
-        line-height: 1.7;
+        font-size: 0.95rem;
+        line-height: 1.6;
+        color: rgba(255, 255, 255, 0.8);
+        font-weight: 300;
       }
 
-      /* Adjust spacing for mobile */
-      .vision-item {
-        margin-bottom: 4rem;
-        padding-bottom: 2rem;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-      }
-
+      /* Adjust spacing for last item */
       .vision-item:last-child {
-        border-bottom: none;
-        padding-bottom: 0;
+        margin-bottom: 0;
+      }
+
+      /* Ensure spine connects through all items */
+      .vision-item:not(:last-child) .vision-spine::after {
+        content: '';
+        position: absolute;
+        top: 24px;
+        bottom: -3rem;
+        width: 2px;
+        background: rgba(239, 68, 68, 0.2);
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 1;
+      }
+    }
+
+    /* ============================================
+       SMALL MOBILE ADJUSTMENTS (≤480px)
+       ============================================ */
+    @media (max-width: 480px) {
+      .vision-timeline {
+        padding-left: 14px;
+      }
+
+      .vision-timeline::before {
+        left: 6px;
+      }
+
+      .vision-grid {
+        grid-template-columns: 20px 1fr;
+        gap: 0.5rem 0.75rem;
+      }
+
+      .timeline-node {
+        width: 10px;
+        height: 10px;
+      }
+
+      .vision-headline h3 {
+        font-size: 1rem;
+      }
+
+      .vision-description p {
+        font-size: 0.9rem;
       }
     }
 
@@ -387,6 +507,52 @@
 
       .vision-description p {
         font-size: 1.05rem;
+      }
+    }
+
+    /* ============================================
+       DESKTOP TIMELINE - CLEAN EDITORIAL LAYOUT
+       ============================================ */
+    @media (min-width: 1024px) {
+      .vision-manifesto {
+        background: linear-gradient(
+          to bottom,
+          #000 0%,
+          #0a0a0a 100%
+        ) !important;
+      }
+
+      .vision-timeline::before {
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        width: 1px !important;
+        background: linear-gradient(
+          to bottom,
+          transparent 0%,
+          rgba(239, 68, 68, 0.3) 20%,
+          rgba(239, 68, 68, 0.5) 50%,
+          rgba(239, 68, 68, 0.3) 80%,
+          transparent 100%
+        ) !important;
+      }
+
+      /* Ensure text areas have no background */
+      .vision-headline,
+      .vision-description {
+        background: transparent !important;
+        backdrop-filter: none !important;
+        border: none !important;
+        box-shadow: none !important;
+      }
+
+      /* Remove any hover effects that might add background */
+      .vision-item:hover {
+        background: transparent !important;
+      }
+
+      .vision-item:hover .vision-headline,
+      .vision-item:hover .vision-description {
+        background: transparent !important;
       }
     }
   </style>
