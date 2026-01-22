@@ -1,120 +1,123 @@
 /**
- * CLEAN MOBILE DRAWER NAVIGATION
- * Plain vanilla JS - no frameworks
- * Right-side sliding drawer (75% viewport width)
- * Closes on: outside click, link click, hamburger toggle, escape key
- * Locks body scroll when open
+ * CLEAN MOBILE DRAWER NAVIGATION - SURGICAL REBUILD
+ * 
+ * GUARANTEES:
+ * - Single event listener (no conflicts)
+ * - Direct body children (no positioning constraints)
+ * - Full visibility of menu items
+ * - No phantom overlays
+ * - Works on all pages identically
  */
 
 class MobileDrawerNav {
   constructor() {
     this.isOpen = false;
     this.isMobile = window.innerWidth < 768;
-    
-    // Bind methods to preserve 'this'
-    this.handleResize = this.handleResize.bind(this);
-    this.handleHamburgerClick = this.handleHamburgerClick.bind(this);
-    this.handleDrawerBackdropClick = this.handleDrawerBackdropClick.bind(this);
-    this.handleNavLinkClick = this.handleNavLinkClick.bind(this);
-    this.handleEscapeKey = this.handleEscapeKey.bind(this);
+    this.backdropEl = null;
+    this.drawerEl = null;
+    this.hamburgerEl = null;
     
     this.init();
   }
 
   init() {
-    // Build drawer HTML/CSS once
-    this.buildDrawer();
-    this.attachEventListeners();
-    // Ensure body starts clean
-    document.body.classList.remove('drawer-open');
+    // Build drawer structure (direct body children only)
+    this.buildStructure();
     
-    // Monitor window resize
-    window.addEventListener('resize', this.handleResize);
+    // Inject CSS (CRITICAL: visible by default, hidden state managed by class)
+    this.injectStyles();
+    
+    // Attach event listeners (AFTER elements exist)
+    this.attachListeners();
+    
+    // Ensure clean state on init
+    document.body.classList.remove('drawer-open');
   }
 
-  buildDrawer() {
-    // Create backdrop - append directly to body
-    this.backdrop = document.createElement('div');
-    this.backdrop.className = 'mobile-drawer-backdrop';
-    this.backdrop.innerHTML = '';
-    document.body.appendChild(this.backdrop);
+  buildStructure() {
+    // BACKDROP - Direct body child
+    this.backdropEl = document.createElement('div');
+    this.backdropEl.id = 'mobile-drawer-backdrop';
+    this.backdropEl.setAttribute('aria-hidden', 'true');
+    document.body.appendChild(this.backdropEl);
 
-    // Create drawer content - append directly to body
-    this.content = document.createElement('nav');
-    this.content.className = 'mobile-drawer-content';
-    this.content.innerHTML = `
-      <div class="mobile-drawer-header">
-        <button class="mobile-drawer-close" aria-label="Close menu">✕</button>
+    // DRAWER - Direct body child
+    this.drawerEl = document.createElement('nav');
+    this.drawerEl.id = 'mobile-drawer-content';
+    this.drawerEl.setAttribute('aria-label', 'Mobile navigation');
+    this.drawerEl.innerHTML = `
+      <div class="drawer-header">
+        <button class="drawer-close-btn" type="button" aria-label="Close menu">
+          <span class="close-icon">✕</span>
+        </button>
       </div>
-      <ul class="mobile-drawer-menu">
-        <li><a href="index.html" class="mobile-drawer-link">Home</a></li>
-        <li><a href="vision.html" class="mobile-drawer-link">About</a></li>
-        <li><a href="honors.html" class="mobile-drawer-link">Awards</a></li>
-        <li><a href="nominees.html" class="mobile-drawer-link">Selections</a></li>
-        <li><a href="jury.html" class="mobile-drawer-link">Jury</a></li>
-        <li><a href="ceremony.html" class="mobile-drawer-link">Event</a></li>
-        <li><a href="press.html" class="mobile-drawer-link">Press</a></li>
-        <li><a href="sponsors.html" class="mobile-drawer-link">Partners</a></li>
-      </ul>
-      <div class="mobile-drawer-cta">
-        <a href="submit.html" class="mobile-drawer-submit">Submit Your Film</a>
+      <div class="drawer-menu-container">
+        <ul class="drawer-menu">
+          <li><a href="index.html" class="drawer-link">Home</a></li>
+          <li><a href="vision.html" class="drawer-link">About</a></li>
+          <li><a href="honors.html" class="drawer-link">Awards</a></li>
+          <li><a href="nominees.html" class="drawer-link">Selections</a></li>
+          <li><a href="jury.html" class="drawer-link">Jury</a></li>
+          <li><a href="ceremony.html" class="drawer-link">Event</a></li>
+          <li><a href="press.html" class="drawer-link">Press</a></li>
+          <li><a href="sponsors.html" class="drawer-link">Partners</a></li>
+        </ul>
+      </div>
+      <div class="drawer-footer">
+        <a href="submit.html" class="drawer-cta">Submit Your Film</a>
       </div>
     `;
-    document.body.appendChild(this.content);
-    
-    this.injectStyles();
+    document.body.appendChild(this.drawerEl);
   }
 
   injectStyles() {
     const style = document.createElement('style');
+    style.id = 'mobile-drawer-styles';
     style.textContent = `
-      /* MOBILE DRAWER STYLES */
-      .mobile-drawer-backdrop {
+      /* BACKDROP */
+      #mobile-drawer-backdrop {
         position: fixed;
-        top: 62px;
+        top: 0;
         right: 0;
         bottom: 0;
         left: 0;
-        background-color: rgba(0, 0, 0, 0.5);
+        background: rgba(0, 0, 0, 0.5);
         backdrop-filter: blur(2px);
         z-index: 9998;
+        display: none;
         opacity: 0;
-        visibility: hidden;
-        transition: opacity 0.3s ease-out, visibility 0.3s ease-out;
-        pointer-events: none;
+        transition: opacity 0.3s ease-out;
       }
 
-      body.drawer-open .mobile-drawer-backdrop {
+      body.drawer-open #mobile-drawer-backdrop {
+        display: block;
         opacity: 1;
-        visibility: visible;
-        pointer-events: auto;
       }
 
-      .mobile-drawer-content {
+      /* DRAWER CONTENT */
+      #mobile-drawer-content {
         position: fixed;
+        top: 0;
         right: 0;
-        top: 62px;
         bottom: 0;
         width: 75vw;
         max-width: 320px;
-        background-color: #0a0a0a;
+        background: #0a0a0a;
         border-left: 1px solid rgba(255, 255, 255, 0.1);
+        z-index: 9999;
         display: flex;
         flex-direction: column;
         transform: translateX(100%);
-        transition: transform 0.3s ease-out, visibility 0.3s ease-out;
-        overflow-y: auto;
-        overscroll-behavior: contain;
-        z-index: 9999;
-        visibility: hidden;
+        transition: transform 0.3s ease-out;
+        overflow: hidden;
       }
 
-      body.drawer-open .mobile-drawer-content {
+      body.drawer-open #mobile-drawer-content {
         transform: translateX(0);
-        visibility: visible;
       }
 
-      .mobile-drawer-header {
+      /* DRAWER HEADER */
+      .drawer-header {
         display: flex;
         justify-content: flex-end;
         align-items: center;
@@ -123,34 +126,55 @@ class MobileDrawerNav {
         flex-shrink: 0;
       }
 
-      .mobile-drawer-close {
+      .drawer-close-btn {
         background: none;
         border: none;
-        color: white;
+        color: #fff;
         font-size: 1.5rem;
         cursor: pointer;
-        padding: 0.25rem;
+        padding: 0.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         line-height: 1;
         transition: color 0.2s ease;
       }
 
-      .mobile-drawer-close:active {
-        color: rgba(255, 255, 255, 0.7);
+      .drawer-close-btn:hover {
+        color: rgba(255, 255, 255, 0.8);
       }
 
-      .mobile-drawer-menu {
-        list-style: none;
-        margin: 0;
-        padding: 1.5rem 0;
+      .close-icon {
+        display: block;
+        width: 1.5rem;
+        height: 1.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      /* MENU CONTAINER */
+      .drawer-menu-container {
         flex: 1;
         overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        overscroll-behavior: contain;
       }
 
-      .mobile-drawer-menu li {
+      /* MENU */
+      .drawer-menu {
+        list-style: none;
         margin: 0;
+        padding: 1rem 0;
       }
 
-      .mobile-drawer-link {
+      .drawer-menu li {
+        margin: 0;
+        padding: 0;
+      }
+
+      /* MENU LINKS - GUARANTEED VISIBILITY */
+      .drawer-link {
         display: block;
         color: #ffffff;
         text-decoration: none;
@@ -159,139 +183,134 @@ class MobileDrawerNav {
         font-weight: 500;
         letter-spacing: 0.02em;
         border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-        transition: background-color 0.2s ease, color 0.2s ease;
+        transition: background-color 0.2s ease;
       }
 
-      .mobile-drawer-link:active {
+      .drawer-link:visited {
+        color: #ffffff;
+      }
+
+      .drawer-link:active {
         background-color: rgba(220, 38, 38, 0.1);
         color: #ffffff;
       }
 
-      .mobile-drawer-cta {
+      /* FOOTER/CTA */
+      .drawer-footer {
         padding: 1.5rem;
         border-top: 1px solid rgba(255, 255, 255, 0.05);
         flex-shrink: 0;
       }
 
-      .mobile-drawer-submit {
+      .drawer-cta {
         display: block;
         width: 100%;
         text-align: center;
-        background-color: #dc2626;
+        background: #dc2626;
         color: white;
-        padding: 0.875rem;
+        padding: 0.875rem 1rem;
         border-radius: 0.375rem;
         font-weight: 600;
-        text-decoration: none;
         font-size: 1rem;
         letter-spacing: 0.02em;
+        text-decoration: none;
         transition: background-color 0.2s ease;
       }
 
-      .mobile-drawer-submit:active {
+      .drawer-cta:visited {
+        color: white;
+      }
+
+      .drawer-cta:active {
         background-color: #991b1b;
       }
 
-      /* Body scroll lock when drawer open */
+      /* BODY SCROLL LOCK */
       body.drawer-open {
-        overflow: hidden;
+        overflow: hidden !important;
+      }
+
+      /* PREVENT INTERACTION OUTSIDE DRAWER */
+      body:not(.drawer-open) #mobile-drawer-backdrop {
+        pointer-events: none;
+      }
+
+      body.drawer-open #mobile-drawer-backdrop {
+        pointer-events: auto;
+      }
+
+      /* Hide drawer on desktop */
+      @media (min-width: 768px) {
+        #mobile-drawer-backdrop,
+        #mobile-drawer-content {
+          display: none !important;
+        }
       }
     `;
     document.head.appendChild(style);
   }
 
-  attachEventListeners() {
-    // Hamburger button
-    const hamburger = document.querySelector('[data-mobile-menu-toggle]');
-    console.log('🍔 Mobile Drawer: Looking for hamburger button...', hamburger);
-    if (hamburger) {
-      console.log('✅ Mobile Drawer: Hamburger found, attaching click listener');
-      hamburger.addEventListener('click', this.handleHamburgerClick);
-    } else {
-      console.error('❌ Mobile Drawer: Hamburger button NOT found! Selector: [data-mobile-menu-toggle]');
+  attachListeners() {
+    // Find hamburger
+    this.hamburgerEl = document.querySelector('[data-mobile-menu-toggle]');
+    
+    if (!this.hamburgerEl) {
+      console.warn('⚠️ Mobile drawer: Hamburger button not found');
+      return;
     }
 
+    // SINGLE event listener with arrow function (preserves this context)
+    this.hamburgerEl.addEventListener('click', () => {
+      this.isOpen ? this.close() : this.open();
+    });
+
     // Close button
-    const closeBtn = this.content.querySelector('.mobile-drawer-close');
+    const closeBtn = this.drawerEl.querySelector('.drawer-close-btn');
     if (closeBtn) {
       closeBtn.addEventListener('click', () => this.close());
     }
 
     // Backdrop click
-    if (this.backdrop) {
-      this.backdrop.addEventListener('click', this.handleDrawerBackdropClick);
-    }
+    this.backdropEl.addEventListener('click', () => this.close());
 
-    // Nav links
-    const navLinks = this.content.querySelectorAll('.mobile-drawer-link');
-    navLinks.forEach(link => {
-      link.addEventListener('click', this.handleNavLinkClick);
+    // Menu links - close drawer when clicked
+    const links = this.drawerEl.querySelectorAll('.drawer-link, .drawer-cta');
+    links.forEach(link => {
+      link.addEventListener('click', () => this.close());
     });
 
-    // Submit link
-    const submitLink = this.content.querySelector('.mobile-drawer-submit');
-    if (submitLink) {
-      submitLink.addEventListener('click', this.handleNavLinkClick);
-    }
-
     // Escape key
-    document.addEventListener('keydown', this.handleEscapeKey);
-  }
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && this.isOpen) {
+        this.close();
+      }
+    });
 
-  handleResize() {
-    const wasMobile = this.isMobile;
-    this.isMobile = window.innerWidth < 768;
-
-    // Close drawer if switching to desktop
-    if (wasMobile && !this.isMobile && this.isOpen) {
-      this.close();
-    }
-  }
-
-  handleHamburgerClick() {
-    console.log('🖱️ Mobile Drawer: Hamburger clicked! isOpen:', this.isOpen);
-    if (this.isOpen) {
-      console.log('📥 Mobile Drawer: Closing drawer');
-      this.close();
-    } else {
-      console.log('📤 Mobile Drawer: Opening drawer');
-      this.open();
-    }
-  }
-
-  handleDrawerBackdropClick() {
-    this.close();
-  }
-
-  handleNavLinkClick() {
-    this.close();
-  }
-
-  handleEscapeKey(e) {
-    if (e.key === 'Escape' && this.isOpen) {
-      this.close();
-    }
+    // Handle window resize
+    window.addEventListener('resize', () => {
+      const nowMobile = window.innerWidth < 768;
+      if (this.isMobile && !nowMobile) {
+        // Switched to desktop
+        this.close();
+      }
+      this.isMobile = nowMobile;
+    });
   }
 
   open() {
-    if (!this.isMobile) {
-      console.log('⚠️ Mobile Drawer: Not mobile, skipping open');
-      return;
-    }
-    console.log('✅ Opening drawer, adding "drawer-open" class');
+    if (!this.isMobile) return;
+    
     this.isOpen = true;
     document.body.classList.add('drawer-open');
-    console.log('📊 Body classList:', document.body.className);
   }
 
   close() {
-    console.log('✅ Closing drawer, removing "drawer-open" class');
     this.isOpen = false;
     document.body.classList.remove('drawer-open');
   }
 }
 
-// Initialize on DOM ready
+// Initialize immediately or on DOMContentLoaded
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', () => {
     new MobileDrawerNav();
