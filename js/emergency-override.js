@@ -1,19 +1,11 @@
 /* ================================
    EMERGENCY VISIBILITY OVERRIDE
+   DISABLED - CAUSING CONFLICTS WITH MOBILE DRAWER
    ================================ */
 
-setTimeout(() => {
-  document.querySelectorAll('*').forEach(el => {
-    const style = getComputedStyle(el);
-    if (style.opacity === '0' || style.visibility === 'hidden') {
-      el.style.opacity = '1';
-      el.style.visibility = 'visible';
-      el.style.transform = 'none';
-    }
-  });
-
-  document.body.style.opacity = '1';
-  document.body.style.visibility = 'visible';
-
-  console.warn('⚠️ Emergency visibility override activated');
-}, 3000);
+// This script has been disabled because it was:
+// 1. Forcing all hidden elements to be visible
+// 2. Removing CSS transforms needed for drawer animations
+// 3. Breaking the mobile drawer state management
+// 
+// If visibility issues occur, fix them at the source instead of using this override.

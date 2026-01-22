@@ -179,6 +179,40 @@
     .contact-card a:hover {
       color: #f87171;
     }
+    /* MOBILE NAVBAR FIX */
+    @media (max-width: 767px) {
+      nav.fixed {
+        height: 62px !important;
+        display: flex !important;
+        align-items: center !important;
+        padding: 0 1rem !important;
+      }
+      nav.fixed .max-w-7xl {
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+      }
+      nav.fixed .logo-padding-spacer {
+        display: flex !important;
+        align-items: center !important;
+        padding: 0 !important;
+      }
+      nav.fixed .site-logo {
+        height: 28px !important;
+        width: auto !important;
+      }
+      nav.fixed .md\:hidden {
+        display: flex !important;
+        align-items: center !important;
+      }
+      nav.fixed button[data-mobile-menu-toggle] {
+        padding: 0.5rem 0.75rem !important;
+        font-size: 1.25rem !important;
+      }
+    }
   </style>
 </head>
 
@@ -346,6 +380,6 @@
   <script src="/js/navbar-scroll.js"></script>
 
   <!-- Mobile Navbar Overlay System -->
-  <script src="js/navbar-mobile-overlay.js"></script>
+  <script src="js/mobile-drawer-nav.js"></script>
 </body>
 </html>
