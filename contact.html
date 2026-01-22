@@ -43,6 +43,32 @@
       color: inherit;
     }
 
+    .site-logo {
+      height: 32px;
+      width: auto;
+      display: block;
+      filter: none;
+    }
+
+    .site-logo-link {
+      display: inline-block;
+      line-height: 1;
+    }
+
+    .logo-padding-spacer {
+      padding-right: 290px;
+      display: inline-block;
+    }
+
+    @media (max-width: 768px) {
+      .site-logo {
+        height: 28px;
+      }
+      .logo-padding-spacer {
+        padding-right: 0;
+      }
+    }
+
 
     .grain {
       position: fixed;
@@ -161,7 +187,11 @@
   <!-- NAVIGATION -->
   <nav class="fixed top-0 w-full z-50 backdrop-blur-lg py-4 px-8 transition-transform duration-300">
     <div class="max-w-7xl mx-auto flex justify-between items-center">
-      <a href="index.html" class="text-xl font-bold tracking-wider">HUNGAMA</a>
+      <div class="logo-padding-spacer">
+        <a href="index.html" class="site-logo-link">
+          <img src="/images/hungama-logo.png" alt="Hungama AI Film Festival" class="site-logo" />
+        </a>
+      </div>
       
       <div class="hidden md:flex gap-8 items-center text-sm">
         <a href="index.html" class="transition">Home</a>
