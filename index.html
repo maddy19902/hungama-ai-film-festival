@@ -243,88 +243,149 @@
     </div>
   </section>
 
-  <!-- MANIFESTO: TEXT-DOMINANT ASYMMETRICAL COMPOSITION -->
-  <section class="py-20 sm:py-28 lg:py-40 px-5 sm:px-8 lg:px-12 bg-gradient-to-b from-[#0a0a0a] via-[#0b0b0b] to-[#0a0a0a]" data-parallax-layer="midground">
-    <div class="max-w-7xl mx-auto">
-      <div class="block lg:grid lg:grid-cols-3 lg:gap-12 lg:items-start">
-        
-        <!-- TEXT DOMINATES: ~60% VISUAL WEIGHT -->
-        <div class="lg:col-span-2 mb-12 lg:mb-0">
-          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight mb-6 lg:mb-8 tracking-tight">
-            India's Premier<br />
-            <span class="text-brandRed/90">AI Film Festival</span>
-          </h2>
-          
-          <p class="text-gray-400 text-base sm:text-lg leading-relaxed font-light mb-6">
-            Hungama AI Film Festival is India's leading platform dedicated to AI-native films—where human imagination and artificial intelligence converge to create bold, original cinematic work. We celebrate a new language of filmmaking that emerges from collaboration, experimentation, and emotion—reshaping how stories are imagined, authored, and experienced across cultures.
-          </p>
-        </div>
 
-        <!-- IMAGES: OFFSET & PERIPHERAL ON RIGHT -->
-        <div class="lg:col-span-1 lg:relative" style="min-height: 400px;">
-          <div class="absolute lg:top-0 lg:right-0 lg:-mr-12" style="width: 100%; max-width: 320px;">
-            <!-- HUMANOID: OFFSET TO RIGHT, PARTIAL VISIBILITY -->
-            <div class="relative mb-6">
-              <img
-                src="images/humanoid.png"
-                alt="Humanoid illustration"
-                class="w-48 sm:w-56 lg:w-64 flex-shrink-0 opacity-75 lg:absolute lg:right-0 lg:top-0"
-                style="filter: saturate(0.80); transform: translateX(20px);"
-              />
-            </div>
+  <!-- MANIFESTO: IMAGE-BASED LAYOUT WITH TEXT OVERLAY -->
+  <style>
+    #manifesto-desktop { display: none; }
+    #manifesto-mobile { display: block; }
+    
+    @media (min-width: 1024px) {
+      #manifesto-desktop { display: block; }
+      #manifesto-mobile { display: none; }
+    }
+
+    .manifesto-cta {
+      display: inline-block;
+      border-left: 4px solid #dc2626;
+      padding-left: 1rem;
+      color: white;
+      font-size: 0.875rem;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+
+    .manifesto-cta:hover {
+      border-left-color: #ef4444;
+      padding-left: 1.25rem;
+    }
+  </style>
+
+  <section class="py-16 sm:py-20 lg:py-20 px-5 sm:px-8 lg:px-12 bg-gradient-to-b from-[#0a0a0a] via-[#0b0b0b] to-[#0a0a0a]" data-parallax-layer="midground">
+    <div class="max-w-6xl mx-auto">
+      
+      <!-- DESKTOP: home-div-d.png -->
+      <div id="manifesto-desktop" class="relative w-full" style="max-width: 100%;">
+        <img
+          src="images/home-div-d.png"
+          alt="Hungama AI Film Festival manifesto"
+          class="w-full h-auto"
+          style="display: block; max-width: 100%; height: auto;"
+        />
+        
+        <!-- TEXT OVERLAY: POSITIONED OVER IMAGE - LEFT ALIGNED FOR DESKTOP -->
+        <div class="absolute" style="top: 15%; left: 2%; right: auto; width: 40%;">
+          <div class="max-w-xl">
+            <h2 class="text-4xl lg:text-5xl font-bold leading-tight mb-6 tracking-tight">
+              India's<br />
+              Premier<br />
+              <span class="text-brandRed/90">AI Film Festival</span>
+            </h2>
             
-            <!-- FILM REEL: COMPLEMENT HUMANOID IN NEGATIVE SPACE -->
-            <div class="flex justify-end mt-4 lg:mt-0 lg:absolute lg:bottom-0 lg:right-8" style="transform: translateY(60px);">
-              <img
-                src="images/film-reel.png"
-                alt="Film reel"
-                class="w-20 sm:w-24 lg:w-28 flex-shrink-0 opacity-65"
-                style="filter: saturate(0.75);"
-              />
-            </div>
+            <p class="text-gray-400 text-base leading-relaxed font-light mb-6">
+              Hungama AI Film Festival is India's leading platform dedicated to AI-native films—where human imagination and artificial intelligence converge to create bold, original cinematic work. We celebrate a new language of filmmaking that emerges from collaboration, experimentation, and emotion.
+            </p>
+
+            <a href="vision.html" class="manifesto-cta">Our Ethos →</a>
           </div>
         </div>
-        
       </div>
+
+      <!-- MOBILE: home-div-m.png -->
+      <div id="manifesto-mobile" class="relative w-full" style="max-width: 100%;">
+        <img
+          src="images/home-div-m.png"
+          alt="Hungama AI Film Festival manifesto"
+          class="w-full h-auto"
+          style="display: block; max-width: 100%; height: auto;"
+        />
+        
+        <!-- TEXT OVERLAY: POSITIONED OVER IMAGE -->
+        <div class="absolute" style="top: 5%; left: 5%; right: 5%; bottom: auto; width: auto;">
+          <div class="w-full">
+            <h2 class="text-2xl sm:text-3xl font-bold leading-tight mb-4 tracking-tight">
+              India's Premier<br />
+              <span class="text-brandRed/90">AI Film Festival</span>
+            </h2>
+            
+            <p class="text-gray-400 text-sm sm:text-base leading-relaxed font-light mb-6">
+              Hungama AI Film Festival is India's leading platform dedicated to AI-native films—where human imagination and artificial intelligence converge to create bold, original cinematic work. We celebrate a new language of filmmaking that emerges from collaboration, experimentation, and emotion.
+            </p>
+
+            <a href="vision.html" class="manifesto-cta">Our Ethos →</a>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 
-  <!-- SPONSORS: LOGO + NAME PAIRING -->
+  <!-- SPONSORS: SUPPORTED BY ROW -->
   <section class="py-16 sm:py-20 px-5 sm:px-8 lg:px-12 bg-gradient-to-b from-[#0a0a0a] via-[#0a0a0a] to-[#0b0b0b]" data-parallax-layer="foreground">
     <div class="max-w-5xl mx-auto">
       <p class="text-xs tracking-[0.18em] text-gray-500 uppercase mb-10 text-center">
         Supported by
       </p>
       
-      <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-12">
-        <!-- Aurora Nexus -->
-        <div class="flex flex-col items-center sm:items-start gap-3 opacity-75 hover:opacity-100 transition">
+      <div class="flex gap-16 sm:gap-20 lg:gap-24 items-center justify-center">
+        <div class="flex flex-col items-center gap-3">
           <img
-            src="images/sponsors/aurora-nexus.jpg"
+            src="images/sponsors/auroranexus-wbg.png"
             alt="Aurora Nexus"
-            class="h-6 sm:h-8 grayscale hover:grayscale-0 transition"
+            class="h-6 w-auto max-w-[36px] grayscale saturate-0 opacity-60 flex-shrink-0"
           />
-          <span class="text-xs text-gray-500 font-light">Aurora Nexus</span>
         </div>
         
-        <!-- HelixOne -->
-        <div class="flex flex-col items-center sm:items-start gap-3 opacity-75 hover:opacity-100 transition">
+        <div class="flex flex-col items-center gap-3">
           <img
-            src="images/sponsors/helixone.jpg"
+            src="images/sponsors/helixone-wbg.png"
             alt="HelixOne"
-            class="h-6 sm:h-8 grayscale hover:grayscale-0 transition"
+            class="h-6 w-auto max-w-[36px] grayscale saturate-0 opacity-60 flex-shrink-0"
           />
-          <span class="text-xs text-gray-500 font-light">HelixOne</span>
+        </div>
+
+        <div class="flex flex-col items-center gap-3">
+          <img
+            src="images/sponsors/ai-dispatch-wbg.png"
+            alt="AI Dispatch"
+            class="h-6 w-auto max-w-[36px] grayscale saturate-0 opacity-60 flex-shrink-0"
+          />
+        </div>
+
+        <div class="flex flex-col items-center gap-3">
+          <img
+            src="images/sponsors/futureframes-wbg.png"
+            alt="FutureFrames"
+            class="h-6 w-auto max-w-[36px] grayscale saturate-0 opacity-60 flex-shrink-0"
+          />
+        </div>
+
+        <div class="flex flex-col items-center gap-3">
+          <img
+            src="images/sponsors/synaptic-labs-wbg.png"
+            alt="Synaptic Labs"
+            class="h-6 w-auto max-w-[36px] grayscale saturate-0 opacity-60 flex-shrink-0"
+          />
         </div>
         
-        <!-- NovaForge -->
-        <div class="flex flex-col items-center sm:items-start gap-3 opacity-75 hover:opacity-100 transition">
+        <div class="flex flex-col items-center gap-3">
           <img
-            src="images/sponsors/novaforge.jpg"
+            src="images/sponsors/novaforge-wbg.png"
             alt="NovaForge"
-            class="h-6 sm:h-8 grayscale hover:grayscale-0 transition"
+            class="h-6 w-auto max-w-[36px] grayscale saturate-0 opacity-60 flex-shrink-0"
           />
-          <span class="text-xs text-gray-500 font-light">NovaForge</span>
         </div>
       </div>
     </div>
