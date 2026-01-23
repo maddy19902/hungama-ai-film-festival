@@ -94,13 +94,13 @@ a.button:active,
    LINK HOVER - Subtle underline and color shift
    ============================================================ */
 
-a:not(.button):not([class*="btn"]):not([role="button"]):not([class*="logo"]) {
+a:not(.button):not([class*="btn"]):not([role="button"]):not([class*="logo"]):not(.site-logo-link) {
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   border-bottom: 1px solid transparent;
 }
 
-a:hover:not(.button):not([class*="btn"]):not([role="button"]):not([class*="logo"]) {
+a:hover:not(.button):not([class*="btn"]):not([role="button"]):not([class*="logo"]):not(.site-logo-link) {
   color: rgba(220, 20, 60, 1);
   border-bottom-color: rgba(220, 20, 60, 0.6);
 }
@@ -175,24 +175,25 @@ select:focus {
    NAVIGATION ITEM HOVER - Subtle enhancement
    ============================================================ */
 
-nav a:not(.logo),
+nav a:not(.logo):not(.site-logo-link),
 .nav-item {
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   color: #ffffff;
 }
 
-nav a:hover:not(.logo),
+nav a:hover:not(.logo):not(.site-logo-link),
 .nav-item:hover {
   color: #8b2e2e;
   text-shadow: 0 0 8px rgba(139, 46, 46, 0.3);
 }
 
 /* Active navigation link state */
-nav a.active:not(.logo),
+nav a.active:not(.logo):not(.site-logo-link),
 .nav-item.active {
   color: #8b2e2e;
   text-shadow: 0 0 8px rgba(139, 46, 46, 0.3);
   text-decoration: underline;
+}
   text-decoration-thickness: 2px;
   text-underline-offset: 6px;
 }

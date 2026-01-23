@@ -301,7 +301,7 @@ select:hover {
    LINK UNDERLINE ANIMATION
    ============================================================ */
 
-a:not(.button):not([class*="btn"]):not([role="button"]) {
+a:not(.button):not([class*="btn"]):not([role="button"]):not(.site-logo-link) {
   position: relative;
   color: var(--color-white);
   text-decoration: none;
@@ -309,7 +309,7 @@ a:not(.button):not([class*="btn"]):not([role="button"]) {
   transition: all var(--motion-duration-base) var(--ease-out-smooth);
 }
 
-a:hover:not(.button):not([class*="btn"]):not([role="button"]) {
+a:hover:not(.button):not([class*="btn"]):not([role="button"]):not(.site-logo-link) {
   color: rgba(220, 20, 60, 1);
   border-bottom-color: rgba(220, 20, 60, 0.6);
 }
