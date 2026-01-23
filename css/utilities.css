@@ -1,0 +1,52 @@
+/* ============================================================================
+   UTILITY CLASSES - Extracted Inline Styles for Reusability
+   ============================================================================
+   
+   These utility classes consolidate repeated inline styles from multiple
+   pages. Extracted from submit.html, contact.html, and index.html.
+   
+   Benefits:
+   - Single source of truth for styling
+   - Reduced HTML bloat
+   - Easier to maintain and update
+   - Consistent application across pages
+*/
+
+/* Form Label - Used 9 times in submit.html */
+.form-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.1em;
+}
+
+/* Form Title - Used 8 times in submit.html */
+.form-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+/* Spacing Utilities */
+
+/* Margin Top - Used 6 times in contact.html */
+.spacing-top {
+  margin-top: 1rem;
+}
+
+/* Margin Bottom - Used 3 times in contact.html */
+.spacing-bottom {
+  margin-bottom: 1.5rem;
+}
+
+/* Form Hint - Used 3 times in contact.html */
+.form-hint {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 0.875rem;
+}
+
+/* Hero Background - Used 3 times across index.html, vision.html, sponsors.html */
+.hero-bg-lower {
+  background-image: url('images/home-lower-bg.png');
+}

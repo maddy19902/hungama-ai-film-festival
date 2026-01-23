@@ -8,6 +8,7 @@
   <link href="css/path-fallback.css" rel="stylesheet">
   <link href="css/output.css" rel="stylesheet">
   <link href="css/design-tokens.css" rel="stylesheet">
+  <link href="css/utilities.css" rel="stylesheet">
   <link href="css/premium-interactions.css" rel="stylesheet">
   <link href="css/scroll-transitions.css" rel="stylesheet">
   <link href="css/animations.css" rel="stylesheet">
@@ -21,7 +22,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <link href="css/pass2-global-brightening.css" rel="stylesheet">
+  <link href="css/global-brightness.css" rel="stylesheet">
   <style>
     * {
       font-family: 'DM Sans', sans-serif;
@@ -34,9 +35,6 @@
       width: 100%;
       background: transparent;
       padding: 1rem 2rem;
-      height: 62px !important;
-      display: flex !important;
-      align-items: center !important;
     }
 
     nav a {
@@ -665,7 +663,7 @@
           Thank you for submitting your film to Hungama AI Film Festival.
         </p>
         <div style="background: rgba(0, 200, 83, 0.1); border: 1px solid rgba(0, 200, 83, 0.3); border-radius: 0.75rem; padding: 1.5rem; margin-bottom: 2rem;">
-          <p style="font-size: 0.75rem; text-transform: uppercase; color: rgba(255, 255, 255, 0.5); margin-bottom: 0.5rem; letter-spacing: 0.1em;">Reference ID</p>
+          <p class="form-label">Reference ID</p>
           <p style="font-size: 1.5rem; font-weight: 700; color: #00c853;" id="reference-id">HUNGAMA-2026-00000</p>
         </div>
         <p style="font-size: 0.9rem; color: rgba(255, 255, 255, 0.6); margin-bottom: 2rem;">
@@ -780,36 +778,36 @@
           <div style="background: rgba(128, 0, 0, 0.08); border: 1px solid rgba(128, 0, 0, 0.3); border-radius: 1rem; padding: 2rem; margin-bottom: 2rem;">
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
               <div>
-                <p style="font-size: 0.75rem; text-transform: uppercase; color: rgba(255, 255, 255, 0.5); margin-bottom: 0.5rem; letter-spacing: 0.1em;">Film Title</p>
-                <p style="font-size: 1.125rem; font-weight: 600;"><span id="review-filmTitle">-</span></p>
+                <p class="form-label">Film Title</p>
+                <p class="form-title"><span id="review-filmTitle">-</span></p>
               </div>
               <div>
-                <p style="font-size: 0.75rem; text-transform: uppercase; color: rgba(255, 255, 255, 0.5); margin-bottom: 0.5rem; letter-spacing: 0.1em;">Category</p>
-                <p style="font-size: 1.125rem; font-weight: 600;"><span id="review-category">-</span></p>
+                <p class="form-label">Category</p>
+                <p class="form-title"><span id="review-category">-</span></p>
               </div>
               <div>
-                <p style="font-size: 0.75rem; text-transform: uppercase; color: rgba(255, 255, 255, 0.5); margin-bottom: 0.5rem; letter-spacing: 0.1em;">Film Type</p>
-                <p style="font-size: 1.125rem; font-weight: 600;"><span id="review-filmType">-</span></p>
+                <p class="form-label">Film Type</p>
+                <p class="form-title"><span id="review-filmType">-</span></p>
               </div>
               <div>
-                <p style="font-size: 0.75rem; text-transform: uppercase; color: rgba(255, 255, 255, 0.5); margin-bottom: 0.5rem; letter-spacing: 0.1em;">Duration</p>
-                <p style="font-size: 1.125rem; font-weight: 600;"><span id="review-duration">-</span> sec</p>
+                <p class="form-label">Duration</p>
+                <p class="form-title"><span id="review-duration">-</span> sec</p>
               </div>
               <div>
-                <p style="font-size: 0.75rem; text-transform: uppercase; color: rgba(255, 255, 255, 0.5); margin-bottom: 0.5rem; letter-spacing: 0.1em;">Creator Name</p>
-                <p style="font-size: 1.125rem; font-weight: 600;"><span id="review-creatorName">-</span></p>
+                <p class="form-label">Creator Name</p>
+                <p class="form-title"><span id="review-creatorName">-</span></p>
               </div>
               <div>
-                <p style="font-size: 0.75rem; text-transform: uppercase; color: rgba(255, 255, 255, 0.5); margin-bottom: 0.5rem; letter-spacing: 0.1em;">Email</p>
-                <p style="font-size: 1.125rem; font-weight: 600;"><span id="review-email">-</span></p>
+                <p class="form-label">Email</p>
+                <p class="form-title"><span id="review-email">-</span></p>
               </div>
               <div>
-                <p style="font-size: 0.75rem; text-transform: uppercase; color: rgba(255, 255, 255, 0.5); margin-bottom: 0.5rem; letter-spacing: 0.1em;">Country</p>
-                <p style="font-size: 1.125rem; font-weight: 600;"><span id="review-country">-</span></p>
+                <p class="form-label">Country</p>
+                <p class="form-title"><span id="review-country">-</span></p>
               </div>
               <div>
-                <p style="font-size: 0.75rem; text-transform: uppercase; color: rgba(255, 255, 255, 0.5); margin-bottom: 0.5rem; letter-spacing: 0.1em;">Video File</p>
-                <p style="font-size: 1.125rem; font-weight: 600;"><span id="review-videoFile">-</span></p>
+                <p class="form-label">Video File</p>
+                <p class="form-title"><span id="review-videoFile">-</span></p>
               </div>
             </div>
           </div>

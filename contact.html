@@ -8,6 +8,7 @@
   <link href="css/path-fallback.css" rel="stylesheet">
   <link href="css/output.css" rel="stylesheet">
   <link href="css/design-tokens.css" rel="stylesheet">
+  <link href="css/utilities.css" rel="stylesheet">
   <link href="css/premium-interactions.css" rel="stylesheet">
   <link href="css/scroll-transitions.css" rel="stylesheet">
   <link href="css/animations.css" rel="stylesheet">
@@ -33,9 +34,6 @@
       width: 100%;
       background: transparent;
       padding: 1rem 2rem;
-      height: 62px !important;
-      display: flex !important;
-      align-items: center !important;
     }
 
     nav a {
@@ -261,7 +259,7 @@
           <p>
             Have a question about the festival? Get in touch with our team.
           </p>
-          <p style="margin-top: 1rem;">
+          <p class="spacing-top">
             Email: <a href="mailto:info@hungama-festival.com">info@hungama-festival.com</a>
           </p>
         </div>
@@ -272,7 +270,7 @@
           <p>
             Questions about submitting your film to the festival?
           </p>
-          <p style="margin-top: 1rem;">
+          <p class="spacing-top">
             Email: <a href="mailto:submissions@hungama-festival.com">submissions@hungama-festival.com</a>
           </p>
         </div>
@@ -283,7 +281,7 @@
           <p>
             Media inquiries, interview requests, or partnership opportunities.
           </p>
-          <p style="margin-top: 1rem;">
+          <p class="spacing-top">
             Email: <a href="mailto:press@hungama-festival.com">press@hungama-festival.com</a>
           </p>
         </div>
@@ -294,7 +292,7 @@
           <p>
             Interested in partnering with Hungama? Let's explore opportunities together.
           </p>
-          <p style="margin-top: 1rem;">
+          <p class="spacing-top">
             Email: <a href="mailto:partnerships@hungama-festival.com">partnerships@hungama-festival.com</a>
           </p>
         </div>
@@ -306,7 +304,7 @@
             Hungama AI Film Festival<br>
             Mumbai, India
           </p>
-          <p style="margin-top: 1rem;">
+          <p class="spacing-top">
             Festival runs annually in March
           </p>
         </div>
@@ -317,7 +315,7 @@
           <p>
             Stay updated with festival announcements and updates across all platforms.
           </p>
-          <p style="margin-top: 1rem;">
+          <p class="spacing-top">
             Instagram • Twitter • LinkedIn
           </p>
         </div>
@@ -327,16 +325,16 @@
       <div style="margin-top: 4rem; border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 3rem;">
         <h2 style="font-size: 2rem; margin-bottom: 1.5rem;">Send us a Message</h2>
         <form style="max-width: 600px;">
-          <div style="margin-bottom: 1.5rem;">
-            <label style="display: block; margin-bottom: 0.5rem; font-size: 0.875rem;">Name</label>
+          <div class="spacing-bottom">
+            <label class="form-hint">Name</label>
             <input type="text" placeholder="Your name" style="width: 100%; padding: 0.75rem; background-color: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); color: white; border-radius: 0.25rem;">
           </div>
-          <div style="margin-bottom: 1.5rem;">
-            <label style="display: block; margin-bottom: 0.5rem; font-size: 0.875rem;">Email</label>
+          <div class="spacing-bottom">
+            <label class="form-hint">Email</label>
             <input type="email" placeholder="your@email.com" style="width: 100%; padding: 0.75rem; background-color: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); color: white; border-radius: 0.25rem;">
           </div>
-          <div style="margin-bottom: 1.5rem;">
-            <label style="display: block; margin-bottom: 0.5rem; font-size: 0.875rem;">Message</label>
+          <div class="spacing-bottom">
+            <label class="form-hint">Message</label>
             <textarea placeholder="Your message..." rows="5" style="width: 100%; padding: 0.75rem; background-color: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); color: white; border-radius: 0.25rem; font-family: 'DM Sans', sans-serif;"></textarea>
           </div>
           <button type="submit" style="background-color: #ef4444; padding: 0.75rem 1.5rem; border: none; border-radius: 9999px; color: white; font-weight: 600; font-size: 0.875rem; cursor: pointer; transition: all 0.3s ease;">
