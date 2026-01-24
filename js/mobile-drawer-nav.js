@@ -55,11 +55,11 @@ class MobileDrawerNav {
         <ul class="drawer-menu">
           <li><a href="index.html" class="drawer-link">Home</a></li>
           <li><a href="vision.html" class="drawer-link">About</a></li>
-          <li><a href="honors.html" class="drawer-link">Awards</a></li>
-          <li><a href="nominees.html" class="drawer-link">Nominations</a></li>
+          <!-- <li><a href="honors.html" class="drawer-link">Awards</a></li> -->
+          <li><a href="nominees.html" class="drawer-link">Categories</a></li>
           <li><a href="jury.html" class="drawer-link">Jury</a></li>
           <li><a href="ceremony.html" class="drawer-link">Event</a></li>
-          <li><a href="press.html" class="drawer-link">Press</a></li>
+          <!-- <li><a href="press.html" class="drawer-link">Press</a></li> -->
           <li><a href="sponsors.html" class="drawer-link">Partners</a></li>
         </ul>
       </div>
@@ -157,7 +157,6 @@ class MobileDrawerNav {
       .drawer-menu-container {
         flex: 1;
         overflow-y: auto;
-        -webkit-overflow-scrolling: touch;
         overscroll-behavior: contain;
       }
 

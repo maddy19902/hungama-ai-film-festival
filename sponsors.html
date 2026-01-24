@@ -18,6 +18,7 @@
   <link href="css/responsiveness.css" rel="stylesheet">
   <link href="css/cta-system.css" rel="stylesheet">
   <link href="css/typography-hierarchy.css" rel="stylesheet">
+  <link href="css/navbar-redesign.css" rel="stylesheet">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -34,46 +35,6 @@
       visibility: hidden !important;
       opacity: 0 !important;
       pointer-events: none !important;
-    }
-
-    /* NAVIGATION */
-    nav {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      background: transparent;
-      padding: 1rem 2rem;
-    }
-
-    nav a {
-      text-decoration: none;
-      color: inherit;
-    }
-
-    .site-logo {
-      height: 32px;
-      width: auto;
-      display: block;
-      filter: none;
-    }
-
-    .site-logo-link {
-      display: inline-block;
-      line-height: 1;
-    }
-
-    .logo-padding-spacer {
-      padding-right: 290px;
-      display: inline-block;
-    }
-
-    @media (max-width: 768px) {
-      .site-logo {
-        height: 28px;
-      }
-      .logo-padding-spacer {
-        padding-right: 0;
-      }
     }
 
     /* PASS 3: SECTION TRANSITION BLENDING - DISABLED */
@@ -125,7 +86,7 @@
     /* Ensure section positioning for ::after overlay */
     section {
       position: relative;
-      overflow: hidden;
+      overflow: visible;
       background: transparent !important;
     }
 
@@ -159,206 +120,264 @@
       background-color: var(--tw-bg-opacity, 1) !important;
     }
 
-    /* SPONSORS PAGE RESPONSIVE */
-    @media (max-width: 768px) {
-      .grid {
-        grid-auto-flow: row;
-      }
+    /* ===== NEW SPONSORS PAGE DESIGN ===== */
 
-      section {
-        padding-left: 1.5rem;
-        padding-right: 1.5rem;
-      }
-
-      h2 {
-        font-size: 2rem;
-        margin-bottom: 0.5rem;
-      }
+    /* Section Header Styling - Matches Image Design */
+    .sponsors-section-header {
+      margin-bottom: 3rem;
     }
 
-    /* Logo hover effect */
-    img[src*="sponsors"] {
-      opacity: 0.9;
-      transition: opacity 0.3s ease;
+    .sponsors-section-header h2 {
+      font-size: 3rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 0.5rem;
+      letter-spacing: 0.08em;
     }
 
-    img[src*="sponsors"]:hover {
-      opacity: 1;
+    .sponsors-section-header p {
+      font-size: 0.875rem;
+      color: rgba(156, 163, 175, 0.9);
+      font-weight: 400;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
     }
 
-    /* CRITICAL OVERRIDE: Defeat external CSS conflicts */
-    .sponsor-logo,
-    img[src*="sponsors"] {
-      object-fit: contain;
-      margin-bottom: 1rem;
-      display: block;
-      filter: saturate(0.8) !important;
-      brightness: 1 !important;
-      drop-shadow: none !important;
-      transition: filter 0.4s ease !important;
+    /* Principal Partners Section - 2 Column with Border */
+    .sponsors-rail-principal {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 3rem;
+      margin-bottom: 6rem;
     }
 
-    /* Desktop hover - ONLY applies on hover-capable devices */
-    @media (hover: hover) and (pointer: fine) {
-      .sponsor-logo:hover,
-      img[src*="sponsors"]:hover {
-        filter: saturate(1.2) !important;
-        brightness: 1 !important;
-      }
-    }
-
-    /* Mobile - ABSOLUTELY NO COLOR ON TAP */
-    @media (hover: none) and (pointer: coarse) {
-      .sponsor-logo:active,
-      .sponsor-logo:focus,
-      .sponsor-logo:focus-visible,
-      img[src*="sponsors"]:active,
-      img[src*="sponsors"]:focus,
-      img[src*="sponsors"]:focus-visible {
-        filter: saturate(0.8) !important;
-        brightness: 1 !important;
-      }
-    }
-
-    /* SPONSORS PAGE RAIL-BASED LAYOUT */
-    .sponsor-item {
+    .sponsors-rail-principal .sponsor-item {
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      background: transparent;
-      padding: 0;
+      padding: 3rem 2rem;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 0.5rem;
+      transition: all 0.3s ease;
+      background: rgba(255, 255, 255, 0.02);
     }
 
-    .sponsor-name {
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: rgba(156, 163, 175, 1);
-      opacity: 0.75;
-    }
-
-    /* RAIL 1: PRINCIPAL PARTNERS (3 columns) */
-    .sponsors-rail-principal {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 3rem;
-      padding-bottom: 4rem;
+    .sponsors-rail-principal .sponsor-item:hover {
+      border-color: rgba(255, 255, 255, 0.2);
+      background: rgba(255, 255, 255, 0.04);
     }
 
     .sponsors-rail-principal .sponsor-logo {
-      max-width: 200px !important;
-      max-height: 200px !important;
+      max-width: 180px;
+      max-height: 180px;
+      object-fit: contain;
+      margin-bottom: 1rem;
+      filter: saturate(0.8);
+      transition: filter 0.3s ease;
     }
 
-    /* RAIL 2: TECHNOLOGY PARTNERS - FIRST GROUP (3 columns) */
-    .sponsors-rail-tech-1 {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 3rem;
+    .sponsors-rail-principal .sponsor-item:hover .sponsor-logo {
+      filter: saturate(1);
     }
 
-    .sponsors-rail-tech-1 .sponsor-logo {
-      max-width: 160px !important;
-      max-height: 160px !important;
+    .sponsors-rail-principal .sponsor-name {
+      font-size: 0.875rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.8);
     }
 
-    /* RAIL 3: TECHNOLOGY PARTNERS - SECOND GROUP (2 columns, centered) */
+    /* Technology Partners Section - Card Grid */
+    .sponsors-rail-tech-1,
     .sponsors-rail-tech-2 {
       display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .sponsors-rail-tech-2 {
       grid-template-columns: repeat(2, 1fr);
-      gap: 4rem;
-      max-width: 32rem;
-      margin: 0 auto;
+      max-width: none;
+      margin: 0;
     }
 
+    .sponsors-rail-tech-1 .sponsor-item,
+    .sponsors-rail-tech-2 .sponsor-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 3rem 2rem;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 0.5rem;
+      transition: all 0.3s ease;
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .sponsors-rail-tech-1 .sponsor-item:hover,
+    .sponsors-rail-tech-2 .sponsor-item:hover {
+      border-color: rgba(255, 255, 255, 0.2);
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    .sponsors-rail-tech-1 .sponsor-logo,
     .sponsors-rail-tech-2 .sponsor-logo {
-      max-width: 160px !important;
-      max-height: 160px !important;
+      max-width: 140px;
+      max-height: 140px;
+      object-fit: contain;
+      margin-bottom: 1rem;
+      filter: saturate(0.8);
+      transition: filter 0.3s ease;
     }
 
-    /* RAIL 4: MEDIA PARTNERS (4 columns) */
+    .sponsors-rail-tech-1 .sponsor-item:hover .sponsor-logo,
+    .sponsors-rail-tech-2 .sponsor-item:hover .sponsor-logo {
+      filter: saturate(1);
+    }
+
+    .sponsors-rail-tech-1 .sponsor-name,
+    .sponsors-rail-tech-2 .sponsor-name {
+      font-size: 0.875rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.8);
+      text-align: center;
+    }
+
+    /* Media Partners Section - Card Grid */
     .sponsors-rail-media {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 2rem;
     }
 
-    .sponsors-rail-media .sponsor-logo {
-      max-width: 130px !important;
-      max-height: 130px !important;
+    .sponsors-rail-media .sponsor-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 3rem 2rem;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 0.5rem;
+      transition: all 0.3s ease;
+      background: rgba(255, 255, 255, 0.02);
     }
 
-    /* MOBILE RESPONSIVE (≤768px) */
+    .sponsors-rail-media .sponsor-item:hover {
+      border-color: rgba(255, 255, 255, 0.2);
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    .sponsors-rail-media .sponsor-logo {
+      max-width: 120px;
+      max-height: 120px;
+      object-fit: contain;
+      margin-bottom: 1rem;
+      filter: saturate(0.8);
+      transition: filter 0.3s ease;
+    }
+
+    .sponsors-rail-media .sponsor-item:hover .sponsor-logo {
+      filter: saturate(1);
+    }
+
+    .sponsors-rail-media .sponsor-name {
+      font-size: 0.875rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.8);
+      text-align: center;
+    }
+
+    /* RESPONSIVE DESIGN */
+    @media (max-width: 1024px) {
+      .sponsors-rail-principal {
+        grid-template-columns: 1fr;
+      }
+
+      .sponsors-rail-tech-1 {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .sponsors-rail-media {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .sponsors-section-header h2 {
+        font-size: 2.25rem;
+      }
+    }
+
     @media (max-width: 768px) {
-      .sponsors-rail-principal,
+      .sponsors-section-header h2 {
+        font-size: 1.875rem;
+        margin-bottom: 0.25rem;
+      }
+
+      .sponsors-section-header p {
+        font-size: 0.75rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .sponsors-rail-principal {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        margin-bottom: 3rem;
+      }
+
+      .sponsors-rail-principal .sponsor-item {
+        padding: 2rem 1.5rem;
+      }
+
+      .sponsors-rail-principal .sponsor-logo {
+        max-width: 140px;
+        max-height: 140px;
+      }
+
       .sponsors-rail-tech-1,
       .sponsors-rail-tech-2,
       .sponsors-rail-media {
         grid-template-columns: 1fr;
-        gap: 2rem;
-        max-width: 100%;
+        gap: 1.5rem;
       }
 
-      .sponsors-rail-principal .sponsor-logo {
-        max-width: 220px !important;
-        max-height: 220px !important;
+      .sponsors-rail-tech-1 .sponsor-item,
+      .sponsors-rail-tech-2 .sponsor-item,
+      .sponsors-rail-media .sponsor-item {
+        padding: 2rem 1.5rem;
       }
 
       .sponsors-rail-tech-1 .sponsor-logo,
       .sponsors-rail-tech-2 .sponsor-logo {
-        max-width: 180px !important;
-        max-height: 180px !important;
+        max-width: 120px;
+        max-height: 120px;
       }
 
       .sponsors-rail-media .sponsor-logo {
-        max-width: 160px !important;
-        max-height: 160px !important;
+        max-width: 100px;
+        max-height: 100px;
       }
 
       section {
         padding-left: 1.5rem;
         padding-right: 1.5rem;
-      }
-
-      h2 {
-        font-size: 2rem;
-        margin-bottom: 0.5rem;
+        padding-top: 2rem;
+        padding-bottom: 2rem;
       }
     }
-    /* MOBILE NAVBAR FIX */
-    @media (max-width: 767px) {
-      nav.fixed {
-        height: 62px !important;
-        display: flex !important;
-        align-items: center !important;
-        padding: 0 1rem !important;
+
+    @media (max-width: 480px) {
+      .sponsors-section-header h2 {
+        font-size: 1.5rem;
       }
-      nav.fixed .max-w-7xl {
-        width: 100% !important;
-        margin: 0 !important;
-        padding: 0 !important;
-        display: flex !important;
-        align-items: center !important;
-        justify-content: space-between !important;
-      }
-      nav.fixed .logo-padding-spacer {
-        display: flex !important;
-        align-items: center !important;
-        padding: 0 !important;
-      }
-      nav.fixed .site-logo {
-        height: 28px !important;
-        width: auto !important;
-      }
-      nav.fixed .md\:hidden {
-        display: flex !important;
-        align-items: center !important;
-      }
-      nav.fixed button[data-mobile-menu-toggle] {
-        padding: 0.5rem 0.75rem !important;
-        font-size: 1.25rem !important;
+
+      .sponsors-section-header p {
+        font-size: 0.65rem;
       }
     }
   </style>
@@ -378,12 +397,11 @@
       <div class="hidden md:flex gap-8 items-center text-sm">
         <a href="index.html" class="transition">Home</a>
         <a href="vision.html" class="transition">About</a>
-        <a href="honors.html" class="transition">Awards</a>
-        <a href="nominees.html" class="transition">Nominations</a>
+        <!-- <a href="honors.html" class="transition">Awards</a> -->
+        <a href="nominees.html" class="transition">Categories</a>
         <a href="jury.html" class="transition">Jury</a>
         <a href="ceremony.html" class="transition">Event</a>
-        <!-- <a href="winners.html" class="transition">Winners</a> -->
-        <a href="press.html" class="transition">Press</a>
+        <!-- <a href="press.html" class="transition">Press</a> -->
         <a href="sponsors.html" class="">Partners</a>
         <a href="submit.html" class="border border-red-600 text-red-600 hover:bg-red-600 hover:text-white transition px-4 py-2 rounded-full text-xs font-semibold">Submit</a>
       </div>
@@ -395,19 +413,27 @@
   </nav>
 
   <!-- SPONSORS HERO SECTION -->
-  <section 
-    class="h-screen bg-cover bg-center flex items-center justify-center relative"
-    style="background-image: url('images/home-hero-bg.png'); min-height: 100svh;"
+  <section
+    class="min-h-[85vh] bg-contain bg-center bg-no-repeat flex items-center relative pt-32 sponsors-hero-gradient"
+    data-parallax-layer="background"
+    data-parallax-speed="0.15"
   >
-    <div class="absolute inset-0 bg-black/50"></div>
-    <div class="max-w-5xl mx-auto w-full px-8 text-center relative z-10">
-      <h1 class="text-6xl xl:text-8xl font-bold mb-6 tracking-tight">PARTNERS & SPONSORS</h1>
-      <p class="text-lg text-gray-300 max-w-3xl mx-auto mb-12 font-light">
+    <div class="max-w-7xl mx-auto px-8 w-full">
+      <p class="text-xs tracking-[0.15em] text-gray-400 mb-6 uppercase">
+        Our Partners
+      </p>
+
+      <h1 class="text-7xl xl:text-8xl font-bold leading-none mb-8 tracking-tight" data-parallax-layer="text">
+        <span class="text-white">PARTNERS &</span><br />
+        <span class="">SPONSORS</span>
+      </h1>
+
+      <p class="text-lg text-gray-300 max-w-2xl mb-10 font-light leading-relaxed">
         Industry leaders advancing AI cinema innovation.
       </p>
 
-      <div class="flex gap-6 items-center justify-center">
-        <a href="submit.html" class="bg-red-600 hover:bg-red-700 transition px-10 py-4 rounded-full font-semibold text-white tracking-wide uppercase text-sm">
+      <div class="flex gap-6 items-center">
+        <a href="submit.html" class="bg-brandRed hover:bg-red-700 transition px-8 py-4 rounded-full font-semibold text-white tracking-wide uppercase text-sm inline-block">
           Submit Your Film
         </a>
       </div>
@@ -415,10 +441,12 @@
   </section>
 
   <!-- PRINCIPAL PARTNERS SECTION -->
-  <section class="py-24 px-8 relative">
+  <section class="py-40 px-8 relative">
     <div class="max-w-7xl mx-auto">
-      <h2 class="text-5xl font-bold mb-2 tracking-tight">Principal Partners</h2>
-      <p class="text-sm text-gray-400 mb-16 font-light">Patrons and supporters of AI Cinema</p>
+      <div class="sponsors-section-header">
+        <h2>Principal Partners</h2>
+        <p>Architected by the platform</p>
+      </div>
 
       <div class="sponsors-rail-principal">
         <div class="sponsor-item">
@@ -429,21 +457,19 @@
           <img src="images/sponsors/helixone.jpg" alt="HelixOne" class="sponsor-logo">
           <p class="sponsor-name">HelixOne</p>
         </div>
-        <div class="sponsor-item">
-          <img src="images/sponsors/novaforge.jpg" alt="NovaForge" class="sponsor-logo">
-          <p class="sponsor-name">NovaForge</p>
-        </div>
       </div>
     </div>
   </section>
 
   <!-- TECHNOLOGY PARTNERS SECTION -->
-  <section class="py-24 px-8 relative">
+  <section class="py-16 px-8 relative">
     <div class="max-w-7xl mx-auto">
-      <h2 class="text-5xl font-bold mb-2 tracking-tight">Technology Partners</h2>
-      <p class="text-sm text-gray-400 mb-16 font-light">Platforms and enablers for AI-native creation</p>
+      <div class="sponsors-section-header">
+        <h2>Technology Partners</h2>
+        <p>The builders</p>
+      </div>
 
-      <div class="sponsors-rail-tech-1 mb-16 pb-16">
+      <div class="sponsors-rail-tech-1">
         <div class="sponsor-item">
           <img src="images/sponsors/pixellayer.jpg" alt="PixelLayer" class="sponsor-logo">
           <p class="sponsor-name">PixelLayer</p>
@@ -457,25 +483,16 @@
           <p class="sponsor-name">RenderFlow</p>
         </div>
       </div>
-
-      <div class="sponsors-rail-tech-2">
-        <div class="sponsor-item">
-          <img src="images/sponsors/datavista.jpg" alt="DataVista" class="sponsor-logo">
-          <p class="sponsor-name">DataVista</p>
-        </div>
-        <div class="sponsor-item">
-          <img src="images/sponsors/edgeworks.jpg" alt="EdgeWorks AI" class="sponsor-logo">
-          <p class="sponsor-name">EdgeWorks AI</p>
-        </div>
-      </div>
     </div>
   </section>
 
   <!-- CULTURAL & MEDIA PARTNERS SECTION -->
-  <section class="py-24 px-8 relative">
+  <section class="py-16 px-8 relative">
     <div class="max-w-7xl mx-auto">
-      <h2 class="text-5xl font-bold mb-2 tracking-tight">Cultural & Media Partners</h2>
-      <p class="text-sm text-gray-400 mb-16 font-light">Amplifying global visibility and dialogue</p>
+      <div class="sponsors-section-header">
+        <h2>Industry & Media</h2>
+        <p>The broadcast</p>
+      </div>
 
       <div class="sponsors-rail-media">
         <div class="sponsor-item">
@@ -495,26 +512,6 @@
           <p class="sponsor-name">AI Dispatch</p>
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- GLOBAL CALL TO ACTION SECTION -->
-  <section
-    class="py-32 px-8 bg-cover bg-center relative flex items-center justify-center hero-bg-lower"
-  >
-    <div class="absolute inset-0 bg-black/40"></div>
-    <div class="relative z-10 text-center max-w-3xl">
-      <h2 class="text-6xl xl:text-7xl font-bold mb-6 tracking-tight leading-tight">
-        OPEN WORLDWIDE<br />TO CREATORS
-      </h2>
-      
-      <p class="text-lg text-gray-200 mb-12 font-light leading-relaxed">
-        Submit your visionary AI-native films to be featured at the festival.
-      </p>
-
-      <a href="submit.html" class="bg-red-600 hover:bg-red-700 transition px-10 py-4 rounded-full font-semibold text-white tracking-wide uppercase text-sm inline-block">
-        Submit Your Film
-      </a>
     </div>
   </section>
 
@@ -553,5 +550,8 @@
 
   <!-- Mobile Drawer Navigation -->
   <script src="js/mobile-drawer-nav.js"></script>
+
+  <!-- Sponsor Rail Autoscroll -->
+  <script src="js/sponsor-rail-scroller.js"></script>
 </body>
 </html>

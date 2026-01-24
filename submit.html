@@ -18,6 +18,7 @@
   <link href="css/responsiveness.css" rel="stylesheet">
   <link href="css/cta-system.css" rel="stylesheet">
   <link href="css/typography-hierarchy.css" rel="stylesheet">
+  <link href="css/navbar-redesign.css" rel="stylesheet">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -611,12 +612,12 @@
       <div class="hidden md:flex gap-8 items-center text-sm">
         <a href="index.html" class="transition">Home</a>
         <a href="vision.html" class="transition">About</a>
-        <a href="honors.html" class="transition">Awards</a>
-        <a href="nominees.html" class="transition">Nominations</a>
+        <!-- <a href="honors.html" class="transition">Awards</a> -->
+        <a href="nominees.html" class="transition">Categories</a>
         <a href="jury.html" class="transition">Jury</a>
         <a href="ceremony.html" class="transition">Event</a>
         <!-- <a href="winners.html" class="transition">Winners</a> -->
-        <a href="press.html" class="transition">Press</a>
+        <!-- <a href="press.html" class="transition">Press</a> -->
         <a href="sponsors.html" class="">Partners</a>
         <a href="submit.html" class="border border-red-600 text-red-600 hover:bg-red-600 hover:text-white transition px-4 py-2 rounded-full text-xs font-semibold">Submit</a>
       </div>
@@ -628,9 +629,39 @@
   </nav>
 
   <!-- SUBMIT HERO SECTION -->
+  <section
+    class="min-h-[85vh] bg-contain bg-center bg-no-repeat flex items-center relative pt-32"
+    style="background-image: url('images/submit-hero-bg.jpg');"
+    data-parallax-layer="background"
+    data-parallax-speed="0.15"
+  >
+    <div class="max-w-7xl mx-auto px-8 w-full">
+      <p class="text-xs tracking-[0.15em] text-gray-400 mb-6 uppercase">
+        Submit Your Work
+      </p>
+
+      <h1 class="text-7xl xl:text-8xl font-bold leading-none mb-8 tracking-tight" data-parallax-layer="text">
+        <span class="text-white">STEP INTO</span><br />
+        <span class="">THE LIGHT</span>
+      </h1>
+
+      <p class="text-lg text-gray-300 max-w-2xl mb-10 font-light leading-relaxed">
+        A new generation of cinema begins here. Submit your groundbreaking AI-driven film.
+      </p>
+
+      <div class="flex gap-6 items-center">
+        <a href="#submission-form" class="bg-brandRed hover:bg-red-700 transition px-8 py-4 rounded-full font-semibold text-white tracking-wide uppercase text-sm inline-block">
+          Begin Submission
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SUBMISSION FORM SECTION -->
   <section 
     class="submit-hero px-8"
     style="background-image: url('images/submit\ background.png');"
+    id="submission-form"
   >
     <div class="form-container" id="form-container">
       <h1>Enter <span class="text-red-600">Submissions</span></h1>

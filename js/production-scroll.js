@@ -28,6 +28,9 @@ class ProductionScrollController {
     this.rafId = null;
     this.lastTimestamp = 0;
     
+    // Touch tracking for boundary detection
+    this.lastTouchY = 0;
+    
     // Subscribers
     this.parallaxSubscribers = [];
     this.animationSubscribers = [];
@@ -39,9 +42,21 @@ class ProductionScrollController {
     try {
       this.calculateMaxScroll();
       
-      // Single passive scroll listener
+      // CRITICAL: Change from passive to active to allow preventDefault
       window.addEventListener('scroll', this.handleScroll.bind(this), {
-        passive: true,
+        passive: false,
+        capture: false
+      });
+      
+      // Intercept wheel events to prevent elastic bounce
+      window.addEventListener('wheel', this.handleWheel.bind(this), {
+        passive: false,
+        capture: false
+      });
+      
+      // Intercept touch events to prevent elastic bounce on mobile
+      window.addEventListener('touchmove', this.handleTouchMove.bind(this), {
+        passive: false,
         capture: false
       });
       
@@ -51,14 +66,51 @@ class ProductionScrollController {
       // Start animation loop
       this.startAnimation();
       
-      console.log('✅ Production Scroll Controller: Initialized');
+      console.log('✅ Production Scroll Controller: Initialized (with boundary interception)');
     } catch (error) {
       console.error('❌ Scroll Controller failed:', error);
     }
   }
   
+  handleWheel(e) {
+    // Get current scroll position
+    const currentY = window.scrollY;
+    const maxScroll = this.maxScroll;
+    
+    // If at top and scrolling up, or at bottom and scrolling down, prevent
+    if ((currentY <= 0 && e.deltaY < 0) || (currentY >= maxScroll && e.deltaY > 0)) {
+      e.preventDefault();
+      return;
+    }
+  }
+  
+  handleTouchMove(e) {
+    // Get current scroll position
+    const currentY = window.scrollY;
+    const maxScroll = this.maxScroll;
+    
+    // Calculate movement (0, 0) is always at start, so we check if would go out of bounds
+    // Get the first touch point
+    const touch = e.touches[0];
+    const movementY = this.lastTouchY - touch.clientY;
+    this.lastTouchY = touch.clientY;
+    
+    // If at boundaries and trying to move further
+    if ((currentY <= 0 && movementY > 0) || (currentY >= maxScroll && movementY < 0)) {
+      e.preventDefault();
+      return;
+    }
+  }
+  
   handleScroll() {
     const rawScroll = window.scrollY;
+    const maxScroll = this.maxScroll;
+    
+    // CRITICAL: If browser scrolled past boundaries (elastic bounce), force it back
+    if (rawScroll < 0 || rawScroll > maxScroll) {
+      window.scrollTo(0, Math.max(0, Math.min(rawScroll, maxScroll)));
+      return;
+    }
     
     // Apply boundary-aware clamping (NO ELASTIC BAND)
     this.targetScroll = this.clampWithDamping(rawScroll);

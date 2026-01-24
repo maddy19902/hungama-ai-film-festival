@@ -9,13 +9,18 @@ html, body {
   position: relative;
 }
 
+/* 1b. Kill elastic on ALL overflow elements */
+*, *:before, *:after {
+  overscroll-behavior: contain !important;
+}
+
 /* Prevent scrollbar width layout shift */
 html {
   scrollbar-gutter: stable;
 }
 
-/* 2. Force GPU acceleration globally */
-* {
+/* 2. GPU acceleration on parallax layers only (not global) */
+[data-parallax-layer] {
   transform: translateZ(0);
   backface-visibility: hidden;
 }
@@ -82,20 +87,6 @@ section {
 }
 
 /* 9. iOS momentum scrolling fix */
-@supports (-webkit-touch-callout: none) {
-  html, body {
-    position: fixed;
-    width: 100%;
-    overflow: hidden;
-  }
-  
-  body {
-    position: relative;
-    overflow-y: scroll;
-    -webkit-overflow-scrolling: touch;
-  }
-}
-
 /* 10. Smooth scroll for anchor links */
 html {
   scroll-behavior: smooth;

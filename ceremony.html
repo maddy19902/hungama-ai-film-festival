@@ -18,6 +18,7 @@
   <link href="css/responsiveness.css" rel="stylesheet">
   <link href="css/cta-system.css" rel="stylesheet">
   <link href="css/typography-hierarchy.css" rel="stylesheet">
+  <link href="css/navbar-redesign.css" rel="stylesheet">
   <link href="css/ceremony-refinement.css" rel="stylesheet">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -115,12 +116,11 @@
       <div class="hidden md:flex gap-8 items-center text-sm">
         <a href="index.html" class="transition">Home</a>
         <a href="vision.html" class="transition">About</a>
-        <a href="honors.html" class="transition">Awards</a>
-        <a href="nominees.html" class="transition">Nominations</a>
+        <!-- <a href="honors.html" class="transition">Awards</a> -->
+        <a href="nominees.html" class="transition">Categories</a>
         <a href="jury.html" class="transition">Jury</a>
         <a href="ceremony.html" class="transition">Event</a>
-        <!-- <a href="winners.html" class="transition">Winners</a> -->
-        <a href="press.html" class="transition">Press</a>
+        <!-- <a href="press.html" class="transition">Press</a> -->
         <a href="sponsors.html" class="">Partners</a>
         <a href="submit.html" class="border border-red-600 text-red-600 hover:bg-red-600 hover:text-white transition px-4 py-2 rounded-full text-xs font-semibold">Submit</a>
       </div>
@@ -132,21 +132,28 @@
   </nav>
 
   <!-- HERO SECTION -->
-  <section class="min-h-[85vh] bg-gradient-to-br from-black via-red-900/10 to-black flex items-center pt-32 bg-cover bg-center bg-no-repeat" style="background-image: url('/images/ceremony-bg.jpg');" data-parallax-layer="background">
+  <section
+    class="min-h-[85vh] bg-contain bg-center bg-no-repeat flex items-center relative pt-32"
+    style="background-image: url('/images/ceremony-bg.jpg');"
+    data-parallax-layer="background"
+    data-parallax-speed="0.15"
+  >
     <div class="max-w-7xl mx-auto px-8 w-full">
-      <h1 class="text-7xl xl:text-8xl font-bold leading-none mb-6 tracking-tight" data-parallax-layer="text">MUMBAI SHOWCASE NIGHT</h1>
-      <p class="text-xl text-gray-300 max-w-2xl mb-4 font-light">
-        An invitation-only awards ceremony celebrating the future of cinema.
+      <p class="text-xs tracking-[0.15em] text-gray-400 mb-6 uppercase">
+        Awards Ceremony
       </p>
-      <p class="text-lg text-red-400 font-semibold mb-12">
-        March 2026
+
+      <h1 class="text-7xl xl:text-8xl font-bold leading-none mb-8 tracking-tight" data-parallax-layer="text">
+        <span class="text-white">MUMBAI</span><br />
+        <span class="">SHOWCASE NIGHT</span>
+      </h1>
+
+      <p class="text-lg text-gray-300 max-w-2xl mb-10 font-light leading-relaxed">
+        An invitation-only awards ceremony celebrating the future of cinema. March 2026.
       </p>
 
       <div class="flex gap-6 items-center">
-        <button class="bg-red-600 hover:bg-red-700 transition px-8 py-4 rounded-full font-semibold text-white tracking-wide uppercase text-sm" data-modal-trigger="coming-soon-modal">
-          Reserve Your Invitation
-        </button>
-        <a href="submit.html" class="border border-gray-700 hover:border-red-600 transition px-8 py-4 rounded-full font-semibold text-white tracking-wide uppercase text-sm inline-block">
+        <a href="submit.html" class="bg-brandRed hover:bg-red-700 transition px-8 py-4 rounded-full font-semibold text-white tracking-wide uppercase text-sm inline-block">
           Submit Your Film
         </a>
       </div>

@@ -19,6 +19,7 @@
   <link href="css/responsiveness.css" rel="stylesheet">
   <link href="css/cta-system.css" rel="stylesheet">
   <link href="css/typography-hierarchy.css" rel="stylesheet">
+  <link href="css/navbar-redesign.css" rel="stylesheet">
   <link href="css/modal-system.css" rel="stylesheet">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -587,12 +588,31 @@
   </nav>
 
   <!-- NOMINEES HERO SECTION -->
-  <section class="nominees-hero min-h-[85vh] bg-cover bg-gradient-to-br from-brandDark via-black to-black flex items-center relative px-8" style="background-image: url('images/nominees-bg.jpg'); background-position: center right;" data-parallax-layer="background" data-parallax-speed="0.1">
-    <div class="max-w-7xl mx-auto">
-      <h1 class="text-6xl xl:text-7xl font-bold mb-4 tracking-tight" data-parallax-layer="text">CATEGORIES</h1>
-      <p class="text-lg text-gray-300 max-w-2xl font-light">
+  <section
+    class="min-h-[85vh] bg-contain bg-center bg-no-repeat flex items-center relative pt-32"
+    style="background-image: url('images/nominees-bg.jpg');"
+    data-parallax-layer="background"
+    data-parallax-speed="0.15"
+  >
+    <div class="max-w-7xl mx-auto px-8 w-full">
+      <p class="text-xs tracking-[0.15em] text-gray-400 mb-6 uppercase">
+        Film Categories
+      </p>
+
+      <h1 class="text-7xl xl:text-8xl font-bold leading-none mb-8 tracking-tight" data-parallax-layer="text">
+        <span class="text-white">CELEBRATING</span><br />
+        <span class="">AI CINEMA</span>
+      </h1>
+
+      <p class="text-lg text-gray-300 max-w-2xl mb-10 font-light leading-relaxed">
         Celebrating the groundbreaking works that define the future of AI cinema.
       </p>
+
+      <div class="flex gap-6 items-center">
+        <a href="submit.html" class="bg-brandRed hover:bg-red-700 transition px-8 py-4 rounded-full font-semibold text-white tracking-wide uppercase text-sm inline-block">
+          Submit Your Film
+        </a>
+      </div>
     </div>
   </section>
 

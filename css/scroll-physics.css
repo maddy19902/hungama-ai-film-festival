@@ -5,12 +5,17 @@
 
 /* KILL ELASTIC BANDING */
 html, body {
-  overscroll-behavior: none;
+  overscroll-behavior: none !important;
   overflow-x: hidden;
 }
 
+/* Kill elastic on ALL overflow elements */
+*, *:before, *:after {
+  overscroll-behavior: contain !important;
+}
+
 body {
-  -webkit-overflow-scrolling: auto;
+  -webkit-overflow-scrolling: auto !important;
 }
 
 /* PARALLAX LAYER OPTIMIZATION */
@@ -59,19 +64,6 @@ body {
   [data-parallax-layer="background"] {
     /* Background layers move slower on mobile */
     min-height: 50vh;
-  }
-}
-
-/* iOS-specific: Fix momentum scrolling */
-@media (max-width: 1024px) {
-  html, body {
-    -webkit-overflow-scrolling: touch;
-    position: relative;
-  }
-  
-  body {
-    /* Prevent position fixed issues on iOS */
-    position: relative;
   }
 }
 
