@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Nominees | Hungama AI Film Festival</title>
+  <title>Categories | Hungama AI Film Festival</title>
   <link href="css/grain-disable.css" rel="stylesheet">
   <link href="css/path-fallback.css" rel="stylesheet">
   <link href="css/output.css" rel="stylesheet">
@@ -143,12 +143,6 @@
     section {
       position: relative;
       overflow: hidden;
-    }
-
-    .nominees-hero {
-      min-h-[85vh] bg-cover bg-gradient-to-br from-brandDark via-black to-black flex items-center pt-32 relative;
-      background-image: url('images/nominees-bg.jpg');
-      background-position: center right;
     }
 
     .nominees-hero::before {
@@ -465,9 +459,10 @@
         gap: 0.5rem;
         max-height: none;
         overflow-x: auto;
+        overflow-y: hidden;
         scroll-behavior: smooth;
         padding: 0.25rem 0;
-        -webkit-overflow-scrolling: touch;
+        overscroll-behavior: contain;
       }
 
       .nominee-item {
@@ -575,12 +570,12 @@
       <div class="hidden md:flex gap-8 items-center text-sm">
         <a href="index.html" class="transition">Home</a>
         <a href="vision.html" class="transition">About</a>
-        <a href="honors.html" class="transition">Awards</a>
-        <a href="nominees.html" class="transition">Nominations</a>
+        <!-- <a href="honors.html" class="transition">Awards</a> -->
+        <a href="nominees.html" class="transition">Categories</a>
         <a href="jury.html" class="transition">Jury</a>
         <a href="ceremony.html" class="transition">Event</a>
         <!-- <a href="winners.html" class="transition">Winners</a> -->
-        <a href="press.html" class="transition">Press</a>
+        <!-- <a href="press.html" class="transition">Press</a> -->
         <a href="sponsors.html" class="">Partners</a>
         <a href="submit.html" class="border border-red-600 text-red-600 hover:bg-red-600 hover:text-white transition px-4 py-2 rounded-full text-xs font-semibold">Submit</a>
       </div>
@@ -592,9 +587,9 @@
   </nav>
 
   <!-- NOMINEES HERO SECTION -->
-  <section class="nominees-hero px-8" data-parallax-layer="background" data-parallax-speed="0.1">
+  <section class="nominees-hero min-h-[85vh] bg-cover bg-gradient-to-br from-brandDark via-black to-black flex items-center relative px-8" style="background-image: url('images/nominees-bg.jpg'); background-position: center right;" data-parallax-layer="background" data-parallax-speed="0.1">
     <div class="max-w-7xl mx-auto">
-      <h1 class="text-6xl xl:text-7xl font-bold mb-4 tracking-tight" data-parallax-layer="text">NOMINEES</h1>
+      <h1 class="text-6xl xl:text-7xl font-bold mb-4 tracking-tight" data-parallax-layer="text">CATEGORIES</h1>
       <p class="text-lg text-gray-300 max-w-2xl font-light">
         Celebrating the groundbreaking works that define the future of AI cinema.
       </p>
