@@ -29,7 +29,7 @@
       font-family: 'DM Sans', sans-serif;
     }
 
-    /* NAVIGATION */
+    /* NAVIGATION - HIDDEN ON HOMEPAGE DESKTOP */
     nav {
       position: fixed;
       top: 0;
@@ -69,7 +69,14 @@
       }
     }
 
-    /* PASS 2: FILM GRAIN TEXTURE */
+    /* Hide navbar on desktop homepage, show on mobile */
+    @media (min-width: 769px) {
+      body:not(.is-other-page) nav {
+        display: none;
+      }
+    }
+
+    /* FILM GRAIN TEXTURE */
     .grain {
       position: fixed;
       top: 0;
@@ -85,12 +92,23 @@
       mix-blend-mode: overlay;
     }
 
-    /* PASS 3: SECTION TRANSITION BLENDING - REMOVED FOR CONTINUITY */
-    /* Gradient bridges now applied surgically between narrative beats only */
+    /* SPONSOR LOGOS STYLING */
+    .sponsor-logos-container {
+      max-width: 100%;
+      overflow: hidden;
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
 
-    /* PASS 4: TYPOGRAPHIC CALM & INSTITUTIONAL FEEL */
-    h1, h2, h3, h4, h5, h6 {
-      letter-spacing: 0.08em;
+    .sponsor-logos-container img {
+      height: 56px;
+      width: auto;
+      object-fit: contain;
+      object-position: center;
+      flex-shrink: 0;
     }
 
     body {
@@ -124,7 +142,6 @@
       letter-spacing: 0.12em;
     }
 
-    /* Ensure section positioning for ::after overlay */
     section {
       position: relative;
       overflow: hidden;
@@ -167,6 +184,210 @@
         font-size: 1.25rem !important;
       }
     }
+
+    /* AWARDS RAIL STYLES */
+    .awards-rail-container {
+      position: relative;
+      overflow: hidden;
+      padding: 2rem 0;
+    }
+
+    .awards-rail-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 3rem;
+    }
+
+    .awards-rail-title {
+      font-size: 2.25rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .awards-rail-title .category-label {
+      color: #dc2626;
+    }
+
+    .awards-rail {
+      display: flex;
+      gap: 0.75rem;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      padding: 1rem 0;
+      position: relative;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      align-items: flex-start;
+    }
+
+    .awards-rail::-webkit-scrollbar {
+      display: none;
+    }
+
+    .awards-rail::-webkit-scrollbar-track {
+      display: none;
+    }
+
+    .awards-rail::-webkit-scrollbar-thumb {
+      display: none;
+    }
+
+    /* Award Category Heading - Fixed positioning within rail */
+    .award-category-heading {
+      position: sticky;
+      flex-shrink: 0;
+      z-index: 20;
+      background-color: #0a0a0a;
+      display: flex;
+      align-items: center;
+      height: 250px;
+    }
+
+    .award-category-heading.left-aligned {
+      left: 0;
+      padding-right: 2rem;
+    }
+
+    .award-category-heading.right-aligned {
+      right: 0;
+      padding-left: 2rem;
+      justify-content: flex-end;
+      order: 999;
+    }
+    
+    /* Fixed heading styles with gradient fade for awards - REMOVED, now using separate sticky titles */
+
+    .movie-thumbnail {
+      position: relative;
+      flex-shrink: 0;
+      aspect-ratio: 4/5;
+      width: 200px;
+      border-radius: 0.5rem;
+      overflow: hidden;
+      background: linear-gradient(135deg, #333, #111);
+    }
+
+    .movie-thumbnail img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .movie-thumbnail:hover img {
+      transform: scale(1.05);
+    }
+
+    /* Vignetted corner with arrow CTA */
+    .movie-cta-corner {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background: linear-gradient(135deg, transparent 0%, rgba(0,0,0,0.6) 70%, rgba(0,0,0,0.8) 100%);
+      display: flex;
+      align-items: flex-end;
+      justify-content: flex-end;
+      padding: 1rem;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .movie-thumbnail:hover .movie-cta-corner {
+      opacity: 1;
+    }
+
+    .movie-arrow {
+      font-size: 1.5rem;
+      color: white;
+    }
+
+    /* Mobile rail adjustments */
+    @media (max-width: 768px) {
+      .movie-thumbnail {
+        width: 140px;
+      }
+
+      .awards-rail-title {
+        font-size: 1.5rem;
+      }
+    }
+
+    /* JURY RAIL STYLES */
+    .jury-member-thumbnail {
+      position: relative;
+      flex-shrink: 0;
+      aspect-ratio: 3 / 4;
+      width: 240px;
+      border-radius: 0.5rem;
+      overflow: hidden;
+      background: #0a0a0a;
+    }
+
+    .jury-member-thumbnail img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .jury-member-vignette {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 40%;
+      background: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.7) 60%, rgba(0,0,0,0.9) 100%);
+      display: flex;
+      align-items: flex-end;
+      padding: 1rem;
+      color: white;
+    }
+
+    .jury-member-name {
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+
+    .jury-member-designation {
+      font-size: 0.75rem;
+      color: rgb(255, 0, 0);
+      margin-top: 0.25rem;
+    }
+
+    @media (max-width: 768px) {
+      .jury-member-thumbnail {
+        width: 140px;
+      }
+    }
+
+    /* CEREMONY SECTION */
+    .ceremony-card {
+      background: linear-gradient(135deg, rgba(0,0,0,0.5), rgba(220,38,38,0.05));
+      border: 1px solid rgba(220,38,38,0.3);
+      border-radius: 0.5rem;
+      padding: 2rem;
+    }
+
+    .ceremony-detail {
+      margin-bottom: 1.5rem;
+    }
+
+    .ceremony-detail-label {
+      font-size: 0.75rem;
+      color: #dc2626;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.5rem;
+    }
+
+    .ceremony-detail-value {
+      font-size: 1.125rem;
+      color: rgba(255,255,255,0.9);
+    }
   </style>
 
   <script src="js/production-parallax.js"></script>
@@ -186,12 +407,9 @@
       <div class="hidden md:flex gap-8 items-center text-sm">
         <a href="index.html" class="transition">Home</a>
         <a href="vision.html" class="transition">About</a>
-        <!-- <a href="honors.html" class="transition">Awards</a> -->
         <a href="nominees.html" class="transition">Categories</a>
         <a href="jury.html" class="transition">Jury</a>
         <a href="ceremony.html" class="transition">Event</a>
-        <!-- <a href="winners.html" class="transition">Winners</a> -->
-        <!-- <a href="press.html" class="transition">Press</a> -->
         <a href="sponsors.html" class="">Partners</a>
         <a href="submit.html" class="border border-red-600 text-red-600 hover:bg-red-600 hover:text-white transition px-4 py-2 rounded-full text-xs font-semibold">Submit</a>
       </div>
@@ -202,245 +420,438 @@
     </div>
   </nav>
 
-  <!-- HERO SECTION -->
+  <!-- HERO SECTION WITH VIDEO -->
   <section
-    class="min-h-screen bg-cover bg-center flex items-center relative pt-40 sm:pt-48 px-5 sm:px-8 lg:px-12"
-    style="background-image: url('images/home-hero-bg.png');"
-    data-parallax-layer="background"
-    data-parallax-speed="0.15"
+    class="min-h-screen flex items-center justify-center relative overflow-hidden pt-40 sm:pt-48 px-5 sm:px-8 lg:px-12"
+    id="hero"
   >
-    <!-- Hero fade-out gradient bridge -->
-    <div class="absolute bottom-0 left-0 w-full h-48 bg-gradient-to-b from-transparent to-[#0a0a0a] z-10"></div>
+    <!-- Hero Video Background -->
+    <video
+      autoplay
+      muted
+      loop
+      playsinline
+      class="absolute inset-0 w-full h-full object-cover"
+      poster="images/home-hero-bg.png"
+    >
+      <source src="images/YT_BG_Vid.mp4" type="video/mp4">
+      <img src="images/home-hero-bg.png" alt="Hungama Festival Hero" class="w-full h-full object-cover">
+    </video>
+
+    <!-- Dark Vignette Overlay -->
+    <div class="absolute inset-0" style="background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.2), rgba(0,0,0,0.2)); z-index: 0;"></div>
     
-    <div class="max-w-7xl mx-auto w-full relative z-5">
+    <!-- Hero fade-out gradient bridge at bottom -->
+    <div class="absolute bottom-0 left-0 w-full h-48 bg-gradient-to-b from-transparent to-[#0a0a0a] z-20"></div>
+    
+    <div class="max-w-7xl mx-auto w-full relative z-20">
       <p class="text-xs tracking-[0.15em] text-gray-400 mb-6 uppercase">
         Mumbai · March 2026
       </p>
 
-      <h1 class="text-6xl sm:text-7xl lg:text-8xl font-bold leading-tight sm:leading-none mb-8 tracking-tight" data-parallax-layer="text">
+      <h1 class="text-6xl sm:text-7xl lg:text-8xl font-bold leading-tight sm:leading-none mb-8 tracking-tight">
         HUNGAMA<br />AI FILM<br />FESTIVAL
       </h1>
 
-      <p class="text-lg text-gray-300 max-w-2xl mb-10 font-light leading-relaxed">
-        Rewriting the Future of Cinema
+      <p class="text-xl sm:text-2xl text-gray-200 max-w-2xl mb-10 font-medium leading-relaxed">
+        Celebrating the Future of Storytelling
       </p>
 
       <div class="flex flex-col sm:flex-row gap-6 items-start sm:items-center">
         <a href="submit.html" class="bg-brandRed hover:bg-red-700 transition px-8 py-4 rounded-full font-semibold text-white tracking-wide uppercase text-sm inline-block">
           Submit Your Film
         </a>
-
-        <button class="border-2 border-white/40 hover:border-white/60 transition px-8 py-4 rounded-full font-medium text-white tracking-wide uppercase text-sm">
-          Watch Trailer
-        </button>
       </div>
-    </div>
-  </section>
 
-
-  <!-- MANIFESTO: IMAGE-BASED LAYOUT WITH TEXT OVERLAY -->
-  <style>
-    #manifesto-desktop { display: none; }
-    #manifesto-mobile { display: block; }
-    
-    @media (min-width: 1024px) {
-      #manifesto-desktop { display: block; }
-      #manifesto-mobile { display: none; }
-    }
-
-    .manifesto-cta {
-      display: inline-block;
-      border-left: 4px solid #dc2626;
-      padding-left: 1rem;
-      color: white;
-      font-size: 0.875rem;
-      text-decoration: none;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      font-weight: 500;
-      transition: all 0.3s ease;
-    }
-
-    .manifesto-cta:hover {
-      border-left-color: #ef4444;
-      padding-left: 1.25rem;
-    }
-  </style>
-
-  <section class="py-16 sm:py-20 lg:py-20 px-5 sm:px-8 lg:px-12 bg-gradient-to-b from-[#0a0a0a] via-[#0b0b0b] to-[#0a0a0a]">
-    <div class="max-w-6xl mx-auto">
-      
-      <!-- DESKTOP: home-div-d.png -->
-      <div id="manifesto-desktop" class="relative w-full" style="max-width: 100%;">
-        <img
-          src="images/home-div-d.png"
-          alt="Hungama AI Film Festival manifesto"
-          class="w-full h-auto"
-          style="display: block; max-width: 100%; height: auto;"
-        />
-        
-        <!-- TEXT OVERLAY: POSITIONED OVER IMAGE - LEFT ALIGNED FOR DESKTOP -->
-        <div class="absolute" style="top: 15%; left: 2%; right: auto; width: 40%;">
-          <div class="max-w-xl">
-            <h2 class="text-4xl lg:text-5xl font-bold leading-tight mb-6 tracking-tight">
-              India's<br />
-              Premier<br />
-              <span class="text-brandRed/90">AI Film Festival</span>
-            </h2>
-            
-            <p class="text-gray-400 text-base leading-relaxed font-light mb-6">
-              Hungama AI Film Festival is India's leading platform dedicated to AI-native films—where human imagination and artificial intelligence converge to create bold, original cinematic work. We celebrate a new language of filmmaking that emerges from collaboration, experimentation, and emotion.
-            </p>
-
-            <a href="vision.html" class="manifesto-cta">Our Ethos →</a>
+      <!-- SPONSORS OVERLAY - POSITIONED AT BOTTOM OF HERO -->
+      <div class="absolute left-0 right-0 px-5 sm:px-8 lg:px-12 w-full flex justify-center" style="bottom: -120px;">
+        <div class="flex flex-col items-center gap-4">
+          <p class="text-xs tracking-[0.15em] text-gray-500 uppercase">Supported By:</p>
+          <div class="sponsor-logos-container">
+            <img src="images/sponsors/auroranexus-wbg.png" alt="Aurora Nexus" class="grayscale saturate-0 opacity-40" />
+            <img src="images/sponsors/helixone-wbg.png" alt="HelixOne" class="grayscale saturate-0 opacity-40" />
+            <img src="images/sponsors/ai-dispatch-wbg.png" alt="AI Dispatch" class="grayscale saturate-0 opacity-40" />
+            <img src="images/sponsors/futureframes-wbg.png" alt="FutureFrames" class="grayscale saturate-0 opacity-40" />
+            <img src="images/sponsors/synaptic-labs-wbg.png" alt="Synaptic Labs" class="grayscale saturate-0 opacity-40" />
+            <img src="images/sponsors/novaforge-wbg.png" alt="NovaForge" class="grayscale saturate-0 opacity-40" />
           </div>
         </div>
       </div>
-
-      <!-- MOBILE: home-div-m.png -->
-      <div id="manifesto-mobile" class="relative w-full" style="max-width: 100%;">
-        <img
-          src="images/home-div-m.png"
-          alt="Hungama AI Film Festival manifesto"
-          class="w-full h-auto"
-          style="display: block; max-width: 100%; height: auto;"
-        />
-        
-        <!-- TEXT OVERLAY: POSITIONED OVER IMAGE -->
-        <div class="absolute" style="top: 5%; left: 5%; right: 5%; bottom: auto; width: auto;">
-          <div class="w-full">
-            <h2 class="text-2xl sm:text-3xl font-bold leading-tight mb-4 tracking-tight">
-              India's Premier<br />
-              <span class="text-brandRed/90">AI Film Festival</span>
-            </h2>
-            
-            <p class="text-gray-400 text-sm sm:text-base leading-relaxed font-light mb-6">
-              Hungama AI Film Festival is India's leading platform dedicated to AI-native films—where human imagination and artificial intelligence converge to create bold, original cinematic work. We celebrate a new language of filmmaking that emerges from collaboration, experimentation, and emotion.
-            </p>
-
-            <a href="vision.html" class="manifesto-cta">Our Ethos →</a>
-          </div>
-        </div>
-      </div>
-
     </div>
   </section>
 
-  <!-- SPONSORS: SUPPORTED BY ROW -->
-  <section class="py-16 sm:py-20 px-5 sm:px-8 lg:px-12 bg-gradient-to-b from-[#0a0a0a] via-[#0a0a0a] to-[#0b0b0b]">
-    <div class="max-w-5xl mx-auto">
-      <p class="text-xs tracking-[0.18em] text-gray-500 uppercase mb-10 text-center">
-        Supported by
-      </p>
-      
-      <div class="flex gap-16 sm:gap-20 lg:gap-24 items-center justify-center">
-        <div class="flex flex-col items-center gap-3">
-          <img
-            src="images/sponsors/auroranexus-wbg.png"
-            alt="Aurora Nexus"
-            class="h-6 w-auto max-w-[36px] grayscale saturate-0 opacity-60 flex-shrink-0"
-          />
-        </div>
+  <!-- MANIFESTO SECTION -->
+  <section class="py-12 sm:py-16 lg:py-20 px-5 sm:px-8 lg:px-12 bg-[#0a0a0a]">
+    <div class="max-w-7xl mx-auto text-center">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-5xl sm:text-6xl font-bold mb-8 tracking-tight">
+          <span class="text-brandRed">INDIA'S PREMIER<br /> </span>
+          AI FILM FESTIVAL
+        </h2>
         
-        <div class="flex flex-col items-center gap-3">
-          <img
-            src="images/sponsors/helixone-wbg.png"
-            alt="HelixOne"
-            class="h-6 w-auto max-w-[36px] grayscale saturate-0 opacity-60 flex-shrink-0"
-          />
-        </div>
+        <p class="text-gray-400 text-lg leading-relaxed font-light mb-6 max-w-2xl mx-auto">
+          Hungama AI Film Festival is India's leading platform dedicated to AI-native films—where human imagination and artificial intelligence converge to create bold, original cinematic work. We celebrate a new language of filmmaking that emerges from collaboration, experimentation, and emotion.
+        </p>
 
-        <div class="flex flex-col items-center gap-3">
-          <img
-            src="images/sponsors/ai-dispatch-wbg.png"
-            alt="AI Dispatch"
-            class="h-6 w-auto max-w-[36px] grayscale saturate-0 opacity-60 flex-shrink-0"
-          />
-        </div>
-
-
-        <div class="flex flex-col items-center gap-3">
-          <img
-            src="images/sponsors/futureframes-wbg.png"
-            alt="FutureFrames"
-            class="h-6 w-auto max-w-[36px] grayscale saturate-0 opacity-60 flex-shrink-0"
-          />
-        </div>
-
-        <div class="flex flex-col items-center gap-3">
-          <img
-            src="images/sponsors/synaptic-labs-wbg.png"
-            alt="Synaptic Labs"
-            class="h-6 w-auto max-w-[36px] grayscale saturate-0 opacity-60 flex-shrink-0"
-          />
-        </div>
-        
-        <div class="flex flex-col items-center gap-3">
-          <img
-            src="images/sponsors/novaforge-wbg.png"
-            alt="NovaForge"
-            class="h-6 w-auto max-w-[36px] grayscale saturate-0 opacity-60 flex-shrink-0"
-          />
-        </div>
+        <a href="vision.html" class="inline-block text-white text-sm uppercase font-semibold tracking-widest hover:text-brandRed transition">
+          Explore Our Vision →
+        </a>
       </div>
     </div>
   </section>
 
-  <!-- THREE PILLARS SECTION -->
-  <section class="py-20 sm:py-28 lg:py-36 px-5 sm:px-8 lg:px-12 bg-[#0a0a0a]">
+  <!-- CINEMATIC AWARDS RAIL -->
+  <section class="px-5 sm:px-8 lg:px-12 bg-[#0a0a0a] pt-6" id="cinematic-awards">
     <div class="max-w-7xl mx-auto">
-      <h3 class="text-4xl font-bold mb-20 text-center tracking-tight">The Festival</h3>
-      
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-2xl mx-auto">
-        <!-- Pillar 1: The Ceremony -->
-        <a href="ceremony.html" class="border border-white/5 rounded-lg p-8 bg-gradient-to-br from-gray-900/10 to-[#0a0a0a] hover:border-white/20 transition-all duration-300 block group">
-          <div class="w-12 h-12 bg-brandRed/20 rounded-full mb-6 flex items-center justify-center group-hover:bg-brandRed/30 transition duration-300">
-            <span class="text-brandRed font-bold">①</span>
+      <div class="awards-rail-container">
+        <div class="awards-rail" data-category="cinematic">
+          <!-- Sticky Award Header (Left) -->
+          <div class="award-category-heading left-aligned">
+            <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight">
+              <span class="text-brandRed">CINEMATIC</span><br />AWARDS
+            </h2>
           </div>
-          <h4 class="text-2xl font-semibold mb-4 group-hover:text-brandRed transition duration-300">The Ceremony</h4>
-          <p class="text-gray-400 text-sm leading-relaxed font-light">
-            Join us for an evening celebrating innovation in cinema.
-          </p>
-        </a>
 
-        <!-- Pillar 2: The Honors -->
-        <!-- <a href="honors.html" class="border border-white/5 rounded-lg p-8 bg-gradient-to-br from-gray-900/10 to-[#0a0a0a] hover:border-white/20 transition-all duration-300 block group"> -->
-          <div class="w-12 h-12 bg-brandRed/20 rounded-full mb-6 flex items-center justify-center group-hover:bg-brandRed/30 transition duration-300">
-            <span class="text-brandRed font-bold">②</span>
+          <!-- Movies -->
+          <div class="movie-thumbnail">
+            <img src="images/nominees/echoes_of_tomorrow.jpg" alt="Echoes of Tomorrow">
           </div>
-          <h4 class="text-2xl font-semibold mb-4 group-hover:text-brandRed transition duration-300">The Honors</h4>
-          <p class="text-gray-400 text-sm leading-relaxed font-light">
-            Recognition for the most groundbreaking AI-native films.
-          </p>
+          <div class="movie-thumbnail">
+            <img src="images/nominees/synthetic_dawn.jpg" alt="Synthetic Dawn">
+          </div>
+          <div class="movie-thumbnail">
+            <img src="images/nominees/the_last_prompt.jpg" alt="The Last Prompt">
+          </div>
+          <div class="movie-thumbnail">
+            <img src="images/nominees/fragments_of_code.jpg" alt="Fragments of Code">
+          </div>
+          <div class="movie-thumbnail">
+            <img src="images/nominees/before_the_call.jpg" alt="Before the Call">
+          </div>
+          <div class="movie-thumbnail">
+            <img src="images/nominees/the_first_step.jpg" alt="The First Step">
+          </div>
+          <div class="movie-thumbnail">
+            <img src="images/nominees/what_we_choose.jpg" alt="What We Choose">
+          </div>
+          <div class="movie-thumbnail">
+            <img src="images/nominees/frequency_dreams.jpg" alt="Frequency Dreams">
+          </div>
+          <div class="movie-thumbnail">
+            <img src="images/nominees/human_touch.jpg" alt="Human Touch">
+          </div>
+
+          <!-- View All CTA at end of rail -->
+          <div class="flex-shrink-0 flex items-center justify-center pl-8" style="min-width: 200px; height: 240px;">
+            <a href="nominees.html" class="flex flex-col items-center gap-3 text-center group">
+              <div class="text-2xl text-gray-400 group-hover:text-brandRed transition">→</div>
+              <p class="text-xs text-gray-500 group-hover:text-white transition">View All<br />Categories</p>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INNOVATION AWARDS RAIL -->
+  <section class="px-5 sm:px-8 lg:px-12 bg-[#0a0a0a]" id="craft-awards">
+    <div class="max-w-7xl mx-auto">
+      <div class="awards-rail-container">
+        <div class="awards-rail" data-category="craft">
+          <!-- Sticky Award Header (Right) -->
+          <div class="award-category-heading right-aligned">
+            <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-right">
+              <span class="text-brandRed">INNOVATION</span><br />AWARDS
+            </h2>
+          </div>
+
+          <!-- Movies -->
+          <div class="movie-thumbnail">
+            <img src="images/nominees/after_the_algorithm.jpg" alt="After the Algorithm">
+          </div>
+          <div class="movie-thumbnail">
+            <img src="images/nominees/chromatic_noise.jpg" alt="Chromatic Noise">
+          </div>
+          <div class="movie-thumbnail">
+            <img src="images/nominees/seven_minutes.jpg" alt="Seven Minutes">
+          </div>
+          <div class="movie-thumbnail">
+            <img src="images/nominees/a_quiet_decision.jpg" alt="A Quiet Decision">
+          </div>
+          <div class="movie-thumbnail">
+            <img src="images/nominees/the_last_room.jpg" alt="The Last Room">
+          </div>
+          <div class="movie-thumbnail">
+            <img src="images/nominees/between_words.jpg" alt="Between Words">
+          </div>
+          <div class="movie-thumbnail">
+            <img src="images/nominees/neon_pulse.jpg" alt="Neon Pulse">
+          </div>
+          <div class="movie-thumbnail">
+            <img src="images/nominees/momentum.jpg" alt="Momentum">
+          </div>
+          <div class="movie-thumbnail">
+            <img src="images/nominees/beyond_utility.jpg" alt="Beyond Utility">
+          </div>
+
+          <!-- View All CTA at end of rail -->
+          <div class="flex-shrink-0 flex items-center justify-center pr-8" style="min-width: 200px; height: 240px;">
+            <a href="nominees.html" class="flex flex-col items-center gap-3 text-center group">
+              <div class="text-2xl text-gray-400 group-hover:text-brandRed transition">←</div>
+              <p class="text-xs text-gray-500 group-hover:text-white transition">View All<br />Categories</p>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- JURY AWARDS RAIL -->
+  <section class="px-5 sm:px-8 lg:px-12 bg-[#0a0a0a]" id="jury-awards">
+    <div class="max-w-7xl mx-auto">
+      <div class="awards-rail-container">
+        <div class="awards-rail" data-category="jury">
+          <!-- Sticky Award Header (Left) -->
+          <div class="award-category-heading left-aligned">
+            <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight">
+              <span class="text-brandRed">JURY</span><br />AWARDS
+            </h2>
+          </div>
+
+          <!-- Movies -->
+          <div class="movie-thumbnail">
+            <img src="images/nominees/designed_to_last.jpg" alt="Designed to Last">
+          </div>
+          <div class="movie-thumbnail">
+            <img src="images/nominees/still_standing.jpg" alt="Still Standing">
+          </div>
+          <div class="movie-thumbnail">
+            <img src="images/nominees/built_for_tomorrow.jpg" alt="Built for Tomorrow">
+          </div>
+          <div class="movie-thumbnail">
+            <img src="images/nominees/digital_fever.jpg" alt="Digital Fever">
+          </div>
+          <div class="movie-thumbnail">
+            <img src="images/nominees/echo_bass.jpg" alt="Echo Bass">
+          </div>
+          <div class="movie-thumbnail">
+            <img src="images/nominees/after_the_beat.jpg" alt="After the Beat">
+          </div>
+          <div class="movie-thumbnail">
+            <img src="images/nominees/rendered_silence.jpg" alt="Rendered Silence">
+          </div>
+          <div class="movie-thumbnail">
+            <img src="images/nominees/ghosts_in_the_model.jpg" alt="Ghosts in the Model">
+          </div>
+          <div class="movie-thumbnail">
+            <img src="images/nominees/synthetic_groove.jpg" alt="Synthetic Groove">
+          </div>
+
+          <!-- View All CTA at end of rail -->
+          <div class="flex-shrink-0 flex items-center justify-center pl-8" style="min-width: 200px; height: 240px;">
+            <a href="nominees.html" class="flex flex-col items-center gap-3 text-center group">
+              <div class="text-2xl text-gray-400 group-hover:text-brandRed transition">→</div>
+              <p class="text-xs text-gray-500 group-hover:text-white transition">View All<br />Categories</p>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GRAND JURY SECTION -->
+  <section class="px-5 sm:px-8 lg:px-12 bg-[#0a0a0a] py-24" id="grand-jury">
+    <div class="max-w-7xl mx-auto">
+      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-12 tracking-tight"> <span class="text-brandRed"> GRAND</span>JURY</h2>
+
+      <div class="awards-rail-container">
+        <div class="awards-rail" style="gap: 1.5rem;">
+          <!-- Arjun Mehta -->
+          <div class="jury-member-thumbnail">
+            <img src="/images/jury/arjun-mehta.jpg" alt="Arjun Mehta">
+            <div class="jury-member-vignette">
+              <div>
+                <div class="jury-member-name">Arjun Mehta</div>
+                <div class="jury-member-designation">Senior AI Pipeline Engineer</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sofia Alvarez -->
+          <div class="jury-member-thumbnail">
+            <img src="/images/jury/sofia-alvarez.jpg" alt="Sofia Alvarez">
+            <div class="jury-member-vignette">
+              <div>
+                <div class="jury-member-name">Sofia Alvarez</div>
+                <div class="jury-member-designation">Virtual Production Director</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Malik Johnson -->
+          <div class="jury-member-thumbnail">
+            <img src="/images/jury/malik-johnson.jpg" alt="Malik Johnson">
+            <div class="jury-member-vignette">
+              <div>
+                <div class="jury-member-name">Malik Johnson</div>
+                <div class="jury-member-designation">Lead ML Researcher</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Maya Kapoor -->
+          <div class="jury-member-thumbnail">
+            <img src="/images/jury/maya-kapoor.jpg" alt="Maya Kapoor">
+            <div class="jury-member-vignette">
+              <div>
+                <div class="jury-member-name">Maya Kapoor</div>
+                <div class="jury-member-designation">VP, Original Content</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Hana Soto -->
+          <div class="jury-member-thumbnail">
+            <img src="/images/jury/hana-soto.jpg" alt="Hana Soto">
+            <div class="jury-member-vignette">
+              <div>
+                <div class="jury-member-name">Hana Soto</div>
+                <div class="jury-member-designation">Chief Creative Technologist</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Liam O'Connor -->
+          <div class="jury-member-thumbnail">
+            <img src="/images/jury/liam-o-connor.jpg" alt="Liam O'Connor">
+            <div class="jury-member-vignette">
+              <div>
+                <div class="jury-member-name">Liam O'Connor</div>
+                <div class="jury-member-designation">Digital Human Supervisor</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Priya Nair -->
+          <div class="jury-member-thumbnail">
+            <img src="/images/jury/priya-nair.jpg" alt="Priya Nair">
+            <div class="jury-member-vignette">
+              <div>
+                <div class="jury-member-name">Priya Nair</div>
+                <div class="jury-member-designation">Motion Capture Specialist</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Elena Rossi -->
+          <div class="jury-member-thumbnail">
+            <img src="/images/jury/elena-rossi.jpg" alt="Elena Rossi">
+            <div class="jury-member-vignette">
+              <div>
+                <div class="jury-member-name">Elena Rossi</div>
+                <div class="jury-member-designation">Color & VFX Supervisor</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Noah Kim -->
+          <div class="jury-member-thumbnail">
+            <img src="/images/jury/noah-kim.jpg" alt="Noah Kim">
+            <div class="jury-member-vignette">
+              <div>
+                <div class="jury-member-name">Noah Kim</div>
+                <div class="jury-member-designation">Cinematography Director</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Zahra El-Sayed -->
+          <div class="jury-member-thumbnail">
+            <img src="/images/jury/zahra-el-sayed.jpg" alt="Zahra El-Sayed">
+            <div class="jury-member-vignette">
+              <div>
+                <div class="jury-member-name">Zahra El-Sayed</div>
+                <div class="jury-member-designation">Sound Design & AI Audio</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Diego Martinez -->
+          <div class="jury-member-thumbnail">
+            <img src="/images/jury/diego-martinez.jpg" alt="Diego Martinez">
+            <div class="jury-member-vignette">
+              <div>
+                <div class="jury-member-name">Diego Martinez</div>
+                <div class="jury-member-designation">Editing & Post-Production</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Lucas van Dijk -->
+          <div class="jury-member-thumbnail">
+            <img src="/images/jury/lucas-van-dijk.jpg" alt="Lucas van Dijk">
+            <div class="jury-member-vignette">
+              <div>
+                <div class="jury-member-name">Lucas van Dijk</div>
+                <div class="jury-member-designation">Narrative AI Researcher</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-12 text-center">
+        <a href="jury.html" class="inline-block bg-brandRed hover:bg-red-700 transition px-8 py-3 rounded-full font-semibold text-white tracking-wide uppercase text-sm">
+          View All Jury
         </a>
       </div>
     </div>
   </section>
 
-  <!-- GLOBAL CALL TO ACTION SECTION -->
+  <!-- CEREMONY SECTION -->
+  <section class="py-16 sm:py-20 lg:py-24 px-5 sm:px-8 lg:px-12 bg-[#0a0a0a]" id="ceremony">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center">
+        <h2 class="text-5xl sm:text-6xl lg:text-7xl font-bold mb-12 tracking-tight">
+          <span class="text-brandRed">AWARDS </span> CEREMONY
+        </h2>
+        
+        <div class="mb-12">
+          <p class="text-xl sm:text-2xl text-gray-300 mb-4">March 2026</p>
+          <p class="text-2xl sm:text-3xl font-semibold">Freedom Stadium, Mumbai</p>
+        </div>
+        
+        <a href="ceremony.html" class="inline-block bg-brandRed hover:bg-red-700 transition px-10 py-4 rounded-full font-bold text-white tracking-wider uppercase text-base">
+          Reserve Your Seat
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CALL TO ACTION SECTION -->
   <section
-    class="py-40 sm:py-48 px-5 sm:px-8 lg:px-12 bg-cover bg-center relative flex items-center justify-center hero-bg-lower"
-    data-parallax-layer="background"
-    data-parallax-speed="0.12"
+    class="min-h-screen py-24 sm:py-32 lg:py-40 px-5 sm:px-8 lg:px-12 bg-cover bg-center bg-fixed relative flex items-center justify-center"
+    style="background-image: url('images/home-lower-bg.png');"
+    id="cta"
   >
-    <div class="absolute inset-0 bg-black/50"></div>
+    <div class="absolute inset-0 bg-black/60"></div>
     <div class="relative z-10 text-center max-w-3xl">
-      <h2 class="text-6xl sm:text-7xl lg:text-8xl font-bold mb-8 tracking-tight leading-tight">
-        OPEN WORLDWIDE<br />TO CREATORS
+      <h2 class="text-5xl sm:text-6xl lg:text-8xl font-bold mb-12 tracking-tight leading-tight">
+        BECOME THE<br />ARCHITECT
       </h2>
       
-      <p class="text-lg text-gray-300 mb-12 font-light leading-relaxed">
+      <p class="text-base sm:text-lg text-gray-300 mb-16 font-light leading-relaxed">
         Submit your visionary AI-native films to be featured at the festival.
       </p>
 
-      <button class="bg-brandRed hover:bg-red-700 transition px-12 py-5 rounded-full font-semibold text-white tracking-wide uppercase text-base">
+      <a href="submit.html" class="inline-block bg-brandRed hover:bg-red-700 transition px-8 py-4 rounded-full font-semibold text-white tracking-wide uppercase text-sm">
         Submit Your Film
-      </button>
+      </a>
     </div>
   </section>
 
   <!-- FOOTER -->
-  <footer class="py-20 px-5 sm:px-8 lg:px-12 bg-gradient-to-b from-[#0a0a0a]/0 to-[#0a0a0a] border-t border-gray-900/30">
+  <footer class="py-12 px-5 sm:px-8 lg:px-12 bg-[#0a0a0a] border-t border-gray-900/30">
     <div class="max-w-7xl mx-auto flex justify-between items-center">
       <div>
         <p class="text-sm font-semibold tracking-wide">HUNGAMA AI FILM FESTIVAL</p>
@@ -454,25 +865,66 @@
       </div>
     </div>
   </footer>
-  <!-- Production Scroll System -->
+
   <script src="js/production-scroll.js"></script>
-  
-  <!-- Production Parallax Engine -->
   <script src="js/production-parallax.js"></script>
-
-  <!-- Main Entry Point -->
   <script src="js/main.js"></script>
-
-  <!-- Feature Scripts -->
   <script src="js/data.js"></script>
   <script src="js/email-capture.js"></script>
   <script src="js/cta-wiring.js"></script>
   <script src="js/emergency-override.js" defer></script>
-
-  <!-- Navbar Scroll Behavior -->
   <script src="/js/navbar-scroll.js"></script>
-
-  <!-- Mobile Drawer Navigation -->
   <script src="js/mobile-drawer-nav.js"></script>
+
+  <!-- Auto-scrolling rails -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const rails = document.querySelectorAll('.awards-rail');
+      
+      rails.forEach(rail => {
+        let scrollLeft = 0;
+        let animationId;
+        
+        function autoScroll() {
+          const maxScroll = rail.scrollWidth - rail.clientWidth;
+          // Calculate speed to complete scroll in 15 seconds
+          const speed = maxScroll / 500; // 500 frames * 30ms = 15 seconds
+          scrollLeft += speed;
+          
+          if (scrollLeft > maxScroll) {
+            scrollLeft = 0;
+          }
+          rail.scrollLeft = scrollLeft;
+        }
+        
+        function startScroll() {
+          animationId = setInterval(autoScroll, 30);
+        }
+        
+        function stopScroll() {
+          clearInterval(animationId);
+        }
+        
+        rail.addEventListener('mouseenter', stopScroll);
+        rail.addEventListener('mouseleave', startScroll);
+        
+        startScroll();
+      });
+
+      // Add click handlers to movie CTAs
+      document.querySelectorAll('.movie-thumbnail').forEach(thumbnail => {
+        thumbnail.addEventListener('click', function() {
+          window.location.href = 'nominees.html';
+        });
+      });
+
+      // Add click handlers to jury CTAs
+      document.querySelectorAll('.jury-member-thumbnail').forEach(member => {
+        member.addEventListener('click', function() {
+          window.location.href = 'jury.html';
+        });
+      });
+    });
+  </script>
 </body>
 </html>
