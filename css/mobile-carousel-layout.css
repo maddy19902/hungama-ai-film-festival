@@ -1,0 +1,325 @@
+/* ========================================
+   MOBILE LAYOUT - COMPLETE REWRITE
+   Mobile viewport: max-width 768px ONLY
+   Desktop: 769px+ COMPLETELY UNTOUCHED
+   ======================================== */
+
+@media (max-width: 768px) {
+  
+  /* ========================================
+     HERO SECTION
+     ======================================== */
+  
+  #hero {
+    min-height: 100vh;
+    padding-top: 2rem;
+    padding-bottom: 120px;
+    padding-left: 0;
+    padding-right: 0;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  
+  /* Hero content container */
+  #hero > .max-w-7xl {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: 2rem;
+    text-align: left;
+    position: relative;
+    z-index: 10;
+  }
+  
+  /* Hero video - 9:16 aspect ratio */
+  #hero video {
+    aspect-ratio: 9/16;
+    object-fit: cover;
+    height: 90vh;
+  }
+  
+  /* Gradient fade from video to sponsors */
+  #hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 90vh;
+    background: linear-gradient(to bottom, 
+      transparent 0%, 
+      rgba(10,10,10,0.15) 15%,
+      rgba(10,10,10,0.4) 35%,
+      rgba(10,10,10,0.7) 60%, 
+      rgba(10,10,10,1) 100%);
+    pointer-events: none;
+    z-index: 5;
+  }
+  
+  /* ========================================
+     SPONSORS SECTION
+     70px margin above creates visual separation from video
+     ======================================== */
+  
+  #hero > div > .absolute {
+    position: absolute !important;
+    bottom: -280px !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100%;
+    padding: 2rem 1rem 1.5rem 1rem;
+    background: #0a0a0a;
+    margin: 0 !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 10 !important;
+  }
+  
+  #hero > div > .absolute > div {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+    width: 100%;
+  }
+  
+  #hero > div > .absolute p {
+    text-align: center;
+    margin: 0;
+    font-size: 0.65rem;
+  }
+  
+  .sponsor-logos-container {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.2rem;
+    align-items: center;
+  }
+  
+  .sponsor-logos-container img {
+    height: auto;
+    width: auto;
+    max-width: 95px;
+    max-height: 36px;
+    object-fit: contain;
+  }
+  
+
+  
+  #hero + section {
+    padding-top: 0 !important;
+    padding-bottom: 1.875rem !important;
+    padding-left: 2rem !important;
+    padding-right: 2rem !important;
+    margin-top: 0em !important;
+    margin-top: 12px;
+  }
+  
+  #hero + section .max-w-4xl {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  
+  #hero + section p {
+    margin-left: 0;
+    margin-right: 0;
+  }
+  
+  /* ========================================
+     SUBMIT BUTTON
+     ======================================== */
+  
+  #hero a.bg-brandRed {
+    padding: 0.6rem 1.4rem;
+    font-size: 0.7rem;
+  }
+  
+  /* ========================================
+     AWARD SECTIONS - MOBILE LAYOUT
+     Grid layout: heading above, carousel below
+     ======================================== */
+  
+  #cinematic-awards,
+  #craft-awards,
+  #jury-awards {
+    padding: 0;
+    margin: 0;
+    margin-bottom: 0;
+  }
+  
+  #cinematic-awards {
+    padding-top: 1.5rem;
+  }
+  
+  #craft-awards {
+    padding-top: 2rem;
+  }
+  
+  #jury-awards {
+    padding-top: 2rem;
+  }
+  
+  .awards-rail-container {
+    display: block;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Award category heading */
+  .award-category-heading {
+    height: auto;
+    padding: 0 1rem 1.5rem 1rem;
+    margin: 0;
+    position: relative;
+    left: auto;
+    right: auto;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 10;
+  }
+  
+  .award-category-heading h2 {
+    font-size: 1.1rem;
+    line-height: 1.2;
+    font-weight: 700;
+    margin: 0;
+  }
+  
+  .award-category-heading h2 br {
+    display: none;
+  }
+  
+  /* Arrow link to nominees page */
+  .award-category-heading::after {
+    content: '→';
+    font-size: 1.25rem;
+    color: #dc2626;
+    text-decoration: none;
+    cursor: pointer;
+    flex-shrink: 0;
+    margin-left: auto;
+  }
+  
+  .award-category-heading a {
+    margin-left: auto;
+    font-size: 1.25rem;
+    color: #dc2626;
+    text-decoration: none;
+  }
+  
+  .award-category-heading.right-aligned {
+    width: 100%;
+  }
+  
+  /* Carousel rail - vertical stack */
+  .awards-rail {
+    display: flex;
+    gap: 1rem;
+    padding: 0 1rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin-bottom: 2rem;
+  }
+  
+  /* ========================================
+     THUMBNAILS - LARGER 2:3 RATIO
+     ======================================== */
+  
+  .movie-thumbnail {
+    width: 208px;
+    min-width: 208px;
+    aspect-ratio: 2/3;
+    flex-shrink: 0;
+  }
+  
+  .jury-member-thumbnail {
+    width: 208px;
+    min-width: 208px;
+    aspect-ratio: 2/3;
+    flex-shrink: 0;
+  }
+  
+  /* Hide View All card on mobile */
+  .awards-rail > div[style*="min-width: 200px"] {
+    display: none !important;
+  }
+  
+  /* Gap before Grand Jury - 50-60px */
+  #grand-jury {
+    margin-top: 55px;
+    padding-top: 0 !important;
+  }
+  
+  /* Grand Jury heading and layout */
+  #grand-jury h2 {
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+    padding: 0 1rem;
+  }
+  
+  #grand-jury .awards-rail-container {
+    display: flex;
+    gap: 1rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: 0 1rem;
+  }
+  
+  /* ========================================
+     CTA SECTION
+     ======================================== */
+  
+  #cta {
+    padding: 2rem 1rem;
+    min-height: 60vh;
+    background-attachment: scroll !important;
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+  }
+  
+  #cta h2 {
+    font-size: 2.2rem;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+  }
+  
+  #cta h2 br {
+    display: none;
+  }
+  
+  #cta p {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin-bottom: 2rem;
+  }
+  
+  #cta a.bg-brandRed {
+    padding: 0.6rem 1.4rem;
+    font-size: 0.7rem;
+  }
+  
+  /* ========================================
+     GENERAL
+     ======================================== */
+  
+  body {
+    overflow-x: hidden;
+  }
+
+}
+
+/* ========================================
+   DESKTOP: >= 769px
+   ABSOLUTELY ZERO MODIFICATIONS
+   ======================================== */
+
+@media (min-width: 769px) {
+  /* NO CHANGES - DESKTOP PROTECTED */
+}
