@@ -167,64 +167,38 @@
     display: block;
     margin: 0;
     padding: 0;
-  }
+  })
   
-  /* Award category heading */
+  /* ========================================
+     AWARD SECTION - MOBILE SCALING
+     Same layout as desktop, scaled down
+     ======================================== */
+  
+  /* Reduce award heading height and text size */
   .award-category-heading {
-    height: auto;
-    padding: 0 1rem 1.5rem 1rem;
-    margin: 0;
-    position: relative;
-    left: auto;
-    right: auto;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    z-index: 10;
+    height: 120px !important;
   }
   
   .award-category-heading h2 {
-    font-size: 1.1rem;
-    line-height: 1.2;
-    font-weight: 700;
-    margin: 0;
+    font-size: 1.1rem !important;
+    line-height: 1.1 !important;
   }
   
-  .award-category-heading h2 br {
-    display: none;
-  }
-  
-  /* Arrow link to nominees page */
-  .award-category-heading::after {
-    content: '→';
-    font-size: 1.25rem;
-    color: #dc2626;
-    text-decoration: none;
-    cursor: pointer;
-    flex-shrink: 0;
-    margin-left: auto;
-  }
-  
-  .award-category-heading a {
-    margin-left: auto;
-    font-size: 1.25rem;
-    color: #dc2626;
-    text-decoration: none;
-  }
-  
-  .award-category-heading.right-aligned {
-    width: 100%;
-  }
-  
-  /* Carousel rail - vertical stack */
+  /* Reduce padding in award rail */
   .awards-rail {
-    display: flex;
-    gap: 1rem;
-    padding: 0 1rem;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    margin-bottom: 2rem;
+    padding: 0.5rem 0 !important;
+    gap: 0.5rem !important;
+  }
+  
+  /* Smaller movie thumbnails on mobile */
+  .movie-thumbnail {
+    width: 200px !important;
+    min-width: 200px !important;
+  }
+  
+  .jury-member-thumbnail {
+    width: 200px !important;
+    min-width: 200px !important;
   }
   
   /* ========================================
