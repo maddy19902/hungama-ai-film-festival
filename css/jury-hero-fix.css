@@ -6,6 +6,39 @@
  * Status: Production-critical fix applied
  */
 
+/* === JURY H1 OVERRIDE - TYPOGRAPHY HIERARCHY FIX === */
+/* Override typography-hierarchy.css global h1 rules for jury page */
+[data-parallax-layer="text"] h1,
+section[data-parallax-layer="background"] h1 {
+  font-size: 4.5rem !important; /* text-7xl */
+  line-height: 1 !important;
+  letter-spacing: -0.025em !important; /* tracking-tight */
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: none !important;
+  display: block !important;
+  color: #ffffff !important;
+}
+
+@media (min-width: 1280px) {
+  [data-parallax-layer="text"] h1,
+  section[data-parallax-layer="background"] h1 {
+    font-size: 6rem !important; /* text-8xl */
+  }
+}
+
+/* === JURY SUBTITLE PARAGRAPH OVERRIDE === */
+/* Ensure subtitle paragraphs in hero sections are visible */
+[data-parallax-layer="text"] + p,
+section[data-parallax-layer="background"] p {
+  opacity: 1 !important;
+  visibility: visible !important;
+  display: block !important;
+  color: rgb(209 213 219) !important; /* text-gray-300 */
+  font-size: 1.125rem !important; /* text-lg */
+  line-height: 1.75rem !important; /* leading-relaxed */
+}
+
 /* === JURY HERO - GUARANTEED VISIBILITY === */
 /* Using maximum specificity and !important for override power */
 

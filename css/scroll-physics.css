@@ -27,7 +27,8 @@ body {
 }
 
 /* HERO SECTIONS - Viewport-relative sizing */
-[data-parallax-layer="background"]:is(.hero, .hero-section, [class*="hero"]) {
+/* Apply to all sections with data-parallax-layer="background" */
+[data-parallax-layer="background"] {
   min-height: 100svh;
   position: relative;
   overflow: hidden;
