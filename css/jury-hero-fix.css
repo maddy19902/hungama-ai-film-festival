@@ -126,7 +126,8 @@ section[class*="hero"] {
 @media (max-width: 768px) {
   .jury-hero {
     min-height: 60vh !important;
-    background-position: 60% center !important;
+    background-position: 75% center !important;
+    background-size: cover !important;
   }
   
   .jury-hero::before {

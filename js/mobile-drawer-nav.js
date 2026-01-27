@@ -58,7 +58,7 @@ class MobileDrawerNav {
           <!-- <li><a href="honors.html" class="drawer-link">Awards</a></li> -->
           <li><a href="nominees.html" class="drawer-link">Categories</a></li>
           <li><a href="jury.html" class="drawer-link">Jury</a></li>
-          <li><a href="ceremony.html" class="drawer-link">Event</a></li>
+          <!-- <li><a href="ceremony.html" class="drawer-link">Event</a></li> -->
           <!-- <li><a href="press.html" class="drawer-link">Press</a></li> -->
           <li><a href="sponsors.html" class="drawer-link">Partners</a></li>
         </ul>
