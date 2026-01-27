@@ -1,0 +1,2090 @@
+/**
+ * HUNGAMA FESTIVAL - EFFECTS & INTERACTIONS
+ * 
+ * Consolidated from:
+ * - animations.css (435 lines)
+ * - premium-interactions.css (528 lines)
+ * - global-hover-system.css (211 lines)
+ * - scroll-transitions.css (383 lines)
+ * - micro-details.css (499 lines)
+ * 
+ * All cinematic animations, hover states, transitions, micro-details
+ * Apple × Linear × Stripe interaction patterns
+ */
+
+/**
+ * HUNGAMA FESTIVAL - SECTION SCROLL TRANSITIONS
+ * 
+ * Calm, cinematic, intentional animations
+ * Every section gets smooth entrance via scroll
+ * Opacity + translate + scale + easing
+ */
+
+/* ============================================================
+   SCROLL TRIGGER ANIMATION KEYFRAMES
+   ============================================================ */
+
+@keyframes scroll-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scroll-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scroll-scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes scroll-slide-in-left {
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scroll-slide-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* ============================================================
+   SECTION ANIMATION TRIGGERS
+   
+   - All sections start invisible
+   - Intersection Observer adds 'animate-in' class
+   - CSS animates from invisible to visible
+   - Respects prefers-reduced-motion
+   ============================================================ */
+
+/* Default state - invisible, ready to animate */
+section,
+[data-section],
+.hero,
+.gallery,
+.testimonials,
+.timeline,
+.form-section {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity var(--motion-duration-slow) var(--ease-out-smooth),
+              transform var(--motion-duration-slow) var(--ease-out-smooth);
+}
+
+/* Animated state - visible and settled */
+section.animate-in,
+[data-section].animate-in,
+.hero.animate-in,
+.gallery.animate-in,
+.testimonials.animate-in,
+.timeline.animate-in,
+.form-section.animate-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ============================================================
+   STAGGERED CHILD ANIMATIONS
+   
+   Elements within sections animate with delay
+   Creates cascading entrance effect
+   ============================================================ */
+
+[data-stagger] {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity var(--motion-duration-slow) var(--ease-out-smooth),
+              transform var(--motion-duration-slow) var(--ease-out-smooth);
+}
+
+section.animate-in [data-stagger],
+[data-section].animate-in [data-stagger] {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger delays for cascading effect */
+[data-stagger]:nth-child(1) {
+  transition-delay: 0ms;
+}
+
+[data-stagger]:nth-child(2) {
+  transition-delay: 100ms;
+}
+
+[data-stagger]:nth-child(3) {
+  transition-delay: 200ms;
+}
+
+[data-stagger]:nth-child(4) {
+  transition-delay: 300ms;
+}
+
+[data-stagger]:nth-child(5) {
+  transition-delay: 400ms;
+}
+
+[data-stagger]:nth-child(n+6) {
+  transition-delay: 500ms;
+}
+
+section.animate-in [data-stagger]:nth-child(1),
+[data-section].animate-in [data-stagger]:nth-child(1) {
+  transition-delay: 100ms;
+}
+
+section.animate-in [data-stagger]:nth-child(2),
+[data-section].animate-in [data-stagger]:nth-child(2) {
+  transition-delay: 150ms;
+}
+
+section.animate-in [data-stagger]:nth-child(3),
+[data-section].animate-in [data-stagger]:nth-child(3) {
+  transition-delay: 200ms;
+}
+
+section.animate-in [data-stagger]:nth-child(4),
+[data-section].animate-in [data-stagger]:nth-child(4) {
+  transition-delay: 250ms;
+}
+
+section.animate-in [data-stagger]:nth-child(5),
+[data-section].animate-in [data-stagger]:nth-child(5) {
+  transition-delay: 300ms;
+}
+
+/* ============================================================
+   SPECIFIC ANIMATION PATTERNS
+   ============================================================ */
+
+/* Fade only - no movement */
+[data-animation="fade-only"] {
+  opacity: 0;
+  transform: none;
+}
+
+[data-animation="fade-only"].animate-in {
+  opacity: 1;
+}
+
+/* Scale + Fade - elegant entrance */
+[data-animation="scale"] {
+  opacity: 0;
+  transform: scale(0.95);
+}
+
+[data-animation="scale"].animate-in {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Slide from left */
+[data-animation="slide-left"] {
+  opacity: 0;
+  transform: translateX(-40px);
+}
+
+[data-animation="slide-left"].animate-in {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Slide from right */
+[data-animation="slide-right"] {
+  opacity: 0;
+  transform: translateX(40px);
+}
+
+[data-animation="slide-right"].animate-in {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ============================================================
+   PARALLAX EFFECT REFINEMENT
+   ============================================================ */
+
+[data-parallax] {
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+/* ============================================================
+   IMAGE FADE-IN ON LOAD
+   ============================================================ */
+
+img[loading="lazy"] {
+  opacity: 0;
+  animation: fade-in var(--motion-duration-slow) var(--ease-out-smooth) forwards;
+}
+
+img[loading="lazy"][src] {
+  opacity: 1;
+  animation: none;
+}
+
+@keyframes fade-in {
+  to {
+    opacity: 1;
+  }
+}
+
+/* ============================================================
+   REDUCED MOTION - Disable all animations
+   ============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  section,
+  [data-section],
+  .hero,
+  .gallery,
+  .testimonials,
+  .timeline,
+  .form-section,
+  [data-stagger],
+  [data-animation] {
+    opacity: 1;
+    transform: none !important;
+    transition: none !important;
+    animation: none !important;
+  }
+
+  section.animate-in,
+  [data-section].animate-in,
+  .hero.animate-in,
+  .gallery.animate-in,
+  .testimonials.animate-in,
+  .timeline.animate-in,
+  .form-section.animate-in {
+    opacity: 1;
+    transform: none !important;
+  }
+}
+
+/* ============================================================
+   HERO SECTION ENHANCEMENTS
+   ============================================================ */
+
+.hero,
+.hero-section,
+[data-hero] {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Hero background parallax */
+.hero::before,
+.hero-section::before,
+[data-hero]::before {
+  content: '';
+  position: absolute;
+  top: -20%;
+  left: 0;
+  width: 100%;
+  height: 120%;
+  background: inherit;
+  z-index: -1;
+  will-change: transform;
+}
+
+/* ============================================================
+   CARD ENTRANCE ANIMATIONS
+   ============================================================ */
+
+.card,
+[data-card],
+.nominee-card,
+.jury-card,
+.archive-item,
+.gallery-item {
+  will-change: transform, opacity;
+}
+
+.card[data-stagger],
+[data-card][data-stagger],
+.nominee-card[data-stagger],
+.jury-card[data-stagger],
+.archive-item[data-stagger],
+.gallery-item[data-stagger] {
+  opacity: 0;
+  transform: translateY(20px) scale(0.98);
+}
+
+section.animate-in .card[data-stagger],
+section.animate-in [data-card][data-stagger],
+section.animate-in .nominee-card[data-stagger],
+section.animate-in .jury-card[data-stagger],
+section.animate-in .archive-item[data-stagger],
+section.animate-in .gallery-item[data-stagger] {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* ============================================================
+   TEXT ANIMATION - Letter/word entrance
+   ============================================================ */
+
+[data-text-animate] {
+  opacity: 0;
+}
+
+section.animate-in [data-text-animate] {
+  opacity: 1;
+}
+
+/* ============================================================
+   BUTTON ENTRANCE
+   ============================================================ */
+
+button[data-stagger],
+a.button[data-stagger],
+.btn[data-stagger] {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+section.animate-in button[data-stagger],
+section.animate-in a.button[data-stagger],
+section.animate-in .btn[data-stagger] {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ============================================================
+   PERFORMANCE - GPU ACCELERATION
+   ============================================================ */
+
+section,
+[data-section],
+[data-stagger],
+[data-animation] {
+  transform: translateZ(0);
+  will-change: auto;
+}
+
+section.animate-in,
+[data-section].animate-in {
+  will-change: auto;
+}
+
+/* ============================================================
+   ANIMATIONS
+   ============================================================ */
+
+/**
+ * HUNGAMA FESTIVAL - CINEMATIC ANIMATIONS & MOTION
+ * 
+ * Includes:
+ * - Scroll-triggered fade-in animations
+ * - Background parallax effects
+ * - Hover motion states
+ * - Mobile menu overlay styling
+ * - Respects prefers-reduced-motion
+ */
+
+/* ============================================================
+   1. SCROLL-TRIGGERED ANIMATIONS
+   ============================================================ */
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Sections marked with data-animate will fade in on scroll */
+[data-animate] {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s cubic-bezier(0.32, 0, 0.67, 0), 
+              transform 0.8s cubic-bezier(0.32, 0, 0.67, 0);
+}
+
+[data-animate].animate-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger effect for grids */
+[data-animate] {
+  --stagger-delay: 0ms;
+  transition-delay: var(--stagger-delay);
+}
+
+[data-animate]:nth-child(2) { --stagger-delay: 100ms; }
+[data-animate]:nth-child(3) { --stagger-delay: 200ms; }
+[data-animate]:nth-child(4) { --stagger-delay: 300ms; }
+[data-animate]:nth-child(n+5) { --stagger-delay: 400ms; }
+
+/* ============================================================
+   2. HERO PARALLAX EFFECT
+   ============================================================ */
+
+[data-parallax] {
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+/* ============================================================
+   3. HOVER MOTION - CARDS & CTAs
+   ============================================================ */
+
+/* Nominee cards */
+.nominee-card {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, box-shadow;
+}
+
+.nominee-card:hover,
+.nominee-card.hover-lifted {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 
+    0 20px 60px rgba(225, 29, 46, 0.15),
+    0 0 40px rgba(225, 29, 46, 0.1);
+  border-color: rgba(225, 29, 46, 0.5);
+}
+
+/* Jury cards */
+.jury-card {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, box-shadow;
+}
+
+.jury-card:hover,
+.jury-card.hover-lifted {
+  transform: translateY(-6px) scale(1.01);
+  box-shadow: 
+    0 15px 40px rgba(225, 29, 46, 0.12),
+    0 0 30px rgba(225, 29, 46, 0.08);
+}
+
+/* Partner/sponsor cards */
+.partner-card {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: filter, transform;
+}
+
+.partner-card:hover,
+.partner-card.hover-lifted {
+  filter: brightness(1.2) drop-shadow(0 0 20px rgba(225, 29, 46, 0.3));
+  transform: scale(1.05);
+}
+
+/* CTA Buttons */
+button[data-hover-lift],
+a.cta-button,
+.cta-button {
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, box-shadow;
+}
+
+button[data-hover-lift]:hover,
+a.cta-button:hover,
+.cta-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(225, 29, 46, 0.25);
+}
+
+/* Gold accent glow on hover */
+button[data-hover-lift]:hover::after,
+.cta-button:hover::after {
+  box-shadow: inset 0 0 20px rgba(225, 29, 46, 0.2);
+}
+
+/* Link hovers in navigation */
+nav a {
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+nav a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #dc2626, transparent);
+  transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+nav a:hover::after {
+  width: 100%;
+}
+
+/* ============================================================
+   4. MOBILE MENU OVERLAY
+   ============================================================ */
+
+/* Backdrop */
+.mobile-menu-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  z-index: 40;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              visibility 0.3s ease;
+}
+
+.mobile-menu-backdrop.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Menu overlay container */
+.mobile-menu-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 41;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(180deg, 
+    rgba(10, 10, 10, 0.98) 0%,
+    rgba(20, 20, 20, 0.95) 100%);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(225, 29, 46, 0.1);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch; /* Smooth momentum scrolling on iOS */
+  
+  /* Transform animation */
+  transform: translateY(-100%);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.mobile-menu-overlay.active {
+  transform: translateY(0);
+}
+
+/* Close button */
+.mobile-menu-close {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  color: white;
+  font-size: 1.25rem;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  z-index: 50;
+  font-weight: bold;
+}
+
+.mobile-menu-close:hover {
+  background: rgba(225, 29, 46, 0.2);
+  border-color: rgba(225, 29, 46, 0.4);
+  transform: rotate(90deg);
+}
+
+.mobile-menu-close:focus {
+  outline: 2px solid #dc2626;
+  outline-offset: 2px;
+}
+
+/* Menu items container */
+.mobile-menu-items {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding: 6rem 1.5rem 2rem;
+  flex: 1;
+}
+
+.mobile-menu-items a {
+  padding: 1rem 0;
+  font-size: 1.125rem;
+  text-decoration: none;
+  color: #f0f0f0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.2s ease;
+  letter-spacing: 0.05em;
+  font-weight: 500;
+}
+
+.mobile-menu-items a:hover {
+  color: #dc2626;
+  padding-left: 0.5rem;
+}
+
+.mobile-menu-items a:focus {
+  outline: none;
+  background: rgba(225, 29, 46, 0.1);
+  color: #dc2626;
+  padding-left: 0.5rem;
+}
+
+/* Active menu item highlight */
+.mobile-menu-items a[aria-current="page"],
+.mobile-menu-items a.active {
+  color: #dc2626;
+  padding-left: 0.5rem;
+  border-left: 2px solid #dc2626;
+  padding-left: calc(0.5rem - 2px);
+}
+
+/* CTA button in mobile menu */
+.mobile-menu-cta {
+  margin-top: 1rem;
+  padding: 0.875rem 1rem !important;
+  background: #dc2626;
+  color: white !important;
+  border: none !important;
+  border-radius: 9999px;
+  text-align: center;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+}
+
+.mobile-menu-cta:hover {
+  background: #b91c1c;
+  transform: scale(1.02);
+  box-shadow: 0 8px 25px rgba(225, 29, 46, 0.3);
+}
+
+.mobile-menu-cta:focus {
+  outline: 2px solid #fca5a5;
+  outline-offset: 2px;
+}
+
+/* ============================================================
+   5. ANCHOR OFFSET (For fixed navbar)
+   ============================================================ */
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 6rem; /* Match navbar height + small buffer */
+}
+
+/* ============================================================
+   6. RESPECT PREFERS-REDUCED-MOTION
+   ============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  [data-animate] {
+    transition: none;
+    opacity: 1;
+    transform: none;
+  }
+
+  [data-parallax] {
+    transform: none !important;
+  }
+
+  .nominee-card,
+  .jury-card,
+  .partner-card,
+  button[data-hover-lift],
+  a.cta-button,
+  .cta-button {
+    transition: none;
+  }
+
+  .mobile-menu-overlay {
+    transform: none;
+    transition: none;
+  }
+
+  .mobile-menu-backdrop {
+    transition: none;
+  }
+}
+
+/* ============================================================
+   7. LOW-PERFORMANCE DEVICE DETECTION
+   ============================================================ */
+
+@media (max-width: 768px) {
+  /* Disable parallax on mobile for performance */
+  [data-parallax] {
+    transform: none !important;
+  }
+}
+
+/* Reduce animations on slower connections */
+@media (prefers-reduced-data: reduce) {
+  [data-animate] {
+    transition-duration: 0.2s;
+  }
+
+  .nominee-card,
+  .jury-card,
+  .partner-card {
+    transition-duration: 0.15s;
+  }
+}
+
+/* ============================================================
+   8. MOBILE MENU RESPONSIVE
+   ============================================================ */
+
+@media (min-width: 768px) {
+  /* Hide mobile menu on desktop */
+  .mobile-menu-overlay,
+  .mobile-menu-backdrop {
+    display: none !important;
+  }
+}
+
+/* Safe area support for notched devices */
+@supports (padding: max(0px)) {
+  .mobile-menu-overlay {
+    padding-left: max(1.5rem, env(safe-area-inset-left));
+    padding-right: max(1.5rem, env(safe-area-inset-right));
+    padding-bottom: max(1rem, env(safe-area-inset-bottom));
+  }
+
+  .mobile-menu-items {
+    padding-top: max(6rem, calc(1.5rem + env(safe-area-inset-top)));
+  }
+}
+
+/* ============================================================
+   9. KEYBOARD & FOCUS MANAGEMENT
+   ============================================================ */
+
+:focus-visible {
+  outline: 2px solid #dc2626;
+  outline-offset: 2px;
+}
+
+/* Enhance focus states */
+button:focus-visible,
+a:focus-visible {
+  outline: 2px dashed #dc2626;
+  outline-offset: 3px;
+}
+
+/* Hide focus ring for mouse users */
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* ============================================================
+   10. SMOOTH TRANSITIONS FOR SECTION BACKGROUNDS
+   ============================================================ */
+
+section {
+  transition: background 0.6s ease;
+}
+
+/* ============================================================
+   11. SMOOTH PAGE TRANSITIONS
+   ============================================================ */
+
+body {
+  transition: opacity 0.3s ease-in-out;
+}
+
+/* Page unload animation (optional) */
+body.fade-out {
+  opacity: 0.7;
+}
+
+/* ============================================================
+   MICRO DETAILS
+   ============================================================ */
+
+/**
+ * HUNGAMA FESTIVAL - APPLE-LEVEL MICRO-DETAILS
+ * 
+ * Button compression • Focus rings • Scrollbar styling
+ * Typography optical alignment • Image loading polish
+ * Form elegance • Reduced motion support
+ */
+
+/* ============================================================
+   BUTTON COMPRESSION & PRESS FEEDBACK
+   ============================================================ */
+
+button,
+a.button,
+.btn,
+[role="button"] {
+  position: relative;
+  
+  /* Enable press feedback */
+  transition: all var(--motion-duration-fast) cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+button:active,
+a.button:active,
+.btn:active,
+[role="button"]:active {
+  transform: translateY(1px) scale(0.98);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) inset;
+}
+
+/* Haptic-like feedback on mobile */
+@media (hover: none) and (pointer: coarse) {
+  button:active,
+  a.button:active,
+  .btn:active,
+  [role="button"]:active {
+    transform: translateY(2px) scale(0.96);
+  }
+}
+
+/* ============================================================
+   FOCUS RING REFINEMENT
+   ============================================================ */
+
+:focus-visible {
+  outline: 2px solid rgba(220, 20, 60, 0.8);
+  outline-offset: 2px;
+}
+
+/* Button specific focus */
+button:focus-visible,
+a.button:focus-visible,
+.btn:focus-visible,
+[role="button"]:focus-visible {
+  outline: 2px solid rgba(220, 20, 60, 0.8);
+  outline-offset: 2px;
+  border-radius: var(--radius-lg);
+}
+
+/* Input focus ring */
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid rgba(220, 20, 60, 0.8);
+  outline-offset: 1px;
+}
+
+/* Smooth focus ring animation */
+@media (prefers-reduced-motion: no-preference) {
+  button:focus-visible,
+  a.button:focus-visible,
+  input:focus-visible,
+  textarea:focus-visible,
+  select:focus-visible {
+    animation: focus-ring-pulse var(--motion-duration-base) ease-out;
+  }
+}
+
+@keyframes focus-ring-pulse {
+  from {
+    outline-offset: 4px;
+    opacity: 0.5;
+  }
+  to {
+    outline-offset: 2px;
+    opacity: 1;
+  }
+}
+
+/* ============================================================
+   INPUT FOCUS STATES - Sacred form experience
+   ============================================================ */
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="number"],
+input[type="date"],
+input[type="time"],
+textarea,
+select {
+  position: relative;
+  background: var(--color-surface-secondary);
+  border: 1px solid var(--color-glass-1);
+  color: var(--color-white);
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-lg);
+  
+  transition: all var(--motion-duration-base) var(--ease-out-smooth);
+  
+  /* Placeholder styling */
+  font-size: 1rem;
+  font-family: var(--font-family-primary);
+}
+
+/* Filled state */
+input:not(:placeholder-shown),
+textarea:not(:placeholder-shown),
+select:not([value=""]):not([value]) {
+  border-color: rgba(220, 20, 60, 0.6);
+  background: linear-gradient(
+    180deg,
+    var(--color-surface-secondary) 0%,
+    var(--color-surface-tertiary) 100%
+  );
+}
+
+/* Hover state */
+input:hover:not(:focus),
+textarea:hover:not(:focus),
+select:hover:not(:focus) {
+  border-color: var(--color-glass-2);
+  background-color: var(--color-surface-tertiary);
+  cursor: text;
+}
+
+/* Focus state */
+input:focus,
+textarea:focus,
+select:focus {
+  background: linear-gradient(
+    180deg,
+    var(--color-surface-secondary) 0%,
+    var(--color-surface-tertiary) 100%
+  );
+  border-color: rgba(220, 20, 60, 0.8);
+  box-shadow: 
+    inset 0 1px 2px rgba(220, 20, 60, 0.1),
+    0 0 0 3px rgba(220, 20, 60, 0.05);
+}
+
+/* Placeholder text */
+input::placeholder,
+textarea::placeholder {
+  color: var(--color-gray-400);
+  opacity: 0.8;
+}
+
+/* Error state */
+input.error,
+textarea.error,
+select.error {
+  border-color: var(--color-error);
+  background-color: rgba(239, 68, 68, 0.05);
+}
+
+input.error:focus,
+textarea.error:focus,
+select.error:focus {
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+}
+
+/* Success state */
+input.success,
+textarea.success,
+select.success {
+  border-color: var(--color-success);
+}
+
+input.success:focus,
+textarea.success:focus,
+select.success:focus {
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+}
+
+/* ============================================================
+   CHECKBOX & RADIO CUSTOM STYLING
+   ============================================================ */
+
+input[type="checkbox"],
+input[type="radio"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--color-glass-2);
+  border-radius: var(--radius-sm);
+  background: transparent;
+  cursor: pointer;
+  
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  
+  transition: all var(--motion-duration-base) var(--ease-out-smooth);
+  margin-right: 0.5rem;
+}
+
+input[type="radio"] {
+  border-radius: 50%;
+}
+
+input[type="checkbox"]:hover,
+input[type="radio"]:hover {
+  border-color: rgba(220, 20, 60, 0.8);
+  background-color: var(--color-glass-1);
+}
+
+input[type="checkbox"]:checked,
+input[type="radio"]:checked {
+  border-color: rgba(220, 20, 60, 0.8);
+  background-color: rgba(220, 20, 60, 0.9);
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='%23fff' d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 111.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3e%3c/svg%3e");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+input[type="checkbox"]:checked:hover,
+input[type="radio"]:checked:hover {
+  transform: scale(1.1);
+}
+
+input[type="checkbox"]:focus-visible,
+input[type="radio"]:focus-visible {
+  outline: 2px solid rgba(220, 20, 60, 0.8);
+  outline-offset: 2px;
+}
+
+/* ============================================================
+   SELECT DROPDOWN STYLING
+   ============================================================ */
+
+select {
+  padding-right: 2.5rem;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23dc143c' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 16px;
+  padding-right: 2.5rem;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+select:hover {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23e5c158' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
+}
+
+/* ============================================================
+   SCROLLBAR CUSTOM STYLING - Premium look
+   ============================================================ */
+
+/* Webkit scrollbars (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-surface-primary);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    180deg,
+    var(--color-gray-600) 0%,
+    var(--color-gray-500) 100%
+  );
+  border-radius: 5px;
+  border: 2px solid var(--color-surface-primary);
+  
+  transition: background var(--motion-duration-base);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(
+    180deg,
+    rgba(220, 20, 60, 0.8) 0%,
+    rgba(220, 20, 60, 1) 100%
+  );
+}
+
+/* Firefox scrollbar */
+* {
+  scrollbar-color: var(--color-gray-600) var(--color-surface-primary);
+  scrollbar-width: thin;
+}
+
+/* ============================================================
+   LINK UNDERLINE ANIMATION
+   ============================================================ */
+
+a:not(.button):not([class*="btn"]):not([role="button"]):not(.site-logo-link) {
+  position: relative;
+  color: var(--color-white);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: all var(--motion-duration-base) var(--ease-out-smooth);
+}
+
+a:hover:not(.button):not([class*="btn"]):not([role="button"]):not(.site-logo-link) {
+  color: rgba(220, 20, 60, 1);
+  border-bottom-color: rgba(220, 20, 60, 0.6);
+}
+
+/* ============================================================
+   TYPOGRAPHY OPTICAL ALIGNMENT
+   ============================================================ */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  line-height: var(--line-height-tight);
+  letter-spacing: var(--letter-spacing-tight);
+  font-weight: var(--font-weight-bold);
+  
+  /* Optical adjustment for large text */
+  margin-top: -0.04em;
+}
+
+h1 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: var(--font-weight-extrabold);
+  margin-top: -0.08em;
+  margin-bottom: 1.5rem;
+}
+
+h2 {
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  margin-bottom: 1.25rem;
+}
+
+h3 {
+  font-size: clamp(1.25rem, 3vw, 1.875rem);
+  margin-bottom: 1rem;
+}
+
+p {
+  line-height: var(--line-height-normal);
+  letter-spacing: var(--letter-spacing-normal);
+  margin-bottom: 1rem;
+}
+
+/* ============================================================
+   BLOCKQUOTE STYLING
+   ============================================================ */
+
+blockquote {
+  border-left: 3px solid rgba(220, 20, 60, 0.8);
+  padding-left: 1.5rem;
+  margin-left: 0;
+  color: var(--color-gray-300);
+  font-style: italic;
+}
+
+/* ============================================================
+   CODE BLOCK STYLING
+   ============================================================ */
+
+code,
+pre {
+  background-color: var(--color-surface-secondary);
+  border: 1px solid var(--color-glass-1);
+  border-radius: var(--radius-lg);
+  color: rgba(220, 20, 60, 1);
+  font-family: 'Courier New', monospace;
+  font-size: 0.875rem;
+}
+
+code {
+  padding: 0.25rem 0.5rem;
+  display: inline-block;
+}
+
+pre {
+  padding: 1rem;
+  overflow-x: auto;
+  margin: 1rem 0;
+}
+
+pre code {
+  background: transparent;
+  border: none;
+  padding: 0;
+  display: block;
+}
+
+/* ============================================================
+   REDUCED MOTION - Disable micro-interactions
+   ============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  button:active,
+  a.button:active,
+  .btn:active,
+  [role="button"]:active {
+    transform: none;
+  }
+
+  @keyframes focus-ring-pulse {
+    from { outline-offset: 2px; }
+    to { outline-offset: 2px; }
+  }
+
+  input[type="checkbox"]:checked:hover,
+  input[type="radio"]:checked:hover {
+    transform: none;
+  }
+}
+
+/* ============================================================
+   HIGH CONTRAST MODE SUPPORT
+   ============================================================ */
+
+@media (prefers-contrast: more) {
+  button,
+  a.button,
+  .btn {
+    border-width: 2px;
+  }
+
+  input,
+  textarea,
+  select {
+    border-width: 2px;
+  }
+
+  :focus-visible {
+    outline-width: 3px;
+  }
+}
+
+/* ============================================================
+   DARK MODE OPTIMIZATION
+   ============================================================ */
+
+@media (prefers-color-scheme: dark) {
+  /* Already dark by default, but optimize contrast */
+  input::placeholder,
+  textarea::placeholder {
+    color: var(--color-gray-500);
+  }
+}
+
+/* ============================================================
+   TOUCH TARGET SIZING - WCAG AAA compliance
+   ============================================================ */
+
+@media (hover: none) and (pointer: coarse) {
+  button,
+  a.button,
+  .btn,
+  [role="button"],
+  input[type="checkbox"],
+  input[type="radio"] {
+    min-height: 44px;
+    min-width: 44px;
+    padding: 0.75rem;
+  }
+
+  .card,
+  [data-card],
+  .nominee-card,
+  .jury-card {
+    min-height: 44px;
+  }
+}
+
+/* ============================================================
+   RESPONSIVE ADJUSTMENTS
+   ============================================================ */
+
+@media (max-width: 640px) {
+  input,
+  textarea,
+  select {
+    font-size: 16px; /* Prevent iOS zoom on focus */
+  }
+
+  button,
+  a.button,
+  .btn {
+    font-size: 1rem;
+  }
+}
+
+/* ============================================================
+   GLOBAL HOVER SYSTEM
+   ============================================================ */
+
+/**
+ * GLOBAL HOVER SYSTEM
+ * Apple × Linear × Stripe interactive patterns
+ * Unified lift, glow, scale, shadow across all interactive elements
+ */
+
+/* ============================================================
+   CARD SYSTEM - Universal lift and glow
+   ============================================================ */
+
+.card,
+[data-card],
+.nominee-card,
+.jury-card,
+.archive-item,
+.partner-logo-card,
+.tech-partner-card,
+.press-release-card,
+.brand-asset-card,
+.download-tile {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-origin: center bottom;
+}
+
+.card:hover,
+[data-card]:hover,
+.nominee-card:hover,
+.jury-card:hover,
+.archive-item:hover,
+.partner-logo-card:hover,
+.tech-partner-card:hover,
+.press-release-card:hover,
+.brand-asset-card:hover,
+.download-tile:hover {
+  transform: translateY(-4px) scale(1.01);
+  border-color: rgba(220, 20, 60, 0.5);
+  box-shadow: 
+    0 16px 32px rgba(0, 0, 0, 0.3),
+    0 0 20px rgba(220, 20, 60, 0.2),
+    inset 0 0 1px rgba(220, 20, 60, 0.1);
+}
+
+/* ============================================================
+   BUTTON SYSTEM - Compression and glow
+   ============================================================ */
+
+button,
+a.button,
+.btn,
+.cta-button {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+
+button:hover,
+a.button:hover,
+.btn:hover,
+.cta-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 
+    0 12px 24px rgba(220, 20, 60, 0.2),
+    0 0 16px rgba(220, 20, 60, 0.15);
+}
+
+button:active,
+a.button:active,
+.btn:active,
+.cta-button:active {
+  transform: translateY(0);
+}
+
+/* ============================================================
+   LOGO HOVER - Transparent, glow only
+   ============================================================ */
+
+.logo,
+.partner-logo,
+.sponsor-logo,
+[data-logo] {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 1;
+  filter: brightness(1) drop-shadow(0 0 0 transparent);
+}
+
+.logo:hover,
+.partner-logo:hover,
+.sponsor-logo:hover,
+[data-logo]:hover {
+  opacity: 1;
+  filter: brightness(1.1) drop-shadow(0 0 12px rgba(220, 20, 60, 0.3));
+}
+
+/* ============================================================
+   LINK HOVER - Subtle underline and color shift
+   ============================================================ */
+
+a:not(.button):not([class*="btn"]):not([role="button"]):not([class*="logo"]):not(.site-logo-link) {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  border-bottom: 1px solid transparent;
+}
+
+a:hover:not(.button):not([class*="btn"]):not([role="button"]):not([class*="logo"]):not(.site-logo-link) {
+  color: rgba(220, 20, 60, 1);
+  border-bottom-color: rgba(220, 20, 60, 0.6);
+}
+
+/* ============================================================
+   IMAGE HOVER - Subtle zoom on card hover
+   ============================================================ */
+
+.card:hover img,
+[data-card]:hover img,
+.nominee-card:hover img,
+.jury-card:hover img,
+.press-release-card:hover img,
+.brand-asset-card:hover img {
+  transform: scale(1.02);
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ============================================================
+   DOWNLOAD TILE HOVER - Interactive state
+   ============================================================ */
+
+.download-tile,
+[data-download] {
+  padding: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.5rem;
+  background: linear-gradient(135deg, rgba(30, 30, 30, 0.5), rgba(10, 10, 10, 0.5));
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.download-tile:hover,
+[data-download]:hover {
+  transform: translateY(-4px);
+  border-color: rgba(220, 20, 60, 0.5);
+  background: linear-gradient(135deg, rgba(40, 40, 40, 0.6), rgba(20, 20, 20, 0.6));
+  box-shadow: 
+    0 12px 24px rgba(0, 0, 0, 0.2),
+    0 0 16px rgba(220, 20, 60, 0.15);
+}
+
+/* ============================================================
+   FORM ELEMENT HOVER - Focus states
+   ============================================================ */
+
+input[type="email"],
+textarea,
+select {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+input[type="email"]:hover,
+textarea:hover,
+select:hover {
+  border-color: rgba(255, 255, 255, 0.2);
+  background-color: rgba(40, 40, 40, 0.6);
+}
+
+input[type="email"]:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: rgba(220, 20, 60, 0.8);
+  box-shadow: 
+    0 0 12px rgba(220, 20, 60, 0.2),
+    0 0 0 2px rgba(0, 0, 0, 0.9),
+    0 0 0 3px rgba(220, 20, 60, 0.6);
+}
+
+/* ============================================================
+   NAVIGATION ITEM HOVER - Subtle enhancement
+   ============================================================ */
+
+nav a:not(.logo):not(.site-logo-link),
+.nav-item {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  color: #ffffff;
+}
+
+nav a:hover:not(.logo):not(.site-logo-link),
+.nav-item:hover {
+  color: #8b2e2e;
+  text-shadow: 0 0 8px rgba(139, 46, 46, 0.3);
+}
+
+/* Active navigation link state */
+nav a.active:not(.logo):not(.site-logo-link),
+.nav-item.active {
+  color: #8b2e2e;
+  text-shadow: 0 0 8px rgba(139, 46, 46, 0.3);
+  text-decoration: underline;
+}
+  text-decoration-thickness: 2px;
+  text-underline-offset: 6px;
+}
+
+/* ============================================================
+   SECTION HEADING - Enhanced hierarchy
+   ============================================================ */
+
+h1, h2, h3, h4, h5, h6 {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+[class*="hover-lift"]:hover {
+  transform: translateY(-2px);
+}
+
+/* ============================================================
+   PREMIUM INTERACTIONS
+   ============================================================ */
+
+/**
+ * HUNGAMA FESTIVAL - PREMIUM INTERACTION SYSTEM
+ * 
+ * Apple × Linear × Stripe interaction patterns
+ * Hover states, focus rings, motion, affordances
+ */
+
+/* ============================================================
+   GLOBAL INTERACTIVE STATE MANAGEMENT
+   ============================================================ */
+
+/* Reset default interaction styles for full control */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-family-primary);
+  color: var(--color-white);
+  background-color: var(--color-surface-primary);
+}
+
+/* ============================================================
+   GLOBAL FOCUS MANAGEMENT - Premium focus rings
+   ============================================================ */
+
+:focus-visible {
+  outline: 2px solid rgba(220, 20, 60, 0.8);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid rgba(220, 20, 60, 0.8);
+  outline-offset: 2px;
+}
+
+/* ============================================================
+   PREMIUM NAVBAR - Liquid Glass Effect
+   ============================================================ */
+
+nav {
+  background: linear-gradient(180deg, 
+    rgba(0, 0, 0, 0.7) 0%, 
+    rgba(0, 0, 0, 0.5) 100%);
+  backdrop-filter: var(--backdrop-blur-lg);
+  border-bottom: 1px solid var(--color-glass-2);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Navbar scroll hide behavior */
+nav.scroll-hide {
+  transform: translateY(-100%);
+  transition: transform var(--motion-duration-base) var(--ease-out-smooth);
+}
+
+nav.scroll-show {
+  transform: translateY(0);
+  transition: transform var(--motion-duration-base) var(--ease-out-smooth);
+}
+
+/* ============================================================
+   MOBILE NAVIGATION - Logo + Hamburger Only
+   ============================================================ */
+
+@media (max-width: 767px) {
+  /* Hide navbar on mobile - only hamburger visible */
+  nav {
+    background: transparent;
+    border-bottom: none;
+    box-shadow: none;
+  }
+
+  nav.mobile-navbar-visible {
+    background: linear-gradient(180deg, 
+      rgba(0, 0, 0, 0.95) 0%, 
+      rgba(0, 0, 0, 0.85) 100%);
+    backdrop-filter: var(--backdrop-blur-xl);
+    border-bottom: 1px solid var(--color-glass-2);
+  }
+}
+
+/* ============================================================
+   FLOATING ACTION BUTTON (FAB) - Mobile CTA
+   ============================================================ */
+
+.fab-cta {
+  position: fixed;
+  bottom: 2rem;
+  right: 1.5rem;
+  z-index: var(--z-popover);
+  
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  
+  background: linear-gradient(135deg, 
+    #8B1538 0%, 
+    #DC143C 100%);
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  font-weight: var(--font-weight-bold);
+  color: white;
+  text-decoration: none;
+  
+  box-shadow: 0 8px 24px rgba(220, 20, 60, 0.3);
+  
+  transition: all var(--motion-duration-base) var(--ease-out-smooth);
+  
+  /* Hide on desktop */
+  display: none;
+}
+
+@media (max-width: 767px) {
+  .fab-cta {
+    display: flex;
+  }
+  
+  .fab-cta:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(220, 20, 60, 0.4);
+  }
+  
+  .fab-cta:active {
+    transform: translateY(-2px);
+  }
+}
+
+/* ============================================================
+   BUTTON INTERACTIONS - Press compression & glow
+   ============================================================ */
+
+button,
+a.button,
+.btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-glass-1);
+  
+  background-color: transparent;
+  color: var(--color-white);
+  font-weight: var(--font-weight-semibold);
+  text-decoration: none;
+  
+  cursor: pointer;
+  transition: all var(--motion-duration-base) var(--ease-out-smooth);
+  
+  /* Prevent text selection on click */
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Primary Button State */
+button:hover,
+a.button:hover,
+.btn:hover {
+  transform: translateY(-2px);
+  background-color: rgba(220, 20, 60, 0.1);
+  box-shadow: 
+    0 8px 16px rgba(0, 0, 0, 0.2),
+    0 0 12px rgba(220, 20, 60, 0.3);
+  border-color: rgba(220, 20, 60, 0.6);
+  color: rgba(220, 20, 60, 1);
+}
+
+button:active,
+a.button:active,
+.btn:active {
+  transform: translateY(0px);
+  background-color: rgba(220, 20, 60, 0.15);
+}
+
+/* Focus state */
+button:focus,
+a.button:focus,
+.btn:focus {
+  outline: 2px solid rgba(220, 20, 60, 0.8);
+  outline-offset: 2px;
+}
+
+/* Disabled state */
+button:disabled,
+a.button[aria-disabled="true"],
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* ============================================================
+   CARD INTERACTIONS - Lift, glow, accent edge, shadow
+   ============================================================ */
+
+.card,
+[data-card],
+.nominee-card,
+.jury-card,
+.archive-item {
+  position: relative;
+  border-radius: var(--radius-lg);
+  background-color: var(--color-surface-secondary);
+  border: 1px solid var(--color-glass-1);
+  
+  transition: all var(--motion-duration-base) var(--ease-out-smooth);
+  
+  overflow: hidden;
+}
+
+.card:hover,
+[data-card]:hover,
+.nominee-card:hover,
+.jury-card:hover,
+.archive-item:hover {
+  transform: translateY(-8px);
+  border-color: rgba(220, 20, 60, 0.5);
+  box-shadow: 
+    0 16px 32px rgba(0, 0, 0, 0.3),
+    0 0 20px rgba(220, 20, 60, 0.2),
+    inset 0 0 1px rgba(220, 20, 60, 0.1);
+  background-color: var(--color-surface-tertiary);
+}
+
+.card:focus-within,
+[data-card]:focus-within,
+.nominee-card:focus-within,
+.jury-card:focus-within,
+.archive-item:focus-within {
+  border-color: rgba(220, 20, 60, 0.8);
+  box-shadow: 
+    0 0 0 2px rgba(0, 0, 0, 0.9),
+    0 0 0 3px rgba(220, 20, 60, 0.8);
+}
+
+/* ============================================================
+   IMAGE INTERACTIONS - Fade-in on load + subtle zoom
+   ============================================================ */
+
+img {
+  opacity: 0;
+  transition: opacity var(--motion-duration-slow) var(--ease-out-smooth);
+}
+
+img[loading="lazy"]:not([src=""]),
+img:not([loading="lazy"]) {
+  opacity: 1;
+}
+
+img[loading="lazy"][src] {
+  opacity: 1;
+}
+
+.card:hover img,
+[data-card]:hover img,
+.nominee-card:hover img,
+.jury-card:hover img {
+  transform: scale(1.02);
+  transition: transform var(--motion-duration-slow) var(--ease-out-smooth);
+}
+
+/* ============================================================
+   LINK INTERACTIONS - Underline slide, color shift
+   ============================================================ */
+
+a:not(.button):not([class*="btn"]):not([role="button"]):not(.site-logo-link) {
+  position: relative;
+  color: var(--color-white);
+  text-decoration: none;
+  transition: color var(--motion-duration-base) var(--ease-out-smooth);
+  border-bottom: 1px solid transparent;
+}
+
+a:hover:not(.button):not([class*="btn"]):not([role="button"]):not(.site-logo-link) {
+  color: rgba(220, 20, 60, 1);
+  border-bottom-color: rgba(220, 20, 60, 0.6);
+}
+
+a:focus:not(.button):not([class*="btn"]):not([role="button"]) {
+  outline: 2px solid rgba(220, 20, 60, 0.8);
+  outline-offset: 2px;
+}
+
+/* ============================================================
+   INPUT INTERACTIONS - Sacred form experience
+   ============================================================ */
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="date"],
+input[type="time"],
+input[type="number"],
+textarea,
+select {
+  background-color: var(--color-surface-secondary);
+  border: 1px solid var(--color-glass-1);
+  color: var(--color-white);
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-lg);
+  font-family: var(--font-family-primary);
+  font-size: 1rem;
+  
+  transition: all var(--motion-duration-base) var(--ease-out-smooth);
+}
+
+input[type="text"]:hover,
+input[type="email"]:hover,
+input[type="tel"]:hover,
+input[type="date"]:hover,
+input[type="time"]:hover,
+input[type="number"]:hover,
+textarea:hover,
+select:hover {
+  border-color: var(--color-glass-2);
+  background-color: var(--color-surface-tertiary);
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="tel"]:focus,
+input[type="date"]:focus,
+input[type="time"]:focus,
+input[type="number"]:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: rgba(220, 20, 60, 0.8);
+  background-color: var(--color-surface-tertiary);
+  box-shadow: 
+    0 0 12px rgba(220, 20, 60, 0.2),
+    0 0 0 2px rgba(0, 0, 0, 0.9),
+    0 0 0 3px rgba(220, 20, 60, 0.6);
+}
+
+input[type="text"]::placeholder,
+input[type="email"]::placeholder,
+input[type="tel"]::placeholder,
+textarea::placeholder {
+  color: var(--color-gray-400);
+}
+
+/* ============================================================
+   CHECKBOX & RADIO INTERACTIONS
+   ============================================================ */
+
+input[type="checkbox"],
+input[type="radio"] {
+  cursor: pointer;
+  accent-color: rgba(220, 20, 60, 1);
+  transition: all var(--motion-duration-base) var(--ease-out-smooth);
+}
+
+input[type="checkbox"]:hover,
+input[type="radio"]:hover {
+  transform: scale(1.1);
+}
+
+/* ============================================================
+   TEXT SELECTION - Branded highlight
+   ============================================================ */
+
+::selection {
+  background-color: rgba(220, 20, 60, 0.3);
+  color: var(--color-white);
+}
+
+::-moz-selection {
+  background-color: rgba(220, 20, 60, 0.3);
+  color: var(--color-white);
+}
+
+/* ============================================================
+   SCROLLBAR STYLING - Custom brand-aligned
+   ============================================================ */
+
+/* Webkit browsers (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-surface-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-gray-600);
+  border-radius: 4px;
+  transition: background var(--motion-duration-base);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(220, 20, 60, 0.8);
+}
+
+/* Firefox */
+* {
+  scrollbar-color: var(--color-gray-600) var(--color-surface-secondary);
+  scrollbar-width: thin;
+}
+
+/* ============================================================
+   RESPONSIVE ADJUSTMENTS - Touch-friendly on mobile
+   ============================================================ */
+
+@media (max-width: 767px) {
+  button,
+  a.button,
+  .btn {
+    padding: 0.875rem 1.75rem;
+    font-size: 1rem;
+    min-height: 44px;
+  }
+
+  .card,
+  [data-card],
+  .nominee-card,
+  .jury-card,
+  .archive-item {
+    border-radius: var(--radius-base);
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  textarea {
+    min-height: 44px;
+    font-size: 16px; /* Prevent iOS zoom on focus */
+  }
+}
+
+/* ============================================================
+   ACCESSIBILITY - Reduced Motion Support
+   ============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  button:hover,
+  a.button:hover,
+  .btn:hover,
+  .card:hover,
+  [data-card]:hover,
+  .nominee-card:hover,
+  .jury-card:hover {
+    transform: none;
+  }
+}
+
+/* ============================================================
+   HIGH CONTRAST MODE - Accessibility
+   ============================================================ */
+
+@media (prefers-contrast: more) {
+  button,
+  a.button,
+  .btn {
+    border: 2px solid var(--color-white);
+  }
+
+  input[type="text"],
+  input[type="email"],
+  textarea {
+    border: 2px solid var(--color-white);
+  }
+}
+
+/* ============================================================
+   RESPONSIVE TYPOGRAPHY - Optical sizing
+   ============================================================ */
+
+h1 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: var(--font-weight-extrabold);
+  line-height: var(--line-height-tight);
+  letter-spacing: var(--letter-spacing-tight);
+}
+
+h2 {
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+}
+
+h3 {
+  font-size: clamp(1.25rem, 3vw, 1.875rem);
+  font-weight: var(--font-weight-semibold);
+}
+
+p {
+  font-size: 1rem;
+  line-height: var(--line-height-normal);
+  letter-spacing: var(--letter-spacing-normal);
+}
+
+/* ============================================================
+   UTILITY - Motion Prefers Reduced
+   ============================================================ */
+
+.motion-safe {
+  @media (prefers-reduced-motion: reduce) {
+    display: none;
+  }
+}
+
+.motion-reduce {
+  @media (prefers-reduced-motion: no-preference) {
+    display: none;
+  }
+}

@@ -1,0 +1,421 @@
+/**
+ * HUNGAMA FESTIVAL - SCROLL SYSTEM
+ * 
+ * Consolidated from:
+ * - parallax-system.css (148 lines)
+ * - scroll-physics.css (119 lines)
+ * - elastic-elimination.css (133 lines)
+ * 
+ * Parallax layers, smooth scroll physics, elastic prevention
+ */
+
+/**
+ * SCROLL PHYSICS & BOUNDARY FIXES
+ * Eliminates elastic banding and optimizes parallax performance
+ */
+
+/* KILL ELASTIC BANDING */
+html, body {
+  overscroll-behavior: none !important;
+  overflow-x: hidden;
+}
+
+/* Kill elastic on ALL overflow elements */
+*, *:before, *:after {
+  overscroll-behavior: contain !important;
+}
+
+body {
+  -webkit-overflow-scrolling: auto !important;
+}
+
+/* PARALLAX LAYER OPTIMIZATION */
+[data-parallax-layer] {
+  contain: layout style paint;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  will-change: transform;
+}
+
+/* HERO SECTIONS - Viewport-relative sizing */
+/* Apply to all sections with data-parallax-layer="background" */
+[data-parallax-layer="background"] {
+  min-height: 100svh;
+  position: relative;
+  overflow: hidden;
+  padding-top: max(env(safe-area-inset-top), 60px);
+}
+
+/* FOREGROUND LAYERS - Content rendering */
+[data-parallax-layer="foreground"] {
+  position: relative;
+  z-index: 10;
+}
+
+/* TEXT LAYERS - Special handling */
+[data-parallax-layer="text"] {
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+}
+
+/* REDUCED MOTION SUPPORT */
+@media (prefers-reduced-motion: reduce) {
+  [data-parallax-layer] {
+    transform: none !important;
+    animation: none !important;
+  }
+}
+
+/* MOBILE OPTIMIZATION */
+@media (max-width: 768px) {
+  [data-parallax-layer] {
+    /* Reduce parallax intensity on mobile for smoother performance */
+    --parallax-intensity: 0.5;
+  }
+  
+  [data-parallax-layer="background"] {
+    /* Background layers move slower on mobile */
+    min-height: 50vh;
+  }
+}
+
+/* PERFORMANCE TRICKS */
+[data-parallax-layer] {
+  /* Enable GPU acceleration */
+  transform: translate3d(0, 0, 0);
+  
+  /* Reduce paint areas */
+  will-change: transform;
+  
+  /* Optimize rendering */
+  contain: layout style paint;
+}
+
+/* High refresh rate support */
+@supports ((-webkit-appearance: none) and (contain: layout)) {
+  [data-parallax-layer] {
+    /* Modern browsers with contain support */
+    contain: layout style paint;
+  }
+}
+
+/* SCROLL SMOOTH BUT NOT TOO SMOOTH */
+html {
+  scroll-behavior: auto;
+}
+
+/* PREVENT LAYOUT SHIFT */
+body {
+  scrollbar-gutter: stable;
+}
+
+/* ENSURE SMOOTH TOUCH SCROLLING */
+@media (hover: none) and (pointer: coarse) {
+  html {
+    -webkit-user-select: none;
+  }
+}
+
+/* DEBUG MODE HELPERS */
+[debug-parallax="true"] [data-parallax-layer] {
+  border: 2px solid rgba(255, 0, 0, 0.1);
+}
+
+[debug-parallax="true"] [data-parallax-layer="background"] {
+  border-color: rgba(0, 255, 0, 0.2);
+}
+
+[debug-parallax="true"] [data-parallax-layer="foreground"] {
+  border-color: rgba(0, 0, 255, 0.2);
+}
+
+/* ============================================================
+   PARALLAX SYSTEM
+   ============================================================ */
+
+/* ============================================
+   GLOBAL PARALLAX & SCROLL SYSTEM
+   Split-Layer Architecture with Jitter Prevention
+   ============================================ */
+
+/* GLOBAL SCROLL FIXES */
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  /* Prevent momentum scrolling issues on iOS */
+  -webkit-overflow-scrolling: auto;
+}
+
+body {
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Hero section safe area (prevents address bar intrusion) */
+.hero-section {
+  min-height: 100svh; /* Use svh for mobile safety */
+  padding-top: env(safe-area-inset-top);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Address bar intrusion fix for short viewports */
+@media (max-height: 700px) {
+  .hero-section {
+    min-height: calc(100svh + 60px);
+    padding-top: 60px;
+  }
+}
+
+/* PARALLAX LAYERS - GPU ACCELERATION */
+[data-parallax-bg],
+.parallax-bg,
+.background-layer,
+.hero-background {
+  will-change: transform;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+}
+
+[data-parallax-content],
+.parallax-content,
+.section-container,
+.card-grid {
+  will-change: transform;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+}
+
+[data-parallax-text],
+.parallax-text,
+.text-block {
+  will-change: opacity;
+}
+
+/* SMOOTH TRANSITIONS FOR SECTIONS */
+.section-transition {
+  transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+              transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* FOOTER SMOOTH ARRIVAL */
+.site-footer {
+  transform: translateY(20px);
+  opacity: 0;
+  transition: transform 0.8s ease-out, opacity 0.8s ease-out;
+}
+
+.site-footer.visible {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* PREVENT JITTER AT PAGE BOUNDARIES */
+section {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Scroll container stability */
+main, .container {
+  position: relative;
+  z-index: 1;
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  body {
+    overflow-y: scroll;
+  }
+
+  .parallax-bg,
+  .parallax-content {
+    transform: translateZ(0);
+    will-change: auto;
+  }
+
+  /* Reduce parallax intensity on mobile */
+  :root {
+    --parallax-intensity: 0.5;
+  }
+}
+
+/* PREVENT TEXT SELECTION DURING SCROLL */
+.parallax-layer,
+[data-parallax] {
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Fix for sticky positioning with parallax */
+nav.sticky, 
+.sticky {
+  position: sticky;
+  z-index: 900;
+}
+
+/* Prevent flickering on transform */
+.parallax-layer,
+[data-parallax],
+section {
+  -webkit-font-smoothing: subpixel-antialiased;
+  -moz-osx-font-smoothing: auto;
+}
+
+/* SCROLL PERFORMANCE MONITORING */
+:root {
+  --scroll-velocity: 0;
+  --parallax-easing: 0.05;
+}
+
+/* Loading states */
+.parallax-loading {
+  opacity: 0.9;
+}
+
+.parallax-loaded {
+  opacity: 1;
+  transition: opacity 0.3s ease-out;
+}
+
+/* ============================================================
+   ELASTIC ELIMINATION
+   ============================================================ */
+
+/* === ELASTIC BAND ELIMINATION - GLOBAL === */
+
+/* 1. Kill ALL browser elastic scrolling */
+html, body {
+  overscroll-behavior: none !important;
+  -webkit-overflow-scrolling: auto !important;
+  overflow-x: hidden;
+  height: 100%;
+  position: relative;
+}
+
+/* 1b. Kill elastic on ALL overflow elements */
+*, *:before, *:after {
+  overscroll-behavior: contain !important;
+}
+
+/* Prevent scrollbar width layout shift */
+html {
+  scrollbar-gutter: stable;
+}
+
+/* 2. GPU acceleration on parallax layers only (not global) */
+[data-parallax-layer] {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* 3. Hero section safe area (FIXES ADDRESS BAR INTRUSION) */
+.hero-section,
+section[data-parallax-layer="background"] {
+  min-height: calc(100svh - 80px); /* Account for navbar + safety */
+  padding-top: 80px; /* Navbar height */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* 4. Parallax layer GPU acceleration */
+[data-parallax-layer] {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+  will-change: transform;
+  /* Prevent layout thrashing */
+  contain: layout style paint;
+}
+
+/* 5. Boundary state indicators */
+body.at-scroll-top,
+body.at-scroll-bottom {
+  /* Visual feedback for being at boundary */
+}
+
+/* 6. Mobile optimization */
+@media (max-width: 768px) {
+  /* Reduce parallax intensity on mobile */
+  [data-parallax-layer] {
+    --parallax-intensity: 0.3;
+  }
+  
+  /* Further boundary damping on mobile */
+  .hero-section {
+    min-height: calc(100svh - 60px);
+    padding-top: 60px;
+  }
+}
+
+/* 7. Disable parallax for reduced motion users */
+@media (prefers-reduced-motion: reduce) {
+  [data-parallax-layer] {
+    transform: none !important;
+    transition: none !important;
+  }
+  
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* 8. Ensure sections position properly */
+section {
+  position: relative;
+  overflow: hidden;
+}
+
+/* 9. iOS momentum scrolling fix */
+/* 10. Smooth scroll for anchor links */
+html {
+  scroll-behavior: smooth;
+}
+
+/* 11. Scroll performance optimization */
+body {
+  scroll-behavior: auto;
+  will-change: scroll-position;
+}
+
+/* 12. Remove rubber band effect on iOS Safari */
+body {
+  overscroll-behavior-y: contain;
+  overscroll-behavior-x: contain;
+}
+
+/* 13. Text layer specific handling */
+[data-parallax-layer="text"] {
+  will-change: opacity, transform;
+}
+
+/* 14. Background layer specific handling */
+[data-parallax-layer="background"] {
+  will-change: transform;
+  transform-origin: center;
+}
+
+/* 15. Fix for nav overlap */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 900;
+  height: 80px;
+  display: flex;
+  align-items: center;
+}
+
+/* Mobile nav height */
+@media (max-width: 768px) {
+  nav {
+    height: 60px;
+  }
+}
