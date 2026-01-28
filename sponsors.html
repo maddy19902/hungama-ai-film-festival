@@ -83,40 +83,7 @@
     section {
       position: relative;
       overflow: visible;
-      background: transparent !important;
     }
-
-    /* Remove black backgrounds from sponsor sections */
-    section {
-      background: transparent !important;
-      background-color: transparent !important;
-      background-image: none !important;
-    }
-
-    section:not(:first-of-type):not(:last-of-type) {
-      background: transparent !important;
-      background-color: transparent !important;
-      background-image: none !important;
-    }
-    
-    /* Ensure no divs create background blocks */
-    .max-w-7xl {
-      background: transparent !important;
-      background-color: transparent !important;
-    }
-
-    /* Kill all Tailwind bg classes on this page */
-    [class*="bg-"] {
-      background-color: transparent !important;
-      background: transparent !important;
-    }
-    
-    /* Except for overlay divs which need their opacity */
-    .absolute[class*="bg-black"] {
-      background-color: var(--tw-bg-opacity, 1) !important;
-    }
-
-    /* ===== NEW SPONSORS PAGE DESIGN ===== */
 
     /* Section Header Styling - Matches Image Design */
     .sponsors-section-header {
@@ -410,7 +377,7 @@
 
   <!-- SPONSORS HERO SECTION -->
   <section
-    class="min-h-[85vh] bg-contain bg-center bg-no-repeat flex items-center relative pt-32 sponsors-hero-gradient"
+    class="min-h-[85vh] bg-contain bg-center bg-no-repeat flex items-center relative pt-32"
     data-parallax-layer="background"
     data-parallax-speed="0.15"
   >
@@ -421,7 +388,7 @@
 
       <h1 class="text-7xl xl:text-8xl font-bold leading-none mb-8 tracking-tight" data-parallax-layer="text">
         <span class="text-white">PARTNERS &</span><br />
-        <span class="">SPONSORS</span>
+        <span class="text-white">SPONSORS</span>
       </h1>
 
       <p class="text-lg text-gray-300 max-w-2xl mb-10 font-light leading-relaxed">
@@ -440,24 +407,31 @@
   <section class="py-40 px-8 relative">
     <div class="max-w-7xl mx-auto">
       <div class="sponsors-section-header">
-        <h2>Principal Partners</h2>
-        <p>Architected by the platform</p>
+        <h2>PRINCIPAL PARTNERS</h2>
       </div>
 
       <div class="sponsors-rail-principal">
         <div class="sponsor-item">
-          <img src="images/sponsors/aurora-nexus.jpg" alt="Aurora Nexus" class="sponsor-logo">
-          <p class="sponsor-name">Aurora Nexus</p>
+          <img src="images/sponsors/ai-summit-logo.png" alt="India AI Impact Summit 2026" class="sponsor-logo">
+          <p class="sponsor-name">India AI Impact Summit 2026</p>
         </div>
         <div class="sponsor-item">
-          <img src="images/sponsors/helixone.jpg" alt="HelixOne" class="sponsor-logo">
-          <p class="sponsor-name">HelixOne</p>
+          <img src="images/sponsors/bh_logo.png" alt="Bollywood Hungama" class="sponsor-logo">
+          <p class="sponsor-name">Bollywood Hungama</p>
+        </div>
+        <div class="sponsor-item">
+          <img src="images/sponsors/meit_logo.jpg" alt="Ministry of Electronics and Information Technology" class="sponsor-logo">
+          <p class="sponsor-name">Ministry of Electronics and Information Technology</p>
+        </div>
+         <div class="sponsor-item">
+          <img src="images/sponsors/nvidia_wbg.jpg" alt="NVIDIA" class="sponsor-logo">
+          <p class="sponsor-name">NVIDIA</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- TECHNOLOGY PARTNERS SECTION -->
+  <!-- TECHNOLOGY PARTNERS SECTION 
   <section class="py-16 px-8 relative">
     <div class="max-w-7xl mx-auto">
       <div class="sponsors-section-header">
@@ -482,7 +456,7 @@
     </div>
   </section>
 
-  <!-- CULTURAL & MEDIA PARTNERS SECTION -->
+  <!-- CULTURAL & MEDIA PARTNERS SECTION 
   <section class="py-16 px-8 relative">
     <div class="max-w-7xl mx-auto">
       <div class="sponsors-section-header">

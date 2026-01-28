@@ -271,12 +271,12 @@ class ProductionParallaxController {
       if (!layer.element.isConnected) return;
       
       try {
-        // Text elements: opacity and scale only (no parallax)
+        // Text elements: scale only (no opacity manipulation to prevent visibility issues)
         const scrollProgress = this.currentScroll / window.innerHeight;
-        const opacity = 1 - (scrollProgress * 0.2);
         const scale = 0.98 + (scrollProgress * 0.02);
         
-        layer.element.style.opacity = Math.max(0.7, opacity);
+        // Force opacity to 1 - parallax shouldn't hide text
+        layer.element.style.opacity = '1';
         layer.element.style.transform = `scale(${scale})`;
       } catch (e) {
         // Silently fail if element is removed

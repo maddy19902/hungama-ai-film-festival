@@ -135,33 +135,10 @@
       letter-spacing: 0.12em;
     }
 
-    /* Ensure section positioning for ::after overlay */
+    /* VISION PAGE SPECIFIC */
     section {
       position: relative;
       overflow: hidden;
-    }
-
-    /* VISION PAGE SPECIFIC */
-    .vision-hero {
-      min-h-[85vh] bg-cover bg-center relative flex items-center;
-      background-attachment: fixed;
-    }
-
-    .vision-hero::before {
-      display: none;
-    }
-
-    .vision-hero > * {
-      position: relative;
-      z-index: 2;
-      text-align: left;
-    }
-
-    .vision-hero h1,
-    .vision-hero p,
-    .vision-hero a,
-    .vision-hero button {
-      text-align: left !important;
     }
 
     .timeline-item {
@@ -248,13 +225,16 @@
         transparent 100%
       );
       transform: translateX(-50%);
-      z-index: 1;
+      z-index: 2;
+      visibility: visible !important;
+      opacity: 1 !important;
+      pointer-events: none;
     }
 
     .vision-item {
       margin-bottom: 6rem;
       position: relative;
-      z-index: 2;
+      z-index: 1;
     }
 
     .vision-item:last-child {
@@ -296,12 +276,14 @@
     .timeline-node {
       width: 14px;
       height: 14px;
-      background: #ef4444;
+      background: #ef4444 !important;
       border-radius: 50%;
-      border: 2px solid rgba(0, 0, 0, 0.8);
-      box-shadow: 0 0 15px rgba(239, 68, 68, 0.5);
+      border: 2px solid rgba(0, 0, 0, 0.8) !important;
+      box-shadow: 0 0 15px rgba(239, 68, 68, 0.5) !important;
       position: relative;
       z-index: 3;
+      visibility: visible !important;
+      opacity: 1 !important;
     }
 
     /* Column 3: Description (Left-aligned for desktop) */
@@ -642,12 +624,13 @@
 
   <!-- VISION HERO SECTION -->
   <section
-    class="min-h-[85vh] bg-contain bg-center bg-no-repeat flex items-center relative pt-32 vision-hero"
+    class="vision-hero min-h-[85vh] bg-contain bg-center bg-no-repeat flex items-center relative pt-32"
     style="background-image: url('images/vision-bg.jpg');"
     data-parallax-layer="background"
     data-parallax-speed="0.15"
+    data-animate="true"
   >
-    <div class="max-w-7xl mx-auto px-8 w-full">
+    <div class="max-w-7xl mx-auto px-8 w-full text-left">
       <p class="text-xs tracking-[0.15em] text-gray-400 mb-6 uppercase">
         Our Mission
       </p>
@@ -669,8 +652,8 @@
     </div>
   </section>
 
-  <!-- VISION MANIFESTO - EDITORIAL LAYOUT -->
-  <section class="py-32 px-8 bg-black vision-manifesto">
+  <!-- VISION TIMELINE SECTION -->
+  <section class="py-32 px-8 bg-black">
     <div class="max-w-7xl mx-auto">
 
       <!-- Section Title -->
@@ -681,62 +664,62 @@
       <!-- Vision Timeline Container -->
       <div class="vision-timeline">
 
-        <!-- Vision Item 1: Why Festival Exists -->
+        <!-- Vision Item 1: AI as a Creative Collaborator -->
         <div class="vision-item">
           <div class="vision-grid">
-            <!-- COLUMN 1: Headline -->
+            <!-- Column 1: Heading -->
             <div class="vision-headline">
-              <h3 class="text-3xl font-bold uppercase tracking-wide">AI as a Creative Collaborator</h3>
+              <h3>AI as a Creative Collaborator</h3>
             </div>
-
-            <!-- COLUMN 2: Timeline Spine -->
+            
+            <!-- Column 2: Timeline Spine -->
             <div class="vision-spine">
               <div class="timeline-node"></div>
             </div>
-
-            <!-- COLUMN 3: Description -->
+            
+            <!-- Column 3: Content -->
             <div class="vision-description">
-              <p class="text-lg text-gray-300 leading-relaxed">
-                We are witnessing a fundamental shift in how stories can be created. AI is not replacing filmmakers—it is expanding the canvas on which human creativity can flourish. Generative AI has reached a defining moment in cinema. What was once experimental is now expressive, emotional, and cinematic. The Hungama AI Film Festival exists to recognize, legitimize, and elevate AI-developed films as a serious creative medium.
-              </p>
+              <p>We are witnessing a fundamental shift in how stories can be created. AI is not replacing filmmakers—it is expanding the canvas on which human creativity can flourish. Generative AI has reached a defining moment in cinema. What was once experimental is now expressive, emotional, and cinematic. The Hungama AI Film Festival exists to recognize, legitimize, and elevate AI-developed films as a serious creative medium.</p>
             </div>
           </div>
         </div>
 
-        <!-- Vision Item 2: Beyond Tools -->
+        <!-- Vision Item 2: Empowering Filmmakers Through AI -->
         <div class="vision-item">
           <div class="vision-grid">
+            <!-- Column 1: Heading -->
             <div class="vision-headline">
-              <h3 class="text-3xl font-bold uppercase tracking-wide">Empowering Filmmakers Through AI</h3>
+              <h3>Empowering Filmmakers Through AI</h3>
             </div>
-
+            
+            <!-- Column 2: Timeline Spine -->
             <div class="vision-spine">
               <div class="timeline-node"></div>
             </div>
-
+            
+            <!-- Column 3: Content -->
             <div class="vision-description">
-              <p class="text-lg text-gray-300 leading-relaxed">
-                This festival is not about software. It is about authorship, intent, craft, and imagination. We celebrate filmmakers who use AI not as a shortcut, but as a new language of storytelling. For the first time, AI is not just a tool in the filmmaker's hands, but a creative partner, collaborator, and storyteller in its own right. When technology becomes creative voice—when the tool becomes the artist.
-              </p>
+              <p>This festival is not about software. It is about authorship, intent, craft, and imagination. We celebrate filmmakers who use AI not as a shortcut, but as a new language of storytelling. For the first time, AI is not just a tool in the filmmaker's hands, but a creative partner, collaborator, and storyteller in its own right. When technology becomes creative voice—when the tool becomes the artist.</p>
             </div>
           </div>
         </div>
 
-        <!-- Vision Item 3: Institutional Platform -->
+        <!-- Vision Item 3: Stories Born From Experimentation and Ethics -->
         <div class="vision-item">
           <div class="vision-grid">
+            <!-- Column 1: Heading -->
             <div class="vision-headline">
-              <h3 class="text-3xl font-bold uppercase tracking-wide">Stories Born From Experimentation and Ethics</h3>
+              <h3>Stories Born From Experimentation and Ethics</h3>
             </div>
-
+            
+            <!-- Column 2: Timeline Spine -->
             <div class="vision-spine">
               <div class="timeline-node"></div>
             </div>
-
+            
+            <!-- Column 3: Content -->
             <div class="vision-description">
-              <p class="text-lg text-gray-300 leading-relaxed">
-                Hungama stands at the intersection of content, creators, intellectual property, and global distribution. This festival is designed to bridge AI-native creators with studios, platforms, collaborators, and long-term opportunity. Hungama AI Film Festival is more than a competition. We work with filmmakers to develop their craft, connect them with resources, and position AI cinema within the broader cultural conversation for the next generation.
-              </p>
+              <p>Hungama stands at the intersection of content, creators, intellectual property, and global distribution. This festival is designed to bridge AI-native creators with studios, platforms, collaborators, and long-term opportunity. Hungama AI Film Festival is more than a competition. We work with filmmakers to develop their craft, connect them with resources, and position AI cinema within the broader cultural conversation for the next generation.</p>
             </div>
           </div>
         </div>
@@ -748,8 +731,10 @@
   <!-- GLOBAL CALL TO ACTION SECTION -->
   <section
     class="py-32 px-8 bg-cover bg-center relative flex items-center justify-center hero-bg-lower"
+    style="background-image: url('images/home-lower-bg.png');"
     data-parallax-layer="background"
     data-parallax-speed="0.12"
+    data-animate="true"
   >
     <div class="absolute inset-0 bg-black/40"></div>
     <div class="relative z-10 text-center max-w-3xl">

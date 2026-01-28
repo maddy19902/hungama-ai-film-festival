@@ -87,9 +87,9 @@
    ============================================================ */
 
 /* Default state - invisible, ready to animate */
-section,
+/* Only animate sections that opt-in via data-section attribute */
 [data-section],
-.hero,
+.hero[data-animate],
 .gallery,
 .testimonials,
 .timeline,
@@ -100,10 +100,15 @@ section,
               transform var(--motion-duration-slow) var(--ease-out-smooth);
 }
 
+/* Hero sections stay visible by default - don't hide them */
+section {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 /* Animated state - visible and settled */
-section.animate-in,
 [data-section].animate-in,
-.hero.animate-in,
+.hero[data-animate].animate-in,
 .gallery.animate-in,
 .testimonials.animate-in,
 .timeline.animate-in,

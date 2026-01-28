@@ -5,7 +5,7 @@
 
 class VisionScrollObserver {
   constructor() {
-    this.timelineItems = document.querySelectorAll('.timeline-item');
+    this.timelineItems = document.querySelectorAll('.vision-item');
     this.observerOptions = {
       root: null,
       rootMargin: '0px 0px -100px 0px',
