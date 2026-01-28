@@ -1,17 +1,16 @@
 /**
- * JURY PAGE - HERO SECTION VISIBILITY FIX
+ * SPONSORS PAGE - HERO SECTION VISIBILITY FIX
  * 
  * Root Cause: CSS consolidation removed specific visibility overrides
  * that were needed to display h1 and subtitle text in the hero section.
  * 
  * Solution: Apply explicit visibility, opacity, and display rules to
- * ensure hero content is rendered properly, while letting Tailwind classes
- * handle all sizing and responsive behavior.
+ * ensure hero content is rendered properly.
  * 
  * Last Updated: January 29, 2026
  */
 
-/* === JURY HERO SECTION - CRITICAL VISIBILITY FIX === */
+/* === SPONSORS HERO SECTION - CRITICAL VISIBILITY FIX === */
 /* Ensure the hero section container is fully visible */
 section[data-parallax-layer="background"] {
   opacity: 1 !important;
@@ -21,7 +20,7 @@ section[data-parallax-layer="background"] {
   pointer-events: auto !important;
 }
 
-/* === JURY H1 HEADING - VISIBILITY OVERRIDE === */
+/* === SPONSORS H1 HEADING - VISIBILITY OVERRIDE === */
 /* Force h1 to be visible in hero section - let Tailwind classes handle sizing */
 section[data-parallax-layer="background"] h1 {
   opacity: 1 !important;
@@ -32,7 +31,7 @@ section[data-parallax-layer="background"] h1 {
   line-height: 1 !important;
 }
 
-/* === JURY SUBTITLE PARAGRAPH - VISIBILITY OVERRIDE === */
+/* === SPONSORS SUBTITLE PARAGRAPH - VISIBILITY OVERRIDE === */
 /* Ensure subtitle paragraphs in hero sections are visible */
 section[data-parallax-layer="background"] > div > p {
   opacity: 1 !important;
@@ -52,8 +51,8 @@ section[data-parallax-layer="background"] p.text-lg {
   transform: none !important;
 }
 
-/* === JURY TEXT ELEMENTS - ENSURE VISIBILITY === */
-/* Force all text in the jury section to be visible */
+/* === SPONSORS TEXT ELEMENTS - ENSURE VISIBILITY === */
+/* Force all text in the sponsor section to be visible */
 section[data-parallax-layer="background"] > div {
   position: relative !important;
   z-index: 2 !important;

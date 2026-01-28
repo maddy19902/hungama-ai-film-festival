@@ -15,6 +15,7 @@
   <link href="css/cta-system.css" rel="stylesheet">
   <link href="css/typography-hierarchy.css" rel="stylesheet">
   <link href="css/navbar-redesign.css" rel="stylesheet">
+  <link href="css/pages/sponsors.css" rel="stylesheet">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -258,6 +259,14 @@
     }
 
     /* RESPONSIVE DESIGN */
+    /* SPONSORS HERO MOBILE OVERRIDE */
+    @media (max-width: 768px) {
+      section[data-parallax-layer="background"] {
+        min-h-[60vh] !important;
+        padding-top: 3.5rem !important;
+      }
+    }
+
     @media (max-width: 1024px) {
       .sponsors-rail-principal {
         grid-template-columns: 1fr;
@@ -391,8 +400,8 @@
         <span class="text-white">SPONSORS</span>
       </h1>
 
-      <p class="text-lg text-gray-300 max-w-2xl mb-10 font-light leading-relaxed">
-        Industry leaders advancing AI cinema innovation.
+      <p class="text-xl sm:text-2xl text-gray-200 max-w-2xl mb-10 font-medium leading-relaxed">
+        Supporters advancing AI cinema innovation.
       </p>
 
       <div class="flex gap-6 items-center">
@@ -456,7 +465,7 @@
     </div>
   </section>
 
-  <!-- CULTURAL & MEDIA PARTNERS SECTION 
+  <-- CULTURAL & MEDIA PARTNERS SECTION 
   <section class="py-16 px-8 relative">
     <div class="max-w-7xl mx-auto">
       <div class="sponsors-section-header">
@@ -485,8 +494,7 @@
     </div>
   </section>
 
-  <!-- FOOTER -->
-  <!-- FOOTER -->
+  <-- FOOTER -->
   <footer class="py-12 px-5 sm:px-8 lg:px-12 bg-[#0a0a0a] border-t border-gray-900/30">
     <div class="max-w-7xl mx-auto flex justify-between items-center">
       <div>

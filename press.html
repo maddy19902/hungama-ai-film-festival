@@ -145,6 +145,13 @@
       min-h-[85vh] bg-cover bg-center relative flex items-center
     }
 
+    @media (max-width: 768px) {
+      .press-hero {
+        min-h-[60vh] !important;
+        padding-top: 3.5rem !important;
+      }
+    }
+
     .press-hero::before {
       content: '';
       position: absolute;
@@ -358,8 +365,8 @@
 
   <!-- PRESS HERO SECTION -->
   <section 
-    class="h-screen bg-cover bg-center flex items-center justify-center relative"
-    style="background-image: url('images/press-bg.png'); min-height: 100svh;"
+    class="press-hero bg-cover bg-center flex items-center justify-center relative"
+    style="background-image: url('images/press-bg.png');"
     data-parallax-layer="background"
     data-parallax-speed="0.15"
   >

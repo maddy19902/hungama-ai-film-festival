@@ -82,6 +82,14 @@
       }
     }
 
+    /* VISION HERO MOBILE OVERRIDE */
+    @media (max-width: 768px) {
+      section[data-parallax-layer="background"] {
+        min-h-[60vh] !important;
+        padding-top: 3.5rem !important;
+      }
+    }
+
     /* PASS 3: SECTION TRANSITION BLENDING */
     section::after {
       content: '';
@@ -624,7 +632,7 @@
 
   <!-- VISION HERO SECTION -->
   <section
-    class="vision-hero min-h-[85vh] bg-contain bg-center bg-no-repeat flex items-center relative pt-32"
+    class="vision-hero min-h-[85vh] bg-cover bg-center bg-no-repeat flex items-center relative pt-32"
     style="background-image: url('images/vision-bg.jpg');"
     data-parallax-layer="background"
     data-parallax-speed="0.15"
@@ -640,7 +648,7 @@
         <span class="">OF CINEMA</span>
       </h1>
 
-      <p class="text-lg text-gray-300 max-w-2xl mb-10 font-light leading-relaxed">
+      <p class="text-xl sm:text-2xl text-gray-200 max-w-2xl mb-10 font-medium leading-relaxed">
         Where AI becomes a creative partner in storytelling, expanding the canvas of human imagination.
       </p>
 
