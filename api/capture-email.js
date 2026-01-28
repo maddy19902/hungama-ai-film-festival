@@ -12,47 +12,51 @@ function validateEmail(email) {
 }
 
 /**
- * Send data to Notion API
+ * Send contact form data to Google Sheets
  */
-async function sendToNotion(email, source, timestamp) {
-  const notionToken = process.env.NOTION_TOKEN;
-  const notionDbId = process.env.NOTION_DB_ID;
+async function sendToGoogleSheets(email, source, timestamp, name, message) {
+  const { google } = require('googleapis');
+  const credentials = JSON.parse(process.env.GOOGLE_SERVICE_ACCOUNT_KEY || '{}');
+  const spreadsheetId = process.env.GOOGLE_SHEET_ID;
 
-  if (!notionToken || !notionDbId) {
-    console.error('Missing Notion credentials');
+  if (!credentials.client_email || !spreadsheetId) {
+    console.error('Missing Google Sheets credentials');
     return false;
   }
 
   try {
-    const payload = {
-      parent: { database_id: notionDbId },
-      properties: {
-        Email: { email: email },
-        Source: { title: [{ text: { content: source } }] },
-        Timestamp: { date: { start: timestamp } }
+    // Authenticate with Google Sheets
+    const auth = new google.auth.GoogleAuth({
+      credentials: credentials,
+      scopes: ['https://www.googleapis.com/auth/spreadsheets']
+    });
+    
+    const sheets = google.sheets({ version: 'v4', auth });
+    
+    // Prepare row data for "Contact Enquiries" tab
+    const rowData = [
+      timestamp,
+      source,
+      name || '',
+      email,
+      message || '',
+      'New'
+    ];
+    
+    // Append to "Contact Enquiries" sheet (Tab 2)
+    await sheets.spreadsheets.values.append({
+      spreadsheetId: spreadsheetId,
+      range: 'Contact Enquiries!A:F',
+      valueInputOption: 'USER_ENTERED',
+      requestBody: {
+        values: [rowData]
       }
-    };
-
-    const response = await fetch('https://api.notion.com/v1/pages', {
-      method: 'POST',
-      headers: {
-        'Authorization': `Bearer ${notionToken}`,
-        'Notion-Version': '2022-06-28',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(payload)
     });
 
-    if (response.ok) {
-      console.log(`✓ Email captured: ${email} from ${source}`);
-      return true;
-    } else {
-      const error = await response.text();
-      console.error(`Notion API error: ${response.status} - ${error}`);
-      return false;
-    }
+    console.log(`✓ Contact form captured: ${email} from ${source}`);
+    return true;
   } catch (error) {
-    console.error(`Error sending to Notion: ${error.message}`);
+    console.error(`Error sending to Google Sheets: ${error.message}`);
     return false;
   }
 }
@@ -80,7 +84,7 @@ export default async function handler(req, res) {
   }
 
   // Validate input
-  const { email, source, timestamp } = req.body;
+  const { email, source, timestamp, name, message } = req.body;
 
   if (!email || !source) {
     res.status(400).json({ error: 'Missing email or source' });
@@ -92,11 +96,13 @@ export default async function handler(req, res) {
     return;
   }
 
-  // Send to Notion (fail silently but log)
-  const success = await sendToNotion(
+  // Send to Google Sheets (fail silently but log)
+  const success = await sendToGoogleSheets(
     email,
     source,
-    timestamp || new Date().toISOString()
+    timestamp || new Date().toISOString(),
+    name,
+    message
   );
 
   // Always return 200 OK (graceful degradation)

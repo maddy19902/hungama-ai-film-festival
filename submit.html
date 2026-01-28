@@ -25,18 +25,1208 @@
       font-family: 'DM Sans', sans-serif;
     }
 
-    /* NAVIGATION */
+    /* HERO SECTION (Full Width) */
+    .page-hero-wrapper {
+      background: #0a0a0a;
+      padding: 8rem 4rem 4rem 4rem;
+      margin-top: 72px;
+    }
+
+    .page-hero {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .page-hero h1 {
+      font-size: 3.5rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: -0.02em;
+      line-height: 1;
+      margin-bottom: 1rem;
+    }
+
+    .page-hero h1 .accent {
+      color: #dc2626;
+    }
+
+    .page-hero p {
+      font-size: 1rem;
+      color: rgba(255, 255, 255, 0.6);
+      line-height: 1.6;
+    }
+
+    /* TWO-COLUMN LAYOUT (Below Hero) */
+    .submit-page-container {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      min-height: 100vh;
+      background: #0a0a0a;
+      padding-left: 0;
+    }
+
+    /* LEFT SIDEBAR - GUIDELINES */
+    .guidelines-sidebar {
+      background: #141414;
+      padding: 2rem 1.75rem;
+      margin: 1.5rem;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 1rem;
+    }
+
+    .guidelines-sidebar h2 {
+      font-size: 0.875rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      font-weight: 700;
+      margin-bottom: 3rem;
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .guideline-section {
+      margin-bottom: 3.5rem;
+    }
+
+    .guideline-section h3 {
+      font-size: 0.8125rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .guideline-section p,
+    .guideline-section li {
+      font-size: 0.8125rem;
+      line-height: 1.7;
+      color: rgba(255, 255, 255, 0.5);
+      margin-bottom: 0.5rem;
+    }
+
+    .guideline-section ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .guideline-section li {
+      padding-left: 1rem;
+      position: relative;
+    }
+
+    .guideline-section li:before {
+      content: '•';
+      position: absolute;
+      left: 0;
+      color: #dc2626;
+    }
+
+    .deadline-highlight {
+      background: rgba(220, 38, 38, 0.1);
+      border: 1px solid rgba(220, 38, 38, 0.3);
+      border-radius: 0.5rem;
+      padding: 1.5rem;
+      margin-top: 1rem;
+    }
+
+    .deadline-date {
+      font-size: 1.5rem;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      color: #ffffff;
+      margin-bottom: 0.25rem;
+    }
+
+    .deadline-note {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #dc2626;
+      font-weight: 600;
+    }
+
+    /* RIGHT COLUMN - FORM AREA */
+    .form-main-area {
+      padding: 3rem 4rem;
+      max-width: 900px;
+    }
+
+    /* FORM SECTIONS */
+    .form-section {
+      background: rgba(20, 20, 20, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 1rem;
+      padding: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .form-section-header {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 2rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .form-section-icon {
+      font-size: 1.5rem;
+    }
+
+    .form-section-title {
+      font-size: 0.875rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      font-weight: 700;
+      color: #ffffff;
+    }
+
+    /* FORM INPUTS */
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .form-row.full {
+      grid-template-columns: 1fr;
+    }
+
+    .form-field {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .form-field-compact {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-field-compact input,
+    .form-field-compact select {
+      padding: 0.75rem 1rem;
+      font-size: 0.875rem;
+    }
+
+    .form-field label {
+      font-size: 0.8125rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .form-field input,
+    .form-field textarea,
+    .form-field select {
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 0.5rem;
+      padding: 0.875rem 1rem;
+      font-size: 0.9375rem;
+      color: #ffffff;
+      transition: all 0.3s ease;
+    }
+
+    .form-field select {
+      cursor: pointer;
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='rgba(255,255,255,0.6)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+      background-repeat: no-repeat;
+      background-position: right 0.75rem center;
+      background-size: 1.25rem;
+      padding-right: 2.5rem;
+    }
+
+    .form-field select:hover {
+      border-color: rgba(220, 38, 38, 0.5);
+    }
+
+    .form-field select option[value=""] {
+      color: rgba(255, 255, 255, 0.4);
+    }
+
+    .form-field select option:not([value=""]) {
+      color: #ffffff;
+    }
+
+    .form-field input:focus,
+    .form-field textarea:focus,
+    .form-field select:focus {
+      outline: none;
+      border-color: #dc2626;
+      background: rgba(0, 0, 0, 0.6);
+      background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23dc2626' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+      background-repeat: no-repeat;
+      background-position: right 0.75rem center;
+      background-size: 1.25rem;
+    }
+
+    .form-field textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .form-field small {
+      font-size: 0.75rem;
+      color: rgba(255, 255, 255, 0.4);
+      margin-top: 0.5rem;
+      display: block;
+    }
+
+    /* MULTI-SELECT COMPONENTS */
+    .multi-select-display {
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 0.5rem;
+      padding: 0.75rem 1rem;
+      min-height: 3rem;
+      cursor: pointer;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      align-items: center;
+      transition: all 0.3s ease;
+    }
+
+    .multi-select-display:hover {
+      border-color: rgba(220, 38, 38, 0.5);
+    }
+
+    .multi-select-display.open {
+      border-color: #dc2626;
+      background: rgba(0, 0, 0, 0.6);
+    }
+
+    .multi-select-placeholder {
+      color: rgba(255, 255, 255, 0.4);
+      font-size: 0.9375rem;
+    }
+
+    .multi-select-wrapper {
+      position: relative;
+      z-index: 100;
+    }
+
+    .multi-select-dropdown {
+      position: absolute;
+      top: calc(100% + 0.5rem);
+      left: 0;
+      right: 0;
+      background: rgba(10, 10, 10, 0.98);
+      border: 1px solid rgba(220, 38, 38, 0.3);
+      border-radius: 0.5rem;
+      max-height: 300px;
+      overflow-y: auto;
+      z-index: 99999;
+      display: none;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.7);
+    }
+
+    .multi-select-dropdown.show {
+      display: block;
+    }
+
+    .multi-select-search {
+      position: sticky;
+      top: 0;
+      background: rgba(10, 10, 10, 1);
+      padding: 0.75rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .multi-select-search input {
+      width: 100%;
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 0.375rem;
+      padding: 0.625rem 0.875rem;
+      font-size: 0.875rem;
+      color: #ffffff;
+    }
+
+    .multi-select-search input:focus {
+      outline: none;
+      border-color: #dc2626;
+    }
+
+    .multi-select-options {
+      padding: 0.5rem;
+    }
+
+    .multi-select-option {
+      display: flex;
+      align-items: center;
+      padding: 0.75rem;
+      border-radius: 0.375rem;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .multi-select-option:hover {
+      background: rgba(220, 38, 38, 0.1);
+    }
+
+    .multi-select-option input[type="checkbox"] {
+      margin-right: 0.75rem;
+      width: 1.125rem;
+      height: 1.125rem;
+      cursor: pointer;
+      accent-color: #dc2626;
+    }
+
+    .multi-select-option label {
+      cursor: pointer;
+      margin: 0;
+      font-size: 0.9375rem;
+      font-weight: 400;
+      text-transform: none;
+      letter-spacing: normal;
+      color: rgba(255, 255, 255, 0.8);
+      flex: 1;
+    }
+
+    .selection-pill {
+      background: #dc2626;
+      color: #ffffff;
+      padding: 0.375rem 0.75rem;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .selection-pill .remove-pill {
+      cursor: pointer;
+      font-weight: 700;
+      transition: opacity 0.2s;
+    }
+
+    .selection-pill .remove-pill:hover {
+      opacity: 0.7;
+    }
+
+    @media (max-width: 768px) {
+      .multi-select-option input[type="checkbox"] {
+        width: 0.875rem;
+        height: 0.875rem;
+        margin-right: 0.625rem;
+      }
+
+      .multi-select-option label {
+        font-size: 0.875rem;
+      }
+    }
+
+    /* COUNTRY INPUT WRAPPER (Text Input + Dropdown) */
+    .country-input-wrapper {
+      position: relative;
+      z-index: 100;
+    }
+
+    .country-input {
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 0.5rem;
+      padding: 0.875rem 1rem;
+      font-size: 0.9375rem;
+      color: #ffffff;
+      width: 100%;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .country-input:hover {
+      border-color: rgba(220, 38, 38, 0.5);
+    }
+
+    .country-input:focus {
+      outline: none;
+      border-color: #dc2626;
+      background: rgba(0, 0, 0, 0.6);
+    }
+
+    .country-input.open {
+      border-color: #dc2626;
+      background: rgba(0, 0, 0, 0.6);
+    }
+
+    .country-input::-webkit-outer-spin-button,
+    .country-input::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+    .country-input[readonly] {
+      cursor: pointer;
+    }
+
+    /* COMPOUND FIELD (Runtime) */
+    .compound-field {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      width: 100%;
+    }
+
+    .compound-input-group {
+      flex: 1;
+      display: flex;
+      gap: 0.75rem;
+      min-width: 0;
+    }
+
+    .compound-input-group input {
+      flex: 2;
+      min-width: 120px;
+    }
+
+    .compound-input-group select {
+      flex: 1;
+      min-width: 120px;
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 0.5rem;
+      padding: 0.75rem 1rem;
+      font-size: 0.875rem;
+      color: #ffffff;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .compound-input-group select:focus {
+      outline: none;
+      border-color: #dc2626;
+      background: rgba(0, 0, 0, 0.5);
+    }
+
+    .compound-input-group select:hover {
+      border-color: rgba(220, 38, 38, 0.5);
+    }
+
+    .runtime-preview {
+      font-size: 0.75rem;
+      color: rgba(255, 255, 255, 0.6);
+      margin-top: 0.5rem;
+      font-weight: 600;
+    }
+
+    @media (max-width: 768px) {
+      .compound-field {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+
+      .compound-input-group {
+        width: 100%;
+      }
+
+      .compound-input-group input {
+        flex: 1;
+        min-width: 60px;
+      }
+
+      .compound-input-group select {
+        flex: 0 0 auto;
+        width: 85px;
+      }
+    }
+
+    /* AI TOOLS CHECKBOXES */
+    .ai-tools-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.75rem;
+      margin-top: 0.5rem;
+    }
+
+    .ai-tool-checkbox {
+      display: flex;
+      align-items: center;
+      padding: 0.75rem;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 0.5rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      background: rgba(0, 0, 0, 0.2);
+    }
+
+    .ai-tool-checkbox:hover {
+      border-color: rgba(220, 38, 38, 0.5);
+      background: rgba(220, 38, 38, 0.05);
+    }
+
+    .ai-tool-checkbox input[type="checkbox"] {
+      margin-right: 0.75rem;
+      width: 1.125rem;
+      height: 1.125rem;
+      cursor: pointer;
+      accent-color: #dc2626;
+    }
+
+    .ai-tool-checkbox label {
+      cursor: pointer;
+      margin: 0;
+      font-size: 0.875rem;
+      font-weight: 500;
+      text-transform: none;
+      letter-spacing: normal;
+      color: rgba(255, 255, 255, 0.8);
+      flex: 1;
+    }
+
+    .ai-tool-checkbox input[type="checkbox"]:checked ~ label {
+      color: #ffffff;
+    }
+
+    .ai-tool-other-field {
+      display: none;
+      margin-top: 0.75rem;
+    }
+
+    .ai-tool-other-field.show {
+      display: block;
+    }
+
+    @media (max-width: 768px) {
+      .ai-tools-grid {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+      }
+
+      .ai-tool-checkbox {
+        padding: 0.625rem 0.75rem;
+        display: flex;
+        align-items: center;
+      }
+
+      .ai-tool-checkbox input[type="checkbox"] {
+        margin-right: 0.625rem;
+        width: 0.75rem;
+        height: 0.75rem;
+        flex-shrink: 0;
+      }
+
+      .ai-tool-checkbox label {
+        font-size: 0.9375rem;
+        flex: 1;
+      }
+    }
+
+    /* FILE UPLOAD METHOD BOXES */
+    .upload-method-box-container {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .upload-method-box {
+      padding: 1.5rem;
+      border: 2px solid rgba(255, 255, 255, 0.15);
+      border-radius: 0.75rem;
+      background: rgba(0, 0, 0, 0.2);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .upload-method-box:hover {
+      border-color: rgba(220, 38, 38, 0.5);
+      background: rgba(220, 38, 38, 0.05);
+    }
+
+    .upload-method-box.active {
+      border-color: #dc2626;
+      background: rgba(220, 38, 38, 0.1);
+    }
+
+    .method-box-header {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .method-box-icon {
+      font-size: 1.5rem;
+    }
+
+    .method-box-title {
+      font-size: 0.875rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    .method-box-desc {
+      font-size: 0.8125rem;
+      color: rgba(255, 255, 255, 0.5);
+      margin: 0;
+      display: none;
+    }
+
+    .upload-method-box.active .method-box-title {
+      color: #dc2626;
+    }
+
+    /* PHONE NUMBER FIELD */
+    .phone-input-group {
+      display: flex;
+      gap: 0.75rem;
+      align-items: stretch;
+    }
+
+    .phone-code-wrapper {
+      position: relative;
+      flex: 0 0 auto;
+      z-index: 100;
+    }
+
+    .phone-code-display {
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 0.5rem;
+      padding: 0.75rem 1rem;
+      font-size: 0.875rem;
+      color: #ffffff;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      min-width: 80px;
+      text-align: center;
+    }
+
+    .phone-code-display:hover {
+      border-color: rgba(220, 38, 38, 0.5);
+      background: rgba(220, 38, 38, 0.05);
+    }
+
+    .phone-code-display.open {
+      border-color: #dc2626;
+      background: rgba(0, 0, 0, 0.6);
+    }
+
+    .phone-code-dropdown {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      min-width: 320px;
+      background: rgba(20, 20, 20, 0.98);
+      border: 1px solid rgba(220, 38, 38, 0.3);
+      border-radius: 0.5rem;
+      margin-top: 0.5rem;
+      z-index: 99999;
+      max-height: 250px;
+      overflow-y: auto;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.7);
+    }
+
+    .phone-code-dropdown.active {
+      display: block;
+    }
+
+    .phone-code-search {
+      padding: 0.75rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      position: sticky;
+      top: 0;
+      background: rgba(20, 20, 20, 0.95);
+    }
+
+    .phone-code-search input {
+      width: 100%;
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 0.375rem;
+      padding: 0.5rem 0.75rem;
+      font-size: 0.875rem;
+      color: #ffffff;
+    }
+
+    .phone-code-search input:focus {
+      outline: none;
+      border-color: #dc2626;
+    }
+
+    .phone-code-options {
+      padding: 0.5rem;
+    }
+
+    .phone-code-option {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.625rem 0.75rem;
+      cursor: pointer;
+      transition: background 0.2s ease;
+      border-radius: 0.375rem;
+      font-size: 0.8125rem;
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    .phone-code-option:hover {
+      background: rgba(220, 38, 38, 0.1);
+      color: #ffffff;
+    }
+
+    .phone-code-country {
+      flex: 1;
+    }
+
+    .phone-code-number {
+      font-weight: 600;
+      color: #dc2626;
+      min-width: 50px;
+      text-align: right;
+    }
+
+    #phone-number {
+      flex: 1;
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 0.5rem;
+      padding: 0.75rem 1rem;
+      font-size: 0.875rem;
+      color: #ffffff;
+    }
+
+    #phone-number:focus {
+      outline: none;
+      border-color: #dc2626;
+      background: rgba(0, 0, 0, 0.5);
+    }
+
+    @media (max-width: 768px) {
+      .upload-method-box-container {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+      }
+
+      .upload-method-box {
+        padding: 1rem;
+      }
+
+      .phone-input-group {
+        flex-wrap: wrap;
+      }
+
+      .phone-code-wrapper {
+        flex: 0 0 100%;
+      }
+
+      #phone-number {
+        flex: 0 0 100%;
+      }
+    }
+
+    .upload-option {
+      display: none;
+    }
+
+    .upload-option.active {
+      display: block;
+    }
+
+    @media (max-width: 768px) {
+      .upload-method-selection {
+        flex-direction: column;
+        gap: 0.75rem;
+      }
+    }
+
+    .drive-link-input-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    /* GENRE PILLS */
+    .genre-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 0.5rem;
+    }
+
+    .genre-pill {
+      padding: 0.625rem 1.25rem;
+      border-radius: 9999px;
+      font-size: 0.8125rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      background: transparent;
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .genre-pill:hover {
+      border-color: #dc2626;
+      color: #dc2626;
+    }
+
+    .genre-pill.active {
+      background: #dc2626;
+      border-color: #dc2626;
+      color: #ffffff;
+    }
+
+    /* FILE UPLOAD AREA */
+    .file-upload-zone {
+      border: 2px dashed rgba(255, 255, 255, 0.2);
+      border-radius: 1rem;
+      padding: 3rem 2rem;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      background: rgba(0, 0, 0, 0.2);
+    }
+
+    .file-upload-zone:hover {
+      border-color: #dc2626;
+      background: rgba(220, 38, 38, 0.05);
+    }
+
+    .file-upload-zone.drag-over {
+      border-color: #dc2626;
+      background: rgba(220, 38, 38, 0.1);
+    }
+
+    .upload-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      opacity: 0.5;
+    }
+
+    .upload-text {
+      font-size: 1.125rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.5rem;
+    }
+
+    .upload-subtext {
+      font-size: 0.8125rem;
+      color: rgba(255, 255, 255, 0.5);
+      margin-bottom: 1.5rem;
+    }
+
+    .browse-button {
+      display: inline-block;
+      padding: 0.75rem 2rem;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 0.5rem;
+      font-size: 0.875rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .browse-button:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: #dc2626;
+      color: #dc2626;
+    }
+
+    .file-name-display {
+      margin-top: 1rem;
+      padding: 1rem;
+      background: rgba(0, 200, 83, 0.1);
+      border: 1px solid rgba(0, 200, 83, 0.3);
+      border-radius: 0.5rem;
+      color: #00c853;
+      font-size: 0.875rem;
+    }
+
+    /* SUBMIT BUTTON */
+    .submit-button {
+      width: 100%;
+      padding: 1.25rem 2rem;
+      background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
+      border: none;
+      border-radius: 0.75rem;
+      font-size: 0.9375rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: #ffffff;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 16px rgba(220, 38, 38, 0.3);
+    }
+
+    .submit-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(220, 38, 38, 0.4);
+    }
+
+    .submit-button:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    /* MOBILE ACCORDION STYLES */
+    .accordion-section {
+      background: rgba(20, 20, 20, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 1rem;
+      margin-bottom: 1rem;
+      overflow: visible;
+    }
+
+    .accordion-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.25rem 1.5rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .accordion-header:hover {
+      background: rgba(220, 38, 38, 0.05);
+    }
+
+    .accordion-title-group {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .accordion-chevron {
+      font-size: 1.25rem;
+      color: rgba(255, 255, 255, 0.5);
+      display: inline-block;
+      transition: transform 0.3s ease;
+      will-change: transform;
+    }
+
+    .accordion-section.open .accordion-chevron {
+      transform: rotate(180deg);
+    }
+
+    .accordion-content {
+      max-height: 0;
+      overflow: visible;
+      transition: max-height 0.3s ease, visibility 0.3s ease;
+      visibility: hidden;
+    }
+
+    .accordion-section.open .accordion-content {
+      max-height: fit-content;
+      visibility: visible;
+    }
+
+    .accordion-body {
+      padding: 0 1.5rem 1.5rem;
+      overflow: visible;
+    }
+
+    /* GUIDELINES MOBILE ACCORDION */
+    .guidelines-mobile {
+      display: none;
+      margin-top: 3rem;
+      padding-top: 3rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .guidelines-mobile h2 {
+      font-size: 0.875rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      color: rgba(255, 255, 255, 0.9);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    /* ERROR MESSAGES */
+    .error-summary {
+      background: rgba(220, 38, 38, 0.1);
+      border: 1px solid rgba(220, 38, 38, 0.3);
+      border-radius: 0.75rem;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .error-summary h4 {
+      font-size: 0.875rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #dc2626;
+      margin-bottom: 1rem;
+    }
+
+    .error-summary ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .error-summary li {
+      font-size: 0.875rem;
+      color: rgba(255, 255, 255, 0.8);
+      margin-bottom: 0.5rem;
+      padding-left: 1.25rem;
+      position: relative;
+    }
+
+    .error-summary li:before {
+      content: '✕';
+      position: absolute;
+      left: 0;
+      color: #dc2626;
+    }
+
+    /* PROGRESS INDICATOR */
+    .upload-progress {
+      width: 100%;
+      height: 8px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 4px;
+      overflow: hidden;
+      margin-bottom: 1rem;
+    }
+
+    .upload-progress-bar {
+      height: 100%;
+      background: linear-gradient(90deg, #dc2626, #991b1b);
+      width: 0%;
+      transition: width 0.3s ease;
+      animation: progressPulse 2s infinite;
+    }
+
+    @keyframes progressPulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.7; }
+    }
+
+    /* SUCCESS SCREEN */
+    .success-screen {
+      text-align: center;
+      padding: 4rem 2rem;
+    }
+
+    .success-icon {
+      font-size: 4rem;
+      color: #00c853;
+      margin-bottom: 2rem;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    .success-title {
+      font-size: 2rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 1rem;
+    }
+
+    .reference-id-box {
+      background: rgba(0, 200, 83, 0.1);
+      border: 1px solid rgba(0, 200, 83, 0.3);
+      border-radius: 0.75rem;
+      padding: 2rem;
+      margin: 2rem 0;
+    }
+
+    .reference-id {
+      font-size: 1.75rem;
+      font-weight: 700;
+      font-family: 'Courier New', monospace;
+      letter-spacing: 0.15em;
+      color: #00c853;
+    }
+
+    /* RESPONSIVE BREAKPOINTS */
+    @media (max-width: 1024px) {
+      .page-hero-wrapper {
+        padding: 6rem 2.5rem 3rem 2.5rem;
+      }
+      
+      .page-hero h1 {
+        font-size: 3rem;
+      }
+      
+      .submit-page-container {
+        grid-template-columns: 280px 1fr;
+      }
+      
+      .form-main-area {
+        padding: 2rem 2.5rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .page-hero-wrapper {
+        padding: 5rem 1.5rem 2rem 1.5rem;
+        margin-top: 62px;
+      }
+      
+      .page-hero h1 {
+        font-size: 2.5rem;
+      }
+      
+      .submit-page-container {
+        grid-template-columns: 1fr;
+      }
+
+      .guidelines-sidebar {
+        display: none;
+      }
+
+      .guidelines-mobile {
+        display: block;
+      }
+
+      .form-main-area {
+        padding: 2rem 1.25rem;
+      }
+
+      .form-row {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+
+      .genre-pills {
+        flex-wrap: wrap;
+      }
+
+      .form-section {
+        padding: 1.5rem;
+      }
+    }
+
+    /* NAVIGATION (unchanged) */
     nav {
       position: fixed;
       top: 0;
       width: 100%;
-      background: transparent;
-      padding: 1rem 2rem;
-    }
-
-    nav a {
-      text-decoration: none;
-      color: inherit;
+      background: rgba(10, 10, 10, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      z-index: 900;
     }
 
     .site-logo {
@@ -65,67 +1255,6 @@
       }
     }
 
-    /* PASS 1: GLOBAL CINEMATIC VIGNETTE */
-    .vignette {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: 1000;
-      background: radial-gradient(
-        ellipse 150% 150% at center,
-        transparent 0%,
-        rgba(0, 0, 0, 0.25) 40%,
-        rgba(0, 0, 0, 0.65) 100%
-      );
-    }
-
-    /* PASS 2: FILM GRAIN TEXTURE */
-    .grain {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: 999;
-      opacity: 0.03;
-      background-image: url('images/grain.png');
-      background-repeat: repeat;
-      background-size: 100px 100px;
-      mix-blend-mode: overlay;
-    }
-
-    /* NAVIGATION */
-    nav {
-      position: sticky;
-      top: 0;
-      z-index: 900;
-      background: rgba(10, 10, 10, 0.8);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    }
-
-    /* PASS 3: SECTION TRANSITION BLENDING */
-    section::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      height: 80px;
-      background: linear-gradient(
-        to bottom,
-        transparent 0%,
-        rgba(10, 10, 10, 0.3) 100%
-      );
-      pointer-events: none;
-      z-index: 10;
-    }
-
-    /* PASS 4: TYPOGRAPHIC CALM & INSTITUTIONAL FEEL */
     h1, h2, h3, h4, h5, h6 {
       letter-spacing: 0.08em;
     }
@@ -133,10 +1262,6 @@
     body {
       line-height: 1.65;
       letter-spacing: 0.01em;
-    }
-
-    p, .text-lg, .text-sm {
-      letter-spacing: 0.015em;
     }
 
     .text-gray-300 {
@@ -151,412 +1276,6 @@
       opacity: 0.82;
     }
 
-    button {
-      letter-spacing: 0.1em;
-      font-weight: 500;
-      transition: all 0.3s ease;
-    }
-
-    button:hover {
-      letter-spacing: 0.12em;
-    }
-
-    /* Ensure section positioning for ::after overlay */
-    section {
-      position: relative;
-      overflow: hidden;
-    }
-
-    /* SUBMIT PAGE SPECIFIC */
-    .submit-hero {
-      min-height: 100svh;
-      background-size: cover;
-      background-position: center;
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding-top: 6rem;
-    }
-
-    .submit-hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(
-        135deg,
-        rgba(128, 0, 0, 0.2) 0%,
-        rgba(0, 0, 0, 0.8) 50%,
-        rgba(0, 0, 0, 0.95) 100%
-      );
-      z-index: 1;
-    }
-
-    .submit-hero > * {
-      position: relative;
-      z-index: 2;
-    }
-
-    .submit-hero h1 {
-      font-size: 4.5rem;
-      text-transform: uppercase;
-      letter-spacing: -0.02em;
-      font-weight: 800;
-      text-align: center;
-      margin-bottom: 2rem;
-    }
-
-    .submit-hero p {
-      font-size: 1.125rem;
-      line-height: 1.75;
-      text-align: center;
-      max-width: 600px;
-      margin-bottom: 3rem;
-    }
-
-    .form-container {
-      background: rgba(10, 10, 10, 0.8);
-      backdrop-filter: blur(20px);
-      border: 1px solid rgba(128, 0, 0, 0.4);
-      border-radius: 1.5rem;
-      padding: 3.5rem;
-      width: 800px;
-      max-width: 95vw;
-      box-shadow: 
-        0 25px 50px rgba(128, 0, 0, 0.2),
-        inset 0 1px 0 rgba(255, 255, 255, 0.1);
-      animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    /* Step Indicator - Premium 2-step visual */
-    .step-indicator {
-      display: flex;
-      gap: 3rem;
-      margin-bottom: 4rem;
-      justify-content: center;
-      padding-bottom: 2rem;
-      border-bottom: 1px solid rgba(128, 0, 0, 0.2);
-    }
-
-    .step {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      cursor: pointer;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      position: relative;
-    }
-
-    .step-number {
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-      border: 2px solid rgba(128, 0, 0, 0.4);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 700;
-      font-size: 1.125rem;
-      background: rgba(128, 0, 0, 0.05);
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    .step-label {
-      text-transform: uppercase;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      font-size: 0.875rem;
-      color: rgba(255, 255, 255, 0.6);
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    .step.active .step-number {
-      border-color: #dc2626;
-      background: rgba(220, 38, 38, 0.15);
-      color: #dc2626;
-      box-shadow: 0 0 0 8px rgba(220, 38, 38, 0.1);
-    }
-
-    .step.active .step-label {
-      color: #ffffff;
-    }
-
-    .step.completed .step-number {
-      border-color: #dc2626;
-      background: rgba(220, 38, 38, 0.2);
-      color: #dc2626;
-    }
-
-    /* Form Steps Container */
-    .form-steps {
-      min-height: 400px;
-    }
-
-    .form-step {
-      display: none;
-      animation: fadeInUp 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    .form-step.active {
-      display: block;
-    }
-
-    .form-step-title {
-      font-size: 1.75rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      margin-bottom: 2rem;
-      letter-spacing: 0.05em;
-    }
-
-    .form-step-subtitle {
-      font-size: 0.95rem;
-      color: rgba(255, 255, 255, 0.7);
-      margin-bottom: 2rem;
-    }
-
-    .step.completed {
-      border-color: rgba(225, 29, 46, 0.6);
-      background: rgba(225, 29, 46, 0.2);
-      color: rgba(225, 29, 46, 1);
-    }
-
-    .form-group {
-      margin-bottom: 2rem;
-    }
-
-    .form-group label {
-      display: block;
-      font-size: 0.9375rem;
-      font-weight: 500;
-      margin-bottom: 0.75rem;
-      letter-spacing: 0.01em;
-    }
-
-    .form-group input,
-    .form-group textarea,
-    .form-group select {
-      width: 100%;
-      height: 56px;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(139, 46, 46, 0.3);
-      border-radius: 0.75rem;
-      padding: 0 1.25rem;
-      color: white;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 0.9375rem;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    .form-group textarea {
-      height: auto;
-      padding: 1rem 1.25rem;
-      resize: vertical;
-      min-height: 120px;
-    }
-
-    .form-group input:focus,
-    .form-group textarea:focus,
-    .form-group select:focus {
-      outline: none;
-      border-color: rgba(220, 38, 38, 0.6);
-      background: rgba(255, 255, 255, 0.08);
-      box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.15), 0 0 20px rgba(220, 38, 38, 0.25);
-    }
-
-    .form-group input::placeholder {
-      color: rgba(255, 255, 255, 0.4);
-    }
-
-    .form-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.5rem;
-    }
-
-    .form-row.full {
-      grid-template-columns: 1fr;
-    }
-
-    .submit-btn {
-      background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
-      color: white;
-      border: none;
-      padding: 1rem 2.5rem;
-      border-radius: 0.75rem;
-      font-weight: 700;
-      font-size: 0.9375rem;
-      cursor: pointer;
-      width: 100%;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      box-shadow: 0 8px 24px rgba(220, 38, 38, 0.3);
-      min-height: 56px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .submit-btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 12px 32px rgba(220, 38, 38, 0.4);
-    }
-
-    .submit-btn:active {
-      transform: translateY(-1px);
-    }
-
-    .guidelines-section {
-      background: linear-gradient(135deg, rgba(30, 30, 30, 0.5), rgba(10, 10, 10, 0.5));
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 1rem;
-      padding: 2rem;
-      margin-top: 3rem;
-    }
-
-    .guidelines-section h3 {
-      font-size: 1.25rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .guideline-item {
-      margin-bottom: 1.5rem;
-      padding-bottom: 1.5rem;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    }
-
-    .guideline-item:last-child {
-      margin-bottom: 0;
-      padding-bottom: 0;
-      border-bottom: none;
-    }
-
-    .guideline-item h4 {
-      font-size: 1rem;
-      margin-bottom: 0.5rem;
-      color: rgba(225, 29, 46, 0.9);
-    }
-
-    .guideline-item p {
-      font-size: 0.875rem;
-      color: rgba(255, 255, 255, 0.7);
-      line-height: 1.6;
-    }
-
-    /* COUNTRY DROPDOWN ENHANCED STYLES */
-    #country-dropdown {
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
-    }
-
-    .country-item {
-      font-size: 0.9375rem;
-    }
-
-    .country-item:hover {
-      background: rgba(220, 38, 38, 0.15) !important;
-    }
-
-    /* FILE UPLOAD ENHANCED STYLES */
-    #file-upload-area {
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    #file-upload-area:hover {
-      background: rgba(220, 38, 38, 0.02);
-      border-color: rgba(220, 38, 38, 0.4);
-    }
-
-    /* SUCCESS SCREEN STYLES */
-    #success-screen {
-      animation: fadeInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    #success-screen h2 {
-      color: #00c853;
-      margin-bottom: 1rem;
-    }
-
-    #reference-id {
-      font-family: 'Courier New', monospace;
-      letter-spacing: 0.15em;
-    }
-
-    /* ERROR SUMMARY STYLES */
-    #error-summary {
-      animation: slideDown 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    @keyframes slideDown {
-      from {
-        opacity: 0;
-        transform: translateY(-10px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    #error-list li {
-      list-style: disc;
-      margin-bottom: 0.5rem;
-    }
-
-    /* MOBILE RESPONSIVENESS FOR FORM */
-    @media (max-width: 768px) {
-      .form-container {
-        padding: 2rem;
-        border-radius: 1rem;
-        box-shadow: 0 15px 35px rgba(128, 0, 0, 0.15);
-      }
-
-      .form-step-title {
-        font-size: 1.375rem;
-      }
-
-      .form-row {
-        grid-template-columns: 1fr;
-      }
-
-      .step-indicator {
-        gap: 1.5rem;
-        flex-wrap: wrap;
-        justify-content: center;
-      }
-
-      .step {
-        flex-direction: column;
-        text-align: center;
-        gap: 0.5rem;
-      }
-
-      .step-number {
-        width: 40px;
-        height: 40px;
-        font-size: 1rem;
-      }
-
-      .step-label {
-        font-size: 0.75rem;
-      }
-
-      #country-dropdown {
-        max-height: 200px;
-      }
-    }
     /* MOBILE NAVBAR FIX */
     @media (max-width: 767px) {
       nav.fixed {
@@ -608,12 +1327,8 @@
       <div class="hidden md:flex gap-8 items-center text-sm">
         <a href="index.html" class="transition">Home</a>
         <a href="vision.html" class="transition">About</a>
-        <!-- <a href="honors.html" class="transition">Awards</a> -->
         <a href="nominees.html" class="transition">Categories</a>
-        <a href="jury.html" class="transition">Jury</a>
-        <!-- <a href="ceremony.html" class="transition">Event</a> -->
-        <!-- <a href="winners.html" class="transition">Winners</a> -->
-        <!-- <a href="press.html" class="transition">Press</a> -->
+        <a href="jury.html" class="transition">Creative Council</a>
         <a href="sponsors.html" class="">Partners</a>
         <a href="submit.html" class="border border-red-600 text-red-600 hover:bg-red-600 hover:text-white transition px-4 py-2 rounded-full text-xs font-semibold">Submit</a>
       </div>
@@ -624,294 +1339,523 @@
     </div>
   </nav>
 
-  <!-- SUBMIT HERO SECTION -->
-  <section
-    class="min-h-[85vh] bg-contain bg-center bg-no-repeat flex items-center relative pt-32"
-    style="background-image: url('images/submit-hero-bg.jpg');"
-    data-parallax-layer="background"
-    data-parallax-speed="0.15"
-  >
-    <div class="max-w-7xl mx-auto px-8 w-full">
-      <p class="text-xs tracking-[0.15em] text-gray-400 mb-6 uppercase">
-        Submit Your Work
-      </p>
-
-      <h1 class="text-7xl xl:text-8xl font-bold leading-none mb-8 tracking-tight" data-parallax-layer="text">
-        <span class="text-white">STEP INTO</span><br />
-        <span class="">THE LIGHT</span>
-      </h1>
-
-      <p class="text-lg text-gray-300 max-w-2xl mb-10 font-light leading-relaxed">
-        A new generation of cinema begins here. Submit your groundbreaking AI-driven film.
-      </p>
-
-      <div class="flex gap-6 items-center">
-        <a href="#submission-form" class="bg-brandRed hover:bg-red-700 transition px-8 py-4 rounded-full font-semibold text-white tracking-wide uppercase text-sm inline-block">
-          Begin Submission
-        </a>
-      </div>
+  <!-- HERO SECTION (Full Width) -->
+  <div class="page-hero-wrapper">
+    <div class="page-hero">
+      <h1>SUBMIT YOUR <span class="accent">VISION</span></h1>
+      <p>Hungama AI Film Festival 2024. Establish your legacy.</p>
     </div>
-  </section>
+  </div>
 
-  <!-- SUBMISSION FORM SECTION -->
-  <section 
-    class="submit-hero px-8"
-    style="background-image: url('images/submit\ background.png');"
-    id="submission-form"
-  >
-    <div class="form-container" id="form-container">
-      <h1>Enter <span class="text-red-600">Submissions</span></h1>
+  <!-- TWO-COLUMN CONTAINER -->
+  <div class="submit-page-container">
+    
+    <!-- LEFT SIDEBAR - GUIDELINES (Desktop Only) -->
+    <aside class="guidelines-sidebar">
+      <h2>SUBMISSION GUIDELINES</h2>
       
-      <p id="form-header-subtitle">
-        Step into the light. A new generation of cinema begins here.
-      </p>
-
-      <!-- STEP INDICATOR - Premium 2-Step -->
-      <div class="step-indicator" id="step-indicator">
-        <div class="step active" data-step="1">
-          <div class="step-number">1</div>
-          <div class="step-label">Submission Details</div>
-        </div>
-        <div class="step" data-step="2">
-          <div class="step-number">2</div>
-          <div class="step-label">Final Review</div>
+      <div class="guideline-section">
+        <h3>ELIGIBILITY</h3>
+        <p>Submissions must utilize AI-generated content for at least 50% of the visual pipeline. All generative tools are permitted. Work must have been completed after January 1, 2024.</p>
+      </div>
+      
+      <div class="guideline-section">
+        <h3>TECHNICAL SPECS</h3>
+        <ul>
+          <li>Resolution: 4K UHD (3840x2160)</li>
+          <li>Format: ProRes 422 HQ / H.264</li>
+          <li>Audio: 5.1 Surround or Stereo</li>
+          <li>Max Size: 10 GB</li>
+        </ul>
+      </div>
+      
+      <div class="guideline-section">
+        <h3>SUBMISSION FEE</h3>
+        <p>Standard entry fee is $25 USD per film. Late submissions incur an additional $15 fee. Student waivers available upon request with valid ID.</p>
+      </div>
+      
+      <div class="guideline-section">
+        <h3>DEADLINE</h3>
+        <div class="deadline-highlight">
+          <div class="deadline-date">MAY 31, 2026</div>
+          <div class="deadline-note">LATE ENTRY CLOSES 11:59 PM PST</div>
         </div>
       </div>
+      
+      <div class="guideline-section">
+        <h3>RIGHTS & USAGE</h3>
+        <p>By submitting, you declare ownership of the project rights and final output. Hungama Film Festival claims no ownership over submitted works but retains the right to screen selected films during the festival duration.</p>
+      </div>
+    </aside>
 
-      <!-- SUCCESS SCREEN (hidden by default) -->
-      <div id="success-screen" style="display: none; text-align: center;">
-        <div style="animation: pulse 2s infinite;">
-          <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="#00c853" stroke-width="2" style="margin: 0 auto 2rem;">
-            <polyline points="20 6 9 17 4 12"></polyline>
-          </svg>
-        </div>
-        <h2 class="form-step-title">Submission Successful!</h2>
-        <p style="font-size: 1rem; color: rgba(255, 255, 255, 0.8); margin-bottom: 2rem;">
+    <!-- RIGHT COLUMN - FORM AREA -->
+    <main class="form-main-area">
+
+      <!-- Error Summary (Hidden by default) -->
+      <div id="error-summary" class="error-summary" style="display: none;">
+        <h4>Please fix the following errors:</h4>
+        <ul id="error-list"></ul>
+      </div>
+
+      <!-- Success Screen (Hidden by default) -->
+      <div id="success-screen" class="success-screen" style="display: none;">
+        <div class="success-icon">✓</div>
+        <h2 class="success-title">Submission Successful!</h2>
+        <p style="color: rgba(255, 255, 255, 0.6); margin-bottom: 2rem;">
           Thank you for submitting your film to Hungama AI Film Festival.
         </p>
-        <div style="background: rgba(0, 200, 83, 0.1); border: 1px solid rgba(0, 200, 83, 0.3); border-radius: 0.75rem; padding: 1.5rem; margin-bottom: 2rem;">
-          <p class="form-label">Reference ID</p>
-          <p style="font-size: 1.5rem; font-weight: 700; color: #00c853;" id="reference-id">HUNGAMA-2026-00000</p>
+        <div class="reference-id-box">
+          <p style="font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem; color: rgba(255, 255, 255, 0.6);">Reference ID</p>
+          <div class="reference-id" id="reference-id">HUNGAMA-2026-00000</div>
         </div>
-        <p style="font-size: 0.9rem; color: rgba(255, 255, 255, 0.6); margin-bottom: 2rem;">
+        <p style="color: rgba(255, 255, 255, 0.5); font-size: 0.875rem; margin-bottom: 2rem;">
           We'll notify you about the selection status by July 15, 2026.
         </p>
-        <button type="button" class="submit-btn" onclick="resetForm()" style="background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);">
+        <button type="button" class="submit-button" onclick="resetForm()">
           Submit Another Film
         </button>
       </div>
 
-      <!-- FORM STEPS CONTAINER -->
-      <form id="submission-form" class="form-steps" style="display: block;">
+      <!-- Main Form -->
+      <form id="submission-form" style="display: block;">
         
-        <!-- STEP 1: SUBMISSION DETAILS -->
-        <div class="form-step active" data-step="1">
-          <h2 class="form-step-title">Film Information</h2>
-          <p class="form-step-subtitle">Tell us about your AI film creation</p>
-
-          <!-- Film Information -->
-          <div class="form-group">
-            <label>Film Title *</label>
-            <input type="text" name="filmTitle" placeholder="Enter the title of your film" data-field="filmTitle">
-          </div>
-
-          <div class="form-row">
-            <div class="form-group">
-              <label>Category *</label>
-              <select name="category" data-field="category">
-                <option value="">Select a category</option>
-                <option value="short">AI Short Film</option>
-                <option value="micro">AI Micro Drama</option>
-                <option value="commercial">AI Commercial Film</option>
-                <option value="music">Music Video</option>
-              </select>
+        <!-- FILM INFORMATION SECTION (Desktop: Always visible / Mobile: Accordion) -->
+        <div class="accordion-section open" data-section="film-info">
+          <div class="accordion-header" onclick="toggleAccordion(this)">
+            <div class="accordion-title-group">
+              <span class="form-section-icon">🎬</span>
+              <h3 class="form-section-title">FILM INFORMATION</h3>
             </div>
-
-            <div class="form-group">
-              <label>Duration (seconds) *</label>
-              <input type="number" name="duration" placeholder="e.g., 180" data-field="duration" min="1">
-            </div>
+            <span class="accordion-chevron">˅</span>
           </div>
-
-          <div class="form-group">
-            <label>Film Type (Auto)</label>
-            <input type="text" name="filmType" placeholder="Calculated automatically" readonly style="background: rgba(255, 255, 255, 0.02); cursor: not-allowed;">
-          </div>
-
-          <div class="form-group">
-            <label>Film Description *</label>
-            <textarea name="description" placeholder="Describe your film, its themes, and use of AI technology" data-field="description"></textarea>
-          </div>
-
-          <h2 class="form-step-title" style="margin-top: 3rem; margin-bottom: 1rem;">Creator Information</h2>
-          <p class="form-step-subtitle">Tell us about yourself</p>
-
-          <!-- Creator Information -->
-          <div class="form-row">
-            <div class="form-group">
-              <label>Your Name *</label>
-              <input type="text" name="creatorName" placeholder="Full name" data-field="creatorName">
-            </div>
-
-            <div class="form-group">
-              <label>Email Address *</label>
-              <input type="email" name="email" placeholder="your@email.com" data-field="email">
-            </div>
-          </div>
-
-          <div class="form-row">
-            <div class="form-group">
-              <label>Country *</label>
-              <div style="position: relative;">
-                <input type="text" name="country" placeholder="Search country..." data-field="country" id="country-input" autocomplete="off">
-                <div id="country-dropdown" style="display: none; position: absolute; top: 100%; left: 0; right: 0; background: rgba(10, 10, 10, 0.95); border: 1px solid rgba(220, 38, 38, 0.3); border-top: none; border-radius: 0 0 0.75rem 0.75rem; max-height: 300px; overflow-y: auto; z-index: 1000;"></div>
+          <div class="accordion-content">
+            <div class="accordion-body">
+              
+              <div class="form-row full">
+                <div class="form-field">
+                  <label>Film Title *</label>
+                  <input type="text" name="filmTitle" id="film-title" placeholder="Enter the official title" required>
+                </div>
               </div>
+
+              <div class="form-row">
+                <div class="form-field form-field-compact">
+                  <label>Runtime *</label>
+                  <div class="compound-field">
+                    <div class="compound-input-group">
+                      <input type="number" id="runtime-value-1" placeholder="Value" min="0" required>
+                      <select id="runtime-unit-1" required>
+                        <option value="">Unit</option>
+                        <option value="HH">HH</option>
+                        <option value="MM">MM</option>
+                        <option value="SS">SS</option>
+                      </select>
+                    </div>
+                    <div class="compound-input-group">
+                      <input type="number" id="runtime-value-2" placeholder="Value (optional)" min="0">
+                      <select id="runtime-unit-2">
+                        <option value="">Unit</option>
+                        <option value="MM">MM</option>
+                        <option value="SS">SS</option>
+                      </select>
+                    </div>
+                  </div>
+                  <input type="hidden" name="runtime" id="runtime-total">
+                  <div class="runtime-preview" id="runtime-preview"></div>
+                </div>
+              </div>
+
+              <div class="form-row full">
+                <div class="form-field">
+                  <label>Award Category *</label>
+                  <select name="awardCategory" id="award-category" required>
+                    <option value="">Select an award...</option>
+                    <option value="AI Micro Drama">AI Micro Drama</option>
+                    <option value="AI Short Film">AI Short Film</option>
+                    <option value="AI Documentary – Factual">AI Documentary – Factual</option>
+                    <option value="Experimental & Art Film">Experimental & Art Film</option>
+                    <option value="AI Music Video">AI Music Video</option>
+                    <option value="AI Commercial – Branded Film">AI Commercial – Branded Film</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-row full">
+                <div class="form-field">
+                  <label>Genre *</label>
+                  <div class="multi-select-wrapper">
+                    <div class="multi-select-display" id="genre-display" onclick="toggleGenreDropdown()">
+                      <span class="multi-select-placeholder">Select genres...</span>
+                    </div>
+                    <div class="multi-select-dropdown" id="genre-dropdown">
+                      <div class="multi-select-search">
+                        <input type="text" id="genre-search" placeholder="Search genres..." onkeyup="filterGenres()">
+                      </div>
+                      <div class="multi-select-options" id="genre-options">
+                        <div class="multi-select-option">
+                          <input type="checkbox" id="genre-scifi" value="Science Fiction" onchange="updateGenreSelection()">
+                          <label for="genre-scifi">Science Fiction</label>
+                        </div>
+                        <div class="multi-select-option">
+                          <input type="checkbox" id="genre-abstract" value="Abstract" onchange="updateGenreSelection()">
+                          <label for="genre-abstract">Abstract</label>
+                        </div>
+                        <div class="multi-select-option">
+                          <input type="checkbox" id="genre-narrative" value="Narrative" onchange="updateGenreSelection()">
+                          <label for="genre-narrative">Narrative</label>
+                        </div>
+                        <div class="multi-select-option">
+                          <input type="checkbox" id="genre-documentary" value="Documentary" onchange="updateGenreSelection()">
+                          <label for="genre-documentary">Documentary</label>
+                        </div>
+                        <div class="multi-select-option">
+                          <input type="checkbox" id="genre-animation" value="Animation" onchange="updateGenreSelection()">
+                          <label for="genre-animation">Animation</label>
+                        </div>
+                        <div class="multi-select-option">
+                          <input type="checkbox" id="genre-experimental" value="Experimental" onchange="updateGenreSelection()">
+                          <label for="genre-experimental">Experimental</label>
+                        </div>
+                        <div class="multi-select-option">
+                          <input type="checkbox" id="genre-music" value="Music Video" onchange="updateGenreSelection()">
+                          <label for="genre-music">Music Video</label>
+                        </div>
+                        <div class="multi-select-option">
+                          <input type="checkbox" id="genre-horror" value="Horror" onchange="updateGenreSelection()">
+                          <label for="genre-horror">Horror</label>
+                        </div>
+                        <div class="multi-select-option">
+                          <input type="checkbox" id="genre-comedy" value="Comedy" onchange="updateGenreSelection()">
+                          <label for="genre-comedy">Comedy</label>
+                        </div>
+                        <div class="multi-select-option">
+                          <input type="checkbox" id="genre-drama" value="Drama" onchange="updateGenreSelection()">
+                          <label for="genre-drama">Drama</label>
+                        </div>
+                        <div class="multi-select-option">
+                          <input type="checkbox" id="genre-other" value="Other" onchange="updateGenreSelection(); toggleGenreOtherField()">
+                          <label for="genre-other">Other</label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <input type="text" id="genre-other-text" placeholder="Specify genre..." class="ai-tool-other-field" style="margin-top: 0.75rem;">
+                  <input type="hidden" name="category" id="genre-values">
+                </div>
+              </div>
+
+              <div class="form-row full">
+                <div class="form-field">
+                  <label>Logline</label>
+                  <textarea name="description" placeholder="A brief summary of your film (max 150 words)..."></textarea>
+                  <small>Describe your film's core narrative or concept (optional)</small>
+                </div>
+              </div>
+
+              <div class="form-row full">
+                <div class="form-field">
+                  <label>AI Tools Used *</label>
+                  <div class="ai-tools-grid">
+                    <div class="ai-tool-checkbox">
+                      <input type="checkbox" id="tool-midjourney" value="Midjourney" onchange="updateAIToolsSelection()">
+                      <label for="tool-midjourney">Midjourney</label>
+                    </div>
+                    <div class="ai-tool-checkbox">
+                      <input type="checkbox" id="tool-runway" value="Runway" onchange="updateAIToolsSelection()">
+                      <label for="tool-runway">Runway</label>
+                    </div>
+                    <div class="ai-tool-checkbox">
+                      <input type="checkbox" id="tool-pika" value="Pika Labs" onchange="updateAIToolsSelection()">
+                      <label for="tool-pika">Pika Labs</label>
+                    </div>
+                    <div class="ai-tool-checkbox">
+                      <input type="checkbox" id="tool-stable" value="Stable Diffusion" onchange="updateAIToolsSelection()">
+                      <label for="tool-stable">Stable Diffusion</label>
+                    </div>
+                    <div class="ai-tool-checkbox">
+                      <input type="checkbox" id="tool-dalle" value="DALL-E" onchange="updateAIToolsSelection()">
+                      <label for="tool-dalle">DALL-E</label>
+                    </div>
+                    <div class="ai-tool-checkbox">
+                      <input type="checkbox" id="tool-sora" value="Sora" onchange="updateAIToolsSelection()">
+                      <label for="tool-sora">Sora</label>
+                    </div>
+                    <div class="ai-tool-checkbox">
+                      <input type="checkbox" id="tool-elevenlabs" value="ElevenLabs" onchange="updateAIToolsSelection()">
+                      <label for="tool-elevenlabs">ElevenLabs</label>
+                    </div>
+                    <div class="ai-tool-checkbox">
+                      <input type="checkbox" id="tool-kling" value="Kling AI" onchange="updateAIToolsSelection()">
+                      <label for="tool-kling">Kling AI</label>
+                    </div>
+                    <div class="ai-tool-checkbox">
+                      <input type="checkbox" id="tool-hailuo" value="HailuoAI" onchange="updateAIToolsSelection()">
+                      <label for="tool-hailuo">HailuoAI</label>
+                    </div>
+                    <div class="ai-tool-checkbox">
+                      <input type="checkbox" id="tool-synthesia" value="Synthesia" onchange="updateAIToolsSelection()">
+                      <label for="tool-synthesia">Synthesia</label>
+                    </div>
+                    <div class="ai-tool-checkbox">
+                      <input type="checkbox" id="tool-did" value="D-ID" onchange="updateAIToolsSelection()">
+                      <label for="tool-did">D-ID</label>
+                    </div>
+                    <div class="ai-tool-checkbox">
+                      <input type="checkbox" id="tool-luma" value="Luma AI" onchange="updateAIToolsSelection()">
+                      <label for="tool-luma">Luma AI</label>
+                    </div>
+                    <div class="ai-tool-checkbox">
+                      <input type="checkbox" id="tool-kaiber" value="Kaiber" onchange="updateAIToolsSelection()">
+                      <label for="tool-kaiber">Kaiber</label>
+                    </div>
+                    <div class="ai-tool-checkbox">
+                      <input type="checkbox" id="tool-pixverse" value="PixVerse" onchange="updateAIToolsSelection()">
+                      <label for="tool-pixverse">PixVerse</label>
+                    </div>
+                    <div class="ai-tool-checkbox">
+                      <input type="checkbox" id="tool-heygen" value="HeyGen" onchange="updateAIToolsSelection()">
+                      <label for="tool-heygen">HeyGen</label>
+                    </div>
+                    <div class="ai-tool-checkbox">
+                      <input type="checkbox" id="tool-other" value="Other" onchange="updateAIToolsSelection(); toggleAIToolOther()">
+                      <label for="tool-other">Other</label>
+                    </div>
+                  </div>
+                  <input type="text" id="ai-tool-other-text" placeholder="Specify other AI tools..." class="ai-tool-other-field">
+                  <input type="hidden" name="aiTools" id="ai-tools-values">
+                  <small>Select all AI tools used in your film's production</small>
+                </div>
+              </div>
+
             </div>
-
-            <div class="form-group">
-              <label>Phone Number</label>
-              <input type="tel" name="phone" placeholder="+1 (555) 000-0000" data-field="phone">
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label>Film Video File *</label>
-            <div id="file-upload-area" style="border: 2px dashed rgba(220, 38, 38, 0.3); border-radius: 0.75rem; padding: 2rem; text-align: center; cursor: pointer; transition: all 0.3s ease;">
-              <input type="file" id="video-file" name="videoFile" accept="video/*" style="display: none;">
-              <p style="font-size: 0.9rem; color: rgba(255, 255, 255, 0.7); margin-bottom: 0.5rem;">Drag video here or click to select</p>
-              <p style="font-size: 0.75rem; color: rgba(255, 255, 255, 0.5);">MP4, MOV, WebM • Max 250MB • Min 5 seconds</p>
-              <p id="file-name" style="font-size: 0.85rem; color: #00c853; margin-top: 1rem; display: none;"></p>
-            </div>
-          </div>
-
-          <div id="error-summary" style="display: none; background: rgba(220, 38, 38, 0.1); border: 1px solid rgba(220, 38, 38, 0.3); border-radius: 0.75rem; padding: 1.5rem; margin-bottom: 2rem;">
-            <p style="font-weight: 600; margin-bottom: 0.5rem; color: #dc2626;">Please fix the following errors:</p>
-            <ul id="error-list" style="margin: 0; padding-left: 1.5rem; color: rgba(255, 255, 255, 0.8); font-size: 0.9rem;"></ul>
-          </div>
-
-          <div class="form-row full" style="margin-top: 3rem;">
-            <button type="button" class="submit-btn" onclick="goToReview()">
-              Review Submission
-            </button>
           </div>
         </div>
 
-        <!-- STEP 2: FINAL REVIEW -->
-        <div class="form-step" data-step="2">
-          <h2 class="form-step-title">Review Your Submission</h2>
-          <p class="form-step-subtitle">Please verify all information before final submission</p>
+        <!-- CREATOR INFORMATION SECTION -->
+        <div class="accordion-section open" data-section="creator-info">
+          <div class="accordion-header" onclick="toggleAccordion(this)">
+            <div class="accordion-title-group">
+              <span class="form-section-icon">👤</span>
+              <h3 class="form-section-title">CREATOR INFORMATION</h3>
+            </div>
+            <span class="accordion-chevron">˅</span>
+          </div>
+          <div class="accordion-content">
+            <div class="accordion-body">
+              
+              <div class="form-row">
+                <div class="form-field">
+                  <label>Director Name *</label>
+                  <input type="text" name="creatorName" placeholder="Full name" required>
+                </div>
+                <div class="form-field">
+                  <label>Email Address *</label>
+                  <input type="email" name="email" placeholder="your@email.com" required>
+                </div>
+              </div>
 
-          <!-- Review Summary -->
-          <div style="background: rgba(128, 0, 0, 0.08); border: 1px solid rgba(128, 0, 0, 0.3); border-radius: 1rem; padding: 2rem; margin-bottom: 2rem;">
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
-              <div>
-                <p class="form-label">Film Title</p>
-                <p class="form-title"><span id="review-filmTitle">-</span></p>
+              <div class="form-row">
+                <div class="form-field">
+                  <label>Phone Number *</label>
+                  <div class="phone-input-group">
+                    <div class="phone-code-wrapper">
+                      <div class="phone-code-display" id="phone-code-display" onclick="togglePhoneCodeDropdown()">+91</div>
+                      <div class="phone-code-dropdown" id="phone-code-dropdown">
+                        <div class="phone-code-search">
+                          <input type="text" id="phone-code-search" placeholder="Search country..." onkeyup="filterPhoneCodes()">
+                        </div>
+                        <div class="phone-code-options" id="phone-code-options"></div>
+                      </div>
+                    </div>
+                    <input type="tel" id="phone-number" name="phoneNumber" placeholder="Enter phone number" required pattern="[0-9+\-()\s]+" title="Please enter a valid phone number">
+                  </div>
+                  <input type="hidden" name="phoneCode" id="phone-code-value" value="+91">
+                </div>
+                <div class="form-field">
+                  <label>Region / Country *</label>
+                  <div class="country-input-wrapper">
+                    <input type="text" id="country-input" name="country" class="country-input" placeholder="Search and select country..." required readonly onclick="toggleCountryDropdown()">
+                    <div class="multi-select-dropdown" id="country-dropdown">
+                      <div class="multi-select-search">
+                        <input type="text" id="country-search" placeholder="Search countries..." onkeyup="filterCountries()">
+                      </div>
+                      <div class="multi-select-options" id="country-options"></div>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div>
-                <p class="form-label">Category</p>
-                <p class="form-title"><span id="review-category">-</span></p>
+
+              <div class="form-row full">
+                <div class="form-field">
+                  <label>Production Team</label>
+                  <input type="text" name="productionTeam" placeholder="Team or studio name (optional)">
+                </div>
               </div>
-              <div>
-                <p class="form-label">Film Type</p>
-                <p class="form-title"><span id="review-filmType">-</span></p>
-              </div>
-              <div>
-                <p class="form-label">Duration</p>
-                <p class="form-title"><span id="review-duration">-</span> sec</p>
-              </div>
-              <div>
-                <p class="form-label">Creator Name</p>
-                <p class="form-title"><span id="review-creatorName">-</span></p>
-              </div>
-              <div>
-                <p class="form-label">Email</p>
-                <p class="form-title"><span id="review-email">-</span></p>
-              </div>
-              <div>
-                <p class="form-label">Country</p>
-                <p class="form-title"><span id="review-country">-</span></p>
-              </div>
-              <div>
-                <p class="form-label">Video File</p>
-                <p class="form-title"><span id="review-videoFile">-</span></p>
-              </div>
+
             </div>
           </div>
+        </div>
 
-          <div class="form-group">
-            <label style="display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 2rem;">
-              <input type="checkbox" name="termsAccepted" style="width: auto; margin-top: 0.35rem; cursor: pointer;">
-              <span>I confirm that all information is accurate and I agree to the submission guidelines and festival terms.</span>
-            </label>
+        <!-- FILE UPLOAD SECTION -->
+        <div class="accordion-section open" data-section="file-upload">
+          <div class="accordion-header" onclick="toggleAccordion(this)">
+            <div class="accordion-title-group">
+              <span class="form-section-icon">📁</span>
+              <h3 class="form-section-title">FILE UPLOAD</h3>
+            </div>
+            <span class="accordion-chevron">˅</span>
           </div>
+          <div class="accordion-content">
+            <div class="accordion-body">
+              
+              <div class="upload-method-box-container">
+                <div class="upload-method-box" id="file-method-box" onclick="switchUploadMethod('file')">
+                  <input type="radio" id="method-file" name="uploadMethod" value="file" style="display: none;">
+                  <div class="method-box-header">
+                    <span class="method-box-icon">☁️</span>
+                    <span class="method-box-title">Upload File</span>
+                  </div>
+                </div>
+                <div class="upload-method-box" id="link-method-box" onclick="switchUploadMethod('link')">
+                  <input type="radio" id="method-link" name="uploadMethod" value="link" style="display: none;">
+                  <div class="method-box-header">
+                    <span class="method-box-icon">🔗</span>
+                    <span class="method-box-title">Provide Drive Link</span>
+                  </div>
+                </div>
+              </div>
 
-          <div class="form-row" style="margin-bottom: 0;">
-            <button type="button" class="submit-btn" style="background: rgba(128, 0, 0, 0.3); border: 1px solid rgba(220, 38, 38, 0.5);" onclick="goBackToEdit()">
-              Back to Details
-            </button>
-            <button type="submit" class="submit-btn" style="background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%); box-shadow: 0 0 20px rgba(220, 38, 38, 0.3);">
-              Submit Submission
-            </button>
+              <div class="upload-option" id="file-upload-option" style="display: none;">
+                <div class="file-upload-zone" id="file-upload-area" onclick="document.getElementById('video-file').click()">
+                  <input type="file" id="video-file" name="videoFile" accept="video/*" style="display: none;">
+                  <div class="upload-icon">☁️</div>
+                  <div class="upload-text">DRAG & DROP MASTER FILE</div>
+                  <div class="upload-subtext">Supports ProRes 422 HQ (.MOV) or H.264 High Profile (.MP4)</div>
+                  <button type="button" class="browse-button">BROWSE FILES</button>
+                  <div id="file-name" class="file-name-display" style="display: none;"></div>
+                </div>
+              </div>
+
+              <div class="upload-option" id="drive-link-option">
+                <div class="drive-link-input-group">
+                  <input type="url" id="drive-link" name="driveLink" placeholder="Paste your Google Drive, OneDrive, or other cloud storage link..." style="background: rgba(0, 0, 0, 0.4); border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 0.5rem; padding: 0.875rem 1rem; font-size: 0.9375rem; color: #ffffff; width: 100%;">
+                  <small style="color: rgba(255, 255, 255, 0.5); font-size: 0.8125rem;">⚠️ Important: Set sharing permissions to "Anyone with link can edit" so we can access and share your file with the Creative Council.</small>
+                </div>
+              </div>
+
+              <div id="upload-progress" style="display: none;" class="upload-progress">
+                <div class="upload-progress-bar"></div>
+              </div>
+
+            </div>
           </div>
+        </div>
+
+        <!-- Submit Button -->
+        <div style="margin-top: 2rem;">
+          <button type="submit" class="submit-button">
+            REVIEW SUBMISSION →
+          </button>
+          <p style="text-align: center; margin-top: 1rem; font-size: 0.75rem; color: rgba(255, 255, 255, 0.4);">
+            By proceeding, you agree to our Terms of Service and Privacy Policy.
+          </p>
         </div>
 
       </form>
-    </div>
-  </section>
 
-  <!-- SUBMISSION GUIDELINES SECTION -->
-  <section class="py-24 px-8 bg-gradient-to-b from-black via-brandDark to-black">
-    <div class="max-w-4xl mx-auto">
-      <h2 class="text-4xl font-bold mb-12 text-center tracking-tight">Submission Guidelines</h2>
-
-      <div class="guidelines-section">
-        <div class="guideline-item">
-          <h4>Eligibility</h4>
-          <p>
-            Films must be created using AI technology or be AI-native productions. Works created by AI without human input are also eligible. Submit works created after January 1, 2024.
-          </p>
+      <!-- GUIDELINES (Mobile Only - Accordion) -->
+      <div class="guidelines-mobile">
+        <h2>📋 SUBMISSION GUIDELINES</h2>
+                <div class="accordion-section">
+          <div class="accordion-header" onclick="toggleAccordion(this)">
+            <div class="accordion-title-group">
+              <h3 style="font-size: 0.875rem; font-weight: 600;">Eligibility Requirements</h3>
+            </div>
+            <span class="accordion-chevron">˅</span>
+          </div>
+          <div class="accordion-content">
+            <div class="accordion-body">
+              <p style="font-size: 0.8125rem; color: rgba(255, 255, 255, 0.6);">
+                Submissions must utilize AI-generated content for at least 50% of the visual pipeline. All generative tools are permitted. Work must have been completed after January 1, 2024.
+              </p>
+            </div>
+          </div>
         </div>
 
-        <div class="guideline-item">
-          <h4>Technical Requirements</h4>
-          <p>
-            Video format: MP4, MOV, or WebM. Resolution: Minimum 1080p (1920 x 1080). Frame rate: 24fps, 25fps, or 30fps. Audio: Clear, properly mixed, and in English or with subtitles.
-          </p>
+        <div class="accordion-section">
+          <div class="accordion-header" onclick="toggleAccordion(this)">
+            <div class="accordion-title-group">
+              <h3 style="font-size: 0.875rem; font-weight: 600;">Technical Specifications</h3>
+            </div>
+            <span class="accordion-chevron">˅</span>
+          </div>
+          <div class="accordion-content">
+            <div class="accordion-body">
+              <ul style="list-style: none; padding: 0; font-size: 0.8125rem; color: rgba(255, 255, 255, 0.6);">
+                <li style="margin-bottom: 0.5rem;">• Resolution: 4K UHD (3840x2160)</li>
+                <li style="margin-bottom: 0.5rem;">• Format: ProRes 422 HQ / H.264</li>
+                <li style="margin-bottom: 0.5rem;">• Audio: 5.1 Surround or Stereo</li>
+                <li>• Max Size: 10 GB</li>
+              </ul>
+            </div>
+          </div>
         </div>
 
-        <div class="guideline-item">
-          <h4>Submission Fee</h4>
-          <p>
-            Submission fee is $50 USD for the first film. Each additional film: $30 USD. Fee waiver requests available for emerging filmmakers from underrepresented regions.
-          </p>
+        <div class="accordion-section">
+          <div class="accordion-header" onclick="toggleAccordion(this)">
+            <div class="accordion-title-group">
+              <h3 style="font-size: 0.875rem; font-weight: 600;">Submission Fee</h3>
+            </div>
+            <span class="accordion-chevron">˅</span>
+          </div>
+          <div class="accordion-content">
+            <div class="accordion-body">
+              <p style="font-size: 0.8125rem; color: rgba(255, 255, 255, 0.6);">
+                Standard entry fee is $25 USD per film. Late submissions incur an additional $15 fee. Student waivers available upon request with valid ID.
+              </p>
+            </div>
+          </div>
         </div>
 
-        <div class="guideline-item">
-          <h4>Deadline</h4>
-          <p>
-            All submissions must be received by May 31, 2026 at 11:59 PM UTC. Late submissions will not be accepted. Notification of selection by July 15, 2026.
-          </p>
+        <div class="accordion-section">
+          <div class="accordion-header" onclick="toggleAccordion(this)">
+            <div class="accordion-title-group">
+              <h3 style="font-size: 0.875rem; font-weight: 600;">Deadlines</h3>
+            </div>
+            <span class="accordion-chevron">˅</span>
+          </div>
+          <div class="accordion-content">
+            <div class="accordion-body">
+              <div class="deadline-highlight">
+                <div class="deadline-date">MAY 31, 2026</div>
+                <div class="deadline-note">LATE ENTRY CLOSES 11:59 PM PST</div>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <div class="guideline-item">
-          <h4>Rights & Distribution</h4>
-          <p>
-            By submitting, you grant Hungama AI Film Festival the right to screen, archive, and promote your film. All intellectual property remains with the creator. Commercial distribution rights remain with the filmmaker.
-          </p>
+        <div class="accordion-section">
+          <div class="accordion-header" onclick="toggleAccordion(this)">
+            <div class="accordion-title-group">
+              <h3 style="font-size: 0.875rem; font-weight: 600;">Rights & Usage</h3>
+            </div>
+            <span class="accordion-chevron">˅</span>
+          </div>
+          <div class="accordion-content">
+            <div class="accordion-body">
+              <p style="font-size: 0.8125rem; color: rgba(255, 255, 255, 0.6);">
+                By submitting, you declare ownership of the project rights and final output. Hungama Film Festival claims no ownership over submitted works but retains the right to screen selected films during the festival duration.
+              </p>
+            </div>
+          </div>
         </div>
 
-        <div class="guideline-item">
-          <h4>Questions?</h4>
-          <p>
-            Contact us at <strong>submissions@hungamafestival.com</strong> for any inquiries about the submission process.
-          </p>
-        </div>
       </div>
-    </div>
-  </section>
 
-  <!-- FOOTER -->
+    </main>
+
+  </div>
+
   <!-- FOOTER -->
   <footer class="py-12 px-5 sm:px-8 lg:px-12 bg-[#0a0a0a] border-t border-gray-900/30">
     <div class="max-w-7xl mx-auto flex justify-between items-center">
@@ -927,391 +1871,993 @@
       </div>
     </div>
   </footer>
-  <!-- Cache Busting System (Phase 7) -->
-  <script src="js/cache-buster.js"></script>
-
-  <script defer src="js/asset-check.js"></script>
 
   <script>
-    // ==================== FORM STATE MANAGEMENT ====================
-    const formState = {
-      filmTitle: '',
-      category: '',
-      duration: 0,
-      filmType: '',
-      description: '',
-      creatorName: '',
-      email: '',
-      country: '',
-      phone: '',
-      videoFile: null,
-      videoFileName: ''
+    // ============================================
+    // ACCORDION FUNCTIONALITY
+    // ============================================
+    
+    function toggleAccordion(header) {
+      const section = header.parentElement;
+      const content = section.querySelector('.accordion-content');
+      const isOpen = section.classList.contains('open');
+      
+      if (isOpen) {
+        section.classList.remove('open');
+        content.style.maxHeight = '0';
+      } else {
+        section.classList.add('open');
+        content.style.maxHeight = content.scrollHeight + 'px';
+      }
+    }
+
+    // Initialize accordion heights on load
+    document.addEventListener('DOMContentLoaded', function() {
+      const openSections = document.querySelectorAll('.accordion-section.open .accordion-content');
+      openSections.forEach(content => {
+        content.style.maxHeight = content.scrollHeight + 'px';
+      });
+      
+      // Initialize country dropdown
+      initializeCountryDropdown();
+      
+      // Add runtime listeners
+      document.getElementById('runtime-value-1').addEventListener('input', calculateRuntime);
+      document.getElementById('runtime-unit-1').addEventListener('change', calculateRuntime);
+      document.getElementById('runtime-value-2').addEventListener('input', calculateRuntime);
+      document.getElementById('runtime-unit-2').addEventListener('change', calculateRuntime);
+    });
+
+    // ============================================
+    // RUNTIME CALCULATION
+    // ============================================
+    
+    function calculateRuntime() {
+      const value1 = parseFloat(document.getElementById('runtime-value-1').value) || 0;
+      const unit1 = document.getElementById('runtime-unit-1').value;
+      const value2 = parseFloat(document.getElementById('runtime-value-2').value) || 0;
+      const unit2 = document.getElementById('runtime-unit-2').value;
+      
+      let totalMinutes = 0;
+      
+      // Convert first value to minutes
+      if (unit1 === 'HH') totalMinutes += value1 * 60;
+      else if (unit1 === 'MM') totalMinutes += value1;
+      else if (unit1 === 'SS') totalMinutes += value1 / 60;
+      
+      // Convert second value to minutes
+      if (unit2 === 'MM') totalMinutes += value2;
+      else if (unit2 === 'SS') totalMinutes += value2 / 60;
+      
+      // Update hidden field
+      document.getElementById('runtime-total').value = totalMinutes.toFixed(2);
+      
+      // Update preview
+      if (totalMinutes > 0) {
+        document.getElementById('runtime-preview').textContent = `Total: ${totalMinutes.toFixed(1)} minutes`;
+        document.getElementById('runtime-preview').style.display = 'block';
+      } else {
+        document.getElementById('runtime-preview').style.display = 'none';
+      }
+    }
+
+    // ============================================
+    // GENRE MULTI-SELECT
+    // ============================================
+    
+    function toggleGenreDropdown() {
+      const dropdown = document.getElementById('genre-dropdown');
+      const display = document.getElementById('genre-display');
+      
+      dropdown.classList.toggle('show');
+      display.classList.toggle('open');
+    }
+
+    function filterGenres() {
+      const searchValue = document.getElementById('genre-search').value.toLowerCase();
+      const options = document.querySelectorAll('#genre-options .multi-select-option');
+      
+      options.forEach(option => {
+        const label = option.querySelector('label').textContent.toLowerCase();
+        option.style.display = label.includes(searchValue) ? 'flex' : 'none';
+      });
+    }
+
+    function updateGenreSelection() {
+      const checkboxes = document.querySelectorAll('#genre-options input[type="checkbox"]:checked');
+      const display = document.getElementById('genre-display');
+      const placeholder = display.querySelector('.multi-select-placeholder');
+      
+      // Clear existing pills
+      display.querySelectorAll('.selection-pill').forEach(pill => pill.remove());
+      
+      if (checkboxes.length > 0) {
+        if (placeholder) placeholder.style.display = 'none';
+        
+        checkboxes.forEach(checkbox => {
+          const pill = document.createElement('span');
+          pill.className = 'selection-pill';
+          pill.innerHTML = `${checkbox.value} <span class="remove-pill" onclick="removeGenre('${checkbox.id}')">×</span>`;
+          display.appendChild(pill);
+        });
+        
+        // Update hidden field
+        const values = Array.from(checkboxes).map(cb => cb.value).join(',');
+        document.getElementById('genre-values').value = values;
+      } else {
+        if (placeholder) placeholder.style.display = 'inline';
+        document.getElementById('genre-values').value = '';
+      }
+    }
+
+    function removeGenre(checkboxId) {
+      const checkbox = document.getElementById(checkboxId);
+      if (checkbox) {
+        checkbox.checked = false;
+        updateGenreSelection();
+        if (checkboxId === 'genre-other') {
+          toggleGenreOtherField();
+        }
+      }
+    }
+
+    function toggleGenreOtherField() {
+      const otherCheckbox = document.getElementById('genre-other');
+      const otherField = document.getElementById('genre-other-text');
+      
+      if (otherCheckbox.checked) {
+        otherField.classList.add('show');
+      } else {
+        otherField.classList.remove('show');
+        otherField.value = '';
+      }
+    }
+
+    // Close genre dropdown when clicking outside
+    document.addEventListener('click', function(e) {
+      const genreWrapper = document.querySelector('.multi-select-wrapper');
+      const genreDisplay = document.getElementById('genre-display');
+      const genreDropdown = document.getElementById('genre-dropdown');
+      
+      if (genreDisplay && genreDropdown && !e.target.closest('.multi-select-wrapper')) {
+        genreDropdown.classList.remove('show');
+        genreDisplay.classList.remove('open');
+      }
+      
+      const countryWrapper = document.querySelector('.country-input-wrapper');
+      const countryInput = document.getElementById('country-input');
+      const countryDropdown = document.getElementById('country-dropdown');
+      
+      if (countryInput && countryDropdown && !e.target.closest('.country-input-wrapper')) {
+        countryDropdown.classList.remove('show');
+        countryWrapper.classList.remove('open');
+        countryInput.classList.remove('open');
+      }
+    });
+
+    // ============================================
+    // AI TOOLS SELECTION
+    // ============================================
+    
+    function updateAIToolsSelection() {
+      const checkboxes = document.querySelectorAll('.ai-tool-checkbox input[type="checkbox"]:checked');
+      const otherText = document.getElementById('ai-tool-other-text');
+      
+      let values = Array.from(checkboxes).map(cb => cb.value);
+      
+      if (otherText.value.trim()) {
+        values = values.filter(v => v !== 'Other');
+        values.push(otherText.value.trim());
+      }
+      
+      document.getElementById('ai-tools-values').value = values.join(', ');
+    }
+
+    function toggleAIToolOther() {
+      const otherCheckbox = document.getElementById('tool-other');
+      const otherField = document.getElementById('ai-tool-other-text');
+      
+      if (otherCheckbox.checked) {
+        otherField.classList.add('show');
+      } else {
+        otherField.classList.remove('show');
+        otherField.value = '';
+        updateAIToolsSelection();
+      }
+    }
+
+    // Add listener to other text field
+    document.getElementById('ai-tool-other-text').addEventListener('input', updateAIToolsSelection);
+
+    // ============================================
+    // COUNTRY DROPDOWN WITH REGIONS
+    // ============================================
+    
+    const countriesByRegion = {
+      "North America": ["Canada", "United States", "Mexico"],
+      "Central America & Caribbean": ["Belize", "Costa Rica", "El Salvador", "Guatemala", "Honduras", "Nicaragua", "Panama", "Bahamas", "Barbados", "Cuba", "Dominica", "Dominican Republic", "Grenada", "Haiti", "Jamaica", "Saint Kitts and Nevis", "Saint Lucia", "Saint Vincent and the Grenadines", "Trinidad and Tobago"],
+      "South America": ["Argentina", "Bolivia", "Brazil", "Chile", "Colombia", "Ecuador", "Guyana", "Paraguay", "Peru", "Suriname", "Uruguay", "Venezuela"],
+      "Europe": ["Albania", "Andorra", "Austria", "Belarus", "Belgium", "Bosnia and Herzegovina", "Bulgaria", "Croatia", "Cyprus", "Czech Republic", "Denmark", "Estonia", "Finland", "France", "Germany", "Greece", "Hungary", "Iceland", "Ireland", "Italy", "Kosovo", "Latvia", "Liechtenstein", "Lithuania", "Luxembourg", "Malta", "Moldova", "Monaco", "Montenegro", "Netherlands", "North Macedonia", "Norway", "Poland", "Portugal", "Romania", "Russia", "San Marino", "Serbia", "Slovakia", "Slovenia", "Spain", "Sweden", "Switzerland", "Ukraine", "United Kingdom", "Vatican City"],
+      "Africa": ["Algeria", "Angola", "Benin", "Botswana", "Burkina Faso", "Burundi", "Cameroon", "Cape Verde", "Central African Republic", "Chad", "Comoros", "Congo", "Djibouti", "Egypt", "Equatorial Guinea", "Eritrea", "Ethiopia", "Gabon", "Gambia", "Ghana", "Guinea", "Guinea-Bissau", "Kenya", "Lesotho", "Liberia", "Libya", "Madagascar", "Malawi", "Mali", "Mauritania", "Mauritius", "Morocco", "Mozambique", "Namibia", "Niger", "Nigeria", "Rwanda", "Sao Tome and Principe", "Senegal", "Seychelles", "Sierra Leone", "Somalia", "South Africa", "South Sudan", "Sudan", "Tanzania", "Togo", "Tunisia", "Uganda", "Zambia", "Zimbabwe"],
+      "Middle East": ["Bahrain", "Iran", "Iraq", "Israel", "Jordan", "Kuwait", "Lebanon", "Oman", "Palestine", "Qatar", "Saudi Arabia", "Syria", "Turkey", "United Arab Emirates", "Yemen"],
+      "Asia": ["Afghanistan", "Armenia", "Azerbaijan", "Bangladesh", "Bhutan", "Cambodia", "China", "Georgia", "India", "Indonesia", "Japan", "Kazakhstan", "Korea North", "Korea South", "Kyrgyzstan", "Laos", "Malaysia", "Maldives", "Mongolia", "Myanmar", "Nepal", "Pakistan", "Philippines", "Singapore", "Sri Lanka", "Taiwan", "Tajikistan", "Thailand", "Timor-Leste", "Turkmenistan", "Uzbekistan", "Vietnam"],
+      "Oceania": ["Australia", "Fiji", "Kiribati", "Marshall Islands", "Micronesia", "Nauru", "New Zealand", "Palau", "Papua New Guinea", "Samoa", "Solomon Islands", "Tonga", "Tuvalu", "Vanuatu"]
     };
 
-    // ==================== COUNTRY DATA ====================
-    const COUNTRIES = [
-      'Afghanistan', 'Albania', 'Algeria', 'Andorra', 'Angola', 'Argentina', 'Armenia', 'Australia', 'Austria', 'Azerbaijan',
-      'Bahamas', 'Bahrain', 'Bangladesh', 'Barbados', 'Belarus', 'Belgium', 'Belize', 'Benin', 'Bhutan', 'Bolivia',
-      'Bosnia', 'Botswana', 'Brazil', 'Brunei', 'Bulgaria', 'Burkina Faso', 'Burundi', 'Cambodia', 'Cameroon', 'Canada',
-      'Cape Verde', 'Central African Republic', 'Chad', 'Chile', 'China', 'Colombia', 'Comoros', 'Congo', 'Costa Rica', 'Croatia',
-      'Cuba', 'Cyprus', 'Czech Republic', 'Denmark', 'Djibouti', 'Dominica', 'Dominican Republic', 'Ecuador', 'Egypt', 'El Salvador',
-      'Equatorial Guinea', 'Eritrea', 'Estonia', 'Ethiopia', 'Fiji', 'Finland', 'France', 'Gabon', 'Gambia', 'Georgia',
-      'Germany', 'Ghana', 'Greece', 'Grenada', 'Guatemala', 'Guinea', 'Guinea-Bissau', 'Guyana', 'Haiti', 'Honduras',
-      'Hong Kong', 'Hungary', 'Iceland', 'India', 'Indonesia', 'Iran', 'Iraq', 'Ireland', 'Israel', 'Italy',
-      'Ivory Coast', 'Jamaica', 'Japan', 'Jordan', 'Kazakhstan', 'Kenya', 'Kiribati', 'Kosovo', 'Kuwait', 'Kyrgyzstan',
-      'Laos', 'Latvia', 'Lebanon', 'Lesotho', 'Liberia', 'Libya', 'Liechtenstein', 'Lithuania', 'Luxembourg', 'Madagascar',
-      'Malawi', 'Malaysia', 'Maldives', 'Mali', 'Malta', 'Marshall Islands', 'Mauritania', 'Mauritius', 'Mexico', 'Micronesia',
-      'Moldova', 'Monaco', 'Mongolia', 'Montenegro', 'Morocco', 'Mozambique', 'Myanmar', 'Namibia', 'Nauru', 'Nepal',
-      'Netherlands', 'New Zealand', 'Nicaragua', 'Niger', 'Nigeria', 'North Korea', 'North Macedonia', 'Norway', 'Oman', 'Pakistan',
-      'Palau', 'Palestine', 'Panama', 'Papua New Guinea', 'Paraguay', 'Peru', 'Philippines', 'Poland', 'Portugal', 'Qatar',
-      'Romania', 'Russia', 'Rwanda', 'Saint Kitts and Nevis', 'Saint Lucia', 'Saint Vincent and the Grenadines', 'Samoa', 'San Marino', 'Sao Tome and Principe', 'Saudi Arabia',
-      'Senegal', 'Serbia', 'Seychelles', 'Sierra Leone', 'Singapore', 'Slovakia', 'Slovenia', 'Solomon Islands', 'Somalia', 'South Africa',
-      'South Korea', 'South Sudan', 'Spain', 'Sri Lanka', 'Sudan', 'Suriname', 'Sweden', 'Switzerland', 'Syria', 'Taiwan',
-      'Tajikistan', 'Tanzania', 'Thailand', 'Timor-Leste', 'Togo', 'Tonga', 'Trinidad and Tobago', 'Tunisia', 'Turkey', 'Turkmenistan',
-      'Tuvalu', 'Uganda', 'Ukraine', 'United Arab Emirates', 'United Kingdom', 'United States', 'Uruguay', 'Uzbekistan', 'Vanuatu', 'Vatican City',
-      'Venezuela', 'Vietnam', 'Yemen', 'Zambia', 'Zimbabwe'
+    function initializeCountryDropdown() {
+      const optionsContainer = document.getElementById('country-options');
+      
+      for (const [region, countries] of Object.entries(countriesByRegion)) {
+        const regionHeader = document.createElement('div');
+        regionHeader.style.cssText = 'padding: 0.75rem 1rem; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255, 255, 255, 0.4); font-weight: 700; border-top: 1px solid rgba(255, 255, 255, 0.05);';
+        regionHeader.textContent = region;
+        optionsContainer.appendChild(regionHeader);
+        
+        countries.forEach(country => {
+          const option = document.createElement('div');
+          option.className = 'multi-select-option';
+          option.dataset.country = country;
+          option.dataset.region = region;
+          option.innerHTML = `
+            <input type="radio" name="country-radio" id="country-${country.replace(/\s+/g, '-')}" value="${country}" onchange="selectCountry('${country}')">
+            <label for="country-${country.replace(/\s+/g, '-')}">${country}</label>
+          `;
+          optionsContainer.appendChild(option);
+        });
+      }
+    }
+
+    function toggleCountryDropdown() {
+      const dropdown = document.getElementById('country-dropdown');
+      const wrapper = document.querySelector('.country-input-wrapper');
+      const input = document.getElementById('country-input');
+      
+      dropdown.classList.toggle('show');
+      wrapper.classList.toggle('open');
+      input.classList.toggle('open');
+      
+      if (dropdown.classList.contains('show')) {
+        document.getElementById('country-search').focus();
+      }
+    }
+
+    function filterCountries() {
+      const searchValue = document.getElementById('country-search').value.toLowerCase();
+      const options = document.querySelectorAll('#country-options .multi-select-option');
+      const regionHeaders = document.querySelectorAll('#country-options div[style*="text-transform: uppercase"]');
+      
+      options.forEach(option => {
+        const country = option.dataset.country ? option.dataset.country.toLowerCase() : '';
+        const region = option.dataset.region ? option.dataset.region.toLowerCase() : '';
+        const matches = country.includes(searchValue) || region.includes(searchValue);
+        option.style.display = matches ? 'flex' : 'none';
+      });
+      
+      // Show/hide region headers based on whether they have visible countries
+      regionHeaders.forEach(header => {
+        let nextEl = header.nextElementSibling;
+        let hasVisibleCountries = false;
+        
+        while (nextEl && nextEl.classList.contains('multi-select-option')) {
+          if (nextEl.style.display !== 'none') {
+            hasVisibleCountries = true;
+            break;
+          }
+          nextEl = nextEl.nextElementSibling;
+        }
+        
+        header.style.display = hasVisibleCountries ? 'block' : 'none';
+      });
+    }
+
+    function selectCountry(country) {
+      const countryInput = document.getElementById('country-input');
+      const dropdown = document.getElementById('country-dropdown');
+      const wrapper = document.querySelector('.country-input-wrapper');
+      
+      // Set the country input value
+      countryInput.value = country;
+      
+      // Close dropdown and remove open states
+      dropdown.classList.remove('show');
+      wrapper.classList.remove('open');
+      countryInput.classList.remove('open');
+    }
+
+    function removeCountry() {
+      const countryInput = document.getElementById('country-input');
+      
+      // Clear the country input
+      countryInput.value = '';
+      
+      // Uncheck radio button
+      const checkedRadio = document.querySelector('#country-options input[type="radio"]:checked');
+      if (checkedRadio) checkedRadio.checked = false;
+    }
+
+    // ============================================
+    // PHONE NUMBER COUNTRY CODES
+    // ============================================
+    
+    const countryCodes = [
+      // ZONE 1: North American Numbering Plan (NANP)
+      { code: "+1", country: "United States" },
+      { code: "+1", country: "Canada" },
+      { code: "+1", country: "Bahamas" },
+      { code: "+1", country: "Barbados" },
+      { code: "+1", country: "Anguilla" },
+      { code: "+1", country: "Antigua and Barbuda" },
+      { code: "+1", country: "British Virgin Islands" },
+      { code: "+1", country: "Cayman Islands" },
+      { code: "+1", country: "Bermuda" },
+      { code: "+1", country: "Grenada" },
+      { code: "+1", country: "Turks and Caicos Islands" },
+      { code: "+1", country: "Jamaica" },
+      { code: "+1", country: "Montserrat" },
+      { code: "+1", country: "Sint Maarten" },
+      { code: "+1", country: "Saint Lucia" },
+      { code: "+1", country: "Dominica" },
+      { code: "+1", country: "Saint Vincent and the Grenadines" },
+      { code: "+1", country: "Dominican Republic" },
+      { code: "+1", country: "Trinidad and Tobago" },
+      { code: "+1", country: "Saint Kitts and Nevis" },
+      { code: "+1", country: "Puerto Rico" },
+      { code: "+1", country: "US Virgin Islands" },
+      { code: "+1", country: "Guam" },
+      { code: "+1", country: "American Samoa" },
+      { code: "+1", country: "Northern Mariana Islands" },
+
+      // ZONE 2: Africa
+      { code: "+20", country: "Egypt" },
+      { code: "+211", country: "South Sudan" },
+      { code: "+212", country: "Morocco" },
+      { code: "+213", country: "Algeria" },
+      { code: "+216", country: "Tunisia" },
+      { code: "+218", country: "Libya" },
+      { code: "+220", country: "Gambia" },
+      { code: "+221", country: "Senegal" },
+      { code: "+222", country: "Mauritania" },
+      { code: "+223", country: "Mali" },
+      { code: "+224", country: "Guinea" },
+      { code: "+225", country: "Ivory Coast" },
+      { code: "+226", country: "Burkina Faso" },
+      { code: "+227", country: "Niger" },
+      { code: "+228", country: "Togo" },
+      { code: "+229", country: "Benin" },
+      { code: "+230", country: "Mauritius" },
+      { code: "+231", country: "Liberia" },
+      { code: "+232", country: "Sierra Leone" },
+      { code: "+233", country: "Ghana" },
+      { code: "+234", country: "Nigeria" },
+      { code: "+235", country: "Chad" },
+      { code: "+236", country: "Central African Republic" },
+      { code: "+237", country: "Cameroon" },
+      { code: "+238", country: "Cape Verde" },
+      { code: "+239", country: "São Tomé and Príncipe" },
+      { code: "+240", country: "Equatorial Guinea" },
+      { code: "+241", country: "Gabon" },
+      { code: "+242", country: "Republic of the Congo" },
+      { code: "+243", country: "Democratic Republic of the Congo" },
+      { code: "+244", country: "Angola" },
+      { code: "+245", country: "Guinea-Bissau" },
+      { code: "+246", country: "British Indian Ocean Territory" },
+      { code: "+247", country: "Ascension Island" },
+      { code: "+248", country: "Seychelles" },
+      { code: "+249", country: "Sudan" },
+      { code: "+250", country: "Rwanda" },
+      { code: "+251", country: "Ethiopia" },
+      { code: "+252", country: "Somalia" },
+      { code: "+253", country: "Djibouti" },
+      { code: "+254", country: "Kenya" },
+      { code: "+255", country: "Tanzania" },
+      { code: "+256", country: "Uganda" },
+      { code: "+257", country: "Burundi" },
+      { code: "+258", country: "Mozambique" },
+      { code: "+260", country: "Zambia" },
+      { code: "+261", country: "Madagascar" },
+      { code: "+262", country: "Réunion" },
+      { code: "+263", country: "Zimbabwe" },
+      { code: "+264", country: "Namibia" },
+      { code: "+265", country: "Malawi" },
+      { code: "+266", country: "Lesotho" },
+      { code: "+267", country: "Botswana" },
+      { code: "+268", country: "Eswatini" },
+      { code: "+269", country: "Comoros" },
+      { code: "+27", country: "South Africa" },
+      { code: "+290", country: "Saint Helena" },
+      { code: "+291", country: "Eritrea" },
+      { code: "+297", country: "Aruba" },
+      { code: "+298", country: "Faroe Islands" },
+      { code: "+299", country: "Greenland" },
+
+      // ZONES 3 & 4: Europe
+      { code: "+30", country: "Greece" },
+      { code: "+31", country: "Netherlands" },
+      { code: "+32", country: "Belgium" },
+      { code: "+33", country: "France" },
+      { code: "+34", country: "Spain" },
+      { code: "+350", country: "Gibraltar" },
+      { code: "+351", country: "Portugal" },
+      { code: "+352", country: "Luxembourg" },
+      { code: "+353", country: "Ireland" },
+      { code: "+354", country: "Iceland" },
+      { code: "+355", country: "Albania" },
+      { code: "+356", country: "Malta" },
+      { code: "+357", country: "Cyprus" },
+      { code: "+358", country: "Finland" },
+      { code: "+359", country: "Bulgaria" },
+      { code: "+36", country: "Hungary" },
+      { code: "+370", country: "Lithuania" },
+      { code: "+371", country: "Latvia" },
+      { code: "+372", country: "Estonia" },
+      { code: "+373", country: "Moldova" },
+      { code: "+374", country: "Armenia" },
+      { code: "+375", country: "Belarus" },
+      { code: "+376", country: "Andorra" },
+      { code: "+377", country: "Monaco" },
+      { code: "+378", country: "San Marino" },
+      { code: "+379", country: "Vatican City" },
+      { code: "+380", country: "Ukraine" },
+      { code: "+381", country: "Serbia" },
+      { code: "+382", country: "Montenegro" },
+      { code: "+383", country: "Kosovo" },
+      { code: "+385", country: "Croatia" },
+      { code: "+386", country: "Slovenia" },
+      { code: "+387", country: "Bosnia and Herzegovina" },
+      { code: "+389", country: "North Macedonia" },
+      { code: "+39", country: "Italy" },
+      { code: "+40", country: "Romania" },
+      { code: "+41", country: "Switzerland" },
+      { code: "+43", country: "Austria" },
+      { code: "+44", country: "United Kingdom" },
+      { code: "+45", country: "Denmark" },
+      { code: "+46", country: "Sweden" },
+      { code: "+47", country: "Norway" },
+      { code: "+48", country: "Poland" },
+      { code: "+49", country: "Germany" },
+
+      // ZONE 5: South and Central Americas
+      { code: "+500", country: "Falkland Islands" },
+      { code: "+501", country: "Belize" },
+      { code: "+502", country: "Guatemala" },
+      { code: "+503", country: "El Salvador" },
+      { code: "+504", country: "Honduras" },
+      { code: "+505", country: "Nicaragua" },
+      { code: "+506", country: "Costa Rica" },
+      { code: "+507", country: "Panama" },
+      { code: "+508", country: "Saint-Pierre and Miquelon" },
+      { code: "+509", country: "Haiti" },
+      { code: "+51", country: "Peru" },
+      { code: "+52", country: "Mexico" },
+      { code: "+53", country: "Cuba" },
+      { code: "+54", country: "Argentina" },
+      { code: "+55", country: "Brazil" },
+      { code: "+56", country: "Chile" },
+      { code: "+57", country: "Colombia" },
+      { code: "+58", country: "Venezuela" },
+      { code: "+590", country: "Guadeloupe" },
+      { code: "+591", country: "Bolivia" },
+      { code: "+592", country: "Guyana" },
+      { code: "+593", country: "Ecuador" },
+      { code: "+594", country: "French Guiana" },
+      { code: "+595", country: "Paraguay" },
+      { code: "+596", country: "Martinique" },
+      { code: "+597", country: "Suriname" },
+      { code: "+598", country: "Uruguay" },
+      { code: "+599", country: "Curaçao" },
+
+      // ZONE 6: Southeast Asia and Oceania
+      { code: "+60", country: "Malaysia" },
+      { code: "+61", country: "Australia" },
+      { code: "+62", country: "Indonesia" },
+      { code: "+63", country: "Philippines" },
+      { code: "+64", country: "New Zealand" },
+      { code: "+65", country: "Singapore" },
+      { code: "+66", country: "Thailand" },
+      { code: "+670", country: "East Timor" },
+      { code: "+672", country: "Norfolk Island" },
+      { code: "+673", country: "Brunei" },
+      { code: "+674", country: "Nauru" },
+      { code: "+675", country: "Papua New Guinea" },
+      { code: "+676", country: "Tonga" },
+      { code: "+677", country: "Solomon Islands" },
+      { code: "+678", country: "Vanuatu" },
+      { code: "+679", country: "Fiji" },
+      { code: "+680", country: "Palau" },
+      { code: "+681", country: "Wallis and Futuna" },
+      { code: "+682", country: "Cook Islands" },
+      { code: "+683", country: "Niue" },
+      { code: "+685", country: "Samoa" },
+      { code: "+686", country: "Kiribati" },
+      { code: "+687", country: "New Caledonia" },
+      { code: "+688", country: "Tuvalu" },
+      { code: "+689", country: "French Polynesia" },
+      { code: "+690", country: "Tokelau" },
+      { code: "+691", country: "Federated States of Micronesia" },
+      { code: "+692", country: "Marshall Islands" },
+
+      // ZONE 7: Russia and neighboring regions
+      { code: "+7", country: "Russia" },
+      { code: "+7", country: "Kazakhstan" },
+
+      // ZONE 8: East Asia and Southeast Asia
+      { code: "+81", country: "Japan" },
+      { code: "+82", country: "South Korea" },
+      { code: "+84", country: "Vietnam" },
+      { code: "+850", country: "North Korea" },
+      { code: "+852", country: "Hong Kong" },
+      { code: "+853", country: "Macau" },
+      { code: "+855", country: "Cambodia" },
+      { code: "+856", country: "Laos" },
+      { code: "+880", country: "Bangladesh" },
+      { code: "+86", country: "China" },
+      { code: "+886", country: "Taiwan" },
+
+      // ZONE 9: West, Central, and South Asia
+      { code: "+90", country: "Turkey" },
+      { code: "+91", country: "India" },
+      { code: "+92", country: "Pakistan" },
+      { code: "+93", country: "Afghanistan" },
+      { code: "+94", country: "Sri Lanka" },
+      { code: "+95", country: "Myanmar" },
+      { code: "+98", country: "Iran" },
+      { code: "+960", country: "Maldives" },
+      { code: "+961", country: "Lebanon" },
+      { code: "+962", country: "Jordan" },
+      { code: "+963", country: "Syria" },
+      { code: "+964", country: "Iraq" },
+      { code: "+965", country: "Kuwait" },
+      { code: "+966", country: "Saudi Arabia" },
+      { code: "+967", country: "Yemen" },
+      { code: "+968", country: "Oman" },
+      { code: "+970", country: "Palestine" },
+      { code: "+971", country: "United Arab Emirates" },
+      { code: "+972", country: "Israel" },
+      { code: "+973", country: "Bahrain" },
+      { code: "+974", country: "Qatar" },
+      { code: "+975", country: "Bhutan" },
+      { code: "+976", country: "Mongolia" },
+      { code: "+977", country: "Nepal" },
+      { code: "+992", country: "Tajikistan" },
+      { code: "+993", country: "Turkmenistan" },
+      { code: "+994", country: "Azerbaijan" },
+      { code: "+995", country: "Georgia" },
+      { code: "+996", country: "Kyrgyzstan" },
+      { code: "+998", country: "Uzbekistan" }
     ];
 
-    // ==================== VALIDATORS ====================
-    const validators = {
-      filmTitle: (value) => value.trim().length >= 3 ? { valid: true } : { valid: false, error: 'Film title must be at least 3 characters' },
-      category: (value) => value ? { valid: true } : { valid: false, error: 'Please select a category' },
-      duration: (value) => {
-        const num = parseInt(value);
-        if (!num || num < 5) return { valid: false, error: 'Duration must be at least 5 seconds' };
-        if (num > 14400) return { valid: false, error: 'Duration must not exceed 4 hours' };
-        return { valid: true };
-      },
-      description: (value) => value.trim().length >= 20 ? { valid: true } : { valid: false, error: 'Description must be at least 20 characters' },
-      creatorName: (value) => value.trim().length >= 2 ? { valid: true } : { valid: false, error: 'Name must be at least 2 characters' },
-      email: (value) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value) ? { valid: true } : { valid: false, error: 'Please enter a valid email address' },
-      country: (value) => value && COUNTRIES.includes(value) ? { valid: true } : { valid: false, error: 'Please select a valid country' },
-      videoFile: (file) => {
-        if (!file) return { valid: false, error: 'Please upload a video file' };
-        const validTypes = ['video/mp4', 'video/quicktime', 'video/webm', 'video/x-msvideo', 'video/mpeg', 'video/x-m4v', 'video/3gpp', 'video/x-flv'];
-        if (!validTypes.includes(file.type)) return { valid: false, error: 'Invalid video format. Allowed: MP4, MOV, WebM, AVI, MPEG, M4V, 3GP, FLV' };
-        if (file.size > 250 * 1024 * 1024) return { valid: false, error: 'File size must not exceed 250MB' };
-        return { valid: true };
-      }
-    };
-
-    // ==================== DURATION PROCESSING ====================
-    function processDuration(seconds) {
-      const minutes = seconds / 60;
-      if (seconds < 60) return 'Ultra Short';
-      if (minutes < 5) return 'Short Form';
-      if (minutes < 15) return 'Short Film';
-      if (minutes < 40) return 'Medium Film';
-      return 'Longform';
-    }
-
-    function updateDurationAutoCalculation() {
-      const duration = document.querySelector('input[name="duration"]');
-      const filmTypeInput = document.querySelector('input[name="filmType"]');
-      const seconds = parseInt(duration.value) || 0;
-      if (seconds > 0) {
-        formState.filmType = processDuration(seconds);
-        filmTypeInput.value = formState.filmType;
-      }
-    }
-
-    // ==================== STEP NAVIGATION ====================
-    function showStep(step) {
-      document.querySelectorAll('.form-step').forEach(el => el.classList.remove('active'));
-      document.querySelector(`[data-step="${step}"]`).classList.add('active');
+    function initializePhoneCodeDropdown() {
+      const optionsContainer = document.getElementById('phone-code-options');
+      if (!optionsContainer || optionsContainer.children.length > 0) return;
       
-      document.querySelectorAll('.step').forEach((el, i) => {
-        const stepNum = i + 1;
-        el.classList.remove('active', 'completed');
-        if (stepNum < step) el.classList.add('completed');
-        else if (stepNum === step) el.classList.add('active');
+      countryCodes.forEach(item => {
+        const option = document.createElement('div');
+        option.className = 'phone-code-option';
+        option.dataset.code = item.code;
+        option.dataset.country = item.country;
+        option.innerHTML = `
+          <span class="phone-code-country">${item.country}</span>
+          <span class="phone-code-number">${item.code}</span>
+        `;
+        option.onclick = () => selectPhoneCode(item.code, item.country);
+        optionsContainer.appendChild(option);
       });
+    }
 
-      const formContainer = document.querySelector('.form-container');
-      if (formContainer) {
-        formContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    function togglePhoneCodeDropdown() {
+      const dropdown = document.getElementById('phone-code-dropdown');
+      const wrapper = document.querySelector('.phone-code-wrapper');
+      const display = document.getElementById('phone-code-display');
+      
+      dropdown.classList.toggle('active');
+      wrapper.classList.toggle('open');
+      display.classList.toggle('open');
+      
+      if (dropdown.classList.contains('active')) {
+        document.getElementById('phone-code-search').focus();
       }
     }
 
-    function goToReview() {
-      const errors = validateStep1();
-      if (errors.length > 0) {
-        displayErrors(errors);
-        return;
+    function filterPhoneCodes() {
+      const searchValue = document.getElementById('phone-code-search').value.toLowerCase();
+      const options = document.querySelectorAll('.phone-code-option');
+      
+      options.forEach(option => {
+        const country = option.querySelector('.phone-code-country').textContent.toLowerCase();
+        const code = option.querySelector('.phone-code-number').textContent.toLowerCase();
+        const matches = country.includes(searchValue) || code.includes(searchValue);
+        option.style.display = matches ? 'flex' : 'none';
+      });
+    }
+
+    function selectPhoneCode(code, country) {
+      // Update phone code display and value
+      document.getElementById('phone-code-display').textContent = code;
+      document.getElementById('phone-code-value').value = code;
+      
+      // Auto-fill country field with the selected country
+      const countryRadio = document.querySelector(`input[name="country-radio"][value="${country}"]`);
+      if (countryRadio) {
+        countryRadio.checked = true;
+        selectCountry(country);
       }
-      saveFormState();
-      populateReviewStep();
-      showStep(2);
+      
+      // Close phone code dropdown and remove open states
+      const phoneDropdown = document.getElementById('phone-code-dropdown');
+      const phoneWrapper = document.querySelector('.phone-code-wrapper');
+      const phoneDisplay = document.getElementById('phone-code-display');
+      
+      phoneDropdown.classList.remove('active');
+      phoneWrapper.classList.remove('open');
+      phoneDisplay.classList.remove('open');
+      
+      document.getElementById('phone-code-search').value = '';
+      
+      // Reset filter visibility
+      filterPhoneCodes();
+      
+      // Focus phone number input
+      document.getElementById('phone-number').focus();
     }
 
-    function goBackToEdit() {
-      showStep(1);
+    // Close phone code dropdown when clicking outside
+    document.addEventListener('click', function(event) {
+      const wrapper = document.querySelector('.phone-code-wrapper');
+      if (wrapper && !wrapper.contains(event.target)) {
+        const dropdown = document.getElementById('phone-code-dropdown');
+        dropdown.classList.remove('active');
+        wrapper.classList.remove('open');
+        document.getElementById('phone-code-display').classList.remove('open');
+      }
+    });
+
+    // Initialize phone code dropdown on page load
+    document.addEventListener('DOMContentLoaded', initializePhoneCodeDropdown);
+    // Also run immediately in case DOM is already loaded
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initializePhoneCodeDropdown);
+    } else {
+      initializePhoneCodeDropdown();
     }
 
-    // ==================== COUNTRY DROPDOWN SYSTEM ====================
-    function initCountryDropdown() {
-      const input = document.getElementById('country-input');
-      const dropdown = document.getElementById('country-dropdown');
-
-      input.addEventListener('focus', () => {
-        renderCountriesList(COUNTRIES);
-        dropdown.style.display = 'block';
-      });
-
-      input.addEventListener('input', (e) => {
-        const search = e.target.value.toLowerCase();
-        const filtered = COUNTRIES.filter(c => c.toLowerCase().includes(search));
-        renderCountriesList(filtered);
-        dropdown.style.display = filtered.length > 0 ? 'block' : 'none';
-      });
-
-      input.addEventListener('keydown', (e) => {
-        if (e.key === 'ArrowDown') {
-          e.preventDefault();
-          const items = dropdown.querySelectorAll('.country-item');
-          if (items.length > 0) items[0].focus();
-        } else if (e.key === 'Escape') {
-          dropdown.style.display = 'none';
-        }
-      });
-
-      document.addEventListener('click', (e) => {
-        if (!e.target.closest('.form-group') && e.target !== input) {
-          dropdown.style.display = 'none';
-        }
-      });
-    }
-
-    function renderCountriesList(countries) {
-      const dropdown = document.getElementById('country-dropdown');
-      dropdown.innerHTML = countries.map(country => `
-        <div class="country-item" tabindex="0" style="padding: 0.75rem 1.25rem; cursor: pointer; transition: background 0.2s; border-bottom: 1px solid rgba(255, 255, 255, 0.05);">
-          ${country}
-        </div>
-      `).join('');
-
-      document.querySelectorAll('.country-item').forEach(item => {
-        item.addEventListener('click', () => {
-          document.getElementById('country-input').value = item.textContent;
-          document.getElementById('country-dropdown').style.display = 'none';
-        });
-        item.addEventListener('keydown', (e) => {
-          if (e.key === 'Enter') item.click();
-          if (e.key === 'ArrowDown') e.target.nextElementSibling?.focus();
-          if (e.key === 'ArrowUp') e.target.previousElementSibling?.focus();
-        });
-        item.addEventListener('mouseover', () => item.style.background = 'rgba(220, 38, 38, 0.1)');
-        item.addEventListener('mouseout', () => item.style.background = 'transparent');
-      });
-    }
-
-    // ==================== FILE UPLOAD SYSTEM ====================
-    function initFileUpload() {
-      const uploadArea = document.getElementById('file-upload-area');
-      const fileInput = document.getElementById('video-file');
-      const fileName = document.getElementById('file-name');
-
-      uploadArea.addEventListener('click', () => fileInput.click());
-
-      uploadArea.addEventListener('dragover', (e) => {
-        e.preventDefault();
-        uploadArea.style.borderColor = 'rgba(220, 38, 38, 0.6)';
-        uploadArea.style.background = 'rgba(220, 38, 38, 0.05)';
-      });
-
-      uploadArea.addEventListener('dragleave', () => {
-        uploadArea.style.borderColor = 'rgba(220, 38, 38, 0.3)';
-        uploadArea.style.background = 'transparent';
-      });
-
-      uploadArea.addEventListener('drop', (e) => {
-        e.preventDefault();
-        uploadArea.style.borderColor = 'rgba(220, 38, 38, 0.3)';
-        uploadArea.style.background = 'transparent';
-        const files = e.dataTransfer.files;
-        if (files.length > 0) handleFileSelect(files[0]);
-      });
-
-      fileInput.addEventListener('change', (e) => {
-        if (e.target.files.length > 0) handleFileSelect(e.target.files[0]);
-      });
-
-      function handleFileSelect(file) {
-        const validation = validators.videoFile(file);
-        if (validation.valid) {
-          formState.videoFile = file;
-          formState.videoFileName = file.name;
-          fileName.textContent = `✓ ${file.name} (${(file.size / 1024 / 1024).toFixed(1)}MB)`;
-          fileName.style.display = 'block';
-          uploadArea.style.borderColor = 'rgba(0, 200, 83, 0.3)';
-        } else {
-          alert('Error: ' + validation.error);
-          fileInput.value = '';
-        }
+    // ============================================
+    // FILE UPLOAD TOGGLE
+    // ============================================
+    
+    function switchUploadMethod(method) {
+      const fileMethodBox = document.getElementById('file-method-box');
+      const linkMethodBox = document.getElementById('link-method-box');
+      const fileOption = document.getElementById('file-upload-option');
+      const linkOption = document.getElementById('drive-link-option');
+      const fileRadio = document.getElementById('method-file');
+      const linkRadio = document.getElementById('method-link');
+      const driveLink = document.getElementById('drive-link');
+      
+      if (method === 'file') {
+        fileMethodBox.classList.add('active');
+        linkMethodBox.classList.remove('active');
+        fileRadio.checked = true;
+        linkRadio.checked = false;
+        fileOption.style.display = 'block';
+        linkOption.style.display = 'none';
+        driveLink.required = false;
+      } else {
+        linkMethodBox.classList.add('active');
+        fileMethodBox.classList.remove('active');
+        linkRadio.checked = true;
+        fileRadio.checked = false;
+        linkOption.style.display = 'block';
+        fileOption.style.display = 'none';
+        driveLink.required = true;
       }
     }
 
-    // ==================== FORM VALIDATION ====================
-    function validateStep1() {
-      const errors = [];
-      ['filmTitle', 'category', 'duration', 'description', 'creatorName', 'email', 'country', 'videoFile'].forEach(field => {
-        let value = formState[field];
-        if (field === 'videoFile') value = document.getElementById('video-file').files[0];
-        const result = validators[field](value);
-        if (!result.valid) errors.push(result.error);
-      });
-      return errors;
-    }
+    // ============================================
+    // OLD COUNTRY AUTOCOMPLETE (REMOVED)
+    // ============================================
 
-    function displayErrors(errors) {
-      const errorSummary = document.getElementById('error-summary');
-      const errorList = document.getElementById('error-list');
-      errorList.innerHTML = errors.map(e => `<li>${e}</li>`).join('');
-      errorSummary.style.display = 'block';
-      errorSummary.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    }
+    // ============================================
+    // FILE UPLOAD HANDLING
+    // ============================================
+    
+    const fileUploadArea = document.getElementById('file-upload-area');
+    const videoFileInput = document.getElementById('video-file');
+    const fileNameDisplay = document.getElementById('file-name');
 
-    function saveFormState() {
-      formState.filmTitle = document.querySelector('input[name="filmTitle"]').value;
-      formState.category = document.querySelector('select[name="category"]').value;
-      formState.duration = parseInt(document.querySelector('input[name="duration"]').value) || 0;
-      formState.filmType = document.querySelector('input[name="filmType"]').value;
-      formState.description = document.querySelector('textarea[name="description"]').value;
-      formState.creatorName = document.querySelector('input[name="creatorName"]').value;
-      formState.email = document.querySelector('input[name="email"]').value;
-      formState.country = document.querySelector('input[name="country"]').value;
-      formState.phone = document.querySelector('input[name="phone"]').value;
-    }
+    // Prevent default drag behaviors
+    ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+      fileUploadArea.addEventListener(eventName, preventDefaults, false);
+      document.body.addEventListener(eventName, preventDefaults, false);
+    });
 
-    function populateReviewStep() {
-      const categoryMap = { 'short': 'AI Short Film', 'micro': 'AI Micro Drama', 'commercial': 'AI Commercial Film', 'music': 'Music Video' };
-      document.getElementById('review-filmTitle').textContent = formState.filmTitle;
-      document.getElementById('review-category').textContent = categoryMap[formState.category] || formState.category;
-      document.getElementById('review-filmType').textContent = formState.filmType;
-      document.getElementById('review-duration').textContent = formState.duration;
-      document.getElementById('review-creatorName').textContent = formState.creatorName;
-      document.getElementById('review-email').textContent = formState.email;
-      document.getElementById('review-country').textContent = formState.country;
-      document.getElementById('review-videoFile').textContent = formState.videoFileName || '-';
-    }
-
-    // ==================== FORM SUBMISSION ====================
-    async function submitForm(e) {
+    function preventDefaults(e) {
       e.preventDefault();
+      e.stopPropagation();
+    }
 
-      const termsCheckbox = document.querySelector('input[name="termsAccepted"]');
-      if (!termsCheckbox.checked) {
-        alert('Please accept the terms and conditions');
+    // Highlight drop area when item is dragged over it
+    ['dragenter', 'dragover'].forEach(eventName => {
+      fileUploadArea.addEventListener(eventName, highlight, false);
+    });
+
+    ['dragleave', 'drop'].forEach(eventName => {
+      fileUploadArea.addEventListener(eventName, unhighlight, false);
+    });
+
+    function highlight(e) {
+      fileUploadArea.style.borderColor = '#dc2626';
+      fileUploadArea.style.background = 'rgba(220, 38, 38, 0.05)';
+    }
+
+    function unhighlight(e) {
+      fileUploadArea.style.borderColor = 'rgba(220, 38, 38, 0.3)';
+      fileUploadArea.style.background = 'rgba(10, 10, 10, 0.4)';
+    }
+
+    // Handle dropped files
+    fileUploadArea.addEventListener('drop', handleDrop, false);
+
+    function handleDrop(e) {
+      const dt = e.dataTransfer;
+      const files = dt.files;
+      handleFiles(files);
+    }
+
+    // Handle file input change
+    videoFileInput.addEventListener('change', function(e) {
+      handleFiles(this.files);
+    });
+
+    function handleFiles(files) {
+      if (files.length === 0) return;
+      
+      const file = files[0];
+      const maxSize = 10 * 1024 * 1024 * 1024; // 10 GB in bytes
+      
+      // Check if it's a video file
+      if (!file.type.startsWith('video/')) {
+        alert('Please upload a video file.');
+        return;
+      }
+      
+      // Check file size
+      if (file.size > maxSize) {
+        alert('File size exceeds 10 GB limit. Please compress your video or select a smaller file.');
+        return;
+      }
+      
+      // Display filename
+      fileNameDisplay.textContent = `📁 ${file.name} (${(file.size / (1024 * 1024 * 1024)).toFixed(2)} GB)`;
+      fileNameDisplay.style.display = 'block';
+      
+      // Update upload zone appearance
+      fileUploadArea.querySelector('.upload-text').textContent = 'FILE SELECTED';
+      fileUploadArea.querySelector('.upload-icon').textContent = '✓';
+      fileUploadArea.style.borderColor = '#10b981';
+    }
+
+    // ============================================
+    // FORM VALIDATION & SUBMISSION
+    // ============================================
+    
+    const form = document.getElementById('submission-form');
+    const errorSummary = document.getElementById('error-summary');
+    const errorList = document.getElementById('error-list');
+    const successScreen = document.getElementById('success-screen');
+    const referenceIdElement = document.getElementById('reference-id');
+
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      
+      // Clear previous errors
+      errorSummary.style.display = 'none';
+      errorList.innerHTML = '';
+      const errors = [];
+
+      // Validate all required fields
+      const filmTitle = document.getElementById('film-title').value.trim();
+      const runtime = document.getElementById('runtime-total').value;
+      const awardCategory = document.getElementById('award-category').value;
+      const category = document.getElementById('genre-values').value;
+      const aiTools = document.getElementById('ai-tools-values').value;
+      const creatorName = form.creatorName.value.trim();
+      const email = form.email.value.trim();
+      const country = document.getElementById('country-input').value.trim();
+      const uploadMethodRadio = document.querySelector('input[name="uploadMethod"]:checked');
+      const uploadMethod = uploadMethodRadio ? uploadMethodRadio.value : null;
+      const videoFile = videoFileInput.files[0];
+      const driveLink = document.getElementById('drive-link').value.trim();
+
+      if (!filmTitle) errors.push('Film Title is required');
+      
+      if (!runtime || parseFloat(runtime) === 0) {
+        errors.push('Runtime is required');
+      } else {
+        const totalMinutes = parseFloat(runtime);
+        if (totalMinutes < 0.5) {
+          errors.push('Runtime must be at least 30 seconds (0.5 minutes)');
+        }
+        if (totalMinutes > 60) {
+          errors.push('Runtime must not exceed 60 minutes');
+        }
+      }
+      
+      if (!awardCategory) errors.push('Award Category is required');
+      if (!category) errors.push('Genre is required - please select at least one genre');
+      if (!aiTools) errors.push('AI Tools Used is required - please select at least one tool');
+      if (!creatorName) errors.push('Director Name is required');
+      
+      if (!email) {
+        errors.push('Email Address is required');
+      } else {
+        // Improved email validation
+        const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        if (!emailPattern.test(email)) {
+          errors.push('Please enter a valid email address');
+        }
+      }
+      
+      const phoneNumber = document.getElementById('phone-number').value.trim();
+      if (!phoneNumber) {
+        errors.push('Phone Number is required');
+      } else if (phoneNumber.length < 5) {
+        errors.push('Please enter a valid phone number');
+      }
+      
+      if (!country) errors.push('Region / Country is required');
+      
+      // Validate file upload method selection
+      if (!uploadMethod) {
+        errors.push('Please select an upload method (Upload File or Provide Drive Link)');
+      } else if (uploadMethod === 'file') {
+        if (!videoFile) errors.push('Video file is required');
+      } else if (uploadMethod === 'link') {
+        if (!driveLink) errors.push('Drive link is required');
+        else if (!driveLink.startsWith('http')) {
+          errors.push('Please enter a valid URL for the drive link');
+        }
+      }
+
+      // If there are errors, display them
+      if (errors.length > 0) {
+        errorList.innerHTML = errors.map(error => `<li>${error}</li>`).join('');
+        errorSummary.style.display = 'block';
+        errorSummary.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         return;
       }
 
-      const submitBtn = e.target.querySelector('button[type="submit"]');
-      submitBtn.disabled = true;
-      submitBtn.textContent = 'Submitting...';
+      // Show progress
+      const uploadProgress = document.getElementById('upload-progress');
+      uploadProgress.style.display = 'block';
 
       // Prepare form data
       const formData = new FormData();
-      formData.append('filmTitle', formState.filmTitle);
-      formData.append('category', formState.category);
-      formData.append('duration', formState.duration);
-      formData.append('filmType', formState.filmType);
-      formData.append('description', formState.description);
-      formData.append('creatorName', formState.creatorName);
-      formData.append('email', formState.email);
-      formData.append('country', formState.country);
-      formData.append('phone', formState.phone);
-      if (formState.videoFile) {
-        formData.append('videoFile', formState.videoFile);
+      formData.append('filmTitle', filmTitle);
+      formData.append('runtime', runtime);
+      formData.append('awardCategory', awardCategory);
+      formData.append('category', category);
+      formData.append('description', form.description.value.trim());
+      formData.append('aiTools', aiTools);
+      formData.append('creatorName', creatorName);
+      formData.append('email', email);
+      formData.append('phoneNumber', phoneNumber);
+      formData.append('phoneCode', document.getElementById('phone-code-value').value);
+      formData.append('country', country);
+      formData.append('productionTeam', form.productionTeam.value.trim());
+      
+      if (uploadMethod === 'file') {
+        formData.append('videoFile', videoFile);
+        formData.append('uploadMethod', 'file');
+      } else {
+        formData.append('driveLink', driveLink);
+        formData.append('uploadMethod', 'link');
+      }
+      
+      // Add genre other text if applicable
+      const genreOtherText = document.getElementById('genre-other-text').value.trim();
+      if (genreOtherText) {
+        formData.append('genreOther', genreOtherText);
+      }
+      
+      // Add AI tool other text if applicable
+      const aiToolOtherText = document.getElementById('ai-tool-other-text').value.trim();
+      if (aiToolOtherText) {
+        formData.append('aiToolOther', aiToolOtherText);
       }
 
       try {
-        // Simulated backend call - replace with actual API endpoint
-        // const response = await fetch('/api/submit-film', { method: 'POST', body: formData });
-        // const result = await response.json();
-        
-        // Simulated delay for demonstration
-        await new Promise(resolve => setTimeout(resolve, 1500));
+        // Submit to backend API
+        const response = await fetch('/api/submit-film', {
+          method: 'POST',
+          body: formData
+        });
 
-        // Show success screen
-        const referenceId = 'HUNGAMA-' + new Date().getFullYear() + '-' + Math.random().toString(36).substr(2, 9).toUpperCase();
-        document.getElementById('reference-id').textContent = referenceId;
-        document.getElementById('submission-form').style.display = 'none';
-        document.getElementById('step-indicator').style.display = 'none';
-        document.getElementById('form-header-subtitle').style.display = 'none';
-        document.getElementById('success-screen').style.display = 'block';
+        const result = await response.json();
 
-        // Log submission (in real implementation, data would be sent to backend)
-        console.log('Submission successful:', { ...formState, referenceId });
+        if (response.ok && result.success) {
+          // Show success screen
+          referenceIdElement.textContent = result.referenceId;
+          form.style.display = 'none';
+          successScreen.style.display = 'block';
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        } else {
+          throw new Error(result.message || 'Submission failed');
+        }
       } catch (error) {
-        alert('Submission failed: ' + error.message);
-        submitBtn.disabled = false;
-        submitBtn.textContent = 'Submit Submission';
+        uploadProgress.style.display = 'none';
+        alert('An error occurred during submission. Please try again. Error: ' + error.message);
       }
-    }
-
-    function resetForm() {
-      // Reset state
-      Object.keys(formState).forEach(key => {
-        if (typeof formState[key] === 'string') formState[key] = '';
-        if (typeof formState[key] === 'number') formState[key] = 0;
-        if (typeof formState[key] === 'object') formState[key] = null;
-      });
-
-      // Reset form elements
-      document.getElementById('submission-form').reset();
-      document.getElementById('video-file').value = '';
-      document.getElementById('file-name').style.display = 'none';
-      document.getElementById('error-summary').style.display = 'none';
-
-      // Reset UI
-      document.getElementById('submission-form').style.display = 'block';
-      document.getElementById('step-indicator').style.display = 'flex';
-      document.getElementById('form-header-subtitle').style.display = 'block';
-      document.getElementById('success-screen').style.display = 'none';
-
-      // Go to step 1
-      showStep(1);
-    }
-
-    // ==================== INITIALIZATION ====================
-    document.addEventListener('DOMContentLoaded', () => {
-      // Initialize systems
-      initCountryDropdown();
-      initFileUpload();
-
-      // Attach event listeners
-      document.querySelector('input[name="duration"]').addEventListener('change', updateDurationAutoCalculation);
-      document.querySelector('input[name="duration"]').addEventListener('input', updateDurationAutoCalculation);
-      document.getElementById('submission-form').addEventListener('submit', submitForm);
-
-      // Auto-calculate film type on page load
-      updateDurationAutoCalculation();
     });
 
-    // Add animation keyframe
-    const style = document.createElement('style');
-    style.textContent = `
-      @keyframes pulse {
-        0%, 100% { transform: scale(1); }
-        50% { transform: scale(1.05); }
+    function resetForm() {
+      form.reset();
+      
+      // Reset runtime fields
+      document.getElementById('runtime-total').value = '';
+      document.getElementById('runtime-preview').style.display = 'none';
+      
+      // Reset genre selection
+      document.querySelectorAll('#genre-options input[type="checkbox"]').forEach(cb => cb.checked = false);
+      updateGenreSelection();
+      document.getElementById('genre-other-text').classList.remove('show');
+      document.getElementById('genre-other-text').value = '';
+      
+      // Reset AI tools selection
+      document.querySelectorAll('.ai-tool-checkbox input[type="checkbox"]').forEach(cb => cb.checked = false);
+      document.getElementById('ai-tools-values').value = '';
+      document.getElementById('ai-tool-other-text').classList.remove('show');
+      document.getElementById('ai-tool-other-text').value = '';
+      
+      // Reset country selection
+      removeCountry();
+      
+      // Reset file upload
+      fileNameDisplay.style.display = 'none';
+      fileNameDisplay.textContent = '';
+      fileUploadArea.querySelector('.upload-text').textContent = 'DRAG & DROP MASTER FILE';
+      fileUploadArea.querySelector('.upload-icon').textContent = '☁️';
+      fileUploadArea.style.borderColor = 'rgba(220, 38, 38, 0.3)';
+      document.getElementById('drive-link').value = '';
+      
+      // Reset award category
+      document.getElementById('award-category').value = '';
+      
+      // Reset upload method radio selection and hide both options
+      const fileRadio = document.getElementById('method-file');
+      const linkRadio = document.getElementById('method-link');
+      const fileMethodBox = document.getElementById('file-method-box');
+      const linkMethodBox = document.getElementById('link-method-box');
+      if (fileRadio) fileRadio.checked = false;
+      if (linkRadio) linkRadio.checked = false;
+      if (fileMethodBox) fileMethodBox.classList.remove('active');
+      if (linkMethodBox) linkMethodBox.classList.remove('active');
+      document.getElementById('file-upload-option').style.display = 'none';
+      document.getElementById('drive-link-option').style.display = 'none';
+      
+      form.style.display = 'block';
+      successScreen.style.display = 'none';
+      document.getElementById('upload-progress').style.display = 'none';
+    }
+
+    // ============================================
+    // KEYBOARD NAVIGATION
+    // ============================================
+    
+    form.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' && e.target.tagName !== 'TEXTAREA') {
+        e.preventDefault();
+        
+        const formElements = Array.from(form.elements).filter(el => 
+          el.tagName === 'INPUT' || el.tagName === 'SELECT' || el.tagName === 'TEXTAREA'
+        );
+        
+        const currentIndex = formElements.indexOf(e.target);
+        if (currentIndex < formElements.length - 1) {
+          formElements[currentIndex + 1].focus();
+        }
       }
-    `;
-    document.head.appendChild(style);
+    });
   </script>
-
-  <!-- Production Scroll System -->
-  <script src="js/production-scroll.js"></script>
-  
-  <!-- Production Parallax Engine -->
-  <script src="js/production-parallax.js"></script>
-
-  <!-- Main Entry Point -->
-  <script src="js/main.js"></script>
-
-  <!-- Feature Scripts -->
-  <script src="js/data.js"></script>
-  <script src="js/email-capture.js"></script>
-  <script src="js/cta-wiring.js"></script>
 
   <!-- Navigation System -->
   <script src="js/navigation.js"></script>

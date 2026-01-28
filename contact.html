@@ -227,7 +227,7 @@
         <a href="vision.html" class="transition">Vision</a>
         <!-- <a href="honors.html" class="transition">Honors</a> -->
         <a href="nominees.html" class="transition">Categories</a>
-        <a href="jury.html" class="transition">Jury</a>
+        <a href="jury.html" class="transition">Creative Council</a>
         <!-- <a href="ceremony.html" class="transition">Ceremony</a> -->
         <!-- <a href="winners.html" class="transition">Winners</a> -->
         <!-- <a href="press.html" class="transition">Press</a> -->
@@ -342,24 +342,95 @@
       <!-- Contact Form Section -->
       <div style="margin-top: 4rem; border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 3rem;">
         <h2 style="font-size: 2rem; margin-bottom: 1.5rem;">Send us a Message</h2>
-        <form style="max-width: 600px;">
+        <form id="contact-form" style="max-width: 600px;">
           <div class="spacing-bottom">
             <label class="form-hint">Name</label>
-            <input type="text" placeholder="Your name" style="width: 100%; padding: 0.75rem; background-color: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); color: white; border-radius: 0.25rem;">
+            <input type="text" name="name" id="contact-name" placeholder="Your name" required style="width: 100%; padding: 0.75rem; background-color: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); color: white; border-radius: 0.25rem;">
           </div>
           <div class="spacing-bottom">
             <label class="form-hint">Email</label>
-            <input type="email" placeholder="your@email.com" style="width: 100%; padding: 0.75rem; background-color: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); color: white; border-radius: 0.25rem;">
+            <input type="email" name="email" id="contact-email" placeholder="your@email.com" required style="width: 100%; padding: 0.75rem; background-color: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); color: white; border-radius: 0.25rem;">
           </div>
           <div class="spacing-bottom">
             <label class="form-hint">Message</label>
-            <textarea placeholder="Your message..." rows="5" style="width: 100%; padding: 0.75rem; background-color: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); color: white; border-radius: 0.25rem; font-family: 'DM Sans', sans-serif;"></textarea>
+            <textarea name="message" id="contact-message" placeholder="Your message..." rows="5" required style="width: 100%; padding: 0.75rem; background-color: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); color: white; border-radius: 0.25rem; font-family: 'DM Sans', sans-serif;"></textarea>
           </div>
-          <button type="submit" style="background-color: #ef4444; padding: 0.75rem 1.5rem; border: none; border-radius: 9999px; color: white; font-weight: 600; font-size: 0.875rem; cursor: pointer; transition: all 0.3s ease;">
+          <div id="contact-status" style="margin-bottom: 1rem; padding: 0.75rem; border-radius: 0.25rem; display: none;"></div>
+          <button type="submit" id="contact-submit-btn" style="background-color: #ef4444; padding: 0.75rem 1.5rem; border: none; border-radius: 9999px; color: white; font-weight: 600; font-size: 0.875rem; cursor: pointer; transition: all 0.3s ease;">
             Send Message
           </button>
         </form>
       </div>
+      
+      <script>
+        // Contact form email capture handler
+        document.addEventListener('DOMContentLoaded', function() {
+          const contactForm = document.getElementById('contact-form');
+          const statusDiv = document.getElementById('contact-status');
+          const submitBtn = document.getElementById('contact-submit-btn');
+          
+          contactForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('contact-name').value;
+            const email = document.getElementById('contact-email').value;
+            const message = document.getElementById('contact-message').value;
+            
+            // Disable button
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Sending...';
+            
+            try {
+              // Send to backend email capture endpoint
+              const response = await fetch('/api/capture-email', {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                  email: email,
+                  source: 'contact-form',
+                  name: name,
+                  message: message
+                })
+              });
+              
+              if (response.ok) {
+                // Show success message
+                statusDiv.style.display = 'block';
+                statusDiv.style.backgroundColor = 'rgba(0, 200, 83, 0.1)';
+                statusDiv.style.border = '1px solid rgba(0, 200, 83, 0.3)';
+                statusDiv.style.color = '#00c853';
+                statusDiv.textContent = '✓ Message sent successfully! We\'ll get back to you soon.';
+                
+                // Reset form
+                contactForm.reset();
+                
+                // Store email in session for potential submission
+                sessionStorage.setItem('userEmail', email);
+              } else {
+                throw new Error('Failed to send message');
+              }
+            } catch (error) {
+              // Show error message
+              statusDiv.style.display = 'block';
+              statusDiv.style.backgroundColor = 'rgba(220, 38, 38, 0.1)';
+              statusDiv.style.border = '1px solid rgba(220, 38, 38, 0.3)';
+              statusDiv.style.color = '#dc2626';
+              statusDiv.textContent = '✗ Failed to send message. Please try again or email us directly.';
+            } finally {
+              // Re-enable button
+              submitBtn.disabled = false;
+              submitBtn.textContent = 'Send Message';
+              
+              // Hide status after 5 seconds
+              setTimeout(() => {
+                statusDiv.style.display = 'none';
+              }, 5000);
+            }
+          });
+        });
+      </script>
     </div>
   </section>
 
