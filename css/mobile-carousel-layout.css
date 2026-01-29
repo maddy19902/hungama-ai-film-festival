@@ -262,10 +262,11 @@
     font-size: 2.2rem;
     line-height: 1.2;
     margin-bottom: 1.5rem;
+    word-spacing: 0.05em;
   }
   
   #cta h2 br {
-    display: none;
+    display: block;
   }
   
   #cta p {
