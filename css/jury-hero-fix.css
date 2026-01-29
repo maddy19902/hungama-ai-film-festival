@@ -58,3 +58,24 @@ section[data-parallax-layer="background"] > div {
   position: relative !important;
   z-index: 2 !important;
 }
+
+/* === MOBILE-SPECIFIC BACKGROUND FIX === */
+/* On mobile, adjust background-size and background-position to ensure the eye is visible */
+@media (max-width: 768px) {
+  section[data-parallax-layer="background"] {
+    background-size: cover !important;
+    background-position: 75% center !important;
+    background-attachment: scroll !important;
+    background-repeat: no-repeat !important;
+  }
+}
+
+/* === TABLET AND DESKTOP - ENSURE EYE ON RIGHT === */
+@media (min-width: 769px) {
+  section[data-parallax-layer="background"] {
+    background-size: cover !important;
+    background-position: right center !important;
+    background-attachment: fixed !important;
+    background-repeat: no-repeat !important;
+  }
+}

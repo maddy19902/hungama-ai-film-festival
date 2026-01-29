@@ -382,6 +382,10 @@ main .jury-hero,
         min-height: 280px;
     }
     
+    .jury-card__image {
+        object-position: center 20%;
+    }
+    
     .jury-card__content {
         padding: 1.25rem;
     }
