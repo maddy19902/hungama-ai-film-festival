@@ -82,12 +82,14 @@
     /* LEFT SIDEBAR - GUIDELINES */
     .guidelines-sidebar {
       background: #141414;
-      padding: 2rem 1.75rem;
+      padding: 0rem 2rem;
       border: 1px solid rgba(255, 255, 255, 0.05);
       border-radius: 1rem;
       height: fit-content;
       position: sticky;
       top: 90px;
+      min-height: auto;
+      align-self: start;
     }
 
     .guidelines-sidebar h2 {
@@ -164,7 +166,7 @@
 
     /* RIGHT COLUMN - FORM AREA */
     .form-main-area {
-      padding: 3rem 4rem;
+      padding: 0rem 4rem;
       max-width: 900px;
     }
 
@@ -175,6 +177,8 @@
       border-radius: 1rem;
       padding: 2rem;
       margin-bottom: 2rem;
+      position: relative;
+      z-index: 1;
     }
 
     .form-section-header {
@@ -326,22 +330,23 @@
 
     .multi-select-wrapper {
       position: relative;
-      z-index: 1000;
+      z-index: 100;
     }
 
     .multi-select-dropdown {
       position: absolute;
       top: calc(100% + 0.5rem);
       left: 0;
-      right: 0;
       background: rgba(10, 10, 10, 0.98);
       border: 1px solid rgba(220, 38, 38, 0.3);
       border-radius: 0.5rem;
       max-height: 300px;
       overflow-y: auto;
-      z-index: 10000;
+      z-index: 9999;
       display: none;
       box-shadow: 0 10px 40px rgba(0, 0, 0, 0.7);
+      min-width: 350px;
+      right: auto;
     }
 
     .multi-select-dropdown.show {
@@ -354,6 +359,7 @@
       background: rgba(10, 10, 10, 1);
       padding: 0.75rem;
       border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      z-index: 10001;
     }
 
     .multi-select-search input {
@@ -444,6 +450,7 @@
     /* COUNTRY INPUT WRAPPER (Text Input + Dropdown) */
     .country-input-wrapper {
       position: relative;
+      z-index: 100;
     }
 
     .country-input {
@@ -530,16 +537,101 @@
       color: #ffffff;
       cursor: pointer;
       transition: all 0.3s ease;
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='rgba(255,255,255,0.6)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+      background-repeat: no-repeat;
+      background-position: right 0.75rem center;
+      background-size: 1.25rem;
+      padding-right: 2.5rem;
     }
 
     .compound-input-group select:focus {
       outline: none;
       border-color: #dc2626;
       background: rgba(0, 0, 0, 0.5);
+      background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23dc2626' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
     }
 
     .compound-input-group select:hover {
       border-color: rgba(220, 38, 38, 0.5);
+    }
+
+    /* RUNTIME UNIT CUSTOM DROPDOWN */
+    .runtime-unit-wrapper {
+      position: relative;
+      flex: 1;
+      min-width: 120px;
+      z-index: 100;
+    }
+
+    .runtime-unit-display {
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 0.5rem;
+      padding: 0.75rem 1rem;
+      font-size: 0.875rem;
+      color: rgba(255, 255, 255, 0.7);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .runtime-unit-display::after {
+      content: '˅';
+      font-size: 0.875rem;
+      color: rgba(255, 255, 255, 0.5);
+      margin-left: 0.5rem;
+      transition: transform 0.3s ease;
+    }
+
+    .runtime-unit-display:hover {
+      border-color: rgba(220, 38, 38, 0.5);
+    }
+
+    .runtime-unit-display.open {
+      border-color: #dc2626;
+      background: rgba(0, 0, 0, 0.6);
+      color: #ffffff;
+    }
+
+    .runtime-unit-display.open::after {
+      transform: rotate(180deg);
+    }
+
+    .runtime-unit-dropdown {
+      display: none;
+      position: absolute;
+      top: calc(100% + 0.5rem);
+      left: 0;
+      right: 0;
+      background: rgba(10, 10, 10, 0.98);
+      border: 1px solid rgba(220, 38, 38, 0.3);
+      border-radius: 0.5rem;
+      z-index: 9999;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.7);
+    }
+
+    .runtime-unit-dropdown.show {
+      display: block;
+    }
+
+    .runtime-unit-option {
+      padding: 0.75rem 1rem;
+      cursor: pointer;
+      transition: background 0.2s ease;
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 0.875rem;
+      text-align: center;
+    }
+
+    .runtime-unit-option:hover {
+      background: rgba(220, 38, 38, 0.1);
+      color: #ffffff;
     }
 
     .runtime-preview {
@@ -717,7 +809,7 @@
     .phone-code-wrapper {
       position: relative;
       flex: 0 0 auto;
-      z-index: 1000;
+      z-index: 100;
     }
 
     .phone-code-display {
@@ -748,14 +840,14 @@
       position: absolute;
       top: calc(100% + 0.5rem);
       left: 0;
-      min-width: 320px;
       background: rgba(20, 20, 20, 0.98);
       border: 1px solid rgba(220, 38, 38, 0.3);
       border-radius: 0.5rem;
-      z-index: 10000;
-      max-height: 250px;
+      z-index: 9999;
+      max-height: 300px;
       overflow-y: auto;
       box-shadow: 0 10px 40px rgba(0, 0, 0, 0.7);
+      min-width: 360px;
     }
 
     .phone-code-dropdown.active {
@@ -768,6 +860,7 @@
       position: sticky;
       top: 0;
       background: rgba(20, 20, 20, 0.95);
+      z-index: 10001;
     }
 
     .phone-code-search input {
@@ -1015,7 +1108,9 @@
       border: 1px solid rgba(255, 255, 255, 0.08);
       border-radius: 1rem;
       margin-bottom: 1rem;
-      overflow: visible;
+      overflow: hidden;
+      position: relative;
+      z-index: 1;
     }
 
     .accordion-header {
@@ -1051,7 +1146,7 @@
 
     .accordion-content {
       max-height: 0;
-      overflow: visible;
+      overflow: hidden;
       transition: max-height 0.4s ease, visibility 0.3s ease;
       visibility: hidden;
     }
@@ -1059,6 +1154,7 @@
     .accordion-section.open .accordion-content {
       max-height: none;
       visibility: visible;
+      overflow: visible !important;
     }
 
     .accordion-body {
@@ -1476,20 +1572,26 @@
                   <div class="compound-field">
                     <div class="compound-input-group">
                       <input type="number" id="runtime-value-1" placeholder="Value" min="0" required>
-                      <select id="runtime-unit-1" required>
-                        <option value="">Unit</option>
-                        <option value="HH">HH</option>
-                        <option value="MM">MM</option>
-                        <option value="SS">SS</option>
-                      </select>
+                      <div class="runtime-unit-wrapper">
+                        <div class="runtime-unit-display" id="runtime-unit-1-display" onclick="toggleRuntimeUnit(1)">Unit</div>
+                        <div class="runtime-unit-dropdown" id="runtime-unit-1-dropdown">
+                          <div class="runtime-unit-option" onclick="selectRuntimeUnit(1, 'HH')">HH</div>
+                          <div class="runtime-unit-option" onclick="selectRuntimeUnit(1, 'MM')">MM</div>
+                          <div class="runtime-unit-option" onclick="selectRuntimeUnit(1, 'SS')">SS</div>
+                        </div>
+                      </div>
+                      <input type="hidden" id="runtime-unit-1" value="">
                     </div>
                     <div class="compound-input-group">
                       <input type="number" id="runtime-value-2" placeholder="Value (optional)" min="0">
-                      <select id="runtime-unit-2">
-                        <option value="">Unit</option>
-                        <option value="MM">MM</option>
-                        <option value="SS">SS</option>
-                      </select>
+                      <div class="runtime-unit-wrapper">
+                        <div class="runtime-unit-display" id="runtime-unit-2-display" onclick="toggleRuntimeUnit(2)">Unit</div>
+                        <div class="runtime-unit-dropdown" id="runtime-unit-2-dropdown">
+                          <div class="runtime-unit-option" onclick="selectRuntimeUnit(2, 'MM')">MM</div>
+                          <div class="runtime-unit-option" onclick="selectRuntimeUnit(2, 'SS')">SS</div>
+                        </div>
+                      </div>
+                      <input type="hidden" id="runtime-unit-2" value="">
                     </div>
                   </div>
                   <input type="hidden" name="runtime" id="runtime-total">
@@ -1500,15 +1602,43 @@
               <div class="form-row full">
                 <div class="form-field">
                   <label>Award Category *</label>
-                  <select name="awardCategory" id="award-category" required>
-                    <option value="">Select an award...</option>
-                    <option value="AI Micro Drama">AI Micro Drama</option>
-                    <option value="AI Short Film">AI Short Film</option>
-                    <option value="AI Documentary – Factual">AI Documentary – Factual</option>
-                    <option value="Experimental & Art Film">Experimental & Art Film</option>
-                    <option value="AI Music Video">AI Music Video</option>
-                    <option value="AI Commercial – Branded Film">AI Commercial – Branded Film</option>
-                  </select>
+                  <div class="multi-select-wrapper">
+                    <div class="multi-select-display" id="award-category-display" onclick="toggleAwardCategoryDropdown()">
+                      <span class="multi-select-placeholder">Select award categories...</span>
+                    </div>
+                    <div class="multi-select-dropdown" id="award-category-dropdown">
+                      <div class="multi-select-search">
+                        <input type="text" id="award-category-search" placeholder="Search categories..." onkeyup="filterAwardCategories()">
+                      </div>
+                      <div class="multi-select-options" id="award-category-options">
+                        <div class="multi-select-option">
+                          <input type="checkbox" id="award-drama" value="AI Micro Drama" onchange="updateAwardCategorySelection()">
+                          <label for="award-drama">AI Micro Drama</label>
+                        </div>
+                        <div class="multi-select-option">
+                          <input type="checkbox" id="award-short" value="AI Short Film" onchange="updateAwardCategorySelection()">
+                          <label for="award-short">AI Short Film</label>
+                        </div>
+                        <div class="multi-select-option">
+                          <input type="checkbox" id="award-doc" value="AI Documentary – Factual" onchange="updateAwardCategorySelection()">
+                          <label for="award-doc">AI Documentary – Factual</label>
+                        </div>
+                        <div class="multi-select-option">
+                          <input type="checkbox" id="award-experimental" value="Experimental & Art Film" onchange="updateAwardCategorySelection()">
+                          <label for="award-experimental">Experimental & Art Film</label>
+                        </div>
+                        <div class="multi-select-option">
+                          <input type="checkbox" id="award-music" value="AI Music Video" onchange="updateAwardCategorySelection()">
+                          <label for="award-music">AI Music Video</label>
+                        </div>
+                        <div class="multi-select-option">
+                          <input type="checkbox" id="award-commercial" value="AI Commercial – Branded Film" onchange="updateAwardCategorySelection()">
+                          <label for="award-commercial">AI Commercial – Branded Film</label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <input type="hidden" name="awardCategory" id="award-category" required>
                 </div>
               </div>
 
@@ -1563,6 +1693,34 @@
                         <div class="multi-select-option">
                           <input type="checkbox" id="genre-drama" value="Drama" onchange="updateGenreSelection()">
                           <label for="genre-drama">Drama</label>
+                        </div>
+                        <div class="multi-select-option">
+                          <input type="checkbox" id="genre-action" value="Action" onchange="updateGenreSelection()">
+                          <label for="genre-action">Action</label>
+                        </div>
+                        <div class="multi-select-option">
+                          <input type="checkbox" id="genre-thriller" value="Thriller" onchange="updateGenreSelection()">
+                          <label for="genre-thriller">Thriller</label>
+                        </div>
+                        <div class="multi-select-option">
+                          <input type="checkbox" id="genre-romance" value="Romance" onchange="updateGenreSelection()">
+                          <label for="genre-romance">Romance</label>
+                        </div>
+                        <div class="multi-select-option">
+                          <input type="checkbox" id="genre-fantasy" value="Fantasy" onchange="updateGenreSelection()">
+                          <label for="genre-fantasy">Fantasy</label>
+                        </div>
+                        <div class="multi-select-option">
+                          <input type="checkbox" id="genre-scifi-drama" value="Sci-Fi Drama" onchange="updateGenreSelection()">
+                          <label for="genre-scifi-drama">Sci-Fi Drama</label>
+                        </div>
+                        <div class="multi-select-option">
+                          <input type="checkbox" id="genre-adventure" value="Adventure" onchange="updateGenreSelection()">
+                          <label for="genre-adventure">Adventure</label>
+                        </div>
+                        <div class="multi-select-option">
+                          <input type="checkbox" id="genre-interactive" value="Interactive/Immersive" onchange="updateGenreSelection()">
+                          <label for="genre-interactive">Interactive/Immersive</label>
                         </div>
                         <div class="multi-select-option">
                           <input type="checkbox" id="genre-other" value="Other" onchange="updateGenreSelection(); toggleGenreOtherField()">
@@ -1906,8 +2064,52 @@
 
   <script>
     // ============================================
-    // ACCORDION FUNCTIONALITY
+    // CLOSE ALL DROPDOWNS (Mutual Exclusion)
     // ============================================
+    
+    function closeAllDropdowns() {
+      // Close genre
+      document.getElementById('genre-dropdown').classList.remove('show');
+      document.getElementById('genre-display').classList.remove('open');
+      
+      // Close award category
+      document.getElementById('award-category-dropdown').classList.remove('show');
+      document.getElementById('award-category-display').classList.remove('open');
+      
+      // Close phone code
+      document.getElementById('phone-code-dropdown').classList.remove('active');
+      document.getElementById('phone-code-display').classList.remove('open');
+      
+      // Close country
+      document.getElementById('country-dropdown').classList.remove('show');
+      document.getElementById('country-input').classList.remove('open');
+    }
+
+    // ============================================
+    // RUNTIME UNIT CUSTOM DROPDOWN
+    // ============================================
+    
+    function toggleRuntimeUnit(unitNum) {
+      closeAllDropdowns();
+      const display = document.getElementById(`runtime-unit-${unitNum}-display`);
+      const dropdown = document.getElementById(`runtime-unit-${unitNum}-dropdown`);
+      
+      dropdown.classList.toggle('show');
+      display.classList.toggle('open');
+    }
+
+    function selectRuntimeUnit(unitNum, unit) {
+      const display = document.getElementById(`runtime-unit-${unitNum}-display`);
+      const dropdown = document.getElementById(`runtime-unit-${unitNum}-dropdown`);
+      const hiddenInput = document.getElementById(`runtime-unit-${unitNum}`);
+      
+      display.textContent = unit;
+      hiddenInput.value = unit;
+      dropdown.classList.remove('show');
+      display.classList.remove('open');
+      
+      calculateRuntime();
+    }
     
     function toggleAccordion(header) {
       const section = header.parentElement;
@@ -1925,19 +2127,26 @@
 
     // Initialize accordion heights on load
     document.addEventListener('DOMContentLoaded', function() {
-      const openSections = document.querySelectorAll('.accordion-section.open .accordion-content');
-      openSections.forEach(content => {
-        content.style.maxHeight = content.scrollHeight + 'px';
+      // Open all accordion sections by default
+      const allSections = document.querySelectorAll('.accordion-section');
+      allSections.forEach(section => {
+        section.classList.add('open');
+        const content = section.querySelector('.accordion-content');
+        if (content) {
+          content.style.maxHeight = content.scrollHeight + 'px';
+          content.style.visibility = 'visible';
+        }
       });
       
       // Initialize country dropdown
       initializeCountryDropdown();
       
+      // Initialize phone code dropdown
+      initializePhoneCodeDropdown();
+      
       // Add runtime listeners
       document.getElementById('runtime-value-1').addEventListener('input', calculateRuntime);
-      document.getElementById('runtime-unit-1').addEventListener('change', calculateRuntime);
       document.getElementById('runtime-value-2').addEventListener('input', calculateRuntime);
-      document.getElementById('runtime-unit-2').addEventListener('change', calculateRuntime);
     });
 
     // ============================================
@@ -1981,8 +2190,13 @@
       const dropdown = document.getElementById('genre-dropdown');
       const display = document.getElementById('genre-display');
       
-      dropdown.classList.toggle('show');
-      display.classList.toggle('open');
+      const isOpen = dropdown.classList.contains('show');
+      closeAllDropdowns();
+      
+      if (!isOpen) {
+        dropdown.classList.add('show');
+        display.classList.add('open');
+      }
     }
 
     function filterGenres() {
@@ -2045,25 +2259,79 @@
       }
     }
 
-    // Close genre dropdown when clicking outside
-    document.addEventListener('click', function(e) {
-      const genreWrapper = document.querySelector('.multi-select-wrapper');
-      const genreDisplay = document.getElementById('genre-display');
-      const genreDropdown = document.getElementById('genre-dropdown');
+    // ============================================
+    // AWARD CATEGORY MULTI-SELECT
+    // ============================================
+    
+    function toggleAwardCategoryDropdown() {
+      const dropdown = document.getElementById('award-category-dropdown');
+      const display = document.getElementById('award-category-display');
       
-      if (genreDisplay && genreDropdown && !e.target.closest('.multi-select-wrapper')) {
-        genreDropdown.classList.remove('show');
-        genreDisplay.classList.remove('open');
+      const isOpen = dropdown.classList.contains('show');
+      closeAllDropdowns();
+      
+      if (!isOpen) {
+        dropdown.classList.add('show');
+        display.classList.add('open');
       }
+    }
+
+    function filterAwardCategories() {
+      const searchValue = document.getElementById('award-category-search').value.toLowerCase();
+      const options = document.querySelectorAll('#award-category-options .multi-select-option');
       
-      const countryWrapper = document.querySelector('.country-input-wrapper');
-      const countryInput = document.getElementById('country-input');
-      const countryDropdown = document.getElementById('country-dropdown');
+      options.forEach(option => {
+        const label = option.querySelector('label').textContent.toLowerCase();
+        option.style.display = label.includes(searchValue) ? 'flex' : 'none';
+      });
+    }
+
+    function updateAwardCategorySelection() {
+      const checkboxes = document.querySelectorAll('#award-category-options input[type="checkbox"]:checked');
+      const display = document.getElementById('award-category-display');
+      const placeholder = display.querySelector('.multi-select-placeholder');
       
-      if (countryInput && countryDropdown && !e.target.closest('.country-input-wrapper')) {
-        countryDropdown.classList.remove('show');
-        countryWrapper.classList.remove('open');
-        countryInput.classList.remove('open');
+      // Clear existing pills
+      display.querySelectorAll('.selection-pill').forEach(pill => pill.remove());
+      
+      if (checkboxes.length > 0) {
+        if (placeholder) placeholder.style.display = 'none';
+        
+        checkboxes.forEach(checkbox => {
+          const pill = document.createElement('span');
+          pill.className = 'selection-pill';
+          pill.innerHTML = `${checkbox.value} <span class="remove-pill" onclick="removeAwardCategory('${checkbox.id}')">×</span>`;
+          display.appendChild(pill);
+        });
+        
+        // Update hidden field
+        const values = Array.from(checkboxes).map(cb => cb.value).join(',');
+        document.getElementById('award-category').value = values;
+      } else {
+        if (placeholder) placeholder.style.display = 'inline';
+        document.getElementById('award-category').value = '';
+      }
+    }
+
+    function removeAwardCategory(checkboxId) {
+      const checkbox = document.getElementById(checkboxId);
+      if (checkbox) {
+        checkbox.checked = false;
+        updateAwardCategorySelection();
+      }
+    }
+
+    // Close award category dropdown when clicking outside
+    document.addEventListener('click', function(e) {
+      const awardWrapper = document.querySelector('.multi-select-wrapper');
+      if (awardWrapper && e.target.closest('.multi-select-wrapper') === awardWrapper) return;
+      
+      const awardDisplay = document.getElementById('award-category-display');
+      const awardDropdown = document.getElementById('award-category-dropdown');
+      
+      if (awardDisplay && awardDropdown && !e.target.closest('#award-category-display') && !e.target.closest('#award-category-dropdown')) {
+        awardDropdown.classList.remove('show');
+        if (awardDisplay) awardDisplay.classList.remove('open');
       }
     });
 
@@ -2105,15 +2373,49 @@
     // COUNTRY DROPDOWN WITH REGIONS
     // ============================================
     
+    // Extract all unique countries from phone codes for synchronization
+    const allCountriesFromPhoneCodes = [
+      "United States", "Canada", "Bahamas", "Barbados", "Anguilla", "Antigua and Barbuda",
+      "British Virgin Islands", "Cayman Islands", "Bermuda", "Grenada", "Turks and Caicos Islands",
+      "Jamaica", "Montserrat", "Sint Maarten", "Saint Lucia", "Dominica", "Saint Vincent and the Grenadines",
+      "Dominican Republic", "Trinidad and Tobago", "Saint Kitts and Nevis", "Puerto Rico", "US Virgin Islands",
+      "Guam", "American Samoa", "Northern Mariana Islands", "Egypt", "South Sudan", "Morocco", "Algeria",
+      "Tunisia", "Libya", "Gambia", "Senegal", "Mauritania", "Mali", "Guinea", "Ivory Coast", "Burkina Faso",
+      "Niger", "Togo", "Benin", "Mauritius", "Liberia", "Sierra Leone", "Ghana", "Nigeria", "Chad",
+      "Central African Republic", "Cameroon", "Cape Verde", "São Tomé and Príncipe", "Equatorial Guinea",
+      "Gabon", "Republic of the Congo", "Democratic Republic of the Congo", "Angola", "Guinea-Bissau",
+      "British Indian Ocean Territory", "Ascension Island", "Seychelles", "Sudan", "Rwanda", "Ethiopia",
+      "Somalia", "Djibouti", "Kenya", "Tanzania", "Uganda", "Burundi", "Mozambique", "Zambia", "Madagascar",
+      "Réunion", "Zimbabwe", "Namibia", "Malawi", "Lesotho", "Botswana", "Eswatini", "Comoros",
+      "South Africa", "Saint Helena", "Eritrea", "Aruba", "Faroe Islands", "Greenland", "Greece",
+      "Netherlands", "Belgium", "France", "Spain", "Gibraltar", "Portugal", "Luxembourg", "Ireland", "Iceland",
+      "Albania", "Malta", "Cyprus", "Finland", "Bulgaria", "Hungary", "Lithuania", "Latvia", "Estonia",
+      "Moldova", "Armenia", "Belarus", "Andorra", "Monaco", "San Marino", "Vatican City", "Ukraine", "Serbia",
+      "Montenegro", "Kosovo", "Croatia", "Slovenia", "Bosnia and Herzegovina", "North Macedonia", "Italy",
+      "Romania", "Switzerland", "Austria", "United Kingdom", "Denmark", "Sweden", "Norway", "Poland", "Germany",
+      "Falkland Islands", "Belize", "Guatemala", "El Salvador", "Honduras", "Nicaragua", "Costa Rica", "Panama",
+      "Saint-Pierre and Miquelon", "Haiti", "Peru", "Mexico", "Cuba", "Argentina", "Brazil", "Chile", "Colombia",
+      "Venezuela", "Guadeloupe", "Bolivia", "Guyana", "Ecuador", "French Guiana", "Paraguay", "Martinique",
+      "Suriname", "Uruguay", "Curaçao", "Malaysia", "Australia", "Indonesia", "Philippines", "New Zealand",
+      "Singapore", "Thailand", "East Timor", "Norfolk Island", "Brunei", "Nauru", "Papua New Guinea", "Tonga",
+      "Solomon Islands", "Vanuatu", "Fiji", "Palau", "Wallis and Futuna", "Cook Islands", "Niue", "Samoa",
+      "Kiribati", "New Caledonia", "Tuvalu", "French Polynesia", "Tokelau", "Federated States of Micronesia",
+      "Marshall Islands", "Russia", "Kazakhstan", "Japan", "South Korea", "Vietnam", "North Korea", "Hong Kong",
+      "Macau", "Cambodia", "Laos", "Bangladesh", "China", "Taiwan", "Turkey", "India", "Pakistan", "Afghanistan",
+      "Sri Lanka", "Myanmar", "Iran", "Maldives", "Lebanon", "Jordan", "Syria", "Iraq", "Kuwait", "Saudi Arabia",
+      "Yemen", "Oman", "Palestine", "United Arab Emirates", "Israel", "Bahrain", "Qatar", "Bhutan", "Mongolia",
+      "Nepal", "Tajikistan", "Turkmenistan", "Azerbaijan", "Georgia", "Kyrgyzstan", "Uzbekistan"
+    ];
+
     const countriesByRegion = {
       "North America": ["Canada", "United States", "Mexico"],
-      "Central America & Caribbean": ["Belize", "Costa Rica", "El Salvador", "Guatemala", "Honduras", "Nicaragua", "Panama", "Bahamas", "Barbados", "Cuba", "Dominica", "Dominican Republic", "Grenada", "Haiti", "Jamaica", "Saint Kitts and Nevis", "Saint Lucia", "Saint Vincent and the Grenadines", "Trinidad and Tobago"],
-      "South America": ["Argentina", "Bolivia", "Brazil", "Chile", "Colombia", "Ecuador", "Guyana", "Paraguay", "Peru", "Suriname", "Uruguay", "Venezuela"],
-      "Europe": ["Albania", "Andorra", "Austria", "Belarus", "Belgium", "Bosnia and Herzegovina", "Bulgaria", "Croatia", "Cyprus", "Czech Republic", "Denmark", "Estonia", "Finland", "France", "Germany", "Greece", "Hungary", "Iceland", "Ireland", "Italy", "Kosovo", "Latvia", "Liechtenstein", "Lithuania", "Luxembourg", "Malta", "Moldova", "Monaco", "Montenegro", "Netherlands", "North Macedonia", "Norway", "Poland", "Portugal", "Romania", "Russia", "San Marino", "Serbia", "Slovakia", "Slovenia", "Spain", "Sweden", "Switzerland", "Ukraine", "United Kingdom", "Vatican City"],
-      "Africa": ["Algeria", "Angola", "Benin", "Botswana", "Burkina Faso", "Burundi", "Cameroon", "Cape Verde", "Central African Republic", "Chad", "Comoros", "Congo", "Djibouti", "Egypt", "Equatorial Guinea", "Eritrea", "Ethiopia", "Gabon", "Gambia", "Ghana", "Guinea", "Guinea-Bissau", "Kenya", "Lesotho", "Liberia", "Libya", "Madagascar", "Malawi", "Mali", "Mauritania", "Mauritius", "Morocco", "Mozambique", "Namibia", "Niger", "Nigeria", "Rwanda", "Sao Tome and Principe", "Senegal", "Seychelles", "Sierra Leone", "Somalia", "South Africa", "South Sudan", "Sudan", "Tanzania", "Togo", "Tunisia", "Uganda", "Zambia", "Zimbabwe"],
+      "Central America & Caribbean": ["Belize", "Costa Rica", "El Salvador", "Guatemala", "Honduras", "Nicaragua", "Panama", "Bahamas", "Barbados", "Cuba", "Dominica", "Dominican Republic", "Grenada", "Haiti", "Jamaica", "Saint Kitts and Nevis", "Saint Lucia", "Saint Vincent and the Grenadines", "Trinidad and Tobago", "Anguilla", "Antigua and Barbuda", "British Virgin Islands", "Cayman Islands", "Bermuda", "Montserrat", "Sint Maarten", "Puerto Rico", "US Virgin Islands", "Turks and Caicos Islands", "Aruba", "Curaçao", "Guadeloupe", "Martinique", "Saint-Pierre and Miquelon"],
+      "South America": ["Argentina", "Bolivia", "Brazil", "Chile", "Colombia", "Ecuador", "Guyana", "Paraguay", "Peru", "Suriname", "Uruguay", "Venezuela", "French Guiana", "Falkland Islands"],
+      "Europe": ["Albania", "Andorra", "Austria", "Belarus", "Belgium", "Bosnia and Herzegovina", "Bulgaria", "Croatia", "Cyprus", "Czech Republic", "Denmark", "Estonia", "Finland", "France", "Germany", "Greece", "Hungary", "Iceland", "Ireland", "Italy", "Kosovo", "Latvia", "Liechtenstein", "Lithuania", "Luxembourg", "Malta", "Moldova", "Monaco", "Montenegro", "Netherlands", "North Macedonia", "Norway", "Poland", "Portugal", "Romania", "Russia", "San Marino", "Serbia", "Slovakia", "Slovenia", "Spain", "Sweden", "Switzerland", "Ukraine", "United Kingdom", "Vatican City", "Armenia", "Azerbaijan", "Georgia"],
+      "Africa": ["Algeria", "Angola", "Benin", "Botswana", "Burkina Faso", "Burundi", "Cameroon", "Cape Verde", "Central African Republic", "Chad", "Comoros", "Republic of the Congo", "Democratic Republic of the Congo", "Djibouti", "Egypt", "Equatorial Guinea", "Eritrea", "Ethiopia", "Gabon", "Gambia", "Ghana", "Guinea", "Guinea-Bissau", "Kenya", "Lesotho", "Liberia", "Libya", "Madagascar", "Malawi", "Mali", "Mauritania", "Mauritius", "Morocco", "Mozambique", "Namibia", "Niger", "Nigeria", "Rwanda", "São Tomé and Príncipe", "Senegal", "Seychelles", "Sierra Leone", "Somalia", "South Africa", "South Sudan", "Sudan", "Tanzania", "Togo", "Tunisia", "Uganda", "Zambia", "Zimbabwe", "Côte d'Ivoire", "Ivory Coast", "Eswatini"],
       "Middle East": ["Bahrain", "Iran", "Iraq", "Israel", "Jordan", "Kuwait", "Lebanon", "Oman", "Palestine", "Qatar", "Saudi Arabia", "Syria", "Turkey", "United Arab Emirates", "Yemen"],
-      "Asia": ["Afghanistan", "Armenia", "Azerbaijan", "Bangladesh", "Bhutan", "Cambodia", "China", "Georgia", "India", "Indonesia", "Japan", "Kazakhstan", "Korea North", "Korea South", "Kyrgyzstan", "Laos", "Malaysia", "Maldives", "Mongolia", "Myanmar", "Nepal", "Pakistan", "Philippines", "Singapore", "Sri Lanka", "Taiwan", "Tajikistan", "Thailand", "Timor-Leste", "Turkmenistan", "Uzbekistan", "Vietnam"],
-      "Oceania": ["Australia", "Fiji", "Kiribati", "Marshall Islands", "Micronesia", "Nauru", "New Zealand", "Palau", "Papua New Guinea", "Samoa", "Solomon Islands", "Tonga", "Tuvalu", "Vanuatu"]
+      "Asia": ["Afghanistan", "Armenia", "Azerbaijan", "Bangladesh", "Bhutan", "Cambodia", "China", "Georgia", "Hong Kong", "India", "Indonesia", "Japan", "Kazakhstan", "Korea North", "Korea South", "Kyrgyzstan", "Laos", "Macau", "Malaysia", "Maldives", "Mongolia", "Myanmar", "Nepal", "North Korea", "Pakistan", "Philippines", "Singapore", "South Korea", "Sri Lanka", "Taiwan", "Tajikistan", "Thailand", "Timor-Leste", "East Timor", "Turkmenistan", "Uzbekistan", "Vietnam"],
+      "Oceania": ["Australia", "Fiji", "Kiribati", "Marshall Islands", "Micronesia", "Federated States of Micronesia", "Nauru", "New Zealand", "Palau", "Papua New Guinea", "Samoa", "Solomon Islands", "Tonga", "Tuvalu", "Vanuatu", "Cook Islands", "Niue", "Norfolk Island", "Tokelau", "Wallis and Futuna", "New Caledonia", "French Polynesia", "Guam", "American Samoa", "Northern Mariana Islands"]
     };
 
     function initializeCountryDropdown() {
@@ -2144,11 +2446,13 @@
       const wrapper = document.querySelector('.country-input-wrapper');
       const input = document.getElementById('country-input');
       
-      dropdown.classList.toggle('show');
-      wrapper.classList.toggle('open');
-      input.classList.toggle('open');
+      const isOpen = dropdown.classList.contains('show');
+      closeAllDropdowns();
       
-      if (dropdown.classList.contains('show')) {
+      if (!isOpen) {
+        dropdown.classList.add('show');
+        wrapper.classList.add('open');
+        input.classList.add('open');
         document.getElementById('country-search').focus();
       }
     }
@@ -2481,23 +2785,33 @@
       const wrapper = document.querySelector('.phone-code-wrapper');
       const display = document.getElementById('phone-code-display');
       
-      dropdown.classList.toggle('active');
-      wrapper.classList.toggle('open');
-      display.classList.toggle('open');
+      const isOpen = dropdown.classList.contains('active');
+      closeAllDropdowns();
       
-      if (dropdown.classList.contains('active')) {
+      if (!isOpen) {
+        dropdown.classList.add('active');
+        wrapper.classList.add('open');
+        display.classList.add('open');
         document.getElementById('phone-code-search').focus();
       }
     }
 
     function filterPhoneCodes() {
-      const searchValue = document.getElementById('phone-code-search').value.toLowerCase();
+      const searchValue = document.getElementById('phone-code-search').value.toLowerCase().trim();
       const options = document.querySelectorAll('.phone-code-option');
       
       options.forEach(option => {
         const country = option.querySelector('.phone-code-country').textContent.toLowerCase();
-        const code = option.querySelector('.phone-code-number').textContent.toLowerCase();
-        const matches = country.includes(searchValue) || code.includes(searchValue);
+        const code = option.querySelector('.phone-code-number').textContent.toLowerCase().replace(/\+/g, '');
+        
+        // Support search by: country name, phone code with +, or just digits
+        const codeWithPlus = option.querySelector('.phone-code-number').textContent.toLowerCase();
+        const searchWithoutPlus = searchValue.replace(/\+/g, '');
+        
+        const matches = country.includes(searchValue) || 
+                        code.includes(searchWithoutPlus) || 
+                        codeWithPlus.includes(searchValue);
+        
         option.style.display = matches ? 'flex' : 'none';
       });
     }
@@ -2532,25 +2846,47 @@
       document.getElementById('phone-number').focus();
     }
 
-    // Close phone code dropdown when clicking outside
-    document.addEventListener('click', function(event) {
-      const wrapper = document.querySelector('.phone-code-wrapper');
-      if (wrapper && !wrapper.contains(event.target)) {
-        const dropdown = document.getElementById('phone-code-dropdown');
-        dropdown.classList.remove('active');
-        wrapper.classList.remove('open');
-        document.getElementById('phone-code-display').classList.remove('open');
+    // ============================================
+    // GLOBAL CLICK LISTENER - CLOSE ALL DROPDOWNS
+    // ============================================
+    
+    document.addEventListener('click', function(e) {
+      // Only close if clicked outside all dropdown wrappers and triggers
+      const isClickInsideDropdown = e.target.closest('.multi-select-wrapper') || 
+                                   e.target.closest('.phone-code-wrapper') || 
+                                   e.target.closest('.country-input-wrapper') ||
+                                   e.target.closest('#genre-dropdown') ||
+                                   e.target.closest('#award-category-dropdown') ||
+                                   e.target.closest('#phone-code-dropdown') ||
+                                   e.target.closest('#country-dropdown') ||
+                                   e.target.closest('.runtime-unit-wrapper');
+      
+      if (!isClickInsideDropdown) {
+        // Close ALL dropdowns
+        document.getElementById('genre-dropdown')?.classList.remove('show');
+        document.getElementById('genre-display')?.classList.remove('open');
+        
+        document.getElementById('award-category-dropdown')?.classList.remove('show');
+        document.getElementById('award-category-display')?.classList.remove('open');
+        
+        document.getElementById('phone-code-dropdown')?.classList.remove('active');
+        document.querySelector('.phone-code-wrapper')?.classList.remove('open');
+        document.getElementById('phone-code-display')?.classList.remove('open');
+        
+        document.getElementById('country-dropdown')?.classList.remove('show');
+        document.querySelector('.country-input-wrapper')?.classList.remove('open');
+        document.getElementById('country-input')?.classList.remove('open');
+        
+        // Close runtime unit dropdowns
+        document.getElementById('runtime-unit-1-dropdown')?.classList.remove('show');
+        document.getElementById('runtime-unit-1-display')?.classList.remove('open');
+        document.getElementById('runtime-unit-2-dropdown')?.classList.remove('show');
+        document.getElementById('runtime-unit-2-display')?.classList.remove('open');
       }
     });
 
     // Initialize phone code dropdown on page load
     document.addEventListener('DOMContentLoaded', initializePhoneCodeDropdown);
-    // Also run immediately in case DOM is already loaded
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', initializePhoneCodeDropdown);
-    } else {
-      initializePhoneCodeDropdown();
-    }
 
     // ============================================
     // FILE UPLOAD TOGGLE
@@ -2727,7 +3063,7 @@
         }
       }
       
-      if (!awardCategory) errors.push('Award Category is required');
+      if (!awardCategory) errors.push('Award Category is required - please select at least one category');
       if (!category) errors.push('Genre is required - please select at least one genre');
       if (!aiTools) errors.push('AI Tools Used is required - please select at least one tool');
       if (!creatorName) errors.push('Director Name is required');
@@ -2841,6 +3177,10 @@
       document.getElementById('runtime-total').value = '';
       document.getElementById('runtime-preview').style.display = 'none';
       
+      // Reset award category selection
+      document.querySelectorAll('#award-category-options input[type="checkbox"]').forEach(cb => cb.checked = false);
+      updateAwardCategorySelection();
+      
       // Reset genre selection
       document.querySelectorAll('#genre-options input[type="checkbox"]').forEach(cb => cb.checked = false);
       updateGenreSelection();
@@ -2863,9 +3203,6 @@
       fileUploadArea.querySelector('.upload-icon').textContent = '☁️';
       fileUploadArea.style.borderColor = 'rgba(220, 38, 38, 0.3)';
       document.getElementById('drive-link').value = '';
-      
-      // Reset award category
-      document.getElementById('award-category').value = '';
       
       // Reset upload method radio selection and hide both options
       const fileRadio = document.getElementById('method-file');
