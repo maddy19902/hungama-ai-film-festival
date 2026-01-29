@@ -30,21 +30,21 @@
       background: #0a0a0a;
       padding: 8rem 4rem 4rem 4rem;
       margin-top: 72px;
-      min-h-[85vh];
       display: flex;
-      align-items: center;
+      align-items: flex-start;
+      padding-top: 6rem;
     }
 
     @media (max-width: 768px) {
       .page-hero-wrapper {
-        min-h-[60vh] !important;
         padding: 6rem 2rem 2rem 2rem;
       }
     }
 
     .page-hero {
-      max-width: 1400px;
-      margin: 0 auto;
+      max-width: 100%;
+      width: 100%;
+      padding: 0;
     }
 
     .page-hero h1 {
@@ -70,18 +70,24 @@
     .submit-page-container {
       display: grid;
       grid-template-columns: 340px 1fr;
-      min-height: 100vh;
+      height: auto;
       background: #0a0a0a;
-      padding-left: 0;
+      padding: 2rem 2rem;
+      gap: 2rem;
+      align-content: start;
+      max-width: 1400px;
+      margin: 0 auto;
     }
 
     /* LEFT SIDEBAR - GUIDELINES */
     .guidelines-sidebar {
       background: #141414;
       padding: 2rem 1.75rem;
-      margin: 1.5rem;
       border: 1px solid rgba(255, 255, 255, 0.05);
       border-radius: 1rem;
+      height: fit-content;
+      position: sticky;
+      top: 90px;
     }
 
     .guidelines-sidebar h2 {
@@ -320,7 +326,7 @@
 
     .multi-select-wrapper {
       position: relative;
-      z-index: 100;
+      z-index: 1000;
     }
 
     .multi-select-dropdown {
@@ -333,7 +339,7 @@
       border-radius: 0.5rem;
       max-height: 300px;
       overflow-y: auto;
-      z-index: 99999;
+      z-index: 10000;
       display: none;
       box-shadow: 0 10px 40px rgba(0, 0, 0, 0.7);
     }
@@ -438,7 +444,6 @@
     /* COUNTRY INPUT WRAPPER (Text Input + Dropdown) */
     .country-input-wrapper {
       position: relative;
-      z-index: 100;
     }
 
     .country-input {
@@ -476,6 +481,22 @@
 
     .country-input[readonly] {
       cursor: pointer;
+    }
+
+    /* Hide dropdown arrows from text/URL inputs */
+    input[type="text"]::-webkit-outer-spin-button,
+    input[type="text"]::-webkit-inner-spin-button,
+    input[type="url"]::-webkit-outer-spin-button,
+    input[type="url"]::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+    input[type="text"],
+    input[type="url"] {
+      appearance: none;
+      -moz-appearance: none;
+      -webkit-appearance: none;
     }
 
     /* COMPOUND FIELD (Runtime) */
@@ -696,7 +717,7 @@
     .phone-code-wrapper {
       position: relative;
       flex: 0 0 auto;
-      z-index: 100;
+      z-index: 1000;
     }
 
     .phone-code-display {
@@ -725,14 +746,13 @@
     .phone-code-dropdown {
       display: none;
       position: absolute;
-      top: 100%;
+      top: calc(100% + 0.5rem);
       left: 0;
       min-width: 320px;
       background: rgba(20, 20, 20, 0.98);
       border: 1px solid rgba(220, 38, 38, 0.3);
       border-radius: 0.5rem;
-      margin-top: 0.5rem;
-      z-index: 99999;
+      z-index: 10000;
       max-height: 250px;
       overflow-y: auto;
       box-shadow: 0 10px 40px rgba(0, 0, 0, 0.7);
@@ -1032,12 +1052,12 @@
     .accordion-content {
       max-height: 0;
       overflow: visible;
-      transition: max-height 0.3s ease, visibility 0.3s ease;
+      transition: max-height 0.4s ease, visibility 0.3s ease;
       visibility: hidden;
     }
 
     .accordion-section.open .accordion-content {
-      max-height: fit-content;
+      max-height: none;
       visibility: visible;
     }
 
@@ -2561,6 +2581,19 @@
         linkOption.style.display = 'block';
         fileOption.style.display = 'none';
         driveLink.required = true;
+      }
+      
+      // Recalculate accordion height after content change
+      recalculateAccordionHeight('file-upload');
+    }
+    
+    function recalculateAccordionHeight(sectionId) {
+      const section = document.querySelector(`[data-section="${sectionId}"]`);
+      if (section && section.classList.contains('open')) {
+        const content = section.querySelector('.accordion-content');
+        if (content) {
+          content.style.maxHeight = content.scrollHeight + 'px';
+        }
       }
     }
 
